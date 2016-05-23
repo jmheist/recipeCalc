@@ -51,7 +51,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UITableViewDe
             
             if recipeToEdit.flavors.count > 0 {
                 for flavor in recipeToEdit.flavors {
-                    flavorMGR.addFlavor(flavor.name, base: flavor.base, pct: flavor.pct)
+                    flavorMGR.addFlavor(flavor.name, base: flavor.base, pct: flavor.pct, view: self)
                 }
                 flavorTable.reloadData()
             }
@@ -64,24 +64,35 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         
         
         // add new recipe
-        recipeMGR.addRecipe(recipeName.text!, desc: recipeDesc.text!, pgPct: recipePgPct.text!, vgPct: recipeVgPct.text!, flavors: flavorMGR.flavors, id: recipeMGR.recipeToEdit)
+        let recipeAdded = recipeMGR.addRecipe(recipeName.text!, desc: recipeDesc.text!, pgPct: recipePgPct.text!, vgPct: recipeVgPct.text!, flavors: flavorMGR.flavors, id: recipeMGR.recipeToEdit, view: self)
         
         self.view.endEditing(true)
-        clearSecondView()
-        self.tabBarController?.selectedIndex = 0
+        
+        if recipeAdded {
+            clearSecondView()
+            self.tabBarController?.selectedIndex = 0
+        }
     }
     
     @IBAction func addFlavorButtonClick(sender: AnyObject) {
         print("Adding a Flavor")
-        flavorMGR.addFlavor(newFlavorName.text!, base: newFlavorBase.selectedSegmentIndex, pct: newFlavorPct.text!)
-        newFlavorName.text = ""
-        newFlavorPct.text = ""
-        flavorTable.reloadData()
-        print("Flavor Added")
+        
+        let flavorAdded = flavorMGR.addFlavor(newFlavorName.text!, base: newFlavorBase.selectedSegmentIndex, pct: newFlavorPct.text!, view: self)
+        
+        if flavorAdded {
+            newFlavorName.text = ""
+            newFlavorPct.text = ""
+            flavorTable.reloadData()
+            print("Flavor Added")
+        }
     }
     
-    @IBAction func clearRecipeButtonClick(sender: AnyObject) {
+    @IBAction func cancelButtonClick(sender: AnyObject) {
+        
+        recipeMGR.recipeToEdit = 0
         clearSecondView()
+        self.tabBarController?.selectedIndex = 0
+        
     }
     
     

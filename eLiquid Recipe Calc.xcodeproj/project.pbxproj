@@ -23,6 +23,7 @@
 		73926B451CED60D800315AB7 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 73926B411CED60D800315AB7 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		73926B491CED635700315AB7 /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73926B481CED635700315AB7 /* RecipeModel.swift */; };
 		73A7439C1CF287BD00091F37 /* PreMixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A7439B1CF287BD00091F37 /* PreMixViewController.swift */; };
+		73DBFC851CF36EF20025F34F /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DBFC841CF36EF20025F34F /* ErrorManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		73926B411CED60D800315AB7 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		73926B481CED635700315AB7 /* RecipeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
 		73A7439B1CF287BD00091F37 /* PreMixViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreMixViewController.swift; sourceTree = "<group>"; };
+		73DBFC841CF36EF20025F34F /* ErrorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,8 +122,9 @@
 				73A7439B1CF287BD00091F37 /* PreMixViewController.swift */,
 				73926B371CED3BE400315AB7 /* RecipeManager.swift */,
 				7333C2991CEF6B9500E01359 /* FlavorManager.swift */,
-				73926B481CED635700315AB7 /* RecipeModel.swift */,
+				73DBFC841CF36EF20025F34F /* ErrorManager.swift */,
 				73926B191CED2E3E00315AB7 /* Main.storyboard */,
+				73926B481CED635700315AB7 /* RecipeModel.swift */,
 				73561F0D1CF275F000AEAC3C /* RecipeListCell.swift */,
 				73926B1C1CED2E3E00315AB7 /* Images.xcassets */,
 				73926B1E1CED2E3E00315AB7 /* LaunchScreen.xib */,
@@ -275,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73DBFC851CF36EF20025F34F /* ErrorManager.swift in Sources */,
 				73926B181CED2E3E00315AB7 /* SecondViewController.swift in Sources */,
 				73A7439C1CF287BD00091F37 /* PreMixViewController.swift in Sources */,
 				73926B141CED2E3E00315AB7 /* AppDelegate.swift in Sources */,

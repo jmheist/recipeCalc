@@ -1,5 +1,5 @@
 //
-//  TaskManager.swift
+//  RecipeManager.swift
 //  eLiquid Recipe Calc
 //
 //  Created by Jacob Heisterkamp on 5/18/16.
@@ -17,7 +17,7 @@ class RecipeManager: NSObject {
     var recipeToEdit = 0
     var recipeToMix = 0
     
-    func addRecipe(name: String, desc: String, pgPct: String, vgPct: String, flavors: [flavor], id: Int?=0) {
+    func addRecipe(name: String, desc: String, pgPct: String, vgPct: String, flavors: [Flavor], id: Int?=0, view: UIViewController) -> Bool {
         
         let newRecipe = Recipe()
         newRecipe.name = name
@@ -26,13 +26,13 @@ class RecipeManager: NSObject {
         newRecipe.vgPct = vgPct
         newRecipe.id = id! > 0 ? id! : (recipes.count > 0  ? (recipes.last?.id)! + 1 : 1)
         
-        for flavor in flavors {
-            let newFlavor = Flavor()
-            newFlavor.name = flavor.name
-            newFlavor.base = flavor.base
-            newFlavor.pct = flavor.pct
-            newRecipe.flavors.append(newFlavor)
+        if errorMGR.checkForErrors("recipe", view: view, recipe: newRecipe) { // true = it has errors
+            return false // failed error check, did not add new recipe
         }
+        
+        
+        newRecipe.flavors.appendContentsOf(flavors)
+        
         
         print("Adding New Recipe ", newRecipe.id," ", newRecipe.name)
         
@@ -52,10 +52,10 @@ class RecipeManager: NSObject {
         
         try! realm.write {
             realm.add(newRecipe, update: true)
+            recipeToEdit = 0
         }
-        
-        recipeToEdit = 0
 
+        return true
     }
     
     func removeRecipe(recipe: Object) {

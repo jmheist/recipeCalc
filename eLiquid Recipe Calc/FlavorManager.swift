@@ -1,5 +1,5 @@
 //
-//  TaskManager.swift
+//  ErrorManager.swift
 //  eLiquid Recipe Calc
 //
 //  Created by Jacob Heisterkamp on 5/18/16.
@@ -20,10 +20,21 @@ let flavorMGR: FlavorManager = FlavorManager()
 
 class FlavorManager: NSObject {
     
-    var flavors = [flavor]()
+    var flavors = [Flavor]()
     
-    func addFlavor(name: String, base: Int, pct: String) {
-        flavors.append(flavor(name: name, base: base, pct: pct))
+    func addFlavor(name: String, base: Int, pct: String, view: UIViewController) -> Bool {
+        
+        let newflavor = Flavor()
+        newflavor.name =  name
+        newflavor.base = base
+        newflavor.pct = pct
+        
+        if errorMGR.checkForErrors("flavor", view: view, flavor: newflavor) {
+            return false
+        }
+        
+        flavors.append(newflavor)
+        return true
     }
     
     func reset() {
