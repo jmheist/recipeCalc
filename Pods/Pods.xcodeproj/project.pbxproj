@@ -1,0 +1,603 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		190A353F06AFDA5288000F5AEAE38E17 /* FormRowDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8073DF36B3A35D67525B87465495B543 /* FormRowDescriptor.swift */; };
+		1B7341EC8636C5E3F2FE468D2BF7725D /* FormTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3407F224D53C2AA1BDFD8ED44512C /* FormTextFieldCell.swift */; };
+		219F9E2F8D8D92FD870436B00BFE5301 /* FormPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197E46967672AD9FB7AA6A631C1EF4ED /* FormPickerCell.swift */; };
+		33B56522B9BA1241A127485C4DB5AA1D /* SwiftForms-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9039FEF2B1C216FF2CAB207CA4561DFD /* SwiftForms-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		362EE8969FB78FA72FE4BAD984D87174 /* FormBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C5A15DAC0F994F7E38E64273DD06EA /* FormBaseCell.swift */; };
+		3A69E079833ABE7AEC694AB177731DDB /* Pods-eLiquid Recipe Calc-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F3E2977EC0BE9CFA6AED59F2E02C2430 /* Pods-eLiquid Recipe Calc-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3B965DEF8364101D060652E6CC8D34B2 /* FormDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F96252EE9EDB7AA148C0706AFDD9DD /* FormDescriptor.swift */; };
+		49F0D35B38B153981FE9386931A236E1 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549E9B9F0B6C21F17935B30C37492881 /* FormViewController.swift */; };
+		4BA1F9B9BACF6B80FD6E7D4B7B382D97 /* Pods-eLiquid Recipe Calc-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AB345BFE55B9A9C4C31570C50761DF /* Pods-eLiquid Recipe Calc-dummy.m */; };
+		53DAF34DFD97BE03B2CE54F6228A567C /* FormDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A8B16C8856CEC186E5C6DB54D1D869 /* FormDateCell.swift */; };
+		6908C16C4A8F5BD48BE407A809072670 /* FormLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48253275219B4906A3FF4815916D346 /* FormLabelCell.swift */; };
+		7D75B6C58869DA6C5FE6CA5FEEFFB0E3 /* FormValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E826FCB72E956573086DBCBD2565C0EA /* FormValueCell.swift */; };
+		80EB63BE7C58E9E04BF70DE2ED4F622A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		8D6D638B48DEE57E927B9502C4A3A006 /* FormButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651305A6A6A5DC8483AFFD3AB2551D07 /* FormButtonCell.swift */; };
+		8EFECC097EEAA09B9D53AF38B92B1D91 /* FormErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C30316269F1B331AD2A8DC612922C74 /* FormErrorType.swift */; };
+		9557BA5A0E4925B08E7CA355133EA39E /* FormTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DA8F0051744E04B1C43B6E47D0AD73 /* FormTitleCell.swift */; };
+		9C754F1F2C964F3C8C55C2B8EF47625B /* FormSegmentedControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604ABE9EF14A6045D32002D3C9C27958 /* FormSegmentedControlCell.swift */; };
+		9FB96C1F59B33501DA735BD7E213662A /* FormStepperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F229BFA253EC96ABA2E8891A22CE14A /* FormStepperCell.swift */; };
+		A358226052C9A7BFE57C887FE671954F /* FormCheckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC6B937CADB6657D160FE4C1AE59BB /* FormCheckCell.swift */; };
+		A8568CD0EC41949A52BB0F815556F7C3 /* FormSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5899B99C06CD7BA9E3E5B2C71E607FE /* FormSelector.swift */; };
+		AAA5D6E6D5DEAA719337EE360E1DC9DD /* FormSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6474B90C128B3D2B3358B0B6C5826460 /* FormSelectorCell.swift */; };
+		B6090BFAAAD21E709676B0671EEB2B72 /* FormSectionDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1C111FCEED07A87B25DFF0D7885331 /* FormSectionDescriptor.swift */; };
+		B8F60FC0D214FF054885C634778BD38C /* FormTextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F195AFA57FA48CD6AAAD95A1FE13049 /* FormTextViewCell.swift */; };
+		BDDF00747201E3D2DE2A3DE012649E82 /* FormOptionsSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A25863A28729910DFDDB1E5B2DB5908 /* FormOptionsSelectorController.swift */; };
+		CBCE098BB734EFC070137EAD13334B60 /* SwiftForms-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F53A7D289E0A58C0AC723E2012574A /* SwiftForms-dummy.m */; };
+		CD240938006B4352ACC868D34ABA18BE /* FormSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF383E08087D6BD515484894C860276 /* FormSwitchCell.swift */; };
+		CE2423E68110509AF7BCD8DA68CDB1D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		EBFAD3A22C313FB258DDFC0ED75F361C /* FormSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA1A1BBFC3112E515AAA6E320F2BEDB /* FormSliderCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		066A26BBC57B868B5F95DD38B5928D0F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2E64CE4D1D666A6EF298E06D288206DF;
+			remoteInfo = SwiftForms;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		03DA8F0051744E04B1C43B6E47D0AD73 /* FormTitleCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormTitleCell.swift; path = SwiftForms/cells/base/FormTitleCell.swift; sourceTree = "<group>"; };
+		03DC6B937CADB6657D160FE4C1AE59BB /* FormCheckCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormCheckCell.swift; path = SwiftForms/cells/FormCheckCell.swift; sourceTree = "<group>"; };
+		09C5A15DAC0F994F7E38E64273DD06EA /* FormBaseCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormBaseCell.swift; path = SwiftForms/cells/base/FormBaseCell.swift; sourceTree = "<group>"; };
+		1082FD11327B1F12B3475AA29B89B722 /* Pods-eLiquid Recipe Calc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-eLiquid Recipe Calc.debug.xcconfig"; sourceTree = "<group>"; };
+		18F53A7D289E0A58C0AC723E2012574A /* SwiftForms-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftForms-dummy.m"; sourceTree = "<group>"; };
+		197E46967672AD9FB7AA6A631C1EF4ED /* FormPickerCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormPickerCell.swift; path = SwiftForms/cells/FormPickerCell.swift; sourceTree = "<group>"; };
+		1F195AFA57FA48CD6AAAD95A1FE13049 /* FormTextViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormTextViewCell.swift; path = SwiftForms/cells/FormTextViewCell.swift; sourceTree = "<group>"; };
+		1F6F9BCE9309A866A9C234453983506D /* Pods_eLiquid_Recipe_Calc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eLiquid_Recipe_Calc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FF383E08087D6BD515484894C860276 /* FormSwitchCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormSwitchCell.swift; path = SwiftForms/cells/FormSwitchCell.swift; sourceTree = "<group>"; };
+		28AB345BFE55B9A9C4C31570C50761DF /* Pods-eLiquid Recipe Calc-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-eLiquid Recipe Calc-dummy.m"; sourceTree = "<group>"; };
+		2C30316269F1B331AD2A8DC612922C74 /* FormErrorType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormErrorType.swift; path = SwiftForms/FormErrorType.swift; sourceTree = "<group>"; };
+		2F229BFA253EC96ABA2E8891A22CE14A /* FormStepperCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormStepperCell.swift; path = SwiftForms/cells/FormStepperCell.swift; sourceTree = "<group>"; };
+		3A25863A28729910DFDDB1E5B2DB5908 /* FormOptionsSelectorController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormOptionsSelectorController.swift; path = SwiftForms/controllers/FormOptionsSelectorController.swift; sourceTree = "<group>"; };
+		43858E190590FA4260B49C483F8A25BB /* SwiftForms-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftForms-prefix.pch"; sourceTree = "<group>"; };
+		4D164842D0FFCFB93691A3A25C6B7D9C /* Pods-eLiquid Recipe Calc-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-eLiquid Recipe Calc-frameworks.sh"; sourceTree = "<group>"; };
+		549E9B9F0B6C21F17935B30C37492881 /* FormViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormViewController.swift; path = SwiftForms/controllers/FormViewController.swift; sourceTree = "<group>"; };
+		563AADC10CF3722F3FDE113CE336C1CA /* SwiftForms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftForms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		604ABE9EF14A6045D32002D3C9C27958 /* FormSegmentedControlCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormSegmentedControlCell.swift; path = SwiftForms/cells/FormSegmentedControlCell.swift; sourceTree = "<group>"; };
+		6474B90C128B3D2B3358B0B6C5826460 /* FormSelectorCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormSelectorCell.swift; path = SwiftForms/cells/FormSelectorCell.swift; sourceTree = "<group>"; };
+		651305A6A6A5DC8483AFFD3AB2551D07 /* FormButtonCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormButtonCell.swift; path = SwiftForms/cells/FormButtonCell.swift; sourceTree = "<group>"; };
+		68A8B16C8856CEC186E5C6DB54D1D869 /* FormDateCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormDateCell.swift; path = SwiftForms/cells/FormDateCell.swift; sourceTree = "<group>"; };
+		7CCEAB3EBE37B68746833052ECC1E62D /* SwiftForms.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftForms.modulemap; sourceTree = "<group>"; };
+		8073DF36B3A35D67525B87465495B543 /* FormRowDescriptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormRowDescriptor.swift; path = SwiftForms/descriptors/FormRowDescriptor.swift; sourceTree = "<group>"; };
+		85D9FC0451650A84F7464CB982D2ED5E /* Pods-eLiquid Recipe Calc-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-eLiquid Recipe Calc-acknowledgements.plist"; sourceTree = "<group>"; };
+		87F96252EE9EDB7AA148C0706AFDD9DD /* FormDescriptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormDescriptor.swift; path = SwiftForms/descriptors/FormDescriptor.swift; sourceTree = "<group>"; };
+		8FA1A1BBFC3112E515AAA6E320F2BEDB /* FormSliderCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormSliderCell.swift; path = SwiftForms/cells/FormSliderCell.swift; sourceTree = "<group>"; };
+		9039FEF2B1C216FF2CAB207CA4561DFD /* SwiftForms-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftForms-umbrella.h"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		AA1C111FCEED07A87B25DFF0D7885331 /* FormSectionDescriptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormSectionDescriptor.swift; path = SwiftForms/descriptors/FormSectionDescriptor.swift; sourceTree = "<group>"; };
+		ABE4B3CE834EFD44FF7663428432BABE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC469F68729B192B47729F2989CF64E8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B06B11BF70414E560203D2F5AC710AAF /* Pods-eLiquid Recipe Calc.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-eLiquid Recipe Calc.modulemap"; sourceTree = "<group>"; };
+		C7BDE3B9EC81D315710275F8BC92D6F3 /* Pods-eLiquid Recipe Calc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-eLiquid Recipe Calc.release.xcconfig"; sourceTree = "<group>"; };
+		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		D5899B99C06CD7BA9E3E5B2C71E607FE /* FormSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormSelector.swift; path = SwiftForms/controllers/FormSelector.swift; sourceTree = "<group>"; };
+		D81291EB400C11C0E70EDAF5FFFC982E /* Pods-eLiquid Recipe Calc-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-eLiquid Recipe Calc-acknowledgements.markdown"; sourceTree = "<group>"; };
+		DDE3407F224D53C2AA1BDFD8ED44512C /* FormTextFieldCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormTextFieldCell.swift; path = SwiftForms/cells/FormTextFieldCell.swift; sourceTree = "<group>"; };
+		E39C5D97B00812E0803A6A159F98D9F2 /* SwiftForms.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftForms.xcconfig; sourceTree = "<group>"; };
+		E826FCB72E956573086DBCBD2565C0EA /* FormValueCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormValueCell.swift; path = SwiftForms/cells/base/FormValueCell.swift; sourceTree = "<group>"; };
+		F3E2977EC0BE9CFA6AED59F2E02C2430 /* Pods-eLiquid Recipe Calc-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-eLiquid Recipe Calc-umbrella.h"; sourceTree = "<group>"; };
+		F48253275219B4906A3FF4815916D346 /* FormLabelCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormLabelCell.swift; path = SwiftForms/cells/FormLabelCell.swift; sourceTree = "<group>"; };
+		F887C2308B28A4CD4B909AF6C02771DC /* Pods-eLiquid Recipe Calc-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-eLiquid Recipe Calc-resources.sh"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5A5DBD0AB97FD75DA5B26AF6685F6052 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80EB63BE7C58E9E04BF70DE2ED4F622A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64E3AA4608C1C6FF32EB007AE34BA6D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE2423E68110509AF7BCD8DA68CDB1D9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		14BB49BD5559F50FE4E78494D1948321 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1F6F9BCE9309A866A9C234453983506D /* Pods_eLiquid_Recipe_Calc.framework */,
+				563AADC10CF3722F3FDE113CE336C1CA /* SwiftForms.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		36EAA45642339AD888CF0C544BF11028 /* Pods-eLiquid Recipe Calc */ = {
+			isa = PBXGroup;
+			children = (
+				AC469F68729B192B47729F2989CF64E8 /* Info.plist */,
+				B06B11BF70414E560203D2F5AC710AAF /* Pods-eLiquid Recipe Calc.modulemap */,
+				D81291EB400C11C0E70EDAF5FFFC982E /* Pods-eLiquid Recipe Calc-acknowledgements.markdown */,
+				85D9FC0451650A84F7464CB982D2ED5E /* Pods-eLiquid Recipe Calc-acknowledgements.plist */,
+				28AB345BFE55B9A9C4C31570C50761DF /* Pods-eLiquid Recipe Calc-dummy.m */,
+				4D164842D0FFCFB93691A3A25C6B7D9C /* Pods-eLiquid Recipe Calc-frameworks.sh */,
+				F887C2308B28A4CD4B909AF6C02771DC /* Pods-eLiquid Recipe Calc-resources.sh */,
+				F3E2977EC0BE9CFA6AED59F2E02C2430 /* Pods-eLiquid Recipe Calc-umbrella.h */,
+				1082FD11327B1F12B3475AA29B89B722 /* Pods-eLiquid Recipe Calc.debug.xcconfig */,
+				C7BDE3B9EC81D315710275F8BC92D6F3 /* Pods-eLiquid Recipe Calc.release.xcconfig */,
+			);
+			name = "Pods-eLiquid Recipe Calc";
+			path = "Target Support Files/Pods-eLiquid Recipe Calc";
+			sourceTree = "<group>";
+		};
+		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				FCD0D99CB0CABE779274F20E03F26BF3 /* Pods */,
+				14BB49BD5559F50FE4E78494D1948321 /* Products */,
+				EFDD594413109503C92AAC29A87D2222 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		7FD637BD641624DC0DF98BA5F36B698E /* SwiftForms */ = {
+			isa = PBXGroup;
+			children = (
+				09C5A15DAC0F994F7E38E64273DD06EA /* FormBaseCell.swift */,
+				651305A6A6A5DC8483AFFD3AB2551D07 /* FormButtonCell.swift */,
+				03DC6B937CADB6657D160FE4C1AE59BB /* FormCheckCell.swift */,
+				68A8B16C8856CEC186E5C6DB54D1D869 /* FormDateCell.swift */,
+				87F96252EE9EDB7AA148C0706AFDD9DD /* FormDescriptor.swift */,
+				2C30316269F1B331AD2A8DC612922C74 /* FormErrorType.swift */,
+				F48253275219B4906A3FF4815916D346 /* FormLabelCell.swift */,
+				3A25863A28729910DFDDB1E5B2DB5908 /* FormOptionsSelectorController.swift */,
+				197E46967672AD9FB7AA6A631C1EF4ED /* FormPickerCell.swift */,
+				8073DF36B3A35D67525B87465495B543 /* FormRowDescriptor.swift */,
+				AA1C111FCEED07A87B25DFF0D7885331 /* FormSectionDescriptor.swift */,
+				604ABE9EF14A6045D32002D3C9C27958 /* FormSegmentedControlCell.swift */,
+				D5899B99C06CD7BA9E3E5B2C71E607FE /* FormSelector.swift */,
+				6474B90C128B3D2B3358B0B6C5826460 /* FormSelectorCell.swift */,
+				8FA1A1BBFC3112E515AAA6E320F2BEDB /* FormSliderCell.swift */,
+				2F229BFA253EC96ABA2E8891A22CE14A /* FormStepperCell.swift */,
+				1FF383E08087D6BD515484894C860276 /* FormSwitchCell.swift */,
+				DDE3407F224D53C2AA1BDFD8ED44512C /* FormTextFieldCell.swift */,
+				1F195AFA57FA48CD6AAAD95A1FE13049 /* FormTextViewCell.swift */,
+				03DA8F0051744E04B1C43B6E47D0AD73 /* FormTitleCell.swift */,
+				E826FCB72E956573086DBCBD2565C0EA /* FormValueCell.swift */,
+				549E9B9F0B6C21F17935B30C37492881 /* FormViewController.swift */,
+				F38475939ED17DB072A06D55A0C84F16 /* Support Files */,
+			);
+			path = SwiftForms;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EFDD594413109503C92AAC29A87D2222 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				36EAA45642339AD888CF0C544BF11028 /* Pods-eLiquid Recipe Calc */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		F38475939ED17DB072A06D55A0C84F16 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				ABE4B3CE834EFD44FF7663428432BABE /* Info.plist */,
+				7CCEAB3EBE37B68746833052ECC1E62D /* SwiftForms.modulemap */,
+				E39C5D97B00812E0803A6A159F98D9F2 /* SwiftForms.xcconfig */,
+				18F53A7D289E0A58C0AC723E2012574A /* SwiftForms-dummy.m */,
+				43858E190590FA4260B49C483F8A25BB /* SwiftForms-prefix.pch */,
+				9039FEF2B1C216FF2CAB207CA4561DFD /* SwiftForms-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftForms";
+			sourceTree = "<group>";
+		};
+		FCD0D99CB0CABE779274F20E03F26BF3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7FD637BD641624DC0DF98BA5F36B698E /* SwiftForms */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		09498D9B80B2A9346382DB159563EC87 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33B56522B9BA1241A127485C4DB5AA1D /* SwiftForms-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50778454B994A5C83C05C3410F583928 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A69E079833ABE7AEC694AB177731DDB /* Pods-eLiquid Recipe Calc-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2E64CE4D1D666A6EF298E06D288206DF /* SwiftForms */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DDFCA451E6614A1F2F5C8A361C520172 /* Build configuration list for PBXNativeTarget "SwiftForms" */;
+			buildPhases = (
+				DA28EB05C211B46875081A6144170CBB /* Sources */,
+				64E3AA4608C1C6FF32EB007AE34BA6D9 /* Frameworks */,
+				09498D9B80B2A9346382DB159563EC87 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftForms;
+			productName = SwiftForms;
+			productReference = 563AADC10CF3722F3FDE113CE336C1CA /* SwiftForms.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		68F7F0480F641EAADB96DA535E678F4F /* Pods-eLiquid Recipe Calc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2FFC88DE87E6AA40E683BD28FB06D52E /* Build configuration list for PBXNativeTarget "Pods-eLiquid Recipe Calc" */;
+			buildPhases = (
+				07C58271F5AD4A9A5A82EE117890A37F /* Sources */,
+				5A5DBD0AB97FD75DA5B26AF6685F6052 /* Frameworks */,
+				50778454B994A5C83C05C3410F583928 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8FB64348C3A877EF3E78DC9D7076E60B /* PBXTargetDependency */,
+			);
+			name = "Pods-eLiquid Recipe Calc";
+			productName = "Pods-eLiquid Recipe Calc";
+			productReference = 1F6F9BCE9309A866A9C234453983506D /* Pods_eLiquid_Recipe_Calc.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 14BB49BD5559F50FE4E78494D1948321 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				68F7F0480F641EAADB96DA535E678F4F /* Pods-eLiquid Recipe Calc */,
+				2E64CE4D1D666A6EF298E06D288206DF /* SwiftForms */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		07C58271F5AD4A9A5A82EE117890A37F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BA1F9B9BACF6B80FD6E7D4B7B382D97 /* Pods-eLiquid Recipe Calc-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA28EB05C211B46875081A6144170CBB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				362EE8969FB78FA72FE4BAD984D87174 /* FormBaseCell.swift in Sources */,
+				8D6D638B48DEE57E927B9502C4A3A006 /* FormButtonCell.swift in Sources */,
+				A358226052C9A7BFE57C887FE671954F /* FormCheckCell.swift in Sources */,
+				53DAF34DFD97BE03B2CE54F6228A567C /* FormDateCell.swift in Sources */,
+				3B965DEF8364101D060652E6CC8D34B2 /* FormDescriptor.swift in Sources */,
+				8EFECC097EEAA09B9D53AF38B92B1D91 /* FormErrorType.swift in Sources */,
+				6908C16C4A8F5BD48BE407A809072670 /* FormLabelCell.swift in Sources */,
+				BDDF00747201E3D2DE2A3DE012649E82 /* FormOptionsSelectorController.swift in Sources */,
+				219F9E2F8D8D92FD870436B00BFE5301 /* FormPickerCell.swift in Sources */,
+				190A353F06AFDA5288000F5AEAE38E17 /* FormRowDescriptor.swift in Sources */,
+				B6090BFAAAD21E709676B0671EEB2B72 /* FormSectionDescriptor.swift in Sources */,
+				9C754F1F2C964F3C8C55C2B8EF47625B /* FormSegmentedControlCell.swift in Sources */,
+				A8568CD0EC41949A52BB0F815556F7C3 /* FormSelector.swift in Sources */,
+				AAA5D6E6D5DEAA719337EE360E1DC9DD /* FormSelectorCell.swift in Sources */,
+				EBFAD3A22C313FB258DDFC0ED75F361C /* FormSliderCell.swift in Sources */,
+				9FB96C1F59B33501DA735BD7E213662A /* FormStepperCell.swift in Sources */,
+				CD240938006B4352ACC868D34ABA18BE /* FormSwitchCell.swift in Sources */,
+				1B7341EC8636C5E3F2FE468D2BF7725D /* FormTextFieldCell.swift in Sources */,
+				B8F60FC0D214FF054885C634778BD38C /* FormTextViewCell.swift in Sources */,
+				9557BA5A0E4925B08E7CA355133EA39E /* FormTitleCell.swift in Sources */,
+				7D75B6C58869DA6C5FE6CA5FEEFFB0E3 /* FormValueCell.swift in Sources */,
+				49F0D35B38B153981FE9386931A236E1 /* FormViewController.swift in Sources */,
+				CBCE098BB734EFC070137EAD13334B60 /* SwiftForms-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8FB64348C3A877EF3E78DC9D7076E60B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftForms;
+			target = 2E64CE4D1D666A6EF298E06D288206DF /* SwiftForms */;
+			targetProxy = 066A26BBC57B868B5F95DD38B5928D0F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		08D72A169D715A745593FF2D59596087 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1082FD11327B1F12B3475AA29B89B722 /* Pods-eLiquid Recipe Calc.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-eLiquid Recipe Calc/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-eLiquid Recipe Calc/Pods-eLiquid Recipe Calc.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_eLiquid_Recipe_Calc;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		1EFE9AE2D6AD90180CAF6D1AE5F89FFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E39C5D97B00812E0803A6A159F98D9F2 /* SwiftForms.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftForms/SwiftForms-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftForms/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftForms/SwiftForms.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SwiftForms;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		28BCBC2070F0D92F837155CA5D95EB3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7BDE3B9EC81D315710275F8BC92D6F3 /* Pods-eLiquid Recipe Calc.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-eLiquid Recipe Calc/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-eLiquid Recipe Calc/Pods-eLiquid Recipe Calc.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_eLiquid_Recipe_Calc;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		47BEF9D903506B003EA5C2B249729489 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		AAF678CED40D3499169D10F63CA0719E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B14C396679B646D5D3A797936931706B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E39C5D97B00812E0803A6A159F98D9F2 /* SwiftForms.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftForms/SwiftForms-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftForms/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftForms/SwiftForms.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SwiftForms;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				47BEF9D903506B003EA5C2B249729489 /* Debug */,
+				AAF678CED40D3499169D10F63CA0719E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2FFC88DE87E6AA40E683BD28FB06D52E /* Build configuration list for PBXNativeTarget "Pods-eLiquid Recipe Calc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				08D72A169D715A745593FF2D59596087 /* Debug */,
+				28BCBC2070F0D92F837155CA5D95EB3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DDFCA451E6614A1F2F5C8A361C520172 /* Build configuration list for PBXNativeTarget "SwiftForms" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1EFE9AE2D6AD90180CAF6D1AE5F89FFC /* Debug */,
+				B14C396679B646D5D3A797936931706B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

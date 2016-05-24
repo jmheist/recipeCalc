@@ -1,0 +1,6 @@
+framework module Pods_eLiquid_Recipe_Calc {
+  umbrella header "Pods-eLiquid Recipe Calc-umbrella.h"
+
+  export *
+  module * { export * }
+}
