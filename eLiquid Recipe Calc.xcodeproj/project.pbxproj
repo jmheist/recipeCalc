@@ -24,6 +24,9 @@
 		73926B491CED635700315AB7 /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73926B481CED635700315AB7 /* RecipeModel.swift */; };
 		73A7439C1CF287BD00091F37 /* PreMixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A7439B1CF287BD00091F37 /* PreMixViewController.swift */; };
 		73DBFC851CF36EF20025F34F /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DBFC841CF36EF20025F34F /* ErrorManager.swift */; };
+		73DFCC4A1CF3E91E0091E6BE /* MixSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DFCC491CF3E91E0091E6BE /* MixSettingsViewController.swift */; };
+		73DFCC4C1CF3ECE60091E6BE /* SwiftForms in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 73DFCC4B1CF3ECE60091E6BE /* SwiftForms */; };
+		B03560FB9DFDF62A25E1D2EF /* Pods_eLiquid_Recipe_Calc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EEB92A4654AF3F433A214CC /* Pods_eLiquid_Recipe_Calc.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +46,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				73DFCC4C1CF3ECE60091E6BE /* SwiftForms in Embed Frameworks */,
 				73926B451CED60D800315AB7 /* RealmSwift.framework in Embed Frameworks */,
 				73926B431CED60D800315AB7 /* Realm.framework in Embed Frameworks */,
 			);
@@ -52,6 +56,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		233FF793953C087264D75E84 /* Pods-eLiquid Recipe Calc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eLiquid Recipe Calc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eLiquid Recipe Calc/Pods-eLiquid Recipe Calc.debug.xcconfig"; sourceTree = "<group>"; };
+		4EA32061590BD82DCDD05774 /* Pods_eLiquid_Recipe_CalcTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eLiquid_Recipe_CalcTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6EEB92A4654AF3F433A214CC /* Pods_eLiquid_Recipe_Calc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eLiquid_Recipe_Calc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7333C2991CEF6B9500E01359 /* FlavorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlavorManager.swift; sourceTree = "<group>"; };
 		73561F0D1CF275F000AEAC3C /* RecipeListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeListCell.swift; sourceTree = "<group>"; };
 		73926B0E1CED2E3E00315AB7 /* eLiquid Recipe Calc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "eLiquid Recipe Calc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +78,9 @@
 		73926B481CED635700315AB7 /* RecipeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
 		73A7439B1CF287BD00091F37 /* PreMixViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreMixViewController.swift; sourceTree = "<group>"; };
 		73DBFC841CF36EF20025F34F /* ErrorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
+		73DFCC491CF3E91E0091E6BE /* MixSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixSettingsViewController.swift; sourceTree = "<group>"; };
+		73DFCC4B1CF3ECE60091E6BE /* SwiftForms */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftForms; path = Pods/SwiftForms; sourceTree = "<group>"; };
+		EE21AEC7A2DC090E6FE3F274 /* Pods-eLiquid Recipe Calc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eLiquid Recipe Calc.release.xcconfig"; path = "Pods/Target Support Files/Pods-eLiquid Recipe Calc/Pods-eLiquid Recipe Calc.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +90,7 @@
 			files = (
 				73926B441CED60D800315AB7 /* RealmSwift.framework in Frameworks */,
 				73926B421CED60D800315AB7 /* Realm.framework in Frameworks */,
+				B03560FB9DFDF62A25E1D2EF /* Pods_eLiquid_Recipe_Calc.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,14 +104,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		60394D3DEFEEF1DA539D9C0A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6EEB92A4654AF3F433A214CC /* Pods_eLiquid_Recipe_Calc.framework */,
+				4EA32061590BD82DCDD05774 /* Pods_eLiquid_Recipe_CalcTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		73926B051CED2E3E00315AB7 = {
 			isa = PBXGroup;
 			children = (
+				73DFCC4B1CF3ECE60091E6BE /* SwiftForms */,
 				73926B401CED60D800315AB7 /* Realm.framework */,
 				73926B411CED60D800315AB7 /* RealmSwift.framework */,
 				73926B101CED2E3E00315AB7 /* eLiquid Recipe Calc */,
 				73926B281CED2E3E00315AB7 /* eLiquid Recipe CalcTests */,
 				73926B0F1CED2E3E00315AB7 /* Products */,
+				945D46C576A769668B67826F /* Pods */,
+				60394D3DEFEEF1DA539D9C0A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -120,6 +143,7 @@
 				73926B151CED2E3E00315AB7 /* FirstViewController.swift */,
 				73926B171CED2E3E00315AB7 /* SecondViewController.swift */,
 				73A7439B1CF287BD00091F37 /* PreMixViewController.swift */,
+				73DFCC491CF3E91E0091E6BE /* MixSettingsViewController.swift */,
 				73926B371CED3BE400315AB7 /* RecipeManager.swift */,
 				7333C2991CEF6B9500E01359 /* FlavorManager.swift */,
 				73DBFC841CF36EF20025F34F /* ErrorManager.swift */,
@@ -158,6 +182,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		945D46C576A769668B67826F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				233FF793953C087264D75E84 /* Pods-eLiquid Recipe Calc.debug.xcconfig */,
+				EE21AEC7A2DC090E6FE3F274 /* Pods-eLiquid Recipe Calc.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -165,11 +198,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 73926B2F1CED2E3E00315AB7 /* Build configuration list for PBXNativeTarget "eLiquid Recipe Calc" */;
 			buildPhases = (
+				232877A8BF08B604E5F4F428 /* 📦 Check Pods Manifest.lock */,
 				73926B0A1CED2E3E00315AB7 /* Sources */,
 				73926B0B1CED2E3E00315AB7 /* Frameworks */,
 				73926B0C1CED2E3E00315AB7 /* Resources */,
 				73926B461CED60D800315AB7 /* Embed Frameworks */,
 				73926B471CED61DC00315AB7 /* ShellScript */,
+				40576EEA8BB3B4CAB862109A /* 📦 Embed Pods Frameworks */,
+				BAB72F9294059A293F1D6196 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -258,6 +294,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		232877A8BF08B604E5F4F428 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		40576EEA8BB3B4CAB862109A /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-eLiquid Recipe Calc/Pods-eLiquid Recipe Calc-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		73926B471CED61DC00315AB7 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -270,6 +336,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"";
+		};
+		BAB72F9294059A293F1D6196 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-eLiquid Recipe Calc/Pods-eLiquid Recipe Calc-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -286,6 +367,7 @@
 				73561F0E1CF275F000AEAC3C /* RecipeListCell.swift in Sources */,
 				73926B381CED3BE400315AB7 /* RecipeManager.swift in Sources */,
 				73926B161CED2E3E00315AB7 /* FirstViewController.swift in Sources */,
+				73DFCC4A1CF3E91E0091E6BE /* MixSettingsViewController.swift in Sources */,
 				7333C29A1CEF6B9500E01359 /* FlavorManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,6 +495,7 @@
 		};
 		73926B301CED2E3E00315AB7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 233FF793953C087264D75E84 /* Pods-eLiquid Recipe Calc.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -427,6 +510,7 @@
 		};
 		73926B311CED2E3E00315AB7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE21AEC7A2DC090E6FE3F274 /* Pods-eLiquid Recipe Calc.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (

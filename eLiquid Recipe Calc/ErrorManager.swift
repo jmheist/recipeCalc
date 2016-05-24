@@ -25,6 +25,17 @@ class ErrorManager: NSObject {
         // check the fields passed in for errors
         // add errors and offending fields to errors object
         
+        
+        if recipe != nil {
+            
+        }
+        
+        if flavor != nil {
+            
+        }
+        
+        
+        
         // test errors
         var newError = error()
         newError.msg = "Error!"
