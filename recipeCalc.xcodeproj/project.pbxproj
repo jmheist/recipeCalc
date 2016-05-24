@@ -18,9 +18,8 @@
 		7315D6181CF4F536002B2588 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7315D6171CF4F536002B2588 /* GoogleService-Info.plist */; };
 		7315D6191CF4F536002B2588 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7315D6171CF4F536002B2588 /* GoogleService-Info.plist */; };
 		7315D61A1CF4F536002B2588 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7315D6171CF4F536002B2588 /* GoogleService-Info.plist */; };
+		7315D61C1CF4F780002B2588 /* FireBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7315D61B1CF4F780002B2588 /* FireBaseService.swift */; };
 		BD70AB898FA3BEDEFE850CCA /* Pods_recipeCalc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2DD1A894F376BB0A75146F /* Pods_recipeCalc.framework */; };
-		C0615FFA87072DD34D22EBA5 /* Pods_recipeCalcTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DEB14830D49651E7F008BB7 /* Pods_recipeCalcTests.framework */; };
-		E03E885CB43657E4AB4B0766 /* Pods_recipeCalcUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F135C955F4FBDECAAA8E397 /* Pods_recipeCalcUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +40,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1D2F804AE610538C8A52247B /* Pods-recipeCalcTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-recipeCalcTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-recipeCalcTests/Pods-recipeCalcTests.release.xcconfig"; sourceTree = "<group>"; };
-		3B0D4BB50F405C7F54C692CC /* Pods-recipeCalcUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-recipeCalcUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-recipeCalcUITests/Pods-recipeCalcUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4B2DD1A894F376BB0A75146F /* Pods_recipeCalc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_recipeCalc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7315D5E31CF4E405002B2588 /* recipeCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = recipeCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7315D5E61CF4E405002B2588 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,11 +56,10 @@
 		7315D6091CF4E405002B2588 /* recipeCalcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipeCalcUITests.swift; sourceTree = "<group>"; };
 		7315D60B1CF4E405002B2588 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7315D6171CF4F536002B2588 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		76E6D3019F878760D28A33F5 /* Pods-recipeCalcTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-recipeCalcTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-recipeCalcTests/Pods-recipeCalcTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7315D61B1CF4F780002B2588 /* FireBaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireBaseService.swift; sourceTree = "<group>"; };
 		7F135C955F4FBDECAAA8E397 /* Pods_recipeCalcUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_recipeCalcUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		872C207450B87D66E90D26CD /* Pods-recipeCalc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-recipeCalc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-recipeCalc/Pods-recipeCalc.debug.xcconfig"; sourceTree = "<group>"; };
 		9DEB14830D49651E7F008BB7 /* Pods_recipeCalcTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_recipeCalcTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A625815E57D0CE104D41FF94 /* Pods-recipeCalcUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-recipeCalcUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-recipeCalcUITests/Pods-recipeCalcUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AFADDE1CE73C514F163FCBCB /* Pods-recipeCalc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-recipeCalc.release.xcconfig"; path = "Pods/Target Support Files/Pods-recipeCalc/Pods-recipeCalc.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,7 +76,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0615FFA87072DD34D22EBA5 /* Pods_recipeCalcTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,7 +83,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E03E885CB43657E4AB4B0766 /* Pods_recipeCalcUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,10 +94,6 @@
 			children = (
 				872C207450B87D66E90D26CD /* Pods-recipeCalc.debug.xcconfig */,
 				AFADDE1CE73C514F163FCBCB /* Pods-recipeCalc.release.xcconfig */,
-				76E6D3019F878760D28A33F5 /* Pods-recipeCalcTests.debug.xcconfig */,
-				1D2F804AE610538C8A52247B /* Pods-recipeCalcTests.release.xcconfig */,
-				3B0D4BB50F405C7F54C692CC /* Pods-recipeCalcUITests.debug.xcconfig */,
-				A625815E57D0CE104D41FF94 /* Pods-recipeCalcUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -135,6 +125,7 @@
 			children = (
 				7315D5E61CF4E405002B2588 /* AppDelegate.swift */,
 				7315D5E81CF4E405002B2588 /* ViewController.swift */,
+				7315D61B1CF4F780002B2588 /* FireBaseService.swift */,
 				7315D5EA1CF4E405002B2588 /* Main.storyboard */,
 				7315D5F01CF4E405002B2588 /* Assets.xcassets */,
 				7315D5F21CF4E405002B2588 /* LaunchScreen.storyboard */,
@@ -200,12 +191,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7315D6111CF4E405002B2588 /* Build configuration list for PBXNativeTarget "recipeCalcTests" */;
 			buildPhases = (
-				4794B9C533378E9ECCB1C1E6 /* 📦 Check Pods Manifest.lock */,
 				7315D5F61CF4E405002B2588 /* Sources */,
 				7315D5F71CF4E405002B2588 /* Frameworks */,
 				7315D5F81CF4E405002B2588 /* Resources */,
-				2EC7FA1C3D43119AAF6D6D6A /* 📦 Embed Pods Frameworks */,
-				D37B07E3B117BF7C785660CE /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -221,11 +209,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7315D6141CF4E405002B2588 /* Build configuration list for PBXNativeTarget "recipeCalcUITests" */;
 			buildPhases = (
-				A2DB251840CA8E0C64D8C5E5 /* 📦 Check Pods Manifest.lock */,
 				7315D6011CF4E405002B2588 /* Sources */,
 				7315D6021CF4E405002B2588 /* Frameworks */,
 				7315D6031CF4E405002B2588 /* Resources */,
-				693B9C7FDD383E71A0F997E3 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -311,51 +297,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2EC7FA1C3D43119AAF6D6D6A /* 📦 Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-recipeCalcTests/Pods-recipeCalcTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4794B9C533378E9ECCB1C1E6 /* 📦 Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		693B9C7FDD383E71A0F997E3 /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-recipeCalcUITests/Pods-recipeCalcUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		7AAF08C1564D52AD697C334D /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -386,36 +327,6 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		A2DB251840CA8E0C64D8C5E5 /* 📦 Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		D37B07E3B117BF7C785660CE /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-recipeCalcTests/Pods-recipeCalcTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		FB5AA5DFA68390EB03967FAB /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -440,6 +351,7 @@
 			files = (
 				7315D5E91CF4E405002B2588 /* ViewController.swift in Sources */,
 				7315D5EF1CF4E405002B2588 /* recipeCalc.xcdatamodeld in Sources */,
+				7315D61C1CF4F780002B2588 /* FireBaseService.swift in Sources */,
 				7315D5E71CF4E405002B2588 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -606,7 +518,6 @@
 		};
 		7315D6121CF4E405002B2588 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 76E6D3019F878760D28A33F5 /* Pods-recipeCalcTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = recipeCalcTests/Info.plist;
@@ -619,7 +530,6 @@
 		};
 		7315D6131CF4E405002B2588 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1D2F804AE610538C8A52247B /* Pods-recipeCalcTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = recipeCalcTests/Info.plist;
@@ -632,7 +542,6 @@
 		};
 		7315D6151CF4E405002B2588 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B0D4BB50F405C7F54C692CC /* Pods-recipeCalcUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = recipeCalcUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -644,7 +553,6 @@
 		};
 		7315D6161CF4E405002B2588 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A625815E57D0CE104D41FF94 /* Pods-recipeCalcUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = recipeCalcUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

@@ -1,6 +1,0 @@
-framework module Pods_recipeCalcUITests {
-  umbrella header "Pods-recipeCalcUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}

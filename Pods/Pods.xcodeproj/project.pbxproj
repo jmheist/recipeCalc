@@ -7,71 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06446D27E6A0A034016BCBCB5F1F0916 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		0EB4D05F987C48037EB8024A154C1F4C /* Pods-recipeCalcTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 37480B96A07721EC3F04DC28F65F4FE5 /* Pods-recipeCalcTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		41CF331E32D639443BE40BCA89303882 /* Pods-recipeCalcUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B76D8068BC7A00BDAB2F320F13BEC78C /* Pods-recipeCalcUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5498485DF358D827FC82526E1A3E156D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		812713F106675A8594DD9A2FD643D273 /* Pods-recipeCalc-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 31FFBC0DC42237B6966FFEDC8C50B5E0 /* Pods-recipeCalc-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		826366775571C94747FFC68A63A1D319 /* Pods-recipeCalcTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EFD920C883326B1AB68B1C2B561766 /* Pods-recipeCalcTests-dummy.m */; };
-		8DBA9829A9291B0EB04C1A773E606779 /* Pods-recipeCalc-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3278BD7E730D36CED595DE2DBDC08D7F /* Pods-recipeCalc-dummy.m */; };
-		C6477A75BB64992D9AAC4D82C6FAF9BB /* Pods-recipeCalcUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3990DF5E31A96EA3296457F4157E6F70 /* Pods-recipeCalcUITests-dummy.m */; };
-		F1488E5CB82A5BBBE98652BFF5AF0FD0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		812713F106675A8594DD9A2FD643D273 /* Pods-recipeCalc-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 986910E1AA3B6372D7F76CC0BF8B5FB1 /* Pods-recipeCalc-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8DBA9829A9291B0EB04C1A773E606779 /* Pods-recipeCalc-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EAA1DD98C717D75CC89A88CA06E5FB /* Pods-recipeCalc-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		02E3280B65A5E48F0D925BE7389D6014 /* Pods-recipeCalcTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-recipeCalcTests-frameworks.sh"; sourceTree = "<group>"; };
-		0FC98A9436929A6FA8E712891CE54679 /* Pods-recipeCalc-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-recipeCalc-resources.sh"; sourceTree = "<group>"; };
-		219603845216F3E24B767B2A50F80DBE /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
-		251DB612E6F25E39534575D6F46717EA /* Pods-recipeCalcTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-recipeCalcTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		28AC58ED6268EDD771B7D421FB14B440 /* Pods-recipeCalc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-recipeCalc.debug.xcconfig"; sourceTree = "<group>"; };
-		31FFBC0DC42237B6966FFEDC8C50B5E0 /* Pods-recipeCalc-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-recipeCalc-umbrella.h"; sourceTree = "<group>"; };
-		3278BD7E730D36CED595DE2DBDC08D7F /* Pods-recipeCalc-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-recipeCalc-dummy.m"; sourceTree = "<group>"; };
-		37480B96A07721EC3F04DC28F65F4FE5 /* Pods-recipeCalcTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-recipeCalcTests-umbrella.h"; sourceTree = "<group>"; };
-		37F0D8FCE29AD6BF2DC26AC0710D711C /* Pods-recipeCalcTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-recipeCalcTests-resources.sh"; sourceTree = "<group>"; };
-		3990DF5E31A96EA3296457F4157E6F70 /* Pods-recipeCalcUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-recipeCalcUITests-dummy.m"; sourceTree = "<group>"; };
-		3A2564B3AECC07685CFCB2125825A159 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		41CC0731B882F2CE12C2BDC6011014D3 /* Pods-recipeCalcTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-recipeCalcTests.release.xcconfig"; sourceTree = "<group>"; };
-		4B81B7E96B33CA009573CC32B38A8A96 /* Pods-recipeCalc-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-recipeCalc-acknowledgements.plist"; sourceTree = "<group>"; };
-		4DCCE3B05F0B5D2ADD32CC7C9677197D /* Pods-recipeCalc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-recipeCalc.release.xcconfig"; sourceTree = "<group>"; };
-		53DAF95DBCF4FD54FDDF4033062F474E /* Pods-recipeCalcTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-recipeCalcTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5C1F78DC72B0E605822DCBE82C865D95 /* Pods-recipeCalc.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-recipeCalc.modulemap"; sourceTree = "<group>"; };
-		5DE7A2AF81CDA39555CDD1D32393D49C /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
-		73508B9EC77BAF0705EB1468B84C7D04 /* Pods_recipeCalcTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_recipeCalcTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		75E5B4A26523838FCD1DEB2904A094AC /* Pods-recipeCalc-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-recipeCalc-frameworks.sh"; sourceTree = "<group>"; };
-		78AA5DF552E6422D8F195E1E35FDF1B5 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
-		7C6B01AE860C9F152130DBC3E1B2A459 /* Pods-recipeCalcUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-recipeCalcUITests-acknowledgements.plist"; sourceTree = "<group>"; };
-		8954992A42AF477FD4144103F2503849 /* Pods_recipeCalcUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_recipeCalcUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9377CAA018134D5BFD17C0FE9D8344F0 /* Pods-recipeCalcUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-recipeCalcUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		09CE712E0878BE60A40ACA92FF02F133 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
+		2D19B811F13D915E90A88659419AA7AB /* FIRMessaging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRMessaging.h; path = Headers/Public/FIRMessaging.h; sourceTree = "<group>"; };
+		366207562529293C0061C2F5747D52B7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		398A20BFC5BBCB3FEEBAC84289549016 /* Pods-recipeCalc-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-recipeCalc-resources.sh"; sourceTree = "<group>"; };
+		46F6ACE6B306A5DB931F80BB2A3A932D /* Pods-recipeCalc-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-recipeCalc-frameworks.sh"; sourceTree = "<group>"; };
+		4D5C0E1DF0F98BC12A4B73567FE5D329 /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Headers/Public/FIRInstanceID.h; sourceTree = "<group>"; };
+		522C6BFCE9CBD23D060251A1D454A588 /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Headers/Firebase.h; sourceTree = "<group>"; };
+		57644400F6F9BB883DCFD2DB69682067 /* Pods-recipeCalc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-recipeCalc.release.xcconfig"; sourceTree = "<group>"; };
+		6EF9DA5165D543A2476DEB92855104B3 /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAuth.framework; path = Frameworks/FirebaseAuth.framework; sourceTree = "<group>"; };
+		7494D073D534EFAE2AC2594B76CC7355 /* GoogleNetworkingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleNetworkingUtilities.framework; path = Frameworks/GoogleNetworkingUtilities.framework; sourceTree = "<group>"; };
+		77232F9E210437924517B7533B8CD446 /* Pods-recipeCalc-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-recipeCalc-acknowledgements.plist"; sourceTree = "<group>"; };
+		7DF1100E62F4398119C4A510650F0569 /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseMessaging.framework; path = Frameworks/FirebaseMessaging.framework; sourceTree = "<group>"; };
+		84EAA1DD98C717D75CC89A88CA06E5FB /* Pods-recipeCalc-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-recipeCalc-dummy.m"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		96FE871AE85602696248543BC2352A66 /* Pods-recipeCalc-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-recipeCalc-acknowledgements.markdown"; sourceTree = "<group>"; };
-		9CB5A225ECABE3EB44627FAF96C7C50D /* Pods-recipeCalcTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-recipeCalcTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		A7BD9AA61F3924443F9A4379B3E2A187 /* Pods-recipeCalcTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-recipeCalcTests.modulemap"; sourceTree = "<group>"; };
-		B76D8068BC7A00BDAB2F320F13BEC78C /* Pods-recipeCalcUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-recipeCalcUITests-umbrella.h"; sourceTree = "<group>"; };
-		BB351A8F0DB6CA46B0CECF59C2B91855 /* Pods-recipeCalcUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-recipeCalcUITests.modulemap"; sourceTree = "<group>"; };
-		CE1A4F8895FA58EC405124725006629D /* Pods-recipeCalcUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-recipeCalcUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		986910E1AA3B6372D7F76CC0BF8B5FB1 /* Pods-recipeCalc-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-recipeCalc-umbrella.h"; sourceTree = "<group>"; };
+		A7120347FE812A40DE3DE95A1F20118F /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		AF68CA665EDCEF1C4E120AC0B3F3147C /* GoogleIPhoneUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleIPhoneUtilities.framework; path = Frameworks/GoogleIPhoneUtilities.framework; sourceTree = "<group>"; };
+		B07566C1503F030C950BC13CFCB813AC /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseDatabase.framework; path = Frameworks/FirebaseDatabase.framework; sourceTree = "<group>"; };
+		B29017A27EC937414A4B00D9B936C0F4 /* FirebaseCrash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCrash.framework; path = Frameworks/FirebaseCrash.framework; sourceTree = "<group>"; };
+		B530736744939DF89DFCC78D007DC1A6 /* Pods-recipeCalc.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-recipeCalc.modulemap"; sourceTree = "<group>"; };
+		BF4742CB2F560F3F5247C3A6E444F3F8 /* Pods-recipeCalc-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-recipeCalc-acknowledgements.markdown"; sourceTree = "<group>"; };
+		C5925637FA85577C8D827C1E8A96AE8D /* Pods_recipeCalc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_recipeCalc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		D9EFD920C883326B1AB68B1C2B561766 /* Pods-recipeCalcTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-recipeCalcTests-dummy.m"; sourceTree = "<group>"; };
-		DAA5738D1B2CD28375FDEBA73108AECF /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
-		DB0C6218955B23214F1D039504530F55 /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Headers/Public/FIRInstanceID.h; sourceTree = "<group>"; };
-		DB72E06328692A4BD084838ED0D2B402 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DC8DBA44DC15037112C2358E5B17EF69 /* Pods_recipeCalc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_recipeCalc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DF275361F137FFFAC95E10B9F0BAE4E5 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
-		E5A475390801059A00A67906EE5AFC96 /* Pods-recipeCalcUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-recipeCalcUITests-resources.sh"; sourceTree = "<group>"; };
-		EEA7F9D8B75AA486E62D21329D136856 /* Pods-recipeCalcUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-recipeCalcUITests.release.xcconfig"; sourceTree = "<group>"; };
-		F1C69E9694B1016E84AA441F091BE628 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F1E5620A0289885D1A7BE12952288620 /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Headers/Firebase.h; sourceTree = "<group>"; };
-		F7A933C281A662D4B61C517281EB4771 /* Pods-recipeCalcUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-recipeCalcUITests-frameworks.sh"; sourceTree = "<group>"; };
+		D2B669F6E0F0160E491B682110435D28 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Frameworks/GoogleMobileAds.framework; sourceTree = "<group>"; };
+		D3CEEB7259DF5DFCCC48E78557F035D9 /* Pods-recipeCalc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-recipeCalc.debug.xcconfig"; sourceTree = "<group>"; };
+		DFF5F1873096AF30C12FA8C0B40901F0 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		E04D00372BCBED22D8036EA4218111DB /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
+		F3B8E018076DDC76CA6329E8139FC7D0 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2F221436BFEACC30B6BA150AFB07D229 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				06446D27E6A0A034016BCBCB5F1F0916 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		6308F2AB3EE2CDFBC3EF9FD1083F6ADB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -80,106 +52,64 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6A6CD78D1F0AA5E71322060CA96C65E6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F1488E5CB82A5BBBE98652BFF5AF0FD0 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0113A7AEE11E2B42ABB72E02D6B11A03 /* Targets Support Files */ = {
+		088FA610A7670D93346908B14B96EC06 /* GoogleUtilities */ = {
 			isa = PBXGroup;
 			children = (
-				72F95B66DEBBEAC1330FF0E36A81B70C /* Pods-recipeCalc */,
-				27E630A734939F60C2D17F23D6A088D1 /* Pods-recipeCalcTests */,
-				3E7965C10ADC0C7502306DEED15A923D /* Pods-recipeCalcUITests */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		056B7FB4565C8F6CFBC262FDCD790C0C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				78AA5DF552E6422D8F195E1E35FDF1B5 /* GoogleSymbolUtilities.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		0B8CEF19337FA4DFF56EC7EF36B16C09 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E87E635A8BA23B6FDD7AFF5F5F24DCFC /* Firebase */,
-				17E963AC9EA7E429C37DA8FEEA72526B /* FirebaseAnalytics */,
-				C12C91F2C4C694776425E40592AE1113 /* FirebaseInstanceID */,
-				AEFF8F1B6621E9AFD02CAB76FC73388F /* GoogleInterchangeUtilities */,
-				D227E2B6883501EB56EEE7DB33608B01 /* GoogleSymbolUtilities */,
-				1FE7E728519B8C441DC0979AF90877D4 /* GoogleUtilities */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		17E963AC9EA7E429C37DA8FEEA72526B /* FirebaseAnalytics */ = {
-			isa = PBXGroup;
-			children = (
-				4DE4BC04D076DD74278EEC09A1F9E9A2 /* Frameworks */,
-			);
-			path = FirebaseAnalytics;
-			sourceTree = "<group>";
-		};
-		1FE7E728519B8C441DC0979AF90877D4 /* GoogleUtilities */ = {
-			isa = PBXGroup;
-			children = (
-				3A09B82FC34DC854CBB4A7D6B7C35C65 /* Frameworks */,
+				215472CF90F30C63AE5D04D7FA5F534A /* Frameworks */,
 			);
 			path = GoogleUtilities;
 			sourceTree = "<group>";
 		};
-		26DE619F268F34E56BDDBB106CA3B480 /* Products */ = {
+		215472CF90F30C63AE5D04D7FA5F534A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DC8DBA44DC15037112C2358E5B17EF69 /* Pods_recipeCalc.framework */,
-				73508B9EC77BAF0705EB1468B84C7D04 /* Pods_recipeCalcTests.framework */,
-				8954992A42AF477FD4144103F2503849 /* Pods_recipeCalcUITests.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		27E630A734939F60C2D17F23D6A088D1 /* Pods-recipeCalcTests */ = {
-			isa = PBXGroup;
-			children = (
-				F1C69E9694B1016E84AA441F091BE628 /* Info.plist */,
-				A7BD9AA61F3924443F9A4379B3E2A187 /* Pods-recipeCalcTests.modulemap */,
-				251DB612E6F25E39534575D6F46717EA /* Pods-recipeCalcTests-acknowledgements.markdown */,
-				9CB5A225ECABE3EB44627FAF96C7C50D /* Pods-recipeCalcTests-acknowledgements.plist */,
-				D9EFD920C883326B1AB68B1C2B561766 /* Pods-recipeCalcTests-dummy.m */,
-				02E3280B65A5E48F0D925BE7389D6014 /* Pods-recipeCalcTests-frameworks.sh */,
-				37F0D8FCE29AD6BF2DC26AC0710D711C /* Pods-recipeCalcTests-resources.sh */,
-				37480B96A07721EC3F04DC28F65F4FE5 /* Pods-recipeCalcTests-umbrella.h */,
-				53DAF95DBCF4FD54FDDF4033062F474E /* Pods-recipeCalcTests.debug.xcconfig */,
-				41CC0731B882F2CE12C2BDC6011014D3 /* Pods-recipeCalcTests.release.xcconfig */,
-			);
-			name = "Pods-recipeCalcTests";
-			path = "Target Support Files/Pods-recipeCalcTests";
-			sourceTree = "<group>";
-		};
-		324E2F645E937130BB4D82B195447ABD /* Analytics */ = {
-			isa = PBXGroup;
-			children = (
-				F1E5620A0289885D1A7BE12952288620 /* Firebase.h */,
-			);
-			name = Analytics;
-			sourceTree = "<group>";
-		};
-		3A09B82FC34DC854CBB4A7D6B7C35C65 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				DF275361F137FFFAC95E10B9F0BAE4E5 /* GoogleUtilities.framework */,
+				F3B8E018076DDC76CA6329E8139FC7D0 /* GoogleUtilities.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		26CA3A598FA6D3BE3CB53F304CC89997 /* FirebaseInstanceID */ = {
+			isa = PBXGroup;
+			children = (
+				4D5C0E1DF0F98BC12A4B73567FE5D329 /* FIRInstanceID.h */,
+				EE48F8AA6B997BC8E86066EC45EF47B2 /* Frameworks */,
+			);
+			path = FirebaseInstanceID;
+			sourceTree = "<group>";
+		};
+		2794E1E20A7001D0CD75FF289D61F51D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7DF1100E62F4398119C4A510650F0569 /* FirebaseMessaging.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2F180C3D68D1915277DB876F40F767C1 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				AB9EC8A522DEB9FE3D2E89A8F7C6CB52 /* Analytics */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		346B005B0CA0B8DEADDCACA1112F92D2 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9D01CCEE83565BF715F8FD2A19F4023B /* Pods-recipeCalc */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		37D156973EE27B8032C32D7465D5AE4B /* GoogleSymbolUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				937E1272FFD845408089D8C861795A6C /* Frameworks */,
+			);
+			path = GoogleSymbolUtilities;
 			sourceTree = "<group>";
 		};
 		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
@@ -190,48 +120,68 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		3E7965C10ADC0C7502306DEED15A923D /* Pods-recipeCalcUITests */ = {
+		40D6F22D1BAEB7B11364443D69E39042 /* FirebaseDatabase */ = {
 			isa = PBXGroup;
 			children = (
-				3A2564B3AECC07685CFCB2125825A159 /* Info.plist */,
-				BB351A8F0DB6CA46B0CECF59C2B91855 /* Pods-recipeCalcUITests.modulemap */,
-				CE1A4F8895FA58EC405124725006629D /* Pods-recipeCalcUITests-acknowledgements.markdown */,
-				7C6B01AE860C9F152130DBC3E1B2A459 /* Pods-recipeCalcUITests-acknowledgements.plist */,
-				3990DF5E31A96EA3296457F4157E6F70 /* Pods-recipeCalcUITests-dummy.m */,
-				F7A933C281A662D4B61C517281EB4771 /* Pods-recipeCalcUITests-frameworks.sh */,
-				E5A475390801059A00A67906EE5AFC96 /* Pods-recipeCalcUITests-resources.sh */,
-				B76D8068BC7A00BDAB2F320F13BEC78C /* Pods-recipeCalcUITests-umbrella.h */,
-				9377CAA018134D5BFD17C0FE9D8344F0 /* Pods-recipeCalcUITests.debug.xcconfig */,
-				EEA7F9D8B75AA486E62D21329D136856 /* Pods-recipeCalcUITests.release.xcconfig */,
+				7A2E54DFC7F847D05201595CC238710A /* Frameworks */,
 			);
-			name = "Pods-recipeCalcUITests";
-			path = "Target Support Files/Pods-recipeCalcUITests";
+			path = FirebaseDatabase;
 			sourceTree = "<group>";
 		};
-		4DE4BC04D076DD74278EEC09A1F9E9A2 /* Frameworks */ = {
+		443294FCED5569FADBB445ACF76C11D1 /* Google-Mobile-Ads-SDK */ = {
 			isa = PBXGroup;
 			children = (
-				DAA5738D1B2CD28375FDEBA73108AECF /* FirebaseAnalytics.framework */,
+				9FCBCA73D89CFF17C627D3401EEBE50E /* Frameworks */,
+			);
+			path = "Google-Mobile-Ads-SDK";
+			sourceTree = "<group>";
+		};
+		48167218DC8516D400590F0485B5B93D /* GoogleInterchangeUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				6D0385049A6C932A1321A6774FF1090A /* Frameworks */,
+			);
+			path = GoogleInterchangeUtilities;
+			sourceTree = "<group>";
+		};
+		48B31E5161EB7FF3EFC4D0AB1E82F3A1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7494D073D534EFAE2AC2594B76CC7355 /* GoogleNetworkingUtilities.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		72F95B66DEBBEAC1330FF0E36A81B70C /* Pods-recipeCalc */ = {
+		585C5FA104DD07027AF15E90414F69B5 /* FirebaseAuth */ = {
 			isa = PBXGroup;
 			children = (
-				DB72E06328692A4BD084838ED0D2B402 /* Info.plist */,
-				5C1F78DC72B0E605822DCBE82C865D95 /* Pods-recipeCalc.modulemap */,
-				96FE871AE85602696248543BC2352A66 /* Pods-recipeCalc-acknowledgements.markdown */,
-				4B81B7E96B33CA009573CC32B38A8A96 /* Pods-recipeCalc-acknowledgements.plist */,
-				3278BD7E730D36CED595DE2DBDC08D7F /* Pods-recipeCalc-dummy.m */,
-				75E5B4A26523838FCD1DEB2904A094AC /* Pods-recipeCalc-frameworks.sh */,
-				0FC98A9436929A6FA8E712891CE54679 /* Pods-recipeCalc-resources.sh */,
-				31FFBC0DC42237B6966FFEDC8C50B5E0 /* Pods-recipeCalc-umbrella.h */,
-				28AC58ED6268EDD771B7D421FB14B440 /* Pods-recipeCalc.debug.xcconfig */,
-				4DCCE3B05F0B5D2ADD32CC7C9677197D /* Pods-recipeCalc.release.xcconfig */,
+				A17A19054DADAC21A5AE887192B5648F /* Frameworks */,
 			);
-			name = "Pods-recipeCalc";
-			path = "Target Support Files/Pods-recipeCalc";
+			path = FirebaseAuth;
+			sourceTree = "<group>";
+		};
+		6D0385049A6C932A1321A6774FF1090A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E04D00372BCBED22D8036EA4218111DB /* GoogleInterchangeUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7701B2055591A6CD00E9AB89D5E51475 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AF68CA665EDCEF1C4E120AC0B3F3147C /* GoogleIPhoneUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7A2E54DFC7F847D05201595CC238710A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B07566C1503F030C950BC13CFCB813AC /* FirebaseDatabase.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -239,26 +189,112 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				0B8CEF19337FA4DFF56EC7EF36B16C09 /* Pods */,
-				26DE619F268F34E56BDDBB106CA3B480 /* Products */,
-				0113A7AEE11E2B42ABB72E02D6B11A03 /* Targets Support Files */,
+				A19C76BB4F18E316651089CAC7CC32C4 /* Pods */,
+				940526CC4E4FDDD3D2E8C6797E022DC1 /* Products */,
+				346B005B0CA0B8DEADDCACA1112F92D2 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		8D816FB6035310E52D6DA53786BA4F67 /* Frameworks */ = {
+		937E1272FFD845408089D8C861795A6C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5DE7A2AF81CDA39555CDD1D32393D49C /* FirebaseInstanceID.framework */,
+				09CE712E0878BE60A40ACA92FF02F133 /* GoogleSymbolUtilities.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		AEFF8F1B6621E9AFD02CAB76FC73388F /* GoogleInterchangeUtilities */ = {
+		93A38C747F5C2CDA9D308C5DA65AD5F7 /* GoogleIPhoneUtilities */ = {
 			isa = PBXGroup;
 			children = (
-				F38FA45BD3E1C0E58BF4D98B0F38646B /* Frameworks */,
+				7701B2055591A6CD00E9AB89D5E51475 /* Frameworks */,
 			);
-			path = GoogleInterchangeUtilities;
+			path = GoogleIPhoneUtilities;
+			sourceTree = "<group>";
+		};
+		940526CC4E4FDDD3D2E8C6797E022DC1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C5925637FA85577C8D827C1E8A96AE8D /* Pods_recipeCalc.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		943AE8AA2D1926C3A9D4F14763D465F6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B29017A27EC937414A4B00D9B936C0F4 /* FirebaseCrash.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		99424DCD7B793A90CDD3DF7467A0B55C /* FirebaseCrash */ = {
+			isa = PBXGroup;
+			children = (
+				943AE8AA2D1926C3A9D4F14763D465F6 /* Frameworks */,
+			);
+			path = FirebaseCrash;
+			sourceTree = "<group>";
+		};
+		9D01CCEE83565BF715F8FD2A19F4023B /* Pods-recipeCalc */ = {
+			isa = PBXGroup;
+			children = (
+				366207562529293C0061C2F5747D52B7 /* Info.plist */,
+				B530736744939DF89DFCC78D007DC1A6 /* Pods-recipeCalc.modulemap */,
+				BF4742CB2F560F3F5247C3A6E444F3F8 /* Pods-recipeCalc-acknowledgements.markdown */,
+				77232F9E210437924517B7533B8CD446 /* Pods-recipeCalc-acknowledgements.plist */,
+				84EAA1DD98C717D75CC89A88CA06E5FB /* Pods-recipeCalc-dummy.m */,
+				46F6ACE6B306A5DB931F80BB2A3A932D /* Pods-recipeCalc-frameworks.sh */,
+				398A20BFC5BBCB3FEEBAC84289549016 /* Pods-recipeCalc-resources.sh */,
+				986910E1AA3B6372D7F76CC0BF8B5FB1 /* Pods-recipeCalc-umbrella.h */,
+				D3CEEB7259DF5DFCCC48E78557F035D9 /* Pods-recipeCalc.debug.xcconfig */,
+				57644400F6F9BB883DCFD2DB69682067 /* Pods-recipeCalc.release.xcconfig */,
+			);
+			name = "Pods-recipeCalc";
+			path = "Target Support Files/Pods-recipeCalc";
+			sourceTree = "<group>";
+		};
+		9FCBCA73D89CFF17C627D3401EEBE50E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D2B669F6E0F0160E491B682110435D28 /* GoogleMobileAds.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A17A19054DADAC21A5AE887192B5648F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6EF9DA5165D543A2476DEB92855104B3 /* FirebaseAuth.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A19C76BB4F18E316651089CAC7CC32C4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2F180C3D68D1915277DB876F40F767C1 /* Firebase */,
+				D6B1DC55240A05F9EC5B728198BC9CDB /* FirebaseAnalytics */,
+				585C5FA104DD07027AF15E90414F69B5 /* FirebaseAuth */,
+				99424DCD7B793A90CDD3DF7467A0B55C /* FirebaseCrash */,
+				40D6F22D1BAEB7B11364443D69E39042 /* FirebaseDatabase */,
+				26CA3A598FA6D3BE3CB53F304CC89997 /* FirebaseInstanceID */,
+				E3623F759CA10DFA1ED7A90C2BD32833 /* FirebaseMessaging */,
+				443294FCED5569FADBB445ACF76C11D1 /* Google-Mobile-Ads-SDK */,
+				48167218DC8516D400590F0485B5B93D /* GoogleInterchangeUtilities */,
+				93A38C747F5C2CDA9D308C5DA65AD5F7 /* GoogleIPhoneUtilities */,
+				F575BEC00018B3B6D3E58A3D7E1F9B13 /* GoogleNetworkingUtilities */,
+				37D156973EE27B8032C32D7465D5AE4B /* GoogleSymbolUtilities */,
+				088FA610A7670D93346908B14B96EC06 /* GoogleUtilities */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AB9EC8A522DEB9FE3D2E89A8F7C6CB52 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				522C6BFCE9CBD23D060251A1D454A588 /* Firebase.h */,
+			);
+			name = Analytics;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -269,35 +305,43 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C12C91F2C4C694776425E40592AE1113 /* FirebaseInstanceID */ = {
+		D6B1DC55240A05F9EC5B728198BC9CDB /* FirebaseAnalytics */ = {
 			isa = PBXGroup;
 			children = (
-				DB0C6218955B23214F1D039504530F55 /* FIRInstanceID.h */,
-				8D816FB6035310E52D6DA53786BA4F67 /* Frameworks */,
+				F846F42DCB0982AB5AE8E260D40A420A /* Frameworks */,
 			);
-			path = FirebaseInstanceID;
+			path = FirebaseAnalytics;
 			sourceTree = "<group>";
 		};
-		D227E2B6883501EB56EEE7DB33608B01 /* GoogleSymbolUtilities */ = {
+		E3623F759CA10DFA1ED7A90C2BD32833 /* FirebaseMessaging */ = {
 			isa = PBXGroup;
 			children = (
-				056B7FB4565C8F6CFBC262FDCD790C0C /* Frameworks */,
+				2D19B811F13D915E90A88659419AA7AB /* FIRMessaging.h */,
+				2794E1E20A7001D0CD75FF289D61F51D /* Frameworks */,
 			);
-			path = GoogleSymbolUtilities;
+			path = FirebaseMessaging;
 			sourceTree = "<group>";
 		};
-		E87E635A8BA23B6FDD7AFF5F5F24DCFC /* Firebase */ = {
+		EE48F8AA6B997BC8E86066EC45EF47B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				324E2F645E937130BB4D82B195447ABD /* Analytics */,
+				DFF5F1873096AF30C12FA8C0B40901F0 /* FirebaseInstanceID.framework */,
 			);
-			path = Firebase;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F38FA45BD3E1C0E58BF4D98B0F38646B /* Frameworks */ = {
+		F575BEC00018B3B6D3E58A3D7E1F9B13 /* GoogleNetworkingUtilities */ = {
 			isa = PBXGroup;
 			children = (
-				219603845216F3E24B767B2A50F80DBE /* GoogleInterchangeUtilities.framework */,
+				48B31E5161EB7FF3EFC4D0AB1E82F3A1 /* Frameworks */,
+			);
+			path = GoogleNetworkingUtilities;
+			sourceTree = "<group>";
+		};
+		F846F42DCB0982AB5AE8E260D40A420A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A7120347FE812A40DE3DE95A1F20118F /* FirebaseAnalytics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -305,14 +349,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		0BCCFA18B3C7DDDD533CD6C4FBD0BE4E /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				41CF331E32D639443BE40BCA89303882 /* Pods-recipeCalcUITests-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CB44F808B8066A729109851637B68961 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -321,34 +357,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E6F02ACA9F36292DA949C8DC580AB211 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0EB4D05F987C48037EB8024A154C1F4C /* Pods-recipeCalcTests-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		29E4FB14377EB283081D49103C95D7D3 /* Pods-recipeCalcTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F2E7F551718A5629BDF827F0B77D8F42 /* Build configuration list for PBXNativeTarget "Pods-recipeCalcTests" */;
-			buildPhases = (
-				5EE078398AD3B68699FBD432E038E19C /* Sources */,
-				2F221436BFEACC30B6BA150AFB07D229 /* Frameworks */,
-				E6F02ACA9F36292DA949C8DC580AB211 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-recipeCalcTests";
-			productName = "Pods-recipeCalcTests";
-			productReference = 73508B9EC77BAF0705EB1468B84C7D04 /* Pods_recipeCalcTests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		3C505BE2D2B6AB9204F15ADA0815BE2A /* Pods-recipeCalc */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4B53C69D6BFA2F0A01B39C577864692 /* Build configuration list for PBXNativeTarget "Pods-recipeCalc" */;
@@ -363,24 +374,7 @@
 			);
 			name = "Pods-recipeCalc";
 			productName = "Pods-recipeCalc";
-			productReference = DC8DBA44DC15037112C2358E5B17EF69 /* Pods_recipeCalc.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		A5D02C86C54936CF2C174DD497AFC0B0 /* Pods-recipeCalcUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CCAEFA6D1E1A9696E702CF2A0AA4B2DB /* Build configuration list for PBXNativeTarget "Pods-recipeCalcUITests" */;
-			buildPhases = (
-				A8B261D24DAA908E9EB4ACFBA39E73E7 /* Sources */,
-				6A6CD78D1F0AA5E71322060CA96C65E6 /* Frameworks */,
-				0BCCFA18B3C7DDDD533CD6C4FBD0BE4E /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-recipeCalcUITests";
-			productName = "Pods-recipeCalcUITests";
-			productReference = 8954992A42AF477FD4144103F2503849 /* Pods_recipeCalcUITests.framework */;
+			productReference = C5925637FA85577C8D827C1E8A96AE8D /* Pods_recipeCalc.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -400,26 +394,16 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 26DE619F268F34E56BDDBB106CA3B480 /* Products */;
+			productRefGroup = 940526CC4E4FDDD3D2E8C6797E022DC1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				3C505BE2D2B6AB9204F15ADA0815BE2A /* Pods-recipeCalc */,
-				29E4FB14377EB283081D49103C95D7D3 /* Pods-recipeCalcTests */,
-				A5D02C86C54936CF2C174DD497AFC0B0 /* Pods-recipeCalcUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		5EE078398AD3B68699FBD432E038E19C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				826366775571C94747FFC68A63A1D319 /* Pods-recipeCalcTests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A52152353C95CD04CA7377A86839ACED /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -428,20 +412,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A8B261D24DAA908E9EB4ACFBA39E73E7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C6477A75BB64992D9AAC4D82C6FAF9BB /* Pods-recipeCalcUITests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
 		18AC4D7F818DEF4A3FEAD27E48394252 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4DCCE3B05F0B5D2ADD32CC7C9677197D /* Pods-recipeCalc.release.xcconfig */;
+			baseConfigurationReference = 57644400F6F9BB883DCFD2DB69682067 /* Pods-recipeCalc.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -474,7 +450,7 @@
 		};
 		29C19C18431414710D7F63B2B9337279 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 28AC58ED6268EDD771B7D421FB14B440 /* Pods-recipeCalc.debug.xcconfig */;
+			baseConfigurationReference = D3CEEB7259DF5DFCCC48E78557F035D9 /* Pods-recipeCalc.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -504,39 +480,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		3D1F419C160B3234F9175AA4AA518965 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 41CC0731B882F2CE12C2BDC6011014D3 /* Pods-recipeCalcTests.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-recipeCalcTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-recipeCalcTests/Pods-recipeCalcTests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_recipeCalcTests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		47BEF9D903506B003EA5C2B249729489 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -618,105 +561,6 @@
 			};
 			name = Release;
 		};
-		D7BE62ABD2CF41F6F1446550D9CC1C1F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EEA7F9D8B75AA486E62D21329D136856 /* Pods-recipeCalcUITests.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-recipeCalcUITests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-recipeCalcUITests/Pods-recipeCalcUITests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_recipeCalcUITests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		E78FBCE4AEEE79BC8738A5849C441A19 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 53DAF95DBCF4FD54FDDF4033062F474E /* Pods-recipeCalcTests.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-recipeCalcTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-recipeCalcTests/Pods-recipeCalcTests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_recipeCalcTests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		F5E441FC6BAD82E20266040D11EFAEDC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9377CAA018134D5BFD17C0FE9D8344F0 /* Pods-recipeCalcUITests.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-recipeCalcUITests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-recipeCalcUITests/Pods-recipeCalcUITests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_recipeCalcUITests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -725,24 +569,6 @@
 			buildConfigurations = (
 				47BEF9D903506B003EA5C2B249729489 /* Debug */,
 				AAF678CED40D3499169D10F63CA0719E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CCAEFA6D1E1A9696E702CF2A0AA4B2DB /* Build configuration list for PBXNativeTarget "Pods-recipeCalcUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F5E441FC6BAD82E20266040D11EFAEDC /* Debug */,
-				D7BE62ABD2CF41F6F1446550D9CC1C1F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F2E7F551718A5629BDF827F0B77D8F42 /* Build configuration list for PBXNativeTarget "Pods-recipeCalcTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E78FBCE4AEEE79BC8738A5849C441A19 /* Debug */,
-				3D1F419C160B3234F9175AA4AA518965 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
