@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import Firebase
 
-class ViewController: UIViewController {
+class SignUpViewController: UIViewController {
 
+    @IBOutlet var emailAddress: UITextField!
+    @IBOutlet var password: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,5 +25,12 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func signUpAction(sender: AnyObject) {
+        
+        if fb.registerUser(emailAddress.text!, password: password.text!) {
+            performSegueWithIdentifier("showRecipeList", sender: self)
+        }
+        
+    }
 }
 

@@ -1,6 +1,6 @@
 platform :ios, '8.0'
-target 'recipeCalc' do
 use_frameworks!
+target 'recipeCalc' do
 pod "Firebase"
 pod "Firebase/Database"
 pod "Firebase/Messaging"
