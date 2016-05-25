@@ -26,6 +26,7 @@
 		73DCEACC1CF62BBF002BA81C /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEACB1CF62BBF002BA81C /* MainTabViewController.swift */; };
 		73DCEACF1CF63E20002BA81C /* CreateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEACE1CF63E20002BA81C /* CreateCell.swift */; };
 		73DCEAD11CF63E2F002BA81C /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAD01CF63E2F002BA81C /* RecipeCell.swift */; };
+		73DCEAD31CF65323002BA81C /* CreateRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAD21CF65323002BA81C /* CreateRecipeViewController.swift */; };
 		BD70AB898FA3BEDEFE850CCA /* Pods_recipeCalc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2DD1A894F376BB0A75146F /* Pods_recipeCalc.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		73DCEACB1CF62BBF002BA81C /* MainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		73DCEACE1CF63E20002BA81C /* CreateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCell.swift; sourceTree = "<group>"; };
 		73DCEAD01CF63E2F002BA81C /* RecipeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
+		73DCEAD21CF65323002BA81C /* CreateRecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRecipeViewController.swift; sourceTree = "<group>"; };
 		7F135C955F4FBDECAAA8E397 /* Pods_recipeCalcUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_recipeCalcUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		872C207450B87D66E90D26CD /* Pods-recipeCalc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-recipeCalc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-recipeCalc/Pods-recipeCalc.debug.xcconfig"; sourceTree = "<group>"; };
 		9DEB14830D49651E7F008BB7 /* Pods_recipeCalcTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_recipeCalcTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +177,7 @@
 				73DCEABE1CF6254B002BA81C /* LoginViewController.swift */,
 				73DCEACB1CF62BBF002BA81C /* MainTabViewController.swift */,
 				73DCEAC71CF62B5A002BA81C /* LocalRecipeListViewController.swift */,
+				73DCEAD21CF65323002BA81C /* CreateRecipeViewController.swift */,
 				73DCEAC91CF62B75002BA81C /* SettingsViewController.swift */,
 			);
 			name = ViewControllers;
@@ -410,6 +413,7 @@
 				73DCEACF1CF63E20002BA81C /* CreateCell.swift in Sources */,
 				73DCEAD11CF63E2F002BA81C /* RecipeCell.swift in Sources */,
 				7315D5E71CF4E405002B2588 /* AppDelegate.swift in Sources */,
+				73DCEAD31CF65323002BA81C /* CreateRecipeViewController.swift in Sources */,
 				73DCEAC61CF62A11002BA81C /* Constants.swift in Sources */,
 				73DCEACA1CF62B75002BA81C /* SettingsViewController.swift in Sources */,
 				73DCEACC1CF62BBF002BA81C /* MainTabViewController.swift in Sources */,

@@ -45,6 +45,8 @@ class LocalRecipeListViewController: UIViewController, UITableViewDelegate, UITa
         
             let cell = recipeTable.dequeueReusableCellWithIdentifier("createCell") as! CreateCell
             
+            cell.createButton.addTarget(self, action: #selector(LocalRecipeListViewController.createRecipe), forControlEvents: .TouchUpInside)
+            
             return cell
             
         } else {
@@ -68,6 +70,10 @@ class LocalRecipeListViewController: UIViewController, UITableViewDelegate, UITa
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("cell was tapped // do something")
+    }
+    
+    func createRecipe() {
+        performSegueWithIdentifier(Constants.Segues.LocalToCreate, sender: self)
     }
     
     // END TABLE SETUP

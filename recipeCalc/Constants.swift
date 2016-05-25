@@ -23,6 +23,7 @@ struct Constants {
   struct Segues {
     static let LoginToFp = "LoginToFp"
     static let SettingsToLogin = "SettingsToLogin"
+    static let LocalToCreate = "LocalToCreate"
   }
     
 }

@@ -208,6 +208,7 @@
                                             <outlet property="desc" destination="4cd-Mg-jYG" id="rzi-LU-Ldh"/>
                                             <outlet property="editButton" destination="FOS-uY-dfD" id="fZv-Y4-aAn"/>
                                             <outlet property="name" destination="pF6-85-4pM" id="SwQ-bB-ch0"/>
+                                            <segue destination="RTR-hU-SBQ" kind="show" identifier="LocalToCreate" id="cut-Tj-zuN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -233,6 +234,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L1H-Wx-KRO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2154" y="-658"/>
+        </scene>
+        <!--Create Recipe View Controller-->
+        <scene sceneID="plS-ts-7pb">
+            <objects>
+                <viewController id="RTR-hU-SBQ" customClass="CreateRecipeViewController" customModule="recipeCalc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Z4u-FS-zNg"/>
+                        <viewControllerLayoutGuide type="bottom" id="a3F-Ra-FYZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IeE-jc-6IR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qra-fD-LKj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2876" y="-658"/>
         </scene>
         <!--Main Tab View Controller-->
         <scene sceneID="PCs-RX-nAn">
