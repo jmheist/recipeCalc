@@ -15,12 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    override init() {
+    func application(application: UIApplication, didFinishLaunchingWithOptions
+        launchOptions: [NSObject: AnyObject]?) -> Bool {
         FIRApp.configure()
-    }
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
         return true
     }
 
