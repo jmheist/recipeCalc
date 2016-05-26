@@ -27,6 +27,9 @@
 		73DCEACF1CF63E20002BA81C /* CreateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEACE1CF63E20002BA81C /* CreateCell.swift */; };
 		73DCEAD11CF63E2F002BA81C /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAD01CF63E2F002BA81C /* RecipeCell.swift */; };
 		73DCEAD31CF65323002BA81C /* CreateRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAD21CF65323002BA81C /* CreateRecipeViewController.swift */; };
+		73DCEADF1CF68FFF002BA81C /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEADE1CF68FFF002BA81C /* Buttons.swift */; };
+		73DCEAE21CF69758002BA81C /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAE11CF69758002BA81C /* Labels.swift */; };
+		73DCEAE41CF6988B002BA81C /* TextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAE31CF6988B002BA81C /* TextFields.swift */; };
 		BD70AB898FA3BEDEFE850CCA /* Pods_recipeCalc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2DD1A894F376BB0A75146F /* Pods_recipeCalc.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +76,9 @@
 		73DCEACE1CF63E20002BA81C /* CreateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCell.swift; sourceTree = "<group>"; };
 		73DCEAD01CF63E2F002BA81C /* RecipeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
 		73DCEAD21CF65323002BA81C /* CreateRecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRecipeViewController.swift; sourceTree = "<group>"; };
+		73DCEADE1CF68FFF002BA81C /* Buttons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		73DCEAE11CF69758002BA81C /* Labels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
+		73DCEAE31CF6988B002BA81C /* TextFields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFields.swift; sourceTree = "<group>"; };
 		7F135C955F4FBDECAAA8E397 /* Pods_recipeCalcUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_recipeCalcUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		872C207450B87D66E90D26CD /* Pods-recipeCalc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-recipeCalc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-recipeCalc/Pods-recipeCalc.debug.xcconfig"; sourceTree = "<group>"; };
 		9DEB14830D49651E7F008BB7 /* Pods_recipeCalcTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_recipeCalcTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +145,7 @@
 		7315D5E51CF4E405002B2588 /* recipeCalc */ = {
 			isa = PBXGroup;
 			children = (
+				73DCEAE01CF69003002BA81C /* Styles */,
 				73B1DD001CF54821002D9E23 /* StoryBoard */,
 				73B1DCFE1CF547FB002D9E23 /* ViewControllers */,
 				73DCEACD1CF63DF3002BA81C /* Other Stuff */,
@@ -208,6 +215,16 @@
 				73DCEAD01CF63E2F002BA81C /* RecipeCell.swift */,
 			);
 			name = "Other Stuff";
+			sourceTree = "<group>";
+		};
+		73DCEAE01CF69003002BA81C /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				73DCEADE1CF68FFF002BA81C /* Buttons.swift */,
+				73DCEAE11CF69758002BA81C /* Labels.swift */,
+				73DCEAE31CF6988B002BA81C /* TextFields.swift */,
+			);
+			name = Styles;
 			sourceTree = "<group>";
 		};
 		DC9389527519C695F6055A73 /* Frameworks */ = {
@@ -410,13 +427,16 @@
 				73DCEABF1CF6254B002BA81C /* LoginViewController.swift in Sources */,
 				73DCEAC81CF62B5A002BA81C /* LocalRecipeListViewController.swift in Sources */,
 				7315D5EF1CF4E405002B2588 /* recipeCalc.xcdatamodeld in Sources */,
+				73DCEAE41CF6988B002BA81C /* TextFields.swift in Sources */,
 				73DCEACF1CF63E20002BA81C /* CreateCell.swift in Sources */,
 				73DCEAD11CF63E2F002BA81C /* RecipeCell.swift in Sources */,
 				7315D5E71CF4E405002B2588 /* AppDelegate.swift in Sources */,
 				73DCEAD31CF65323002BA81C /* CreateRecipeViewController.swift in Sources */,
 				73DCEAC61CF62A11002BA81C /* Constants.swift in Sources */,
+				73DCEAE21CF69758002BA81C /* Labels.swift in Sources */,
 				73DCEACA1CF62B75002BA81C /* SettingsViewController.swift in Sources */,
 				73DCEACC1CF62BBF002BA81C /* MainTabViewController.swift in Sources */,
+				73DCEADF1CF68FFF002BA81C /* Buttons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

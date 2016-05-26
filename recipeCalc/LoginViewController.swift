@@ -17,12 +17,16 @@
 import UIKit
 
 import FirebaseAuth
+import Material
 
 class LoginViewController: UIViewController {
     
     @IBOutlet var emailField: UITextField!
     @IBOutlet var passwordField: UITextField!
+    @IBOutlet var loginButton: B1!
     
+    override func viewWillAppear(animated: Bool) {
+    }
     
     override func viewDidAppear(animated: Bool) {
         if let user = FIRAuth.auth()?.currentUser {

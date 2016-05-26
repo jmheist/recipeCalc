@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -35,12 +37,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vuQ-Cp-RwL">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vuQ-Cp-RwL" customClass="B1" customModule="recipeCalc" customModuleProvider="target">
                                 <rect key="frame" x="150" y="299" width="300" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.079996500968897349" blue="0.71134653141361259" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Login">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="didTapSignIn:" destination="0RY-Tf-lpi" eventType="touchUpInside" id="l1c-Vt-Y9a"/>
                                 </connections>
@@ -60,7 +59,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.80172870097624138" green="0.85792007808184478" blue="0.9548224803664922" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="6c1-5Q-WDN" firstAttribute="top" secondItem="9t3-Zm-2xn" secondAttribute="bottom" constant="8" symbolic="YES" id="0Qs-lN-Rno"/>
                             <constraint firstItem="bfO-Av-c0l" firstAttribute="centerX" secondItem="cX9-bf-hyf" secondAttribute="centerX" id="2t2-Ku-MGC"/>
@@ -78,6 +77,7 @@
                     </view>
                     <connections>
                         <outlet property="emailField" destination="9t3-Zm-2xn" id="efE-J4-rrI"/>
+                        <outlet property="loginButton" destination="vuQ-Cp-RwL" id="8NL-kv-8sG"/>
                         <outlet property="passwordField" destination="6c1-5Q-WDN" id="zSp-ka-dTa"/>
                         <segue destination="yV2-Kq-9ex" kind="show" identifier="LoginToFp" id="JK3-1n-SiR"/>
                     </connections>
@@ -112,7 +112,7 @@
                             <constraint firstItem="DqF-0C-wsq" firstAttribute="top" secondItem="FgZ-fa-htN" secondAttribute="bottom" constant="8" symbolic="YES" id="q8x-pB-iaC"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="iQF-Sh-gbk"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="cm_settings_white" id="iQF-Sh-gbk"/>
                     <connections>
                         <segue destination="0RY-Tf-lpi" kind="show" identifier="SettingsToLogin" id="oOs-gP-aba"/>
                     </connections>
@@ -226,7 +226,7 @@
                             <constraint firstItem="yz8-ED-xbY" firstAttribute="top" secondItem="fqo-Ua-iRo" secondAttribute="bottom" constant="8" symbolic="YES" id="zNn-b3-qHe"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Recipe List" id="LJW-gl-3Ds"/>
+                    <tabBarItem key="tabBarItem" title="Recipe List" image="cm_menu_white" id="LJW-gl-3Ds"/>
                     <connections>
                         <outlet property="recipeTable" destination="fqo-Ua-iRo" id="UWI-wF-yd8"/>
                     </connections>
@@ -246,12 +246,84 @@
                     <view key="view" contentMode="scaleToFill" id="IeE-jc-6IR">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C4p-Zs-nQX" customClass="T1" customModule="recipeCalc" customModuleProvider="target">
+                                <rect key="frame" x="20" y="103" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="44c-kG-ZTp" customClass="T2" customModule="recipeCalc" customModuleProvider="target">
+                                <rect key="frame" x="20" y="165" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7b7-eY-uQw" customClass="T3" customModule="recipeCalc" customModuleProvider="target">
+                                <rect key="frame" x="20" y="226" width="240" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="Hd9-Ah-TOR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="idI-lz-dSI" customClass="T3" customModule="recipeCalc" customModuleProvider="target">
+                                <rect key="frame" x="340" y="226" width="240" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bQr-Sb-A3q" customClass="T3" customModule="recipeCalc" customModuleProvider="target">
+                                <rect key="frame" x="20" y="292" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Veg-eF-H5z" customClass="T3" customModule="recipeCalc" customModuleProvider="target">
+                                <rect key="frame" x="20" y="330" width="240" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="R1D-fE-MVh">
+                                <rect key="frame" x="459" y="330" width="121" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvP-NH-PiO" customClass="B2" customModule="recipeCalc" customModuleProvider="target">
+                                <rect key="frame" x="261" y="375" width="78" height="30"/>
+                                <state key="normal" title="Add Recipe"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7b7-eY-uQw" firstAttribute="trailing" secondItem="Veg-eF-H5z" secondAttribute="trailing" id="1EB-NP-EAx"/>
+                            <constraint firstItem="44c-kG-ZTp" firstAttribute="top" secondItem="C4p-Zs-nQX" secondAttribute="bottom" constant="32" id="AWR-xi-Mmu"/>
+                            <constraint firstItem="bQr-Sb-A3q" firstAttribute="trailing" secondItem="R1D-fE-MVh" secondAttribute="trailing" id="D92-2s-4u8"/>
+                            <constraint firstItem="Veg-eF-H5z" firstAttribute="top" secondItem="bQr-Sb-A3q" secondAttribute="bottom" constant="8" symbolic="YES" id="DUz-Gg-to1"/>
+                            <constraint firstItem="bQr-Sb-A3q" firstAttribute="top" secondItem="7b7-eY-uQw" secondAttribute="bottom" constant="36" id="Qxg-Y7-p9r"/>
+                            <constraint firstItem="idI-lz-dSI" firstAttribute="trailing" secondItem="bQr-Sb-A3q" secondAttribute="trailing" id="SXu-C2-Zqi"/>
+                            <constraint firstItem="C4p-Zs-nQX" firstAttribute="trailing" secondItem="IeE-jc-6IR" secondAttribute="trailingMargin" id="SdD-zt-CPz"/>
+                            <constraint firstItem="Veg-eF-H5z" firstAttribute="baseline" secondItem="R1D-fE-MVh" secondAttribute="baseline" id="Y5W-MB-QjA"/>
+                            <constraint firstItem="7b7-eY-uQw" firstAttribute="baseline" secondItem="idI-lz-dSI" secondAttribute="baseline" id="bOA-bv-pHc"/>
+                            <constraint firstItem="C4p-Zs-nQX" firstAttribute="top" secondItem="Z4u-FS-zNg" secondAttribute="bottom" constant="83" id="dPO-np-bus"/>
+                            <constraint firstItem="C4p-Zs-nQX" firstAttribute="leading" secondItem="IeE-jc-6IR" secondAttribute="leadingMargin" id="e0F-zo-vxk"/>
+                            <constraint firstItem="bQr-Sb-A3q" firstAttribute="centerX" secondItem="pvP-NH-PiO" secondAttribute="centerX" id="g4a-OJ-8KF"/>
+                            <constraint firstItem="44c-kG-ZTp" firstAttribute="leading" secondItem="7b7-eY-uQw" secondAttribute="leading" id="hNN-KT-BBF"/>
+                            <constraint firstItem="44c-kG-ZTp" firstAttribute="trailing" secondItem="idI-lz-dSI" secondAttribute="trailing" id="hdL-AK-39g"/>
+                            <constraint firstItem="C4p-Zs-nQX" firstAttribute="leading" secondItem="44c-kG-ZTp" secondAttribute="leading" id="hug-Xb-spt"/>
+                            <constraint firstItem="Veg-eF-H5z" firstAttribute="top" secondItem="R1D-fE-MVh" secondAttribute="top" id="iRA-G5-0L5"/>
+                            <constraint firstItem="C4p-Zs-nQX" firstAttribute="trailing" secondItem="44c-kG-ZTp" secondAttribute="trailing" id="q4r-eY-PgM"/>
+                            <constraint firstItem="bQr-Sb-A3q" firstAttribute="leading" secondItem="Veg-eF-H5z" secondAttribute="leading" id="rJp-9Y-CIe"/>
+                            <constraint firstItem="R1D-fE-MVh" firstAttribute="baseline" secondItem="Veg-eF-H5z" secondAttribute="firstBaseline" id="vDv-2S-PYj"/>
+                            <constraint firstItem="7b7-eY-uQw" firstAttribute="leading" secondItem="bQr-Sb-A3q" secondAttribute="leading" id="vjf-BU-XzC"/>
+                            <constraint firstItem="idI-lz-dSI" firstAttribute="leading" secondItem="7b7-eY-uQw" secondAttribute="trailing" constant="80" id="wyn-jR-Nox"/>
+                            <constraint firstItem="7b7-eY-uQw" firstAttribute="top" secondItem="44c-kG-ZTp" secondAttribute="bottom" constant="31" id="yB8-kp-YW3"/>
+                            <constraint firstItem="pvP-NH-PiO" firstAttribute="top" secondItem="bQr-Sb-A3q" secondAttribute="bottom" constant="53" id="zGZ-on-F4b"/>
+                            <constraint firstItem="Veg-eF-H5z" firstAttribute="baseline" secondItem="R1D-fE-MVh" secondAttribute="firstBaseline" id="zbT-yO-7Jx"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qra-fD-LKj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2876" y="-658"/>
+            <point key="canvasLocation" x="2880" y="-658"/>
         </scene>
         <!--Main Tab View Controller-->
         <scene sceneID="PCs-RX-nAn">
@@ -272,4 +344,8 @@
             <point key="canvasLocation" x="1334" y="-326"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cm_menu_white" width="24" height="24"/>
+        <image name="cm_settings_white" width="24" height="24"/>
+    </resources>
 </document>
