@@ -1,0 +1,11 @@
+platform :ios, '8.0'
+use_frameworks!
+target 'recipeCalc' do
+
+pod "Firebase/Database"
+pod "Firebase/Crash"
+pod "Firebase/Auth"
+
+pod "Material"
+
+end

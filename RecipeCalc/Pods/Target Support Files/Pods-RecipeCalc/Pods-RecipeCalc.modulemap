@@ -1,0 +1,6 @@
+framework module Pods_RecipeCalc {
+  umbrella header "Pods-RecipeCalc-umbrella.h"
+
+  export *
+  module * { export * }
+}
