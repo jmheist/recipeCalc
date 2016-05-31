@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "73DCEB361CF8BDC1002BA81C"
-               BuildableName = "RecipeCalc.app"
-               BlueprintName = "RecipeCalc"
-               ReferencedContainer = "container:RecipeCalc.xcodeproj">
+               BlueprintIdentifier = "73F31C261CF8F0F6006E84FF"
+               BuildableName = "recipeCalc.app"
+               BlueprintName = "recipeCalc"
+               ReferencedContainer = "container:recipeCalc.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,30 +32,30 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "73DCEB4A1CF8BDC1002BA81C"
-               BuildableName = "RecipeCalcTests.xctest"
-               BlueprintName = "RecipeCalcTests"
-               ReferencedContainer = "container:RecipeCalc.xcodeproj">
+               BlueprintIdentifier = "73F31C3A1CF8F0F6006E84FF"
+               BuildableName = "recipeCalcTests.xctest"
+               BlueprintName = "recipeCalcTests"
+               ReferencedContainer = "container:recipeCalc.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "73DCEB551CF8BDC2002BA81C"
-               BuildableName = "RecipeCalcUITests.xctest"
-               BlueprintName = "RecipeCalcUITests"
-               ReferencedContainer = "container:RecipeCalc.xcodeproj">
+               BlueprintIdentifier = "73F31C451CF8F0F6006E84FF"
+               BuildableName = "recipeCalcUITests.xctest"
+               BlueprintName = "recipeCalcUITests"
+               ReferencedContainer = "container:recipeCalc.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "73DCEB361CF8BDC1002BA81C"
-            BuildableName = "RecipeCalc.app"
-            BlueprintName = "RecipeCalc"
-            ReferencedContainer = "container:RecipeCalc.xcodeproj">
+            BlueprintIdentifier = "73F31C261CF8F0F6006E84FF"
+            BuildableName = "recipeCalc.app"
+            BlueprintName = "recipeCalc"
+            ReferencedContainer = "container:recipeCalc.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -75,10 +75,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "73DCEB361CF8BDC1002BA81C"
-            BuildableName = "RecipeCalc.app"
-            BlueprintName = "RecipeCalc"
-            ReferencedContainer = "container:RecipeCalc.xcodeproj">
+            BlueprintIdentifier = "73F31C261CF8F0F6006E84FF"
+            BuildableName = "recipeCalc.app"
+            BlueprintName = "recipeCalc"
+            ReferencedContainer = "container:recipeCalc.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,10 +94,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "73DCEB361CF8BDC1002BA81C"
-            BuildableName = "RecipeCalc.app"
-            BlueprintName = "RecipeCalc"
-            ReferencedContainer = "container:RecipeCalc.xcodeproj">
+            BlueprintIdentifier = "73F31C261CF8F0F6006E84FF"
+            BuildableName = "recipeCalc.app"
+            BlueprintName = "recipeCalc"
+            ReferencedContainer = "container:recipeCalc.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

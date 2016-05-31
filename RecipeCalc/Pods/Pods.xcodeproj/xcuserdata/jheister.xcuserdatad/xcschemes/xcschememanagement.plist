@@ -19,13 +19,34 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-RecipeCalc.xcscheme</key>
+		<key>Pods-recipeCalc.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict/>
+	<dict>
+		<key>41E9860FF63AA5E95F7792681A78ED65</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>958EC39DD79BF94E1C5BECA416A02062</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B089559E351F0F16411C9503E770FC3B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DE9B0536CD7D58980FF5CD1F2E927CF6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
 </dict>
 </plist>

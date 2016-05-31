@@ -16,15 +16,15 @@
 
 import UIKit
 
-import FirebaseAuth
+import Firebase
 import Material
 
 class LoginViewController: UIViewController, TextFieldDelegate {
     
     private var nameField: TextField!,
-                emailField: ErrorTextField!,
-                passwordField: TextField!,
-                loginView: MaterialView = MaterialView();
+                emailField: TextField!,
+                passwordField: TextField!;
+    
     
     override func viewWillAppear(animated: Bool) {
         
@@ -46,16 +46,7 @@ class LoginViewController: UIViewController, TextFieldDelegate {
     
     /// General preparation statements.
     private func prepareView() {
-        view.backgroundColor = MaterialColor.grey.lighten3
-        
-        view.addSubview(loginView)
-        loginView.backgroundColor = MaterialColor.white
-        
-        MaterialLayout.size(view, child: loginView, width: 300, height: 220)
-        MaterialLayout.alignToParentHorizontally(view, child: loginView)
-        MaterialLayout.alignToParentVertically(view, child: loginView)
-        
-        
+        view.backgroundColor = colors.medGrey
     }
     
     
@@ -65,9 +56,16 @@ class LoginViewController: UIViewController, TextFieldDelegate {
     
     func prepareEmailRegistration() {
         
+        let loginView: MaterialView = MaterialView();
+        
+        view.addSubview(loginView)
+        loginView.backgroundColor = MaterialColor.white
+        
+        MaterialLayout.alignToParent(view, child: loginView, top: 140, bottom: 140, left: 14, right: 14)
+        
         // EMAIL FIELD //
         
-        emailField = ErrorTextField()
+        emailField = TextField()
         emailField.placeholder = "Email"
         emailField.enableClearIconButton = true
         emailField.delegate = self
@@ -111,11 +109,11 @@ class LoginViewController: UIViewController, TextFieldDelegate {
         MaterialLayout.alignToParentHorizontally(loginView, child: btn)
         MaterialLayout.alignToParentHorizontally(loginView, child: btn2)
         
-        MaterialLayout.alignFromTop(loginView, child: emailField, top: 10)
-        MaterialLayout.alignFromTop(loginView, child: passwordField, top: 60)
-        MaterialLayout.alignFromBottom(loginView, child: btn, bottom: 60)
-        MaterialLayout.alignFromBottom(loginView, child: btn2, bottom: 10)
-        
+        MaterialLayout.alignFromTop(loginView, child: emailField, top: 30)
+        MaterialLayout.alignFromTop(loginView, child: passwordField, top: 100)
+        MaterialLayout.alignFromTop(loginView, child: btn, top: 180)
+        MaterialLayout.alignFromTop(loginView, child: btn2, top: 220)
+
     }
     
     // FUNCTIONS FOR EMAIL REGISTRATION FORM //

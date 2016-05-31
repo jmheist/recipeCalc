@@ -1,15 +1,15 @@
 //
-//  RecipeCalcTests.swift
-//  RecipeCalcTests
+//  recipeCalcTests.swift
+//  recipeCalcTests
 //
 //  Created by Jacob Heisterkamp on 5/27/16.
 //  Copyright © 2016 Vape & Prosper. All rights reserved.
 //
 
 import XCTest
-@testable import RecipeCalc
+@testable import recipeCalc
 
-class RecipeCalcTests: XCTestCase {
+class recipeCalcTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

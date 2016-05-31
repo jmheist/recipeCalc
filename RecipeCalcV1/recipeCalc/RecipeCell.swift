@@ -9,10 +9,7 @@
 import UIKit
 
 class RecipeCell: UITableViewCell {
+
     
-    
-    @IBOutlet var name: UILabel!
-    @IBOutlet var editButton: UIButton!
-    @IBOutlet var desc: UILabel!
-    
+
 }

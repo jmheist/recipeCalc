@@ -20,9 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FIRApp.configure()
         
-        
         let bottomNavigationController: BottomNavigationController = BottomNavigationController()
-        bottomNavigationController.viewControllers = [LocalRecipeListViewController(), CreateRecipeViewController(), SettingsViewController(), DiscoveryViewController()]
+        bottomNavigationController.viewControllers = [LocalRecipeListVC(), CreateRecipeViewController(), DiscoveryViewController(), SettingsViewController()]
         bottomNavigationController.selectedIndex = 0
         bottomNavigationController.tabBar.tintColor = MaterialColor.teal.base
         bottomNavigationController.tabBar.backgroundColor = MaterialColor.grey.darken4

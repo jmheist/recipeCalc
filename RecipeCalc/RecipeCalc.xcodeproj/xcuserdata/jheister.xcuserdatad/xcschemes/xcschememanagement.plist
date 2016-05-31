@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>RecipeCalc.xcscheme</key>
+		<key>recipeCalc.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,17 +12,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>73DCEB361CF8BDC1002BA81C</key>
+		<key>73F31C261CF8F0F6006E84FF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>73DCEB4A1CF8BDC1002BA81C</key>
+		<key>73F31C3A1CF8F0F6006E84FF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>73DCEB551CF8BDC2002BA81C</key>
+		<key>73F31C451CF8F0F6006E84FF</key>
 		<dict>
 			<key>primary</key>
 			<true/>

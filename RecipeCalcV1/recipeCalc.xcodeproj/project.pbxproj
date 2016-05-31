@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7314085B1CFE3FD800B5F8DF /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7314085A1CFE3FD800B5F8DF /* Colors.swift */; };
 		7315D5E71CF4E405002B2588 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7315D5E61CF4E405002B2588 /* AppDelegate.swift */; };
 		7315D5EF1CF4E405002B2588 /* recipeCalc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7315D5ED1CF4E405002B2588 /* recipeCalc.xcdatamodeld */; };
 		7315D5F11CF4E405002B2588 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7315D5F01CF4E405002B2588 /* Assets.xcassets */; };
@@ -20,7 +21,7 @@
 		73DCEAC11CF629DC002BA81C /* MeasurementHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAC01CF629DC002BA81C /* MeasurementHelper.swift */; };
 		73DCEAC51CF62A11002BA81C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAC31CF62A11002BA81C /* AppState.swift */; };
 		73DCEAC61CF62A11002BA81C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAC41CF62A11002BA81C /* Constants.swift */; };
-		73DCEAC81CF62B5A002BA81C /* LocalRecipeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAC71CF62B5A002BA81C /* LocalRecipeListViewController.swift */; };
+		73DCEAC81CF62B5A002BA81C /* LocalRecipeListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAC71CF62B5A002BA81C /* LocalRecipeListVC.swift */; };
 		73DCEACA1CF62B75002BA81C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAC91CF62B75002BA81C /* SettingsViewController.swift */; };
 		73DCEAD11CF63E2F002BA81C /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAD01CF63E2F002BA81C /* RecipeCell.swift */; };
 		73DCEAD31CF65323002BA81C /* CreateRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAD21CF65323002BA81C /* CreateRecipeViewController.swift */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		4B2DD1A894F376BB0A75146F /* Pods_recipeCalc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_recipeCalc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7314085A1CFE3FD800B5F8DF /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		7315D5E31CF4E405002B2588 /* recipeCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = recipeCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7315D5E61CF4E405002B2588 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7315D5EE1CF4E405002B2588 /* recipeCalc.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = recipeCalc.xcdatamodel; sourceTree = "<group>"; };
@@ -68,7 +70,7 @@
 		73DCEAC01CF629DC002BA81C /* MeasurementHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurementHelper.swift; sourceTree = "<group>"; };
 		73DCEAC31CF62A11002BA81C /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		73DCEAC41CF62A11002BA81C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		73DCEAC71CF62B5A002BA81C /* LocalRecipeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalRecipeListViewController.swift; sourceTree = "<group>"; };
+		73DCEAC71CF62B5A002BA81C /* LocalRecipeListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalRecipeListVC.swift; sourceTree = "<group>"; };
 		73DCEAC91CF62B75002BA81C /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		73DCEAD01CF63E2F002BA81C /* RecipeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
 		73DCEAD21CF65323002BA81C /* CreateRecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRecipeViewController.swift; sourceTree = "<group>"; };
@@ -179,11 +181,11 @@
 			isa = PBXGroup;
 			children = (
 				73DCEABE1CF6254B002BA81C /* LoginViewController.swift */,
-				73DCEAC71CF62B5A002BA81C /* LocalRecipeListViewController.swift */,
-				73DCEB241CF79A2E002BA81C /* AppNavigationController.swift */,
+				73DCEAC71CF62B5A002BA81C /* LocalRecipeListVC.swift */,
 				73DCEAD21CF65323002BA81C /* CreateRecipeViewController.swift */,
 				73DCEAC91CF62B75002BA81C /* SettingsViewController.swift */,
 				73DCEB031CF7598F002BA81C /* DiscoveryViewController.swift */,
+				73DCEB241CF79A2E002BA81C /* AppNavigationController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				73DCEAD01CF63E2F002BA81C /* RecipeCell.swift */,
+				7314085A1CFE3FD800B5F8DF /* Colors.swift */,
 			);
 			name = "Other Stuff";
 			sourceTree = "<group>";
@@ -413,12 +416,13 @@
 				73DCEAC11CF629DC002BA81C /* MeasurementHelper.swift in Sources */,
 				73DCEAC51CF62A11002BA81C /* AppState.swift in Sources */,
 				73DCEABF1CF6254B002BA81C /* LoginViewController.swift in Sources */,
-				73DCEAC81CF62B5A002BA81C /* LocalRecipeListViewController.swift in Sources */,
+				73DCEAC81CF62B5A002BA81C /* LocalRecipeListVC.swift in Sources */,
 				7315D5EF1CF4E405002B2588 /* recipeCalc.xcdatamodeld in Sources */,
 				73DCEAE41CF6988B002BA81C /* TextFields.swift in Sources */,
 				73DCEAD11CF63E2F002BA81C /* RecipeCell.swift in Sources */,
 				7315D5E71CF4E405002B2588 /* AppDelegate.swift in Sources */,
 				73DCEAD31CF65323002BA81C /* CreateRecipeViewController.swift in Sources */,
+				7314085B1CFE3FD800B5F8DF /* Colors.swift in Sources */,
 				73DCEB251CF79A2E002BA81C /* AppNavigationController.swift in Sources */,
 				73DCEAC61CF62A11002BA81C /* Constants.swift in Sources */,
 				73DCEAE21CF69758002BA81C /* Labels.swift in Sources */,
