@@ -132,4 +132,9 @@ class CreateRecipeViewController: UIViewController {
         MaterialLayout.alignFromTop(recipeInfo, child: recipeSteepDays, top: 130)
     }
     
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+    }
+    
 }
