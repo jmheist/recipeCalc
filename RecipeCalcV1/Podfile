@@ -8,4 +8,6 @@ pod "Firebase/Auth"
 
 pod "Material"
 
+pod "IQKeyboardManagerSwift"
+
 end

@@ -21,9 +21,9 @@ import Material
 
 class LoginViewController: UIViewController, TextFieldDelegate {
     
-    private var nameField: TextField!,
-                emailField: TextField!,
-                passwordField: TextField!;
+    private var nameField: T1!,
+                emailField: T1!,
+                passwordField: T1!;
     
     
     override func viewWillAppear(animated: Bool) {
@@ -31,10 +31,12 @@ class LoginViewController: UIViewController, TextFieldDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        print("checking for logined in")
+        print("Checking if user is logged in")
         if let user = FIRAuth.auth()?.currentUser {
             
             self.signedIn(user)
+        } else {
+            print("Not signed in yet")
         }
     }
     
@@ -46,7 +48,7 @@ class LoginViewController: UIViewController, TextFieldDelegate {
     
     /// General preparation statements.
     private func prepareView() {
-        view.backgroundColor = colors.medGrey
+        view.backgroundColor = colors.background
     }
     
     
@@ -56,16 +58,18 @@ class LoginViewController: UIViewController, TextFieldDelegate {
     
     func prepareEmailRegistration() {
         
-        let loginView: MaterialView = MaterialView();
+        let width: CGFloat = 300
+        let height: CGFloat = 300
+        
+        let loginView: MaterialView = MaterialView(frame: CGRectMake(0, 0, width, height))
+        
+        loginView.center = view.center
         
         view.addSubview(loginView)
-        loginView.backgroundColor = MaterialColor.white
-        
-        MaterialLayout.alignToParent(view, child: loginView, top: 140, bottom: 140, left: 14, right: 14)
-        
+
         // EMAIL FIELD //
         
-        emailField = TextField()
+        emailField = T1()
         emailField.placeholder = "Email"
         emailField.enableClearIconButton = true
         emailField.delegate = self
@@ -74,31 +78,26 @@ class LoginViewController: UIViewController, TextFieldDelegate {
         
         // PASSWORD FIELD //
         
-        passwordField = TextField()
+        passwordField = T1()
         passwordField.placeholder = "Password"
-        passwordField.clearButtonMode = .WhileEditing
         passwordField.enableVisibilityIconButton = true
         
         // Setting the visibilityFlatButton color.
-        passwordField.visibilityIconButton?.tintColor = MaterialColor.green.base.colorWithAlphaComponent(passwordField.secureTextEntry ? 0.38 : 0.54)
+        passwordField.visibilityIconButton?.tintColor = MaterialColor.black 
         
         loginView.addSubview(passwordField)
         
         // BUTTONS //
         
-        let btn: FlatButton = FlatButton()
+        let btn: FlatButton = B1()
         btn.addTarget(self, action: #selector(didTapSignIn), forControlEvents: .TouchUpInside)
-        btn.setTitle("Signin", forState: .Normal)
-        btn.setTitleColor(MaterialColor.blue.base, forState: .Normal)
-        btn.setTitleColor(MaterialColor.blue.base, forState: .Highlighted)
+        btn.setTitle("Sign In", forState: .Normal)
         
         loginView.addSubview(btn)
         
-        let btn2: FlatButton = FlatButton()
+        let btn2: FlatButton = B1()
         btn2.addTarget(self, action: #selector(didTapSignUp), forControlEvents: .TouchUpInside)
-        btn2.setTitle("Signup", forState: .Normal)
-        btn2.setTitleColor(MaterialColor.blue.base, forState: .Normal)
-        btn2.setTitleColor(MaterialColor.blue.base, forState: .Highlighted)
+        btn2.setTitle("Sign Up", forState: .Normal)
         
         loginView.addSubview(btn2)
         
@@ -156,68 +155,73 @@ class LoginViewController: UIViewController, TextFieldDelegate {
     // Login Functions
     //
     
-        func didTapSignIn() {
-            // Sign In with credentials.
-            FIRAuth.auth()?.signInWithEmail(emailField.text!, password: passwordField.text!) { (user, error) in
+    func didTapSignIn() {
+        // Sign In with credentials.
+        FIRAuth.auth()?.signInWithEmail(emailField.text!, password: passwordField.text!) { (user, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            self.signedIn(user!)
+        }
+    }
+    
+    func didTapSignUp() {
+        FIRAuth.auth()?.createUserWithEmail(emailField.text!, password: passwordField.text!) { (user, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            self.setDisplayName(user!)
+        }
+    }
+    
+    func setDisplayName(user: FIRUser) {
+        let changeRequest = user.profileChangeRequest()
+        changeRequest.displayName = user.email!.componentsSeparatedByString("@")[0]
+        changeRequest.commitChangesWithCompletion(){ (error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            self.signedIn(FIRAuth.auth()?.currentUser)
+        }
+    }
+    
+    func didRequestPasswordReset(sender: AnyObject) {
+        let prompt = UIAlertController.init(title: nil, message: "Email:", preferredStyle: UIAlertControllerStyle.Alert)
+        let okAction = UIAlertAction.init(title: "OK", style: UIAlertActionStyle.Default) { (action) in
+            let userInput = prompt.textFields![0].text
+            if (userInput!.isEmpty) {
+                return
+            }
+            FIRAuth.auth()?.sendPasswordResetWithEmail(userInput!) { (error) in
                 if let error = error {
                     print(error.localizedDescription)
                     return
                 }
-                self.signedIn(user!)
             }
         }
+        prompt.addTextFieldWithConfigurationHandler(nil)
+        prompt.addAction(okAction)
+        presentViewController(prompt, animated: true, completion: nil);
+    }
+    
+    func signedIn(user: FIRUser?) {
+        MeasurementHelper.sendLoginEvent()
+        print("User is signed in")
+        AppState.sharedInstance.displayName = user?.displayName ?? user?.email
+        AppState.sharedInstance.photoUrl = user?.photoURL
+        AppState.sharedInstance.signedIn = true
         
-        func didTapSignUp() {
-            FIRAuth.auth()?.createUserWithEmail(emailField.text!, password: passwordField.text!) { (user, error) in
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }
-                self.setDisplayName(user!)
-            }
-        }
-        
-        func setDisplayName(user: FIRUser) {
-            let changeRequest = user.profileChangeRequest()
-            changeRequest.displayName = user.email!.componentsSeparatedByString("@")[0]
-            changeRequest.commitChangesWithCompletion(){ (error) in
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }
-                self.signedIn(FIRAuth.auth()?.currentUser)
-            }
-        }
-        
-        func didRequestPasswordReset(sender: AnyObject) {
-            let prompt = UIAlertController.init(title: nil, message: "Email:", preferredStyle: UIAlertControllerStyle.Alert)
-            let okAction = UIAlertAction.init(title: "OK", style: UIAlertActionStyle.Default) { (action) in
-                let userInput = prompt.textFields![0].text
-                if (userInput!.isEmpty) {
-                    return
-                }
-                FIRAuth.auth()?.sendPasswordResetWithEmail(userInput!) { (error) in
-                    if let error = error {
-                        print(error.localizedDescription)
-                        return
-                    }
-                }
-            }
-            prompt.addTextFieldWithConfigurationHandler(nil)
-            prompt.addAction(okAction)
-            presentViewController(prompt, animated: true, completion: nil);
-        }
-        
-        func signedIn(user: FIRUser?) {
-            MeasurementHelper.sendLoginEvent()
-            print("User is signed in")
-            AppState.sharedInstance.displayName = user?.displayName ?? user?.email
-            AppState.sharedInstance.photoUrl = user?.photoURL
-            AppState.sharedInstance.signedIn = true
-            
-            NSNotificationCenter.defaultCenter().postNotificationName(Constants.NotificationKeys.SignedIn, object: nil, userInfo: nil)
-            dismissViewControllerAnimated(true, completion: nil)
-        }
+        NSNotificationCenter.defaultCenter().postNotificationName(Constants.NotificationKeys.SignedIn, object: nil, userInfo: nil)
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+    }
     
     //
     // End Login Functions

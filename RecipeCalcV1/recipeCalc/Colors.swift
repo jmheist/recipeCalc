@@ -15,5 +15,8 @@ class Colors: UIColor {
     
     let lightGrey = MaterialColor.grey.lighten5
     let medGrey = MaterialColor.grey.lighten3
+    let buttonText = MaterialColor.black
+    let background = MaterialColor.white
+    
     
 }

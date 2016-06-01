@@ -8,7 +8,7 @@
 
 import UIKit
 import Material
-import FirebaseAuth
+import Firebase
 
 class LocalRecipeListVC: UIViewController {
     
@@ -44,7 +44,7 @@ class LocalRecipeListVC: UIViewController {
     override func viewDidAppear(animated: Bool) {
         //check if user is logged in
         if AppState.sharedInstance.signedIn {
-            print("User Is Already Logged In")
+            print("User is logged in")
         } else {
             print("User is not logged in yet, should load loginVC")
             let vc = LoginViewController()
@@ -54,7 +54,7 @@ class LocalRecipeListVC: UIViewController {
     
     /// General preparation statements.
     private func prepareView() {
-        view.backgroundColor = MaterialColor.white
+        view.backgroundColor = colors.background
     }
     
     
@@ -93,7 +93,7 @@ class LocalRecipeListVC: UIViewController {
         
         // Use MaterialLayout to easily align the tableView.
         view.addSubview(recipeTable)
-        MaterialLayout.alignToParent(view, child: recipeTable, top: 60, bottom: 40)
+        MaterialLayout.alignToParent(view, child: recipeTable, top: 60, bottom: 49)
     }
     
     

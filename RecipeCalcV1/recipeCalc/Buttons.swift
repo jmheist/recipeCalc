@@ -12,7 +12,12 @@ import Material
 class B1: FlatButton {
     internal override func prepareView() {
         super.prepareView()
-        
+        cornerRadiusPreset = .Radius3
+        contentEdgeInsetsPreset = .WideRectangle3
+        backgroundColor = MaterialColor.white
+        borderColor = MaterialColor.black
+        borderWidth = 1
+        setTitleColor(MaterialColor.black, forState: .Normal)
     }
 }
 

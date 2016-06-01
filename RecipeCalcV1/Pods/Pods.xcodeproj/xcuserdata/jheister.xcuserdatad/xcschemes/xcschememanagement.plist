@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>IQKeyboardManagerSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Material-io.cosmicmind.material.fonts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,12 +32,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>41E9860FF63AA5E95F7792681A78ED65</key>
+		<key>1520003FEBEC114D6C84F832AFEDB994</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>958EC39DD79BF94E1C5BECA416A02062</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>95DEAB965FE8ADB8478FDCF928966F0E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
