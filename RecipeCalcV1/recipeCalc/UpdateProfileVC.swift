@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import Material
 
-class SettingsViewController: UIViewController, TextDelegate {
+class UpdateProfileVC: UIViewController, TextDelegate {
     
     private var userName: T1!
     private var userEmail: T1!
@@ -31,32 +31,19 @@ class SettingsViewController: UIViewController, TextDelegate {
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        prepareTabBarItem()
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareView()
         prepareTitlebar()
-        prepareButtons()
         prepareTextFields()
     }
     
     /// General preparation statements.
     private func prepareView() {
         view.backgroundColor = colors.background
-    }
-    
-    func prepareButtons() {
-        let btn: FlatButton = FlatButton()
-        btn.addTarget(self, action: #selector(signOut), forControlEvents: .TouchUpInside)
-        btn.setTitle("Signout", forState: .Normal)
-        btn.setTitleColor(MaterialColor.blue.base, forState: .Normal)
-        btn.setTitleColor(MaterialColor.blue.base, forState: .Highlighted)
-        view.addSubview(btn)
-        
-        MaterialLayout.alignFromTop(view, child: btn, top: 60)
-        MaterialLayout.alignToParentHorizontally(view, child: btn, left: 40, right: 40)
     }
     
     /// Prepare tabBarItem.
@@ -70,6 +57,7 @@ class SettingsViewController: UIViewController, TextDelegate {
     func prepareTitlebar() {
         let titleBar: MaterialView = MaterialView()
         let titleBarTitle: UILabel = UILabel()
+        let backButton: B1 = B1()
         
         titleBar.backgroundColor = colors.medGrey
         
@@ -77,11 +65,24 @@ class SettingsViewController: UIViewController, TextDelegate {
         MaterialLayout.height(view, child: titleBar, height: 60)
         MaterialLayout.alignToParentHorizontally(view, child: titleBar, left: -14, right: -14)
         
-        titleBarTitle.text = "Settings"
+        backButton.setTitle("Back", forState: .Normal)
+        backButton.setTitleColor(MaterialColor.black, forState: .Normal)
+        backButton.targetForAction(#selector(UpdateProfileVC.didTapBackButton), withSender: self)
+        
+        titleBarTitle.text = "Update Your Profile"
         titleBarTitle.textAlignment = .Center
         
         titleBar.addSubview(titleBarTitle)
         MaterialLayout.alignToParent(titleBar, child: titleBarTitle, top: 20, left: 30, right: 30)
+        
+        titleBar.addSubview(backButton)
+        MaterialLayout.size(titleBar, child: backButton, width: 40, height: 40)
+        MaterialLayout.alignToParent(titleBar, child: backButton, top: 20, left: 10)
+    }
+    
+    func didTapBackButton() {
+        print("dismissing view")
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func prepareTextFields() {
@@ -185,17 +186,6 @@ class SettingsViewController: UIViewController, TextDelegate {
         }
         
         ///// END the crazy textview stuff
-    }
-    
-    func signOut(sender: UIButton) {
-        let firebaseAuth = FIRAuth.auth()
-        do {
-            try firebaseAuth?.signOut()
-            AppState.sharedInstance.signedIn = false
-            print("signed out")
-        } catch let signOutError as NSError {
-            print ("Error signing out: \(signOutError)")
-        }
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){

@@ -19,16 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        
         IQKeyboardManager.sharedManager().enable = true
 
         FIRApp.configure()
         
         let bottomNavigationController: BottomNavigationController = BottomNavigationController()
-        bottomNavigationController.viewControllers = [LocalRecipeListVC(), CreateRecipeViewController(), DiscoveryViewController(), SettingsViewController()]
+        bottomNavigationController.viewControllers = [LocalRecipeListVC(), CreateRecipeViewController(), DiscoveryViewController(), ProfileVC()]
         bottomNavigationController.selectedIndex = 0
-        bottomNavigationController.tabBar.tintColor = MaterialColor.teal.base
-        bottomNavigationController.tabBar.backgroundColor = MaterialColor.grey.darken4
+        bottomNavigationController.tabBar.tintColor = MaterialColor.grey.darken3
+        bottomNavigationController.tabBar.backgroundColor = MaterialColor.white
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window!.rootViewController = bottomNavigationController
