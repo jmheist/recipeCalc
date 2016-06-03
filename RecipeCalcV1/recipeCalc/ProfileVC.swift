@@ -12,6 +12,9 @@ import Firebase
 
 class ProfileVC: UIViewController {
     
+    /// NavigationBar title label.
+    private var titleLabel: UILabel!
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -25,12 +28,18 @@ class ProfileVC: UIViewController {
         prepareTabBarItem()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        // Stops the tableView contentInsets from being automatically adjusted.
+        automaticallyAdjustsScrollViewInsets = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareView()
-        prepareTitlebar()
         prepareButtons()
         prepareProfile()
+        prepareNavigationItem()
     }
     
     /// General preparation statements.
@@ -38,62 +47,46 @@ class ProfileVC: UIViewController {
         view.backgroundColor = colors.background
     }
     
-    func prepareTitlebar() {
-        let titleBar: MaterialView = MaterialView()
-        let titleBarTitle: UILabel = UILabel()
-        
-        titleBar.backgroundColor = colors.medGrey
-        
-        view.addSubview(titleBar)
-        MaterialLayout.height(view, child: titleBar, height: 60)
-        MaterialLayout.alignToParentHorizontally(view, child: titleBar, left: -14, right: -14)
-        
-        titleBarTitle.text = "Profile"
-        titleBarTitle.textAlignment = .Center
-        
-        titleBar.addSubview(titleBarTitle)
-        MaterialLayout.alignToParent(titleBar, child: titleBarTitle, top: 20, left: 30, right: 30)
+    /// Prepares the navigationItem.
+    private func prepareNavigationItem() {
+        navigationItem.title = "Profile"
     }
     
     func prepareButtons() {
-        let btn: FlatButton = FlatButton()
+        let btn: B1 = B1()
         btn.addTarget(self, action: #selector(signOut), forControlEvents: .TouchUpInside)
-        btn.setTitle("Signout", forState: .Normal)
-        btn.setTitleColor(MaterialColor.blue.base, forState: .Normal)
-        btn.setTitleColor(MaterialColor.blue.base, forState: .Highlighted)
+        btn.setTitle("Sign Out", forState: .Normal)
         view.addSubview(btn)
         
-        MaterialLayout.alignFromTop(view, child: btn, top: 60)
-        MaterialLayout.alignToParentHorizontally(view, child: btn, left: 40, right: 40)
+        MaterialLayout.alignFromBottom(view, child: btn, bottom: 60)
+        MaterialLayout.alignToParentHorizontally(view, child: btn, left: 50, right: 50)
+        
+        let btn2: B1 = B1()
+        btn2.addTarget(self, action: #selector(didTapUpdateProfile), forControlEvents: .TouchUpInside)
+        btn2.setTitle("Update Profile", forState: .Normal)
+        view.addSubview(btn2)
+        
+        MaterialLayout.alignFromBottom(view, child: btn2, bottom: 120)
+        MaterialLayout.alignToParentHorizontally(view, child: btn2, left: 50, right: 50)
     }
     
     /// Prepare tabBarItem.
     private func prepareTabBarItem() {
         tabBarItem.title = "Settings"
         tabBarItem.image = MaterialIcon.settings
-        tabBarItem.setTitleColor(MaterialColor.grey.base, forState: .Normal)
-        tabBarItem.setTitleColor(MaterialColor.teal.base, forState: .Selected)
     }
     
     func prepareProfile() {
         
-        let profileView: MaterialView = MaterialView()
-        view.addSubview(profileView)
-        MaterialLayout.alignToParent(view, child: profileView, top: 60, left: 0, right: 0, bottom: 49)
+//        let profileView: MaterialView = MaterialView()
+//        view.addSubview(profileView)
+//        MaterialLayout.alignToParent(view, child: profileView, top: 90, left: 0, right: 0, bottom: 49)
         
-        
-        let btn: B1 = B1()
-        btn.addTarget(self, action: #selector(didTapUpdateProfile), forControlEvents: .TouchUpInside)
-        btn.setTitle("Update Profile", forState: .Normal)
-
-        profileView.addSubview(btn)
-        MaterialLayout.alignFromTop(profileView, child: btn, top: 20)
-        MaterialLayout.alignToParentHorizontally(profileView, child: btn, left: 50, right: 50)
         
     }
     
     func didTapUpdateProfile() {
-        self.presentViewController(UpdateProfileVC(), animated: true, completion: nil)
+        navigationController?.pushViewController(UpdateProfileVC(), animated: true)
     }
     
     func signOut(sender: UIButton) {
@@ -102,6 +95,8 @@ class ProfileVC: UIViewController {
             try firebaseAuth?.signOut()
             AppState.sharedInstance.signedIn = false
             print("signed out")
+            let vc = LoginViewController()
+            self.presentViewController(vc, animated: false, completion: nil)
         } catch let signOutError as NSError {
             print ("Error signing out: \(signOutError)")
         }

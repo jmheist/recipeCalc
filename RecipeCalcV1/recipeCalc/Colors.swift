@@ -13,10 +13,9 @@ let colors: Colors = Colors()
 
 class Colors: UIColor {
     
-    let lightGrey = MaterialColor.grey.lighten5
-    let medGrey = MaterialColor.grey.lighten3
-    let buttonText = MaterialColor.black
+    let light = MaterialColor.grey.lighten5
+    let medium = MaterialColor.grey.base
+    let dark = MaterialColor.grey.darken4
     let background = MaterialColor.white
-    
     
 }

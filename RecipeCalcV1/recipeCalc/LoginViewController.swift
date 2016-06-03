@@ -83,7 +83,7 @@ class LoginViewController: UIViewController, TextFieldDelegate {
         passwordField.enableVisibilityIconButton = true
         
         // Setting the visibilityFlatButton color.
-        passwordField.visibilityIconButton?.tintColor = MaterialColor.black 
+        passwordField.visibilityIconButton?.tintColor = colors.dark 
         
         loginView.addSubview(passwordField)
         

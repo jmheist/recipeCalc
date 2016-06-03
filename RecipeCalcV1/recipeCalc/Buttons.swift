@@ -14,10 +14,10 @@ class B1: FlatButton {
         super.prepareView()
         cornerRadiusPreset = .Radius3
         contentEdgeInsetsPreset = .WideRectangle3
-        backgroundColor = MaterialColor.white
-        borderColor = MaterialColor.black
+        backgroundColor = colors.background
+        borderColor = colors.dark
         borderWidth = 1
-        setTitleColor(MaterialColor.black, forState: .Normal)
+        setTitleColor(colors.dark, forState: .Normal)
     }
 }
 

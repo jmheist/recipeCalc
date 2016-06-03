@@ -23,11 +23,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         FIRApp.configure()
         
-        let bottomNavigationController: BottomNavigationController = BottomNavigationController()
-        bottomNavigationController.viewControllers = [LocalRecipeListVC(), CreateRecipeViewController(), DiscoveryViewController(), ProfileVC()]
-        bottomNavigationController.selectedIndex = 0
-        bottomNavigationController.tabBar.tintColor = MaterialColor.grey.darken3
-        bottomNavigationController.tabBar.backgroundColor = MaterialColor.white
+        MaterialDevice.statusBarHidden = false
+        
+        let localRecipeList: AppNav = AppNav(rootViewController: LocalRecipeListVC())
+        let createRecipeViewController: AppNav = AppNav(rootViewController: CreateRecipeViewController())
+        let discoveryViewController: AppNav = AppNav(rootViewController: DiscoveryViewController())
+        let profileVC: AppNav = AppNav(rootViewController: ProfileVC())
+        
+        let bottomNavigationController: BottomNav = BottomNav()
+        bottomNavigationController.viewControllers = [localRecipeList, createRecipeViewController, discoveryViewController, profileVC]
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window!.rootViewController = bottomNavigationController

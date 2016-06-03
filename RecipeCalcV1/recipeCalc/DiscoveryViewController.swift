@@ -34,7 +34,7 @@ class DiscoveryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareView()
-        prepareTitlebar()
+        prepareNavigationItem()
         prepareRecipeTable()
     }
     
@@ -43,30 +43,15 @@ class DiscoveryViewController: UIViewController {
         view.backgroundColor = colors.background
     }
     
-    func prepareTitlebar() {
-        let titleBar: MaterialView = MaterialView()
-        let titleBarTitle: UILabel = UILabel()
-        
-        titleBar.backgroundColor = colors.medGrey
-        
-        view.addSubview(titleBar)
-        MaterialLayout.height(view, child: titleBar, height: 60)
-        MaterialLayout.alignToParentHorizontally(view, child: titleBar, left: -14, right: -14)
-        
-        titleBarTitle.text = "Discover New Recipes"
-        titleBarTitle.textAlignment = .Center
-        
-        titleBar.addSubview(titleBarTitle)
-        MaterialLayout.alignToParent(titleBar, child: titleBarTitle, top: 20, left: 30, right: 30)
+    /// Prepares the navigationItem.
+    private func prepareNavigationItem() {
+        navigationItem.title = "Discover"
     }
     
     /// Prepare tabBarItem.
     private func prepareTabBarItem() {
         tabBarItem.title = "Discover"
-        tabBarItem.image = MaterialIcon.visibility
-        tabBarItem.setTitleColor(MaterialColor.grey.base, forState: .Normal)
-        tabBarItem.setTitleColor(MaterialColor.teal.base, forState: .Selected)
-    }
+        tabBarItem.image = MaterialIcon.visibility    }
     
     //
     // end bottom nav setup
@@ -81,7 +66,7 @@ class DiscoveryViewController: UIViewController {
         
         // Use MaterialLayout to easily align the tableView.
         view.addSubview(recipeTable)
-        MaterialLayout.alignToParent(view, child: recipeTable, top: 60, bottom: 49)
+        MaterialLayout.alignToParent(view, child: recipeTable, top: 0, bottom: 49)
         
     }
     

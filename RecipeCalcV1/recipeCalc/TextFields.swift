@@ -16,7 +16,7 @@ class T1: TextField {
         masksToBounds = false
         borderStyle = .None
         backgroundColor = nil
-        textColor = MaterialColor.black
+        textColor = colors.dark
         font = RobotoFont.regularWithSize(16)
         contentScaleFactor = MaterialDevice.scale
         clearButtonMode = .WhileEditing
@@ -28,22 +28,22 @@ class T1: TextField {
     
     /// Prepares the divider.
     private func prepareDivider() {
-        dividerColor = MaterialColor.black
-        dividerActiveColor = MaterialColor.black
+        dividerColor = colors.dark
+        dividerActiveColor = colors.dark
         layer.addSublayer(divider)
     }
     
     /// Prepares the placeholderLabel.
     private func preparePlaceholderLabel() {
-        placeholderColor = MaterialColor.black
-        placeholderActiveColor = MaterialColor.black
+        placeholderColor = colors.dark
+        placeholderActiveColor = colors.dark
         addSubview(placeholderLabel)
     }
     
     /// Prepares the detailLabel.
     private func prepareDetailLabel() {
         detailLabel.font = RobotoFont.regularWithSize(12)
-        detailColor = MaterialColor.black
+        detailColor = colors.dark
         addSubview(detailLabel)
     }
     
@@ -67,12 +67,12 @@ class TView: TextView {
         super.prepareView()
         contentScaleFactor = MaterialDevice.scale
         textContainerInset = MaterialEdgeInsetToValue(.None)
-        backgroundColor = MaterialColor.white
-        borderColor = MaterialColor.black
+        backgroundColor = colors.background
+        borderColor = colors.dark
         borderWidth = 1
         cornerRadiusPreset = .Radius3
-        titleLabelColor = MaterialColor.black
-        titleLabelActiveColor = MaterialColor.black
+        titleLabelColor = colors.dark
+        titleLabelActiveColor = colors.dark
         masksToBounds = false
     }
 }

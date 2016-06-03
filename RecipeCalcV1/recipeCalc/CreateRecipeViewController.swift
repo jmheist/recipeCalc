@@ -38,12 +38,13 @@ class CreateRecipeViewController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
         prepareTabBarItem()
+        prepareStatusBarItem()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareView()
-        prepareTitlebar()
+        prepareNavigationItem()
         prepareTextFields()
         prepareFlavorTable()
     }
@@ -57,25 +58,15 @@ class CreateRecipeViewController: UIViewController {
     private func prepareTabBarItem() {
         tabBarItem.title = "Create"
         tabBarItem.image = MaterialIcon.add
-        tabBarItem.setTitleColor(MaterialColor.grey.base, forState: .Normal)
-        tabBarItem.setTitleColor(MaterialColor.teal.base, forState: .Selected)
     }
     
-    func prepareTitlebar() {
-        let titleBar: MaterialView = MaterialView()
-        let titleBarTitle: UILabel = UILabel()
+    private func prepareStatusBarItem() {
         
-        titleBar.backgroundColor = colors.medGrey
-        
-        view.addSubview(titleBar)
-        MaterialLayout.height(view, child: titleBar, height: 60)
-        MaterialLayout.alignToParentHorizontally(view, child: titleBar, left: -14, right: -14)
-        
-        titleBarTitle.text = "Create a Recipe"
-        titleBarTitle.textAlignment = .Center
-        
-        titleBar.addSubview(titleBarTitle)
-        MaterialLayout.alignToParent(titleBar, child: titleBarTitle, top: 20, left: 30, right: 30)
+    }
+    
+    /// Prepares the navigationItem.
+    private func prepareNavigationItem() {
+        navigationItem.title = "Create"
     }
     
     func prepareTextFields() {
@@ -83,11 +74,10 @@ class CreateRecipeViewController: UIViewController {
         // recipe info view
         
         let recipeInfo: MaterialView = MaterialView()
-        recipeInfo.backgroundColor = colors.lightGrey
         view.addSubview(recipeInfo)
         
         MaterialLayout.height(view, child: recipeInfo, height: 165)
-        MaterialLayout.alignFromTop(view, child: recipeInfo, top: 65)
+        MaterialLayout.alignFromTop(view, child: recipeInfo, top: 0)
         MaterialLayout.alignToParentHorizontally(view, child: recipeInfo, left: 14, right: 14)
         
         // recipe info fields
@@ -140,7 +130,6 @@ class CreateRecipeViewController: UIViewController {
         // Flavor Info
         
         let flavorInfo: MaterialView = MaterialView()
-        flavorInfo.backgroundColor = colors.medGrey
         view.addSubview(flavorInfo)
         
         MaterialLayout.height(view, child: flavorInfo, height: 145)
@@ -183,7 +172,7 @@ class CreateRecipeViewController: UIViewController {
         
         addFlavorButton = FlatButton()
         addFlavorButton.setTitle("Add Flavor", forState: .Normal)
-        addFlavorButton.setTitleColor(colors.buttonText, forState: .Normal)
+        addFlavorButton.setTitleColor(colors.dark, forState: .Normal)
         flavorInfo.addSubview(addFlavorButton)
         MaterialLayout.alignToParentHorizontally(flavorInfo, child: addFlavorButton, left: 30, right: 30)
         MaterialLayout.alignFromTop(flavorInfo, child: addFlavorButton, top: 100)

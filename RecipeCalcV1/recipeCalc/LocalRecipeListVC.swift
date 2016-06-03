@@ -16,7 +16,6 @@ class LocalRecipeListVC: UIViewController {
     private var recipeTable: UITableView!
     let cellIdentifier = "RecipeCell"
     
-    
     //
     // bottom nav setup
     //
@@ -37,7 +36,7 @@ class LocalRecipeListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareView()
-        prepareTitlebar()
+        prepareNavigationItem()
         prepareTableView()
     }
     
@@ -51,7 +50,7 @@ class LocalRecipeListVC: UIViewController {
             self.presentViewController(vc, animated: false, completion: nil)
         }
     }
-    
+   
     /// General preparation statements.
     private func prepareView() {
         view.backgroundColor = colors.background
@@ -61,26 +60,11 @@ class LocalRecipeListVC: UIViewController {
     /// Prepare tabBarItem.
     private func prepareTabBarItem() {
         tabBarItem.title = "My Recipes"
-        tabBarItem.image = MaterialIcon.menu
-        tabBarItem.setTitleColor(MaterialColor.grey.base, forState: .Normal)
-        tabBarItem.setTitleColor(MaterialColor.teal.base, forState: .Selected)
-    }
+        tabBarItem.image = MaterialIcon.menu    }
     
-    func prepareTitlebar() {
-        let titleBar: MaterialView = MaterialView()
-        let titleBarTitle: UILabel = UILabel()
-        
-        titleBar.backgroundColor = colors.medGrey
-        
-        view.addSubview(titleBar)
-        MaterialLayout.height(view, child: titleBar, height: 60)
-        MaterialLayout.alignToParentHorizontally(view, child: titleBar, left: -14, right: -14)
-        
-        titleBarTitle.text = "RecipeCalc"
-        titleBarTitle.textAlignment = .Center
-        
-        titleBar.addSubview(titleBarTitle)
-        MaterialLayout.alignToParent(titleBar, child: titleBarTitle, top: 20, left: 30, right: 30)
+    /// Prepares the navigationItem.
+    func prepareNavigationItem() {
+        navigationItem.title = "Recipes"
     }
     
     /// Prepare table
@@ -93,7 +77,7 @@ class LocalRecipeListVC: UIViewController {
         
         // Use MaterialLayout to easily align the tableView.
         view.addSubview(recipeTable)
-        MaterialLayout.alignToParent(view, child: recipeTable, top: 60, bottom: 49)
+        MaterialLayout.alignToParent(view, child: recipeTable, top: 0, bottom: 49)
     }
     
     

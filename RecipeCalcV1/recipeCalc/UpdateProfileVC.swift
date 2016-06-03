@@ -31,13 +31,13 @@ class UpdateProfileVC: UIViewController, TextDelegate {
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        
+        hidesBottomBarWhenPushed = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareView()
-        prepareTitlebar()
+        prepareNavigationItem()
         prepareTextFields()
     }
     
@@ -46,43 +46,9 @@ class UpdateProfileVC: UIViewController, TextDelegate {
         view.backgroundColor = colors.background
     }
     
-    /// Prepare tabBarItem.
-    private func prepareTabBarItem() {
-        tabBarItem.title = "Settings"
-        tabBarItem.image = MaterialIcon.settings
-        tabBarItem.setTitleColor(MaterialColor.grey.base, forState: .Normal)
-        tabBarItem.setTitleColor(MaterialColor.teal.base, forState: .Selected)
-    }
-    
-    func prepareTitlebar() {
-        let titleBar: MaterialView = MaterialView()
-        let titleBarTitle: UILabel = UILabel()
-        let backButton: B1 = B1()
-        
-        titleBar.backgroundColor = colors.medGrey
-        
-        view.addSubview(titleBar)
-        MaterialLayout.height(view, child: titleBar, height: 60)
-        MaterialLayout.alignToParentHorizontally(view, child: titleBar, left: -14, right: -14)
-        
-        backButton.setTitle("Back", forState: .Normal)
-        backButton.setTitleColor(MaterialColor.black, forState: .Normal)
-        backButton.targetForAction(#selector(UpdateProfileVC.didTapBackButton), withSender: self)
-        
-        titleBarTitle.text = "Update Your Profile"
-        titleBarTitle.textAlignment = .Center
-        
-        titleBar.addSubview(titleBarTitle)
-        MaterialLayout.alignToParent(titleBar, child: titleBarTitle, top: 20, left: 30, right: 30)
-        
-        titleBar.addSubview(backButton)
-        MaterialLayout.size(titleBar, child: backButton, width: 40, height: 40)
-        MaterialLayout.alignToParent(titleBar, child: backButton, top: 20, left: 10)
-    }
-    
-    func didTapBackButton() {
-        print("dismissing view")
-        self.dismissViewControllerAnimated(true, completion: nil)
+    /// Prepares the navigationItem.
+    private func prepareNavigationItem() {
+        navigationItem.title = "Update Your Profile"
     }
     
     func prepareTextFields() {
@@ -90,11 +56,10 @@ class UpdateProfileVC: UIViewController, TextDelegate {
         // recipe info view
         
         let userInfo: MaterialView = MaterialView()
-        userInfo.backgroundColor = colors.lightGrey
         view.addSubview(userInfo)
         
         MaterialLayout.height(view, child: userInfo, height: 340)
-        MaterialLayout.alignFromTop(view, child: userInfo, top: 105)
+        MaterialLayout.alignFromTop(view, child: userInfo, top: 0)
         MaterialLayout.alignToParentHorizontally(view, child: userInfo, left: 14, right: 14)
         
         // recipe info fields
@@ -154,13 +119,13 @@ class UpdateProfileVC: UIViewController, TextDelegate {
         userBio.font = RobotoFont.regular
         
         userBio.placeholderLabel = UILabel()
-        userBio.placeholderLabel!.textColor = MaterialColor.black
+        userBio.placeholderLabel!.textColor = colors.dark
         userBio.placeholderLabel!.text = "Description"
         
         userBio.titleLabel = UILabel()
         userBio.titleLabel!.font = RobotoFont.mediumWithSize(16)
-        userBio.titleLabelColor = MaterialColor.black
-        userBio.titleLabelActiveColor = MaterialColor.black
+        userBio.titleLabelColor = colors.dark
+        userBio.titleLabelActiveColor = colors.dark
         
         userInfo.addSubview(userBio)
         MaterialLayout.height(userInfo, child: userBio, height: 90)

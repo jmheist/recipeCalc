@@ -30,6 +30,8 @@
 		73DCEAE21CF69758002BA81C /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAE11CF69758002BA81C /* Labels.swift */; };
 		73DCEAE41CF6988B002BA81C /* TextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAE31CF6988B002BA81C /* TextFields.swift */; };
 		73DCEB041CF7598F002BA81C /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEB031CF7598F002BA81C /* DiscoveryViewController.swift */; };
+		73FEB26E1D00AB70008CD089 /* AppNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FEB26D1D00AB70008CD089 /* AppNav.swift */; };
+		73FEB2711D00BB5F008CD089 /* BottomNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FEB2701D00BB5F008CD089 /* BottomNav.swift */; };
 		BD70AB898FA3BEDEFE850CCA /* Pods_recipeCalc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2DD1A894F376BB0A75146F /* Pods_recipeCalc.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +81,8 @@
 		73DCEAE11CF69758002BA81C /* Labels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
 		73DCEAE31CF6988B002BA81C /* TextFields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFields.swift; sourceTree = "<group>"; };
 		73DCEB031CF7598F002BA81C /* DiscoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
+		73FEB26D1D00AB70008CD089 /* AppNav.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNav.swift; sourceTree = "<group>"; };
+		73FEB2701D00BB5F008CD089 /* BottomNav.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomNav.swift; sourceTree = "<group>"; };
 		7F135C955F4FBDECAAA8E397 /* Pods_recipeCalcUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_recipeCalcUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		872C207450B87D66E90D26CD /* Pods-recipeCalc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-recipeCalc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-recipeCalc/Pods-recipeCalc.debug.xcconfig"; sourceTree = "<group>"; };
 		9DEB14830D49651E7F008BB7 /* Pods_recipeCalcTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_recipeCalcTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +152,7 @@
 				7315D5E61CF4E405002B2588 /* AppDelegate.swift */,
 				73DCEAE01CF69003002BA81C /* Styles */,
 				73B1DCFE1CF547FB002D9E23 /* ViewControllers */,
+				73FEB26F1D00AF5F008CD089 /* Navs */,
 				73DCEACD1CF63DF3002BA81C /* Other Stuff */,
 				73DCEAC21CF629E1002BA81C /* Helpers */,
 				7315D5F01CF4E405002B2588 /* Assets.xcassets */,
@@ -204,7 +209,6 @@
 			isa = PBXGroup;
 			children = (
 				73DCEAD01CF63E2F002BA81C /* RecipeCell.swift */,
-				7314085A1CFE3FD800B5F8DF /* Colors.swift */,
 			);
 			name = "Other Stuff";
 			sourceTree = "<group>";
@@ -215,8 +219,18 @@
 				73DCEADE1CF68FFF002BA81C /* Buttons.swift */,
 				73DCEAE11CF69758002BA81C /* Labels.swift */,
 				73DCEAE31CF6988B002BA81C /* TextFields.swift */,
+				7314085A1CFE3FD800B5F8DF /* Colors.swift */,
 			);
 			name = Styles;
+			sourceTree = "<group>";
+		};
+		73FEB26F1D00AF5F008CD089 /* Navs */ = {
+			isa = PBXGroup;
+			children = (
+				73FEB26D1D00AB70008CD089 /* AppNav.swift */,
+				73FEB2701D00BB5F008CD089 /* BottomNav.swift */,
+			);
+			name = Navs;
 			sourceTree = "<group>";
 		};
 		DC9389527519C695F6055A73 /* Frameworks */ = {
@@ -428,7 +442,9 @@
 				73DCEAE21CF69758002BA81C /* Labels.swift in Sources */,
 				73B1B5B01CFFA520009AFA20 /* ProfileVC.swift in Sources */,
 				73DCEACA1CF62B75002BA81C /* UpdateProfileVC.swift in Sources */,
+				73FEB26E1D00AB70008CD089 /* AppNav.swift in Sources */,
 				73DCEADF1CF68FFF002BA81C /* Buttons.swift in Sources */,
+				73FEB2711D00BB5F008CD089 /* BottomNav.swift in Sources */,
 				73DCEB041CF7598F002BA81C /* DiscoveryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
