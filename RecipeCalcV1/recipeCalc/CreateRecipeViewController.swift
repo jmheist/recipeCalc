@@ -8,6 +8,7 @@
 
 import UIKit
 import Material
+import Firebase
 
 class CreateRecipeViewController: UIViewController {
     
@@ -23,8 +24,17 @@ class CreateRecipeViewController: UIViewController {
     private var addFlavorPct: TextField!;
     private var addFlavorButton: FlatButton!;
     
+    // nav save button
+    private var saveBtn: B2!
+    
+    // table vars
     private var flavorTable: UITableView!
     let cellIdentifier = "FlavorCell"
+    
+    // db vars
+    var ref: FIRDatabaseReference!
+    var recipes: [FIRDataSnapshot]! = []
+    private var _refHandle: FIRDatabaseHandle!
 
     
     required init?(coder aDecoder: NSCoder) {
@@ -38,15 +48,20 @@ class CreateRecipeViewController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
         prepareTabBarItem()
-        prepareStatusBarItem()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureDatabase()
         prepareView()
         prepareNavigationItem()
         prepareTextFields()
         prepareFlavorTable()
+    }
+    
+    func configureDatabase() {
+        ref = FIRDatabase.database().reference()
+        
     }
     
     /// General preparation statements.
@@ -60,13 +75,18 @@ class CreateRecipeViewController: UIViewController {
         tabBarItem.image = MaterialIcon.add
     }
     
-    private func prepareStatusBarItem() {
-        
-    }
     
     /// Prepares the navigationItem.
     private func prepareNavigationItem() {
         navigationItem.title = "Create"
+        
+        
+        saveBtn = B2()
+        saveBtn.setTitle("Save", forState: .Normal)
+        saveBtn.addTarget(self, action: #selector(sendRecipe), forControlEvents: .TouchUpInside)
+        
+        navigationItem.rightControls = [saveBtn]
+        
     }
     
     func prepareTextFields() {
@@ -197,6 +217,18 @@ class CreateRecipeViewController: UIViewController {
         super.touchesBegan(touches, withEvent: event)
     }
     
+    
+    
+    
+    func sendRecipe() {
+        var mdata = [String: String]()
+        mdata["recipeName"] = recipeName.text
+        mdata["creator"] = AppState.sharedInstance.displayName
+        mdata["recipeDesc"] = recipeDesc.text
+        // Push data to Firebase Database
+        self.ref.child("recipes").childByAutoId().setValue(mdata)
+    }
+        
 }
 
 

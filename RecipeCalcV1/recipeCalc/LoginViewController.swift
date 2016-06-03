@@ -59,7 +59,7 @@ class LoginViewController: UIViewController, TextFieldDelegate {
     func prepareEmailRegistration() {
         
         let width: CGFloat = 300
-        let height: CGFloat = 300
+        let height: CGFloat = 350
         
         let loginView: MaterialView = MaterialView(frame: CGRectMake(0, 0, width, height))
         
@@ -111,7 +111,7 @@ class LoginViewController: UIViewController, TextFieldDelegate {
         MaterialLayout.alignFromTop(loginView, child: emailField, top: 30)
         MaterialLayout.alignFromTop(loginView, child: passwordField, top: 100)
         MaterialLayout.alignFromTop(loginView, child: btn, top: 180)
-        MaterialLayout.alignFromTop(loginView, child: btn2, top: 220)
+        MaterialLayout.alignFromTop(loginView, child: btn2, top: 245)
 
     }
     

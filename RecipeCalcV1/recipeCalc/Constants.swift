@@ -16,14 +16,8 @@
 
 struct Constants {
 
-  struct NotificationKeys {
-    static let SignedIn = "onSignInCompleted"
-  }
-
-  struct Segues {
-    static let LoginToFp = "LoginToFp"
-    static let SettingsToLogin = "SettingsToLogin"
-    static let LocalToCreate = "LocalToCreate"
-  }
+    struct NotificationKeys {
+        static let SignedIn = "onSignInCompleted"
+    }
     
 }

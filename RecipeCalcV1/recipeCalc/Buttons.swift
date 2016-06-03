@@ -12,8 +12,8 @@ import Material
 class B1: FlatButton {
     internal override func prepareView() {
         super.prepareView()
-        cornerRadiusPreset = .Radius3
-        contentEdgeInsetsPreset = .WideRectangle3
+        cornerRadiusPreset = .Radius1
+        contentEdgeInsetsPreset = .Square3
         backgroundColor = colors.background
         borderColor = colors.dark
         borderWidth = 1
@@ -22,7 +22,14 @@ class B1: FlatButton {
 }
 
 class B2: MaterialButton {
-    
+    internal override func prepareView() {
+        super.prepareView()
+        setTitleColor(colors.textDark, forState: .Normal)
+        cornerRadiusPreset = .Radius1
+        contentEdgeInsetsPreset = .Square3
+        backgroundColor = colors.background
+        borderWidth = 0
+    }
 }
 
 class B3: MaterialButton {

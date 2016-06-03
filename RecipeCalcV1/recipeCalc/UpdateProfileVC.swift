@@ -20,7 +20,6 @@ class UpdateProfileVC: UIViewController, TextDelegate {
     private var userBio: TextView!
     private var userBioText: Text = Text()
     
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
