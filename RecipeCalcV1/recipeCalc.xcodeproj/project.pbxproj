@@ -14,7 +14,8 @@
 		7315D5F41CF4E405002B2588 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7315D5F21CF4E405002B2588 /* LaunchScreen.storyboard */; };
 		7315D5FF1CF4E405002B2588 /* recipeCalcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7315D5FE1CF4E405002B2588 /* recipeCalcTests.swift */; };
 		7315D60A1CF4E405002B2588 /* recipeCalcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7315D6091CF4E405002B2588 /* recipeCalcUITests.swift */; };
-		7382E3E81D01FC210057674C /* databaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7382E3E71D01FC210057674C /* databaseManager.swift */; };
+		73425DE51D032F9100A69596 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73425DE41D032F9100A69596 /* Recipe.swift */; };
+		734FBA431D03645B007FA0CA /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734FBA421D03645B007FA0CA /* TableVC.swift */; };
 		73B1B5B01CFFA520009AFA20 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */; };
 		73B1DCFB1CF54558002D9E23 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73B1DCFA1CF54558002D9E23 /* GoogleService-Info.plist */; };
 		73B1DCFC1CF54558002D9E23 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73B1DCFA1CF54558002D9E23 /* GoogleService-Info.plist */; };
@@ -68,7 +69,8 @@
 		7315D6051CF4E405002B2588 /* recipeCalcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = recipeCalcUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7315D6091CF4E405002B2588 /* recipeCalcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipeCalcUITests.swift; sourceTree = "<group>"; };
 		7315D60B1CF4E405002B2588 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7382E3E71D01FC210057674C /* databaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = databaseManager.swift; sourceTree = "<group>"; };
+		73425DE41D032F9100A69596 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		734FBA421D03645B007FA0CA /* TableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
 		73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		73B1DCFA1CF54558002D9E23 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		73DCEABE1CF6254B002BA81C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -154,8 +156,9 @@
 				7315D5E61CF4E405002B2588 /* AppDelegate.swift */,
 				73DCEAE01CF69003002BA81C /* Styles */,
 				73B1DCFE1CF547FB002D9E23 /* ViewControllers */,
+				73425DE61D03307200A69596 /* Table Stuff */,
 				73FEB26F1D00AF5F008CD089 /* Navs */,
-				73DCEACD1CF63DF3002BA81C /* Other Stuff */,
+				73DCEACD1CF63DF3002BA81C /* Models */,
 				73DCEAC21CF629E1002BA81C /* Helpers */,
 				7315D5F01CF4E405002B2588 /* Assets.xcassets */,
 				7315D5F21CF4E405002B2588 /* LaunchScreen.storyboard */,
@@ -184,6 +187,15 @@
 			path = recipeCalcUITests;
 			sourceTree = "<group>";
 		};
+		73425DE61D03307200A69596 /* Table Stuff */ = {
+			isa = PBXGroup;
+			children = (
+				73DCEAD01CF63E2F002BA81C /* RecipeCell.swift */,
+				734FBA421D03645B007FA0CA /* TableVC.swift */,
+			);
+			name = "Table Stuff";
+			sourceTree = "<group>";
+		};
 		73B1DCFE1CF547FB002D9E23 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,13 +219,12 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
-		73DCEACD1CF63DF3002BA81C /* Other Stuff */ = {
+		73DCEACD1CF63DF3002BA81C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				73DCEAD01CF63E2F002BA81C /* RecipeCell.swift */,
-				7382E3E71D01FC210057674C /* databaseManager.swift */,
+				73425DE41D032F9100A69596 /* Recipe.swift */,
 			);
-			name = "Other Stuff";
+			name = Models;
 			sourceTree = "<group>";
 		};
 		73DCEAE01CF69003002BA81C /* Styles */ = {
@@ -253,12 +264,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7315D60E1CF4E405002B2588 /* Build configuration list for PBXNativeTarget "recipeCalc" */;
 			buildPhases = (
-				82D1B092F86430FCDCD67C53 /* 📦 Check Pods Manifest.lock */,
+				82D1B092F86430FCDCD67C53 /* [CP] Check Pods Manifest.lock */,
 				7315D5DF1CF4E405002B2588 /* Sources */,
 				7315D5E01CF4E405002B2588 /* Frameworks */,
 				7315D5E11CF4E405002B2588 /* Resources */,
-				FB5AA5DFA68390EB03967FAB /* 📦 Embed Pods Frameworks */,
-				7AAF08C1564D52AD697C334D /* 📦 Copy Pods Resources */,
+				FB5AA5DFA68390EB03967FAB /* [CP] Embed Pods Frameworks */,
+				7AAF08C1564D52AD697C334D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -379,14 +390,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7AAF08C1564D52AD697C334D /* 📦 Copy Pods Resources */ = {
+		7AAF08C1564D52AD697C334D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,14 +405,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-recipeCalc/Pods-recipeCalc-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		82D1B092F86430FCDCD67C53 /* 📦 Check Pods Manifest.lock */ = {
+		82D1B092F86430FCDCD67C53 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,14 +420,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		FB5AA5DFA68390EB03967FAB /* 📦 Embed Pods Frameworks */ = {
+		FB5AA5DFA68390EB03967FAB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,7 +445,6 @@
 				73DCEAC11CF629DC002BA81C /* MeasurementHelper.swift in Sources */,
 				73DCEAC51CF62A11002BA81C /* AppState.swift in Sources */,
 				73DCEABF1CF6254B002BA81C /* LoginViewController.swift in Sources */,
-				7382E3E81D01FC210057674C /* databaseManager.swift in Sources */,
 				73DCEAC81CF62B5A002BA81C /* LocalRecipeListVC.swift in Sources */,
 				7315D5EF1CF4E405002B2588 /* recipeCalc.xcdatamodeld in Sources */,
 				73DCEAE41CF6988B002BA81C /* TextFields.swift in Sources */,
@@ -445,9 +455,11 @@
 				73DCEAC61CF62A11002BA81C /* Constants.swift in Sources */,
 				73DCEAE21CF69758002BA81C /* Labels.swift in Sources */,
 				73B1B5B01CFFA520009AFA20 /* ProfileVC.swift in Sources */,
+				734FBA431D03645B007FA0CA /* TableVC.swift in Sources */,
 				73DCEACA1CF62B75002BA81C /* UpdateProfileVC.swift in Sources */,
 				73FEB26E1D00AB70008CD089 /* AppNav.swift in Sources */,
 				73DCEADF1CF68FFF002BA81C /* Buttons.swift in Sources */,
+				73425DE51D032F9100A69596 /* Recipe.swift in Sources */,
 				73FEB2711D00BB5F008CD089 /* BottomNav.swift in Sources */,
 				73DCEB041CF7598F002BA81C /* DiscoveryViewController.swift in Sources */,
 			);

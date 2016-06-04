@@ -215,10 +215,8 @@ class CreateRecipeViewController: UIViewController {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
+        self.view.resignFirstResponder()
     }
-    
-    
-    
     
     func sendRecipe() {
         var mdata = [String: String]()
@@ -227,6 +225,17 @@ class CreateRecipeViewController: UIViewController {
         mdata["recipeDesc"] = recipeDesc.text
         // Push data to Firebase Database
         self.ref.child("recipes").childByAutoId().setValue(mdata)
+        view.endEditing(true)
+        self.view.resignFirstResponder()
+        
+        recipeName.text = ""
+        recipeDesc.text = ""
+        recipePgPct.text = ""
+        recipeVgPct.text = ""
+        recipeSteepDays.text = ""
+        addFlavorName.text = ""
+        addFlavorBase.selectedSegmentIndex = 0
+        addFlavorPct.text = ""        
     }
         
 }
