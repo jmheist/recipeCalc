@@ -9,16 +9,16 @@
 import UIKit
 import Material
 import Firebase
-import FirebaseDatabaseUI
 
-class TableVC: UIViewController, UITableViewDelegate {
+class TableVC: UIViewController {
     
     // VARS
     var recipeTable: UITableView!
     var ref: FIRDatabaseReference!
-    var dataSource: FirebaseTableViewDataSource!
+    var recipes: [FIRDataSnapshot]! = []
+    private var _refHandle: FIRDatabaseHandle!
     
-    
+
     //
     // bottom nav setup
     //
@@ -36,9 +36,12 @@ class TableVC: UIViewController, UITableViewDelegate {
         prepareTabBarItem()
     }
     
+    deinit {
+        self.ref.child("recipes").removeObserverWithHandle(_refHandle)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureDatabase()
         prepareView()
         prepareNavigationItem()
@@ -56,16 +59,23 @@ class TableVC: UIViewController, UITableViewDelegate {
         }
     }
     
-    func configureDatabase() {
-        ref = FIRDatabase.database().reference()
+    override func viewWillAppear(animated: Bool) {
+        self.recipeTable.reloadData()
     }
     
+    func configureDatabase() {
+        ref = FIRDatabase.database().reference()
+        // Listen for new messages in the Firebase database
+        _refHandle = getQuery().observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
+            self.recipes.append(snapshot)
+            self.recipeTable.insertRowsAtIndexPaths([NSIndexPath(forRow: self.recipes.count-1, inSection: 0)], withRowAnimation: .Automatic)
+        })
+    }
     
     /// General preparation statements.
     func prepareView() {
         view.backgroundColor = colors.background
     }
-    
     
     /// Prepare tabBarItem.
     func prepareTabBarItem() {
@@ -79,63 +89,64 @@ class TableVC: UIViewController, UITableViewDelegate {
     
     /// Prepare table
     func prepareTableView() {
+        
         recipeTable = UITableView()
+        recipeTable.registerClass(MaterialTableViewCell.self, forCellReuseIdentifier: "recipeCell")
+        recipeTable.dataSource = self
+        recipeTable.delegate = self
         
         view.addSubview(recipeTable)
         MaterialLayout.alignToParent(view, child: recipeTable, top: 0, left: 0, bottom: 49, right: 0)
         
-        dataSource = FirebaseTableViewDataSource.init(
-            query: getQuery(), modelClass: Recipe.self, cellClass: RecipeCell.self, cellReuseIdentifier: "recipe", view: self.recipeTable
-        )
+    }
+    
+    func getQuery() -> FIRDatabaseReference {
+        return self.ref
+    }
+}
 
-        dataSource?.populateCellWithBlock(){
-            let cell = $0 as! RecipeCell
-            let recipe = $1 as! Recipe
-            cell.recipeName.text = recipe.recipeName
-            cell.creator.text = recipe.creator
-            cell.recipeDesc.text = recipe.recipeDesc
-        }
-        
-        recipeTable.dataSource = dataSource
-        recipeTable.delegate = self
-        
-        // UITableViewDelegate Functions
-        func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-            
-            if(editingStyle == UITableViewCellEditingStyle.Delete){
-                // Recipe.
-            }
-            
-        }
-        
-        
+
+/// TableViewDataSource methods.
+extension TableVC: UITableViewDataSource {
+
+    // UITableViewDataSource protocol methods
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return recipes.count
     }
-    
-    override func viewWillAppear(animated: Bool) {
-        self.recipeTable.reloadData()
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        // Dequeue cell
+        let cell: RecipeCell = RecipeCell(style: .Default, reuseIdentifier: "recipeCell")
+        // Unpack message from Firebase DataSnapshot
+        let recipeSnapshot: FIRDataSnapshot! = self.recipes[indexPath.row]
+        let recipe = recipeSnapshot.value as! Dictionary<String, String>
+        
+        cell.selectionStyle = .None
+        cell.recipeName.text = recipe["recipeName"]
+        cell.recipeName.font = RobotoFont.regular
+        
+        cell.recipeDesc.text = recipe["recipeDesc"]
+        cell.recipeDesc.font = RobotoFont.regular
+        cell.recipeDesc.textColor = MaterialColor.grey.darken1
+        
+        cell.creator.text = recipe["creator"]
+        cell.creator.font = RobotoFont.regular
+        cell.creator.textColor = MaterialColor.grey.darken1
+        
+        cell.recipeID = recipe
+        
+        return cell
     }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //
-    }
-    
+}
+
+/// UITableViewDelegate methods.
+extension TableVC: UITableViewDelegate {
+    /// Sets the tableView cell height.
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 80
     }
     
-    func getUid() -> String {
-        return (FIRAuth.auth()?.currentUser?.uid)!
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("Row #\(indexPath.row) Selected, with recipeID of \(recipes[indexPath.row])")
     }
-    
-    func getQuery() -> FIRDatabaseQuery {
-        let recentPostsQuery = (ref)!
-        return recentPostsQuery
-    }
-    
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            //
-        }
-    }
-    
 }

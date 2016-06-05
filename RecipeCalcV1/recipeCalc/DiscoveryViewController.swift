@@ -11,7 +11,7 @@ import Material
 import Firebase
 import FirebaseAuthUI
 
-class DiscoveryViewController: LocalRecipeListVC {
+class DiscoveryViewController: TableVC {
 
     override func prepareView() {
         super.prepareView()
@@ -27,10 +27,8 @@ class DiscoveryViewController: LocalRecipeListVC {
         navigationItem.title = "Discover"
     }
     
-    override func getQuery() -> FIRDatabaseQuery {
-        let recentPostsQuery = (ref?.child("recipes"))!
-        return recentPostsQuery
+    override func getQuery() -> FIRDatabaseReference {
+        return ref.child("recipes")
     }
 
-    
 }

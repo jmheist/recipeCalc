@@ -1,0 +1,598 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7333C29A1CEF6B9500E01359 /* FlavorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333C2991CEF6B9500E01359 /* FlavorManager.swift */; };
+		73561F0E1CF275F000AEAC3C /* RecipeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73561F0D1CF275F000AEAC3C /* RecipeListCell.swift */; };
+		73926B141CED2E3E00315AB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73926B131CED2E3E00315AB7 /* AppDelegate.swift */; };
+		73926B161CED2E3E00315AB7 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73926B151CED2E3E00315AB7 /* FirstViewController.swift */; };
+		73926B181CED2E3E00315AB7 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73926B171CED2E3E00315AB7 /* SecondViewController.swift */; };
+		73926B1B1CED2E3E00315AB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73926B191CED2E3E00315AB7 /* Main.storyboard */; };
+		73926B1D1CED2E3E00315AB7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73926B1C1CED2E3E00315AB7 /* Images.xcassets */; };
+		73926B201CED2E3E00315AB7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73926B1E1CED2E3E00315AB7 /* LaunchScreen.xib */; };
+		73926B2C1CED2E3E00315AB7 /* eLiquid_Recipe_CalcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73926B2B1CED2E3E00315AB7 /* eLiquid_Recipe_CalcTests.swift */; };
+		73926B381CED3BE400315AB7 /* RecipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73926B371CED3BE400315AB7 /* RecipeManager.swift */; };
+		73926B421CED60D800315AB7 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73926B401CED60D800315AB7 /* Realm.framework */; };
+		73926B431CED60D800315AB7 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 73926B401CED60D800315AB7 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		73926B441CED60D800315AB7 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73926B411CED60D800315AB7 /* RealmSwift.framework */; };
+		73926B451CED60D800315AB7 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 73926B411CED60D800315AB7 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		73926B491CED635700315AB7 /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73926B481CED635700315AB7 /* RecipeModel.swift */; };
+		73A7439C1CF287BD00091F37 /* PreMixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A7439B1CF287BD00091F37 /* PreMixViewController.swift */; };
+		73DBFC851CF36EF20025F34F /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DBFC841CF36EF20025F34F /* ErrorManager.swift */; };
+		73DFCC4A1CF3E91E0091E6BE /* MixSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DFCC491CF3E91E0091E6BE /* MixSettingsViewController.swift */; };
+		73DFCC4C1CF3ECE60091E6BE /* SwiftForms in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 73DFCC4B1CF3ECE60091E6BE /* SwiftForms */; };
+		B03560FB9DFDF62A25E1D2EF /* Pods_eLiquid_Recipe_Calc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EEB92A4654AF3F433A214CC /* Pods_eLiquid_Recipe_Calc.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		73926B261CED2E3E00315AB7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 73926B061CED2E3E00315AB7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 73926B0D1CED2E3E00315AB7;
+			remoteInfo = "eLiquid Recipe Calc";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		73926B461CED60D800315AB7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				73DFCC4C1CF3ECE60091E6BE /* SwiftForms in Embed Frameworks */,
+				73926B451CED60D800315AB7 /* RealmSwift.framework in Embed Frameworks */,
+				73926B431CED60D800315AB7 /* Realm.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		233FF793953C087264D75E84 /* Pods-eLiquid Recipe Calc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eLiquid Recipe Calc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eLiquid Recipe Calc/Pods-eLiquid Recipe Calc.debug.xcconfig"; sourceTree = "<group>"; };
+		4EA32061590BD82DCDD05774 /* Pods_eLiquid_Recipe_CalcTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eLiquid_Recipe_CalcTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6EEB92A4654AF3F433A214CC /* Pods_eLiquid_Recipe_Calc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eLiquid_Recipe_Calc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7333C2991CEF6B9500E01359 /* FlavorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlavorManager.swift; sourceTree = "<group>"; };
+		73561F0D1CF275F000AEAC3C /* RecipeListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeListCell.swift; sourceTree = "<group>"; };
+		73926B0E1CED2E3E00315AB7 /* eLiquid Recipe Calc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "eLiquid Recipe Calc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		73926B121CED2E3E00315AB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		73926B131CED2E3E00315AB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		73926B151CED2E3E00315AB7 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		73926B171CED2E3E00315AB7 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		73926B1A1CED2E3E00315AB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		73926B1C1CED2E3E00315AB7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		73926B1F1CED2E3E00315AB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		73926B251CED2E3E00315AB7 /* eLiquid Recipe CalcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "eLiquid Recipe CalcTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		73926B2A1CED2E3E00315AB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		73926B2B1CED2E3E00315AB7 /* eLiquid_Recipe_CalcTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eLiquid_Recipe_CalcTests.swift; sourceTree = "<group>"; };
+		73926B371CED3BE400315AB7 /* RecipeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeManager.swift; sourceTree = "<group>"; };
+		73926B401CED60D800315AB7 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		73926B411CED60D800315AB7 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		73926B481CED635700315AB7 /* RecipeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
+		73A7439B1CF287BD00091F37 /* PreMixViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreMixViewController.swift; sourceTree = "<group>"; };
+		73DBFC841CF36EF20025F34F /* ErrorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
+		73DFCC491CF3E91E0091E6BE /* MixSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixSettingsViewController.swift; sourceTree = "<group>"; };
+		73DFCC4B1CF3ECE60091E6BE /* SwiftForms */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftForms; path = Pods/SwiftForms; sourceTree = "<group>"; };
+		EE21AEC7A2DC090E6FE3F274 /* Pods-eLiquid Recipe Calc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eLiquid Recipe Calc.release.xcconfig"; path = "Pods/Target Support Files/Pods-eLiquid Recipe Calc/Pods-eLiquid Recipe Calc.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		73926B0B1CED2E3E00315AB7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73926B441CED60D800315AB7 /* RealmSwift.framework in Frameworks */,
+				73926B421CED60D800315AB7 /* Realm.framework in Frameworks */,
+				B03560FB9DFDF62A25E1D2EF /* Pods_eLiquid_Recipe_Calc.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		73926B221CED2E3E00315AB7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		60394D3DEFEEF1DA539D9C0A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6EEB92A4654AF3F433A214CC /* Pods_eLiquid_Recipe_Calc.framework */,
+				4EA32061590BD82DCDD05774 /* Pods_eLiquid_Recipe_CalcTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		73926B051CED2E3E00315AB7 = {
+			isa = PBXGroup;
+			children = (
+				73DFCC4B1CF3ECE60091E6BE /* SwiftForms */,
+				73926B401CED60D800315AB7 /* Realm.framework */,
+				73926B411CED60D800315AB7 /* RealmSwift.framework */,
+				73926B101CED2E3E00315AB7 /* eLiquid Recipe Calc */,
+				73926B281CED2E3E00315AB7 /* eLiquid Recipe CalcTests */,
+				73926B0F1CED2E3E00315AB7 /* Products */,
+				945D46C576A769668B67826F /* Pods */,
+				60394D3DEFEEF1DA539D9C0A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		73926B0F1CED2E3E00315AB7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				73926B0E1CED2E3E00315AB7 /* eLiquid Recipe Calc.app */,
+				73926B251CED2E3E00315AB7 /* eLiquid Recipe CalcTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		73926B101CED2E3E00315AB7 /* eLiquid Recipe Calc */ = {
+			isa = PBXGroup;
+			children = (
+				73926B131CED2E3E00315AB7 /* AppDelegate.swift */,
+				73926B151CED2E3E00315AB7 /* FirstViewController.swift */,
+				73926B171CED2E3E00315AB7 /* SecondViewController.swift */,
+				73A7439B1CF287BD00091F37 /* PreMixViewController.swift */,
+				73DFCC491CF3E91E0091E6BE /* MixSettingsViewController.swift */,
+				73926B371CED3BE400315AB7 /* RecipeManager.swift */,
+				7333C2991CEF6B9500E01359 /* FlavorManager.swift */,
+				73DBFC841CF36EF20025F34F /* ErrorManager.swift */,
+				73926B191CED2E3E00315AB7 /* Main.storyboard */,
+				73926B481CED635700315AB7 /* RecipeModel.swift */,
+				73561F0D1CF275F000AEAC3C /* RecipeListCell.swift */,
+				73926B1C1CED2E3E00315AB7 /* Images.xcassets */,
+				73926B1E1CED2E3E00315AB7 /* LaunchScreen.xib */,
+				73926B111CED2E3E00315AB7 /* Supporting Files */,
+			);
+			path = "eLiquid Recipe Calc";
+			sourceTree = "<group>";
+		};
+		73926B111CED2E3E00315AB7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				73926B121CED2E3E00315AB7 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		73926B281CED2E3E00315AB7 /* eLiquid Recipe CalcTests */ = {
+			isa = PBXGroup;
+			children = (
+				73926B2B1CED2E3E00315AB7 /* eLiquid_Recipe_CalcTests.swift */,
+				73926B291CED2E3E00315AB7 /* Supporting Files */,
+			);
+			path = "eLiquid Recipe CalcTests";
+			sourceTree = "<group>";
+		};
+		73926B291CED2E3E00315AB7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				73926B2A1CED2E3E00315AB7 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		945D46C576A769668B67826F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				233FF793953C087264D75E84 /* Pods-eLiquid Recipe Calc.debug.xcconfig */,
+				EE21AEC7A2DC090E6FE3F274 /* Pods-eLiquid Recipe Calc.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		73926B0D1CED2E3E00315AB7 /* eLiquid Recipe Calc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 73926B2F1CED2E3E00315AB7 /* Build configuration list for PBXNativeTarget "eLiquid Recipe Calc" */;
+			buildPhases = (
+				232877A8BF08B604E5F4F428 /* 📦 Check Pods Manifest.lock */,
+				73926B0A1CED2E3E00315AB7 /* Sources */,
+				73926B0B1CED2E3E00315AB7 /* Frameworks */,
+				73926B0C1CED2E3E00315AB7 /* Resources */,
+				73926B461CED60D800315AB7 /* Embed Frameworks */,
+				73926B471CED61DC00315AB7 /* ShellScript */,
+				40576EEA8BB3B4CAB862109A /* 📦 Embed Pods Frameworks */,
+				BAB72F9294059A293F1D6196 /* 📦 Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "eLiquid Recipe Calc";
+			productName = "eLiquid Recipe Calc";
+			productReference = 73926B0E1CED2E3E00315AB7 /* eLiquid Recipe Calc.app */;
+			productType = "com.apple.product-type.application";
+		};
+		73926B241CED2E3E00315AB7 /* eLiquid Recipe CalcTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 73926B321CED2E3E00315AB7 /* Build configuration list for PBXNativeTarget "eLiquid Recipe CalcTests" */;
+			buildPhases = (
+				73926B211CED2E3E00315AB7 /* Sources */,
+				73926B221CED2E3E00315AB7 /* Frameworks */,
+				73926B231CED2E3E00315AB7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				73926B271CED2E3E00315AB7 /* PBXTargetDependency */,
+			);
+			name = "eLiquid Recipe CalcTests";
+			productName = "eLiquid Recipe CalcTests";
+			productReference = 73926B251CED2E3E00315AB7 /* eLiquid Recipe CalcTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		73926B061CED2E3E00315AB7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftMigration = 0730;
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "Vape&Prosper";
+				TargetAttributes = {
+					73926B0D1CED2E3E00315AB7 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					73926B241CED2E3E00315AB7 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 73926B0D1CED2E3E00315AB7;
+					};
+				};
+			};
+			buildConfigurationList = 73926B091CED2E3E00315AB7 /* Build configuration list for PBXProject "eLiquid Recipe Calc" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 73926B051CED2E3E00315AB7;
+			productRefGroup = 73926B0F1CED2E3E00315AB7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				73926B0D1CED2E3E00315AB7 /* eLiquid Recipe Calc */,
+				73926B241CED2E3E00315AB7 /* eLiquid Recipe CalcTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		73926B0C1CED2E3E00315AB7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73926B1B1CED2E3E00315AB7 /* Main.storyboard in Resources */,
+				73926B201CED2E3E00315AB7 /* LaunchScreen.xib in Resources */,
+				73926B1D1CED2E3E00315AB7 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		73926B231CED2E3E00315AB7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		232877A8BF08B604E5F4F428 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		40576EEA8BB3B4CAB862109A /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-eLiquid Recipe Calc/Pods-eLiquid Recipe Calc-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		73926B471CED61DC00315AB7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"";
+		};
+		BAB72F9294059A293F1D6196 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-eLiquid Recipe Calc/Pods-eLiquid Recipe Calc-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		73926B0A1CED2E3E00315AB7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73DBFC851CF36EF20025F34F /* ErrorManager.swift in Sources */,
+				73926B181CED2E3E00315AB7 /* SecondViewController.swift in Sources */,
+				73A7439C1CF287BD00091F37 /* PreMixViewController.swift in Sources */,
+				73926B141CED2E3E00315AB7 /* AppDelegate.swift in Sources */,
+				73926B491CED635700315AB7 /* RecipeModel.swift in Sources */,
+				73561F0E1CF275F000AEAC3C /* RecipeListCell.swift in Sources */,
+				73926B381CED3BE400315AB7 /* RecipeManager.swift in Sources */,
+				73926B161CED2E3E00315AB7 /* FirstViewController.swift in Sources */,
+				73DFCC4A1CF3E91E0091E6BE /* MixSettingsViewController.swift in Sources */,
+				7333C29A1CEF6B9500E01359 /* FlavorManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		73926B211CED2E3E00315AB7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73926B2C1CED2E3E00315AB7 /* eLiquid_Recipe_CalcTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		73926B271CED2E3E00315AB7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 73926B0D1CED2E3E00315AB7 /* eLiquid Recipe Calc */;
+			targetProxy = 73926B261CED2E3E00315AB7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		73926B191CED2E3E00315AB7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				73926B1A1CED2E3E00315AB7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		73926B1E1CED2E3E00315AB7 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				73926B1F1CED2E3E00315AB7 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		73926B2D1CED2E3E00315AB7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		73926B2E1CED2E3E00315AB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		73926B301CED2E3E00315AB7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 233FF793953C087264D75E84 /* Pods-eLiquid Recipe Calc.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "eLiquid Recipe Calc/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		73926B311CED2E3E00315AB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE21AEC7A2DC090E6FE3F274 /* Pods-eLiquid Recipe Calc.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = (
+					/Users/jheister/Dropbox/Apps/recipeapp/eLiquid,
+					Recipe,
+					CalcRealmSwift.framework,
+				);
+				INFOPLIST_FILE = "eLiquid Recipe Calc/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		73926B331CED2E3E00315AB7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "eLiquid Recipe CalcTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/eLiquid Recipe Calc.app/eLiquid Recipe Calc";
+			};
+			name = Debug;
+		};
+		73926B341CED2E3E00315AB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "eLiquid Recipe CalcTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/eLiquid Recipe Calc.app/eLiquid Recipe Calc";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		73926B091CED2E3E00315AB7 /* Build configuration list for PBXProject "eLiquid Recipe Calc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				73926B2D1CED2E3E00315AB7 /* Debug */,
+				73926B2E1CED2E3E00315AB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		73926B2F1CED2E3E00315AB7 /* Build configuration list for PBXNativeTarget "eLiquid Recipe Calc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				73926B301CED2E3E00315AB7 /* Debug */,
+				73926B311CED2E3E00315AB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		73926B321CED2E3E00315AB7 /* Build configuration list for PBXNativeTarget "eLiquid Recipe CalcTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				73926B331CED2E3E00315AB7 /* Debug */,
+				73926B341CED2E3E00315AB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 73926B061CED2E3E00315AB7 /* Project object */;
+}

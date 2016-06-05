@@ -27,10 +27,18 @@ class LocalRecipeListVC: TableVC {
         navigationItem.title = "Recipes"
     }
     
-    override func getQuery() -> FIRDatabaseQuery {
-        let recentPostsQuery = (ref?.child("recipes"))!
-        return recentPostsQuery
+    override func getQuery() -> FIRDatabaseReference {
+        return ref.child("recipes")
     }
     
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if(editingStyle == UITableViewCellEditingStyle.Delete){
+            getQuery().child(recipes[indexPath.row].key).removeValue()
+            self.recipes.removeAtIndex(indexPath.row)
+            self.recipeTable.reloadData()
+        }
+        
+    }
     
 }
