@@ -14,10 +14,6 @@ class TableVC: UIViewController {
     
     // VARS
     var recipeTable: UITableView!
-    var ref: FIRDatabaseReference!
-    var recipes: [FIRDataSnapshot]! = []
-    private var _refHandle: FIRDatabaseHandle!
-    
 
     //
     // bottom nav setup
@@ -34,10 +30,6 @@ class TableVC: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
         prepareTabBarItem()
-    }
-    
-    deinit {
-        self.ref.child("recipes").removeObserverWithHandle(_refHandle)
     }
     
     override func viewDidLoad() {
@@ -65,11 +57,6 @@ class TableVC: UIViewController {
     
     func configureDatabase() {
         ref = FIRDatabase.database().reference()
-        // Listen for new messages in the Firebase database
-        _refHandle = getQuery().observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
-            self.recipes.append(snapshot)
-            self.recipeTable.insertRowsAtIndexPaths([NSIndexPath(forRow: self.recipes.count-1, inSection: 0)], withRowAnimation: .Automatic)
-        })
     }
     
     /// General preparation statements.
@@ -91,7 +78,7 @@ class TableVC: UIViewController {
     func prepareTableView() {
         
         recipeTable = UITableView()
-        recipeTable.registerClass(MaterialTableViewCell.self, forCellReuseIdentifier: "recipeCell")
+        registerMyClass()
         recipeTable.dataSource = self
         recipeTable.delegate = self
         
@@ -100,8 +87,8 @@ class TableVC: UIViewController {
         
     }
     
-    func getQuery() -> FIRDatabaseReference {
-        return self.ref
+    func registerMyClass() {
+        recipeTable.registerClass(MaterialTableViewCell.self, forCellReuseIdentifier: "recipeCell")
     }
 }
 
@@ -118,7 +105,7 @@ extension TableVC: UITableViewDataSource {
         // Dequeue cell
         let cell: RecipeCell = RecipeCell(style: .Default, reuseIdentifier: "recipeCell")
         // Unpack message from Firebase DataSnapshot
-        let recipeSnapshot: FIRDataSnapshot! = self.recipes[indexPath.row]
+        let recipeSnapshot: FIRDataSnapshot! = recipes[indexPath.row]
         let recipe = recipeSnapshot.value as! Dictionary<String, String>
         
         cell.selectionStyle = .None
@@ -144,10 +131,6 @@ extension TableVC: UITableViewDelegate {
     /// Sets the tableView cell height.
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 80
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("Row #\(indexPath.row) Selected, with recipeID of \(recipes[indexPath.row])")
     }
     
 }

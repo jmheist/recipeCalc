@@ -12,7 +12,14 @@ import Firebase
 import FirebaseAuthUI
 
 class DiscoveryViewController: TableVC {
-
+    
+    private var _refHandle: FIRDatabaseHandle!
+    private var _refDeleteHandle: FIRDatabaseHandle!
+    
+    deinit {
+        ref.child("myRecipes").removeObserverWithHandle(_refHandle)
+    }
+    
     override func prepareView() {
         super.prepareView()
     }
@@ -27,8 +34,20 @@ class DiscoveryViewController: TableVC {
         navigationItem.title = "Discover"
     }
     
-    override func getQuery() -> FIRDatabaseReference {
-        return ref.child("recipes")
+    override func configureDatabase() {
+        ref = FIRDatabase.database().reference()
+        
+        ///////
+        /////// Todo: IMPLIMENT PULL TO REFRESH EVENTUALLY
+        ///////
+        
+        _refHandle = Queries.recipes.observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
+            recipes.append(snapshot)
+            self.recipeTable.insertRowsAtIndexPaths([NSIndexPath(forRow: recipes.count-1, inSection: 0)], withRowAnimation: .Automatic)
+        })
+        _refDeleteHandle = Queries.recipes.observeEventType(.ChildRemoved, withBlock: { (snapshot) -> Void in
+            print("discovery recipe deleted")
+        })
     }
 
 }

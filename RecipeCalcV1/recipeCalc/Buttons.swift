@@ -33,6 +33,13 @@ class B2: MaterialButton {
 }
 
 class B3: MaterialButton {
-    
+    internal override func prepareView() {
+        super.prepareView()
+        setTitleColor(colors.textDark, forState: .Normal)
+        cornerRadiusPreset = .Radius1
+        contentEdgeInsetsPreset = .Square3
+        backgroundColor = colors.background
+        borderWidth = 0
+    }
 }
 

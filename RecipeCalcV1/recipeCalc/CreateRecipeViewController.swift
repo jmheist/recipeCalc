@@ -80,7 +80,6 @@ class CreateRecipeViewController: UIViewController {
     private func prepareNavigationItem() {
         navigationItem.title = "Create"
         
-        
         saveBtn = B2()
         saveBtn.setTitle("Save", forState: .Normal)
         saveBtn.addTarget(self, action: #selector(sendRecipe), forControlEvents: .TouchUpInside)
@@ -224,7 +223,7 @@ class CreateRecipeViewController: UIViewController {
         mdata["creator"] = AppState.sharedInstance.displayName
         mdata["recipeDesc"] = recipeDesc.text
         // Push data to Firebase Database
-        self.ref.child("recipes").childByAutoId().setValue(mdata)
+        self.ref.child("myRecipes").childByAutoId().setValue(mdata)
         view.endEditing(true)
         self.view.resignFirstResponder()
         

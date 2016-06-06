@@ -14,7 +14,8 @@
 		7315D5F41CF4E405002B2588 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7315D5F21CF4E405002B2588 /* LaunchScreen.storyboard */; };
 		7315D5FF1CF4E405002B2588 /* recipeCalcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7315D5FE1CF4E405002B2588 /* recipeCalcTests.swift */; };
 		7315D60A1CF4E405002B2588 /* recipeCalcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7315D6091CF4E405002B2588 /* recipeCalcUITests.swift */; };
-		73425DE51D032F9100A69596 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73425DE41D032F9100A69596 /* Recipe.swift */; };
+		7327970E1D04EFFF009C8BCB /* MyRecipesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7327970D1D04EFFF009C8BCB /* MyRecipesCell.swift */; };
+		73425DE51D032F9100A69596 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73425DE41D032F9100A69596 /* Firebase.swift */; };
 		734FBA431D03645B007FA0CA /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734FBA421D03645B007FA0CA /* TableVC.swift */; };
 		73B1B5B01CFFA520009AFA20 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */; };
 		73B1DCFB1CF54558002D9E23 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73B1DCFA1CF54558002D9E23 /* GoogleService-Info.plist */; };
@@ -69,7 +70,8 @@
 		7315D6051CF4E405002B2588 /* recipeCalcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = recipeCalcUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7315D6091CF4E405002B2588 /* recipeCalcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipeCalcUITests.swift; sourceTree = "<group>"; };
 		7315D60B1CF4E405002B2588 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		73425DE41D032F9100A69596 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		7327970D1D04EFFF009C8BCB /* MyRecipesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRecipesCell.swift; sourceTree = "<group>"; };
+		73425DE41D032F9100A69596 /* Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		734FBA421D03645B007FA0CA /* TableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
 		73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		73B1DCFA1CF54558002D9E23 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				73DCEAD01CF63E2F002BA81C /* RecipeCell.swift */,
+				7327970D1D04EFFF009C8BCB /* MyRecipesCell.swift */,
 				734FBA421D03645B007FA0CA /* TableVC.swift */,
 			);
 			name = "Table Stuff";
@@ -222,7 +225,7 @@
 		73DCEACD1CF63DF3002BA81C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				73425DE41D032F9100A69596 /* Recipe.swift */,
+				73425DE41D032F9100A69596 /* Firebase.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				7315D5E71CF4E405002B2588 /* AppDelegate.swift in Sources */,
 				73DCEAD31CF65323002BA81C /* CreateRecipeViewController.swift in Sources */,
 				7314085B1CFE3FD800B5F8DF /* Colors.swift in Sources */,
+				7327970E1D04EFFF009C8BCB /* MyRecipesCell.swift in Sources */,
 				73DCEAC61CF62A11002BA81C /* Constants.swift in Sources */,
 				73DCEAE21CF69758002BA81C /* Labels.swift in Sources */,
 				73B1B5B01CFFA520009AFA20 /* ProfileVC.swift in Sources */,
@@ -459,7 +463,7 @@
 				73DCEACA1CF62B75002BA81C /* UpdateProfileVC.swift in Sources */,
 				73FEB26E1D00AB70008CD089 /* AppNav.swift in Sources */,
 				73DCEADF1CF68FFF002BA81C /* Buttons.swift in Sources */,
-				73425DE51D032F9100A69596 /* Recipe.swift in Sources */,
+				73425DE51D032F9100A69596 /* Firebase.swift in Sources */,
 				73FEB2711D00BB5F008CD089 /* BottomNav.swift in Sources */,
 				73DCEB041CF7598F002BA81C /* DiscoveryViewController.swift in Sources */,
 			);
