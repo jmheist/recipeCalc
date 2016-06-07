@@ -78,11 +78,9 @@ class ProfileVC: UIViewController {
     
     func prepareProfile() {
         
-//        let profileView: MaterialView = MaterialView()
-//        view.addSubview(profileView)
-//        MaterialLayout.alignToParent(view, child: profileView, top: 90, left: 0, right: 0, bottom: 49)
-        
-        
+        //////
+        ////// Todo: Profile Stuff Goes here
+        //////
     }
     
     func didTapUpdateProfile() {

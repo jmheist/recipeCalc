@@ -14,16 +14,17 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
     
     // text fields
     
-    private var recipeName: T1!;
-    private var recipeDesc: T2!;
-    private var recipePgPct: T2!;
-    private var recipeVgPct: T2!;
-    private var recipeSteepDays: T2!;
+    private var recipeName: T1!
+    private var recipeDesc: T2!
+    private var recipePgPct: T2!
+    private var recipeVgPct: T2!
+    private var recipeNicStrength: T2!
+    private var recipeSteepDays: T2!
     
-    private var addFlavorName: T1!;
-    private var addFlavorBase: UISegmentedControl!;
-    private var addFlavorPct: T2!;
-    private var addFlavorButton: B2!;
+    private var addFlavorName: T1!
+    private var addFlavorBase: UISegmentedControl!
+    private var addFlavorPct: T2!
+    private var addFlavorButton: B2!
     
     // flavors
     let flavorMGR: FlavorManager = FlavorManager()
@@ -36,8 +37,6 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
     let cellIdentifier = "FlavorCell"
     
     // db vars
-    var ref: FIRDatabaseReference!
-    var recipes: [FIRDataSnapshot]! = []
     private var _refHandle: FIRDatabaseHandle!
 
     
@@ -63,8 +62,6 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
     }
     
     func configureDatabase() {
-        ref = FIRDatabase.database().reference()
-        
     }
     
     /// General preparation statements.
@@ -127,7 +124,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         recipePgPct.font = RobotoFont.regularWithSize(14)
         recipePgPct.clearButtonMode = .WhileEditing
         recipeInfo.addSubview(recipePgPct)
-        MaterialLayout.size(recipeInfo, child: recipePgPct, width: 80, height: 18)
+        MaterialLayout.size(recipeInfo, child: recipePgPct, width: 120, height: 18)
         MaterialLayout.alignFromLeft(recipeInfo, child: recipePgPct, left: 10)
         MaterialLayout.alignFromTop(recipeInfo, child: recipePgPct, top: 130)
         
@@ -136,9 +133,18 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         recipeVgPct.font = RobotoFont.regularWithSize(14)
         recipeVgPct.clearButtonMode = .WhileEditing
         recipeInfo.addSubview(recipeVgPct)
-        MaterialLayout.size(recipeInfo, child: recipeVgPct, width: 80, height: 18)
-        MaterialLayout.alignFromLeft(recipeInfo, child: recipeVgPct, left: 100)
+        MaterialLayout.size(recipeInfo, child: recipeVgPct, width: 120, height: 18)
+        MaterialLayout.alignFromRight(recipeInfo, child: recipeVgPct, right: 10)
         MaterialLayout.alignFromTop(recipeInfo, child: recipeVgPct, top: 130)
+        
+        recipeNicStrength = T2()
+        recipeNicStrength.placeholder = "Nic Strength (mg)"
+        recipeNicStrength.font = RobotoFont.regularWithSize(14)
+        recipeNicStrength.clearButtonMode = .WhileEditing
+        recipeInfo.addSubview(recipeNicStrength)
+        MaterialLayout.size(recipeInfo, child: recipeNicStrength, width: 120, height: 18)
+        MaterialLayout.alignFromLeft(recipeInfo, child: recipeNicStrength, left: 10)
+        MaterialLayout.alignFromTop(recipeInfo, child: recipeNicStrength, top: 160)
         
         recipeSteepDays = T2()
         recipeSteepDays.placeholder = "Days to Steep"
@@ -146,8 +152,8 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         recipeSteepDays.clearButtonMode = .WhileEditing
         recipeInfo.addSubview(recipeSteepDays)
         MaterialLayout.size(recipeInfo, child: recipeSteepDays, width: 120, height: 18)
-        MaterialLayout.alignFromLeft(recipeInfo, child: recipeSteepDays, left: 200)
-        MaterialLayout.alignFromTop(recipeInfo, child: recipeSteepDays, top: 130)
+        MaterialLayout.alignFromRight(recipeInfo, child: recipeSteepDays, right: 10)
+        MaterialLayout.alignFromTop(recipeInfo, child: recipeSteepDays, top: 160)
         
         // Flavor Info
         
@@ -155,7 +161,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(flavorInfo)
         
         MaterialLayout.alignToParentHorizontally(view, child: flavorInfo, left: 14, right: 14)
-        MaterialLayout.alignToParentVertically(view, child: flavorInfo, top: 185, bottom: 49)
+        MaterialLayout.alignToParentVertically(view, child: flavorInfo, top: 195, bottom: 49)
         
         addFlavorName = T1()
         addFlavorName.placeholder = "Flavor Name"
@@ -226,7 +232,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
     
     func addFlavor() {
 
-        flavorMGR.addFlavor(addFlavorName.text!, base: addFlavorBase.selectedSegmentIndex == 0 ? "PG" : "VG", pct: addFlavorPct.text!)
+        flavorMGR.addFlavor(Flavor(name: addFlavorName.text!, base: addFlavorBase.selectedSegmentIndex == 0 ? "PG" : "VG", pct: addFlavorPct.text!))
         flavorTable.reloadData()
         addFlavorName.text = ""
         addFlavorBase.selectedSegmentIndex = 0
@@ -235,28 +241,27 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
     }
     
     func sendRecipe() {
-        var rdata = [String: String]()
         
-        rdata["recipeName"] = recipeName.text
-        rdata["creator"] = AppState.sharedInstance.displayName
-        rdata["recipeDesc"] = recipeDesc.text
-        rdata["recipePgPct"] = recipePgPct.text
-        rdata["recipeVgPct"] = recipeVgPct.text
-        rdata["recipeSteepDays"] = recipeSteepDays.text
+        let author = AppState.sharedInstance.displayName
+        let authorId = AppState.sharedInstance.uid
+        let name = recipeName.text
+        let desc = recipeDesc.text
+        let pg = recipePgPct.text
+        let vg = recipeVgPct.text
+        let strength = recipeNicStrength.text
+        let steepDays = recipeSteepDays.text
         
-        // Push recipe data to myRecipes Firebase Database
-        let key = Queries.myRecipes.childByAutoId().key
-        Queries.myRecipes.child(key).setValue(rdata)
+        
+        ///////////
+        /////////// Todo: Pass [Flavors] to recipeMgr and let than handle adding them.
+        ///////////
+        
+        let key = myRecipeMgr.sendToFirebase(Recipe(author: author!, authorId: authorId!, name: name!, desc: desc!, pg: pg!, vg: vg!, strength: strength!, steepDays: steepDays!))
         
         // add flavors to the flavors db
-        for flavor in flavorMGR.flavors {
-            var fdata = [String:String]()
-            fdata["flavorName"] = flavor.name
-            fdata["flavorBase"] = flavor.base
-            fdata["flavorPct"] = flavor.pct
-            Queries.flavors.child(key).childByAutoId().setValue(fdata)
-        }
+        flavorMGR.sendToFirebase(key)
         
+        // clear the form
         recipeName.text = ""
         recipeDesc.text = ""
         recipePgPct.text = ""

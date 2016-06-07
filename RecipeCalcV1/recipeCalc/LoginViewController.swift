@@ -209,8 +209,8 @@ class LoginViewController: UIViewController, TextFieldDelegate {
     
     func signedIn(user: FIRUser?) {
         MeasurementHelper.sendLoginEvent()
-        print("User is signed in")
         AppState.sharedInstance.displayName = user?.displayName ?? user?.email
+        AppState.sharedInstance.uid = user?.uid
         AppState.sharedInstance.photoUrl = user?.photoURL
         AppState.sharedInstance.signedIn = true
         

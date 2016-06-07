@@ -16,11 +16,6 @@ class MyRecipeCell: RecipeCell {
     
     override func prepareView() {
         super.prepareView()
-        
-        publishButton.setTitle("Publish", forState: .Normal)
-        contentView.addSubview(publishButton)
-        MaterialLayout.alignFromRight(contentView, child: publishButton, right: 0)
-        MaterialLayout.alignToParentVertically(contentView, child: publishButton)
     }
     
 }

@@ -14,6 +14,8 @@
 		7315D5F41CF4E405002B2588 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7315D5F21CF4E405002B2588 /* LaunchScreen.storyboard */; };
 		7315D5FF1CF4E405002B2588 /* recipeCalcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7315D5FE1CF4E405002B2588 /* recipeCalcTests.swift */; };
 		7315D60A1CF4E405002B2588 /* recipeCalcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7315D6091CF4E405002B2588 /* recipeCalcUITests.swift */; };
+		7325BE561D0762B100CF0177 /* FlavorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7325BE551D0762B100CF0177 /* FlavorManager.swift */; };
+		7325BE581D0762FF00CF0177 /* RecipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7325BE571D0762FF00CF0177 /* RecipeManager.swift */; };
 		7327970E1D04EFFF009C8BCB /* MyRecipesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7327970D1D04EFFF009C8BCB /* MyRecipesCell.swift */; };
 		73425DE51D032F9100A69596 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73425DE41D032F9100A69596 /* Firebase.swift */; };
 		734C95D21D06113700EB79AD /* RecipeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734C95D11D06113700EB79AD /* RecipeVC.swift */; };
@@ -73,6 +75,8 @@
 		7315D6051CF4E405002B2588 /* recipeCalcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = recipeCalcUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7315D6091CF4E405002B2588 /* recipeCalcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipeCalcUITests.swift; sourceTree = "<group>"; };
 		7315D60B1CF4E405002B2588 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7325BE551D0762B100CF0177 /* FlavorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlavorManager.swift; sourceTree = "<group>"; };
+		7325BE571D0762FF00CF0177 /* RecipeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeManager.swift; sourceTree = "<group>"; };
 		7327970D1D04EFFF009C8BCB /* MyRecipesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRecipesCell.swift; sourceTree = "<group>"; };
 		73425DE41D032F9100A69596 /* Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		734C95D11D06113700EB79AD /* RecipeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeVC.swift; sourceTree = "<group>"; };
@@ -243,6 +247,8 @@
 			isa = PBXGroup;
 			children = (
 				73425DE41D032F9100A69596 /* Firebase.swift */,
+				7325BE571D0762FF00CF0177 /* RecipeManager.swift */,
+				7325BE551D0762B100CF0177 /* FlavorManager.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -470,12 +476,14 @@
 				73DCEAE41CF6988B002BA81C /* TextFields.swift in Sources */,
 				73DCEAD11CF63E2F002BA81C /* RecipeCell.swift in Sources */,
 				7315D5E71CF4E405002B2588 /* AppDelegate.swift in Sources */,
+				7325BE561D0762B100CF0177 /* FlavorManager.swift in Sources */,
 				73DCEAD31CF65323002BA81C /* CreateRecipeViewController.swift in Sources */,
 				7314085B1CFE3FD800B5F8DF /* Colors.swift in Sources */,
 				7327970E1D04EFFF009C8BCB /* MyRecipesCell.swift in Sources */,
 				73DCEAC61CF62A11002BA81C /* Constants.swift in Sources */,
 				73DCEAE21CF69758002BA81C /* Labels.swift in Sources */,
 				734C95D61D0617D500EB79AD /* PublicRecipeVC.swift in Sources */,
+				7325BE581D0762FF00CF0177 /* RecipeManager.swift in Sources */,
 				73B1B5B01CFFA520009AFA20 /* ProfileVC.swift in Sources */,
 				734C95D21D06113700EB79AD /* RecipeVC.swift in Sources */,
 				734FBA431D03645B007FA0CA /* TableVC.swift in Sources */,

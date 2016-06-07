@@ -91,35 +91,32 @@ class TableVC: UIViewController {
     }
 }
 
-
-/// TableViewDataSource methods.
+/// UITableViewDelegate methods.
 extension TableVC: UITableViewDataSource {
-
     // UITableViewDataSource protocol methods
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipes.count
+        return myRecipeMgr.recipes.count
     }
-
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Dequeue cell
-        let cell: RecipeCell = RecipeCell(style: .Default, reuseIdentifier: "recipeCell")
-        // Unpack message from Firebase DataSnapshot
-        let recipeSnapshot: FIRDataSnapshot! = recipes[indexPath.row]
-        let recipe = recipeSnapshot.value as! Dictionary<String, String>
+        let cell: MyRecipeCell = MyRecipeCell(style: .Default, reuseIdentifier: "myRecipeCell")
+        
+        let recipe = myRecipeMgr.recipes[indexPath.row]
         
         cell.selectionStyle = .None
-        cell.recipeName.text = recipe["recipeName"]
+        cell.recipeName.text = recipe.name
         cell.recipeName.font = RobotoFont.regular
         
-        cell.recipeDesc.text = recipe["recipeDesc"]
+        cell.recipeDesc.text = recipe.desc
         cell.recipeDesc.font = RobotoFont.regular
         cell.recipeDesc.textColor = MaterialColor.grey.darken1
         
-        cell.creator.text = recipe["creator"]
+        cell.creator.text = recipe.author
         cell.creator.font = RobotoFont.regular
         cell.creator.textColor = MaterialColor.grey.darken1
         
-        cell.recipeID = recipeSnapshot.key
+        cell.recipeID = recipe.key
         
         return cell
     }
