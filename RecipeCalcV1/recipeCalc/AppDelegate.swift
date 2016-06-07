@@ -20,7 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         IQKeyboardManager.sharedManager().enable = true
-
+        IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 20
+        
         FIRApp.configure()
         
         MaterialDevice.statusBarHidden = false

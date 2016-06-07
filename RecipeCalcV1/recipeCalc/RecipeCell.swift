@@ -15,7 +15,7 @@ class RecipeCell: MaterialTableViewCell {
     var recipeName: L1 = L1()
     var recipeDesc: L1 = L1()
     var creator: L1 = L1()
-    var recipeID: Dictionary<String, String> = [:]
+    var recipeID = ""
     
     override func prepareView() {
         super.prepareView()

@@ -16,7 +16,7 @@ class LocalRecipeListVC: TableVC {
     private var _refHandle: FIRDatabaseHandle!
     
     deinit {
-        ref.child("myRecipes").removeObserverWithHandle(_refHandle)
+        Queries.myRecipes.removeObserverWithHandle(_refHandle)
     }
     
     override func prepareView() {
@@ -34,14 +34,14 @@ class LocalRecipeListVC: TableVC {
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
         if(editingStyle == UITableViewCellEditingStyle.Delete){
-            Queries.myRecipes.child(myRecipes[indexPath.row].key).removeValue()
-            Queries.recipes.child(myRecipes[indexPath.row].key).removeValue()
+            let key = myRecipes[indexPath.row].key
+            Queries.myRecipes.child(key).removeValue()
+            Queries.recipes.child(key).removeValue()
+            Queries.flavors.child(key).removeValue()
             myRecipes.removeAtIndex(indexPath.row)
             self.recipeTable.reloadData()
         }
-        
     }
     
     override func configureDatabase() {
@@ -77,7 +77,7 @@ class LocalRecipeListVC: TableVC {
         cell.creator.font = RobotoFont.regular
         cell.creator.textColor = MaterialColor.grey.darken1
         
-        cell.recipeID = recipe
+        cell.recipeID = recipeSnapshot.key
         
         cell.publishButton.addTarget(self, action: #selector(publishRecipe), forControlEvents: .TouchUpInside)
         cell.publishButton.tag = indexPath.row
@@ -89,14 +89,13 @@ class LocalRecipeListVC: TableVC {
         recipeTable.registerClass(MaterialTableViewCell.self, forCellReuseIdentifier: "myRecipeCell")
     }
     
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("Row #\(indexPath.row) Selected, with recipeID of \(myRecipes[indexPath.row])")
+        navigationController?.pushViewController(MyRecipeVC(recipe: myRecipes[indexPath.row]), animated: true)
     }
     
     func publishRecipe(sender: UIButton) {
         let recipe = myRecipes[sender.tag]
-        ref.child("recipes").child(recipe.key).setValue(recipe.value)
+        Queries.recipes.child(recipe.key).setValue(recipe.value)
     }
     
 }

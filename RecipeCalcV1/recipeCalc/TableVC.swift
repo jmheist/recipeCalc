@@ -56,7 +56,6 @@ class TableVC: UIViewController {
     }
     
     func configureDatabase() {
-        ref = FIRDatabase.database().reference()
     }
     
     /// General preparation statements.
@@ -120,7 +119,7 @@ extension TableVC: UITableViewDataSource {
         cell.creator.font = RobotoFont.regular
         cell.creator.textColor = MaterialColor.grey.darken1
         
-        cell.recipeID = recipe
+        cell.recipeID = recipeSnapshot.key
         
         return cell
     }

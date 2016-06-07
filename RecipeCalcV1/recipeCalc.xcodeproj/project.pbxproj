@@ -16,6 +16,9 @@
 		7315D60A1CF4E405002B2588 /* recipeCalcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7315D6091CF4E405002B2588 /* recipeCalcUITests.swift */; };
 		7327970E1D04EFFF009C8BCB /* MyRecipesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7327970D1D04EFFF009C8BCB /* MyRecipesCell.swift */; };
 		73425DE51D032F9100A69596 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73425DE41D032F9100A69596 /* Firebase.swift */; };
+		734C95D21D06113700EB79AD /* RecipeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734C95D11D06113700EB79AD /* RecipeVC.swift */; };
+		734C95D41D06169600EB79AD /* MyRecipeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734C95D31D06169600EB79AD /* MyRecipeVC.swift */; };
+		734C95D61D0617D500EB79AD /* PublicRecipeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734C95D51D0617D500EB79AD /* PublicRecipeVC.swift */; };
 		734FBA431D03645B007FA0CA /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734FBA421D03645B007FA0CA /* TableVC.swift */; };
 		73B1B5B01CFFA520009AFA20 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */; };
 		73B1DCFB1CF54558002D9E23 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73B1DCFA1CF54558002D9E23 /* GoogleService-Info.plist */; };
@@ -72,6 +75,9 @@
 		7315D60B1CF4E405002B2588 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7327970D1D04EFFF009C8BCB /* MyRecipesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRecipesCell.swift; sourceTree = "<group>"; };
 		73425DE41D032F9100A69596 /* Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		734C95D11D06113700EB79AD /* RecipeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeVC.swift; sourceTree = "<group>"; };
+		734C95D31D06169600EB79AD /* MyRecipeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRecipeVC.swift; sourceTree = "<group>"; };
+		734C95D51D0617D500EB79AD /* PublicRecipeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicRecipeVC.swift; sourceTree = "<group>"; };
 		734FBA421D03645B007FA0CA /* TableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
 		73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		73B1DCFA1CF54558002D9E23 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -128,6 +134,17 @@
 				AFADDE1CE73C514F163FCBCB /* Pods-recipeCalc.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		730233921D05D89C00A3B8C0 /* One-Offs */ = {
+			isa = PBXGroup;
+			children = (
+				734C95D31D06169600EB79AD /* MyRecipeVC.swift */,
+				734C95D51D0617D500EB79AD /* PublicRecipeVC.swift */,
+				73DCEAC91CF62B75002BA81C /* UpdateProfileVC.swift */,
+				73DCEABE1CF6254B002BA81C /* LoginViewController.swift */,
+			);
+			name = "One-Offs";
 			sourceTree = "<group>";
 		};
 		7315D5DA1CF4E405002B2588 = {
@@ -195,6 +212,7 @@
 				73DCEAD01CF63E2F002BA81C /* RecipeCell.swift */,
 				7327970D1D04EFFF009C8BCB /* MyRecipesCell.swift */,
 				734FBA421D03645B007FA0CA /* TableVC.swift */,
+				734C95D11D06113700EB79AD /* RecipeVC.swift */,
 			);
 			name = "Table Stuff";
 			sourceTree = "<group>";
@@ -202,12 +220,11 @@
 		73B1DCFE1CF547FB002D9E23 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				73DCEABE1CF6254B002BA81C /* LoginViewController.swift */,
 				73DCEAC71CF62B5A002BA81C /* LocalRecipeListVC.swift */,
 				73DCEAD21CF65323002BA81C /* CreateRecipeViewController.swift */,
 				73DCEB031CF7598F002BA81C /* DiscoveryViewController.swift */,
 				73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */,
-				73DCEAC91CF62B75002BA81C /* UpdateProfileVC.swift */,
+				730233921D05D89C00A3B8C0 /* One-Offs */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -458,10 +475,13 @@
 				7327970E1D04EFFF009C8BCB /* MyRecipesCell.swift in Sources */,
 				73DCEAC61CF62A11002BA81C /* Constants.swift in Sources */,
 				73DCEAE21CF69758002BA81C /* Labels.swift in Sources */,
+				734C95D61D0617D500EB79AD /* PublicRecipeVC.swift in Sources */,
 				73B1B5B01CFFA520009AFA20 /* ProfileVC.swift in Sources */,
+				734C95D21D06113700EB79AD /* RecipeVC.swift in Sources */,
 				734FBA431D03645B007FA0CA /* TableVC.swift in Sources */,
 				73DCEACA1CF62B75002BA81C /* UpdateProfileVC.swift in Sources */,
 				73FEB26E1D00AB70008CD089 /* AppNav.swift in Sources */,
+				734C95D41D06169600EB79AD /* MyRecipeVC.swift in Sources */,
 				73DCEADF1CF68FFF002BA81C /* Buttons.swift in Sources */,
 				73425DE51D032F9100A69596 /* Firebase.swift in Sources */,
 				73FEB2711D00BB5F008CD089 /* BottomNav.swift in Sources */,

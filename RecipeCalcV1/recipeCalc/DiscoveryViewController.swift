@@ -46,8 +46,12 @@ class DiscoveryViewController: TableVC {
             self.recipeTable.insertRowsAtIndexPaths([NSIndexPath(forRow: recipes.count-1, inSection: 0)], withRowAnimation: .Automatic)
         })
         _refDeleteHandle = Queries.recipes.observeEventType(.ChildRemoved, withBlock: { (snapshot) -> Void in
-            print("discovery recipe deleted")
+            print("public recipe deleted")
         })
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        navigationController?.pushViewController(MyRecipeVC(recipe: recipes[indexPath.row]), animated: true)
     }
 
 }
