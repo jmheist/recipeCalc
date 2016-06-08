@@ -21,17 +21,13 @@ class MyRecipeVC: RecipeVC {
     }
     
     deinit {
-        Queries.myRecipes.child(recipe.key).removeObserverWithHandle(_refPublishedHandle)
+        Queries.sharedInstance.myRecipes.child(recipe.key).removeObserverWithHandle(_refPublishedHandle)
     }
     
     func prepareDatabase() {
         // Listen for new messages in the Firebase database
-        _refPublishedHandle = Queries.myRecipes.child(recipe.key).observeEventType(.ChildChanged, withBlock: { (snapshot) -> Void in
-            print("Key \(snapshot.key)", "Value: \(snapshot.value)")
-            myRecipeMgr.updateRecipeAtIndex(myRecipeMgr.indexOfKey(self.recipe.key), name: snapshot.key, value: snapshot.value as! String!)
-            if snapshot.key == "published" {
-                print("should change publish button!")
-            }
+        _refPublishedHandle = Queries.sharedInstance.myRecipes.child(recipe.key).observeEventType(.ChildChanged, withBlock: { (snapshot) -> Void in
+            print("MyRecipeVC: Child Changed: Key \(snapshot.key)", "Value: \(snapshot.value)")
             self.preparePublishButton()
         })
     }
@@ -46,14 +42,15 @@ class MyRecipeVC: RecipeVC {
     }
     
     func publishRecipe(sender: UIButton) {
-        myRecipeMgr.publishRecipe(recipe.key)
+        self.recipe = myRecipeMgr.publishRecipe(recipe.key)
     }
     
     func unPublishRecipe(sender: UIButton) {
-        myRecipeMgr.unPublishRecipe(recipe.key)
+        self.recipe = myRecipeMgr.unPublishRecipe(recipe.key)
     }
     
     func preparePublishButton() {
+        print(recipe)
         if recipe.published == "true" {
             print("Recipe is Published")
             publishButton.setTitle("Un-Publish", forState: .Normal)

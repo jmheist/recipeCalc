@@ -26,16 +26,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         
         MaterialDevice.statusBarHidden = false
         
-        let localRecipeList: AppNav = AppNav(rootViewController: LocalRecipeListVC())
-        let createRecipeViewController: AppNav = AppNav(rootViewController: CreateRecipeViewController())
-        let discoveryViewController: AppNav = AppNav(rootViewController: DiscoveryViewController())
-        let profileVC: AppNav = AppNav(rootViewController: ProfileVC())
+//        let localRecipeList: AppNav = AppNav(rootViewController: LocalRecipeListVC())
+//        let createRecipeViewController: AppNav = AppNav(rootViewController: CreateRecipeViewController())
+//        let discoveryViewController: AppNav = AppNav(rootViewController: DiscoveryViewController())
+//        let profileVC: AppNav = AppNav(rootViewController: ProfileVC())
+//        
+//        let bottomNavigationController: BottomNav = BottomNav()
+//        bottomNavigationController.viewControllers = [localRecipeList, createRecipeViewController, discoveryViewController, profileVC]
         
-        let bottomNavigationController: BottomNav = BottomNav()
-        bottomNavigationController.viewControllers = [localRecipeList, createRecipeViewController, discoveryViewController, profileVC]
+        let loginVC: UIViewController = LoginViewController()
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window!.rootViewController = bottomNavigationController
+        window!.rootViewController = loginVC
         window!.makeKeyAndVisible()
         return true
     }

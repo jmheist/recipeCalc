@@ -9,7 +9,6 @@
 import UIKit
 import Material
 import Firebase
-import FirebaseAuthUI
 
 class DiscoveryViewController: TableVC {
     
@@ -40,7 +39,7 @@ class DiscoveryViewController: TableVC {
         ///////
         
         // Listen for new messages in the Firebase database
-        _refHandle = Queries.publicRecipes.observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
+        _refHandle = Queries.sharedInstance.publicRecipes.observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
             let key = snapshot.key as String
             let author = snapshot.value!["author"] as! String
             let authorId = snapshot.value!["authorId"] as! String
@@ -55,7 +54,7 @@ class DiscoveryViewController: TableVC {
             self.recipeTable.reloadData()
         })
 
-        _refDeleteHandle = Queries.publicRecipes.observeEventType(.ChildRemoved, withBlock: { (snapshot) -> Void in
+        _refDeleteHandle = Queries.sharedInstance.publicRecipes.observeEventType(.ChildRemoved, withBlock: { (snapshot) -> Void in
             print("public recipe deleted")
         })
     }

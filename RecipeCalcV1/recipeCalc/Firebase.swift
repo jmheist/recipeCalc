@@ -10,12 +10,16 @@ import Foundation
 import UIKit
 import Firebase
 
-var ref: FIRDatabaseReference!
+var ref: FIRDatabaseReference = FIRDatabase.database().reference()
 
-struct Queries {
-    static let myRecipes = ref.child("myRecipes")
-    static let publicRecipes = ref.child("recipes")
-    static let flavors = ref.child("flavors")
+
+class Queries {
+    
+    static let sharedInstance = Queries()
+    
+    var myRecipes = ref.child("myRecipes").child((AppState.sharedInstance.uid! as String))
+    var publicRecipes = ref.child("recipes")
+    var flavors = ref.child("flavors")
 }
 
 

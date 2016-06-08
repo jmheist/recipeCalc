@@ -21,7 +21,7 @@ class AppState: NSObject {
     static let sharedInstance = AppState()
 
     var signedIn = false
-    var displayName: String?
-    var uid: String?
+    var displayName: String?=""
+    var uid: String?=" "
     var photoUrl: NSURL?
 }

@@ -9,7 +9,6 @@
 import UIKit
 import Material
 import Firebase
-import FirebaseDatabaseUI
 
 class LocalRecipeListVC: TableVC {
     
@@ -17,8 +16,7 @@ class LocalRecipeListVC: TableVC {
     private var _refRemovedHandle: FIRDatabaseHandle!
     
     deinit {
-        Queries.myRecipes.removeObserverWithHandle(_refHandle)
-        Queries.myRecipes.removeObserverWithHandle(_refRemovedHandle)
+        Queries.sharedInstance.myRecipes.removeAllObservers()
     }
     
     override func prepareView() {
@@ -45,7 +43,7 @@ class LocalRecipeListVC: TableVC {
     
     override func configureDatabase() {
         // Listen for new messages in the Firebase database
-        _refHandle = Queries.myRecipes.observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
+        _refHandle = Queries.sharedInstance.myRecipes.observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
             print(snapshot)
             let key = snapshot.key as String
             let author = snapshot.value!["author"] as! String
@@ -56,11 +54,12 @@ class LocalRecipeListVC: TableVC {
             let vg = snapshot.value!["vg"] as! String
             let strength = snapshot.value!["strength"] as! String
             let steepDays = snapshot.value!["steepDays"] as! String
-            let rec = Recipe(key: key, author: author, authorId: authorId, name: name, desc: desc, pg: pg, vg: vg, strength: strength, steepDays: steepDays)
+            let published = snapshot.value!["published"] as! String
+            let rec = Recipe(key: key, author: author, authorId: authorId, name: name, desc: desc, pg: pg, vg: vg, strength: strength, steepDays: steepDays, published: published)
             myRecipeMgr.addRecipe(rec)
             self.recipeTable.reloadData()
         })
-        _refRemovedHandle = Queries.myRecipes.observeEventType(.ChildRemoved, withBlock: { (snapshot) -> Void in
+        _refRemovedHandle = Queries.sharedInstance.myRecipes.observeEventType(.ChildRemoved, withBlock: { (snapshot) -> Void in
             print("Recipe Removed")
         })
     }

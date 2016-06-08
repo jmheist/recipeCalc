@@ -42,12 +42,12 @@ class RecipeVC: UIViewController {
     }
     
     deinit {
-        Queries.flavors.child(recipe.key).removeObserverWithHandle(_refHandle)
+        Queries.sharedInstance.flavors.child(recipe.key).removeObserverWithHandle(_refHandle)
     }
     
-    // Queries.flavors.child(recipes[indexPath.row].key)
+    // Queries.sharedInstance.flavors.child(recipes[indexPath.row].key)
     func prepareFlavors() {
-        _refHandle = Queries.flavors.child(recipe.key).observeEventType(FIRDataEventType.ChildAdded, withBlock: { (snapshot) in
+        _refHandle = Queries.sharedInstance.flavors.child(recipe.key).observeEventType(FIRDataEventType.ChildAdded, withBlock: { (snapshot) in
             self.flavors.append(snapshot)
             self.recipeTable.insertRowsAtIndexPaths([NSIndexPath(forRow: self.flavors.count-1, inSection: 0)], withRowAnimation: .Automatic)
         })

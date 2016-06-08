@@ -33,7 +33,7 @@ class LoginViewController: UIViewController, TextFieldDelegate {
     override func viewDidAppear(animated: Bool) {
         print("Checking if user is logged in")
         if let user = FIRAuth.auth()?.currentUser {
-            
+            print("User is signed in \(user.displayName)")
             self.signedIn(user)
         } else {
             print("Not signed in yet")
@@ -213,9 +213,21 @@ class LoginViewController: UIViewController, TextFieldDelegate {
         AppState.sharedInstance.uid = user?.uid
         AppState.sharedInstance.photoUrl = user?.photoURL
         AppState.sharedInstance.signedIn = true
-        
+        print("user: \(user?.displayName), uid: \(user?.uid)")
         NSNotificationCenter.defaultCenter().postNotificationName(Constants.NotificationKeys.SignedIn, object: nil, userInfo: nil)
-        dismissViewControllerAnimated(true, completion: nil)
+        loadApp()
+    }
+    
+    func loadApp() {
+        let localRecipeList: AppNav = AppNav(rootViewController: LocalRecipeListVC())
+        let createRecipeViewController: AppNav = AppNav(rootViewController: CreateRecipeViewController())
+        let discoveryViewController: AppNav = AppNav(rootViewController: DiscoveryViewController())
+        let profileVC: AppNav = AppNav(rootViewController: ProfileVC())
+        
+        let bottomNavigationController: BottomNav = BottomNav()
+        bottomNavigationController.viewControllers = [localRecipeList, createRecipeViewController, discoveryViewController, profileVC]
+        bottomNavigationController.selectedIndex = 0
+        presentViewController(bottomNavigationController, animated: true, completion: nil)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
