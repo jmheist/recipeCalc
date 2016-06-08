@@ -13,13 +13,11 @@ import Firebase
 var ref: FIRDatabaseReference = FIRDatabase.database().reference()
 
 
-class Queries {
+struct Queries {
     
-    static let sharedInstance = Queries()
-    
-    var myRecipes = ref.child("myRecipes").child((AppState.sharedInstance.uid! as String))
-    var publicRecipes = ref.child("recipes")
-    var flavors = ref.child("flavors")
+    static let myRecipes = ref.child("myRecipes")
+    static let publicRecipes = ref.child("recipes")
+    static let flavors = ref.child("flavors")
 }
 
 

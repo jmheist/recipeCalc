@@ -21,12 +21,12 @@ class MyRecipeVC: RecipeVC {
     }
     
     deinit {
-        Queries.sharedInstance.myRecipes.child(recipe.key).removeObserverWithHandle(_refPublishedHandle)
+        Queries.myRecipes.child(AppState.sharedInstance.uid!).child(recipe.key).removeObserverWithHandle(_refPublishedHandle)
     }
     
     func prepareDatabase() {
         // Listen for new messages in the Firebase database
-        _refPublishedHandle = Queries.sharedInstance.myRecipes.child(recipe.key).observeEventType(.ChildChanged, withBlock: { (snapshot) -> Void in
+        _refPublishedHandle = Queries.myRecipes.child(AppState.sharedInstance.uid!).child(recipe.key).observeEventType(.ChildChanged, withBlock: { (snapshot) -> Void in
             print("MyRecipeVC: Child Changed: Key \(snapshot.key)", "Value: \(snapshot.value)")
             self.preparePublishButton()
         })

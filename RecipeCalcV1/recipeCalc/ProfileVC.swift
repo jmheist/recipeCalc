@@ -91,13 +91,16 @@ class ProfileVC: UIViewController {
         let firebaseAuth = FIRAuth.auth()
         do {
             try firebaseAuth?.signOut()
+            Queries.myRecipes.child(AppState.sharedInstance.uid!).removeAllObservers()
             AppState.sharedInstance.signedIn = false
+            AppState.sharedInstance.uid = nil
             print("signed out")
+            myRecipeMgr.reset()
+            publicRecipeMgr.reset()
             let vc = LoginViewController()
             self.presentViewController(vc, animated: false, completion: nil)
         } catch let signOutError as NSError {
             print ("Error signing out: \(signOutError)")
         }
-    }
-    
+    }    
 }

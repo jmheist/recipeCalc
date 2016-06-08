@@ -68,8 +68,8 @@ class RecipeManager: NSObject {
     }
     
     func sendToFirebase (recipe: Recipe) -> String {
-        let key = Queries.sharedInstance.myRecipes.childByAutoId().key
-        Queries.sharedInstance.myRecipes.child(key).setValue(recipe.fb())
+        let key = Queries.myRecipes.child(AppState.sharedInstance.uid!).childByAutoId().key
+        Queries.myRecipes.child(AppState.sharedInstance.uid!).child(key).setValue(recipe.fb())
         return key
     }
     
@@ -82,9 +82,9 @@ class RecipeManager: NSObject {
             publicRecipeMgr.recipes.removeAtIndex(publicRecipeMgr.indexOfKey(key))
         }
 
-        Queries.sharedInstance.myRecipes.child(key).removeValue()
-        Queries.sharedInstance.publicRecipes.child(key).removeValue()
-        Queries.sharedInstance.flavors.child(key).removeValue()
+        Queries.myRecipes.child(AppState.sharedInstance.uid!).child(key).removeValue()
+        Queries.publicRecipes.child(key).removeValue()
+        Queries.flavors.child(key).removeValue()
 
     }
     
@@ -97,8 +97,8 @@ class RecipeManager: NSObject {
         let recipe = myRecipeMgr.recipes[index]
         
         //update on FB
-        Queries.sharedInstance.myRecipes.child(key).child("published").setValue("true")
-        Queries.sharedInstance.publicRecipes.child(key).setValue(recipe.fb())
+        Queries.myRecipes.child(AppState.sharedInstance.uid!).child(key).child("published").setValue("true")
+        Queries.publicRecipes.child(key).setValue(recipe.fb())
         
         // return updated recipe
         return recipe
@@ -119,8 +119,8 @@ class RecipeManager: NSObject {
         
         // update on fb
         // delete public recipe
-        Queries.sharedInstance.myRecipes.child(key).child("published").setValue("false")
-        Queries.sharedInstance.publicRecipes.child(key).setValue(nil)
+        Queries.myRecipes.child(AppState.sharedInstance.uid!).child(key).child("published").setValue("false")
+        Queries.publicRecipes.child(key).setValue(nil)
         
         // return udated recipe
         return recipe

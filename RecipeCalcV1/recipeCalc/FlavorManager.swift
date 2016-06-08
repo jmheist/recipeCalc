@@ -46,7 +46,7 @@ class FlavorManager: NSObject {
     
     func sendToFirebase(key: String, flavors: [Flavor]) {
         for flavor in flavors {
-            Queries.sharedInstance.flavors.child(key).childByAutoId().setValue(flavor.fb())
+            Queries.flavors.child(key).childByAutoId().setValue(flavor.fb())
         }
     }
     

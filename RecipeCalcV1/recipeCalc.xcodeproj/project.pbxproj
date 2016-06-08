@@ -26,6 +26,8 @@
 		73B1DCFB1CF54558002D9E23 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73B1DCFA1CF54558002D9E23 /* GoogleService-Info.plist */; };
 		73B1DCFC1CF54558002D9E23 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73B1DCFA1CF54558002D9E23 /* GoogleService-Info.plist */; };
 		73B1DCFD1CF54558002D9E23 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73B1DCFA1CF54558002D9E23 /* GoogleService-Info.plist */; };
+		73CC8D051D08CDD1003D3709 /* MixPrepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CC8D041D08CDD1003D3709 /* MixPrepVC.swift */; };
+		73CC8D071D08CEE0003D3709 /* MixSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CC8D061D08CEE0003D3709 /* MixSettingsManager.swift */; };
 		73DCEABF1CF6254B002BA81C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEABE1CF6254B002BA81C /* LoginViewController.swift */; };
 		73DCEAC11CF629DC002BA81C /* MeasurementHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAC01CF629DC002BA81C /* MeasurementHelper.swift */; };
 		73DCEAC51CF62A11002BA81C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAC31CF62A11002BA81C /* AppState.swift */; };
@@ -85,6 +87,8 @@
 		734FBA421D03645B007FA0CA /* TableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
 		73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		73B1DCFA1CF54558002D9E23 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		73CC8D041D08CDD1003D3709 /* MixPrepVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixPrepVC.swift; sourceTree = "<group>"; };
+		73CC8D061D08CEE0003D3709 /* MixSettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixSettingsManager.swift; sourceTree = "<group>"; };
 		73DCEABE1CF6254B002BA81C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		73DCEAC01CF629DC002BA81C /* MeasurementHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurementHelper.swift; sourceTree = "<group>"; };
 		73DCEAC31CF62A11002BA81C /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -147,6 +151,7 @@
 				734C95D51D0617D500EB79AD /* PublicRecipeVC.swift */,
 				73DCEAC91CF62B75002BA81C /* UpdateProfileVC.swift */,
 				73DCEABE1CF6254B002BA81C /* LoginViewController.swift */,
+				73CC8D041D08CDD1003D3709 /* MixPrepVC.swift */,
 			);
 			name = "One-Offs";
 			sourceTree = "<group>";
@@ -179,7 +184,7 @@
 				7315D5E61CF4E405002B2588 /* AppDelegate.swift */,
 				73DCEAE01CF69003002BA81C /* Styles */,
 				73B1DCFE1CF547FB002D9E23 /* ViewControllers */,
-				73425DE61D03307200A69596 /* Table Stuff */,
+				73425DE61D03307200A69596 /* Templates */,
 				73FEB26F1D00AF5F008CD089 /* Navs */,
 				73DCEACD1CF63DF3002BA81C /* Models */,
 				73DCEAC21CF629E1002BA81C /* Helpers */,
@@ -210,7 +215,7 @@
 			path = recipeCalcUITests;
 			sourceTree = "<group>";
 		};
-		73425DE61D03307200A69596 /* Table Stuff */ = {
+		73425DE61D03307200A69596 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
 				73DCEAD01CF63E2F002BA81C /* RecipeCell.swift */,
@@ -218,7 +223,7 @@
 				734FBA421D03645B007FA0CA /* TableVC.swift */,
 				734C95D11D06113700EB79AD /* RecipeVC.swift */,
 			);
-			name = "Table Stuff";
+			name = Templates;
 			sourceTree = "<group>";
 		};
 		73B1DCFE1CF547FB002D9E23 /* ViewControllers */ = {
@@ -249,6 +254,7 @@
 				73425DE41D032F9100A69596 /* Firebase.swift */,
 				7325BE571D0762FF00CF0177 /* RecipeManager.swift */,
 				7325BE551D0762B100CF0177 /* FlavorManager.swift */,
+				73CC8D061D08CEE0003D3709 /* MixSettingsManager.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -469,6 +475,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				73DCEAC11CF629DC002BA81C /* MeasurementHelper.swift in Sources */,
+				73CC8D071D08CEE0003D3709 /* MixSettingsManager.swift in Sources */,
 				73DCEAC51CF62A11002BA81C /* AppState.swift in Sources */,
 				73DCEABF1CF6254B002BA81C /* LoginViewController.swift in Sources */,
 				73DCEAC81CF62B5A002BA81C /* LocalRecipeListVC.swift in Sources */,
@@ -494,6 +501,7 @@
 				73425DE51D032F9100A69596 /* Firebase.swift in Sources */,
 				73FEB2711D00BB5F008CD089 /* BottomNav.swift in Sources */,
 				73DCEB041CF7598F002BA81C /* DiscoveryViewController.swift in Sources */,
+				73CC8D051D08CDD1003D3709 /* MixPrepVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

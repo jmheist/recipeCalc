@@ -16,7 +16,7 @@ class LocalRecipeListVC: TableVC {
     private var _refRemovedHandle: FIRDatabaseHandle!
     
     deinit {
-        Queries.sharedInstance.myRecipes.removeAllObservers()
+        Queries.myRecipes.child(AppState.sharedInstance.uid!).removeAllObservers()
     }
     
     override func prepareView() {
@@ -43,7 +43,7 @@ class LocalRecipeListVC: TableVC {
     
     override func configureDatabase() {
         // Listen for new messages in the Firebase database
-        _refHandle = Queries.sharedInstance.myRecipes.observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
+        _refHandle = Queries.myRecipes.child(AppState.sharedInstance.uid!).observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
             print(snapshot)
             let key = snapshot.key as String
             let author = snapshot.value!["author"] as! String
@@ -59,7 +59,7 @@ class LocalRecipeListVC: TableVC {
             myRecipeMgr.addRecipe(rec)
             self.recipeTable.reloadData()
         })
-        _refRemovedHandle = Queries.sharedInstance.myRecipes.observeEventType(.ChildRemoved, withBlock: { (snapshot) -> Void in
+        _refRemovedHandle = Queries.myRecipes.child(AppState.sharedInstance.uid!).observeEventType(.ChildRemoved, withBlock: { (snapshot) -> Void in
             print("Recipe Removed")
         })
     }
