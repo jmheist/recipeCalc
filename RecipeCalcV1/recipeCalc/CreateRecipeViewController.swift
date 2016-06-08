@@ -259,7 +259,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         let key = myRecipeMgr.sendToFirebase(Recipe(author: author!, authorId: authorId!, name: name!, desc: desc!, pg: pg!, vg: vg!, strength: strength!, steepDays: steepDays!))
         
         // add flavors to the flavors db
-        flavorMGR.sendToFirebase(key)
+        flavorMGR.sendToFirebase(key, flavors: flavorMGR.flavors)
         
         // clear the form
         recipeName.text = ""

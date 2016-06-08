@@ -13,13 +13,23 @@ struct Flavor {
     var name = ""
     var base = ""
     var pct = ""
+    var key = ""
     
-    init(name: String, base: String, pct: String) {
+    init(name: String, base: String, pct: String, key: String?="") {
         self.name = name
         self.base = base
         self.pct = pct
+        self.key = key!
     }
     
+    func fb() -> AnyObject {
+        var rec = [String:String]()
+        rec["name"] = name
+        rec["base"] = base
+        rec["pct"] = pct
+        rec["key"] = key
+        return rec
+    }
 }
 
 class FlavorManager: NSObject {
@@ -34,9 +44,9 @@ class FlavorManager: NSObject {
         flavors.removeAll()
     }
     
-    func sendToFirebase(key: String) {
+    func sendToFirebase(key: String, flavors: [Flavor]) {
         for flavor in flavors {
-            Queries.sharedInstance.flavors.child(key).childByAutoId().setValue(flavor as? AnyObject)
+            Queries.sharedInstance.flavors.child(key).childByAutoId().setValue(flavor.fb())
         }
     }
     

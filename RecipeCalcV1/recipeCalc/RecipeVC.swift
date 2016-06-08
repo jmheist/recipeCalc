@@ -13,10 +13,10 @@ import Material
 class RecipeVC: UIViewController {
     
     var recipe: Recipe!
-    var flavors: [FIRDataSnapshot]! = []
+    let flavorMgr: FlavorManager = FlavorManager()
     var _refHandle: FIRDatabaseHandle!
     
-    var recipeTable: UITableView!
+    var flavorTable: UITableView!
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -48,14 +48,20 @@ class RecipeVC: UIViewController {
     // Queries.sharedInstance.flavors.child(recipes[indexPath.row].key)
     func prepareFlavors() {
         _refHandle = Queries.sharedInstance.flavors.child(recipe.key).observeEventType(FIRDataEventType.ChildAdded, withBlock: { (snapshot) in
-            self.flavors.append(snapshot)
-            self.recipeTable.insertRowsAtIndexPaths([NSIndexPath(forRow: self.flavors.count-1, inSection: 0)], withRowAnimation: .Automatic)
+            print(snapshot)
+            let key = snapshot.key as String
+            let name = snapshot.value!["name"] as! String
+            let base = snapshot.value!["base"] as! String
+            let pct = snapshot.value!["pct"] as! String
+            let flav = Flavor(name: name, base: base, pct: pct, key: key)
+            self.flavorMgr.addFlavor(flav)
+            self.flavorTable.reloadData()
+
         })
     }
     
     func prepareView() {
         view.backgroundColor = colors.background
-        print(flavors.count)
     }
     
     /// Prepares the navigationItem.
@@ -91,13 +97,13 @@ class RecipeVC: UIViewController {
     /// Prepare table
     func prepareTableView() {
         
-        recipeTable = UITableView()
-        recipeTable.registerClass(MaterialTableViewCell.self, forCellReuseIdentifier: "flavorCell")
-        recipeTable.dataSource = self
-        recipeTable.delegate = self
+        flavorTable = UITableView()
+        flavorTable.registerClass(MaterialTableViewCell.self, forCellReuseIdentifier: "flavorCell")
+        flavorTable.dataSource = self
+        flavorTable.delegate = self
         
-        view.addSubview(recipeTable)
-        MaterialLayout.alignToParent(view, child: recipeTable, top: 85, left: 20, bottom: 49, right: 20)
+        view.addSubview(flavorTable)
+        MaterialLayout.alignToParent(view, child: flavorTable, top: 85, left: 20, bottom: 49, right: 20)
         
     }
     
@@ -108,20 +114,17 @@ extension RecipeVC: UITableViewDataSource {
     
     // UITableViewDataSource protocol methods
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return flavors.count
+        return flavorMgr.flavors.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Dequeue cell
         let cell: MaterialTableViewCell = MaterialTableViewCell(style: .Value1, reuseIdentifier: "flavorCell")
         
-        // Unpack message from Firebase DataSnapshot
-        let flavorSnap: FIRDataSnapshot! = flavors[indexPath.row]
-        let flavor = flavorSnap.value as! Dictionary<String, String>
+        let flavor = flavorMgr.flavors[indexPath.row]
         
-        cell.textLabel?.text = flavor["flavorName"]!
-        cell.detailTextLabel?.text = flavor["flavorPct"]! + "%"
-        
+        cell.textLabel?.text = flavor.name
+        cell.detailTextLabel?.text = "\(flavor.pct)%, \(flavor.base)"
         return cell
     }
 }
