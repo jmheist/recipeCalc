@@ -79,7 +79,10 @@ class RecipeManager: NSObject {
         myRecipeMgr.recipes.removeAtIndex(myIndex)
         
         if recipe.published == "true" {
-            publicRecipeMgr.recipes.removeAtIndex(publicRecipeMgr.indexOfKey(key))
+            let pubIndex = publicRecipeMgr.indexOfKey(key)
+            if pubIndex > -1 {
+                publicRecipeMgr.recipes.removeAtIndex(pubIndex)
+            }
         }
 
         Queries.myRecipes.child(AppState.sharedInstance.uid!).child(key).removeValue()

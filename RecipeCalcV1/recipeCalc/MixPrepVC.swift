@@ -77,11 +77,11 @@ class MixPrepVC: UIViewController {
         view.addSubview(settings)
         MaterialLayout.alignToParent(view, child: settings, top: 60, left: 0, bottom: 49, right: 0)
         
-        let pg: T2 = T2()
-        let vg: T2 = T2()
-        let strength: T2 = T2()
-        let nic: T2 = T2()
-        let amount: T2 = T2()
+        let pg: T1 = T1()
+        let vg: T1 = T1()
+        let strength: T1 = T1()
+        let nic: T1 = T1()
+        let amount: T1 = T1()
         
         amount.text = "30"
         amount.placeholder = "Amount to make (mg)"
@@ -102,13 +102,12 @@ class MixPrepVC: UIViewController {
         
         let children = [amount, strength, pg, vg, nic]
         
-        MaterialLayout.alignFromTop(settings, child: amount, top: 5)
-        MaterialLayout.alignFromTop(settings, child: strength, top: 30)
-        MaterialLayout.alignFromTop(settings, child: pg, top: 55)
-        MaterialLayout.alignFromTop(settings, child: vg, top: 80)
-        MaterialLayout.alignFromTop(settings, child: nic, top: 95)
-        
-        MaterialLayout.alignToParentHorizontally(settings, children: children, left: 15, right: 15)
-        
+        var start: CGFloat = 15
+        let spacing: CGFloat = 75
+        for child in children {
+            MaterialLayout.alignFromTop(settings, child: child, top: start)
+            MaterialLayout.alignToParentHorizontally(settings, child: child, left: 30, right: 30)
+            start += spacing
+        }
     }
 }

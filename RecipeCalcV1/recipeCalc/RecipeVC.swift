@@ -39,6 +39,7 @@ class RecipeVC: UIViewController {
         prepareNavigationItem()
         prepareRecipe()
         prepareTableView()
+        prepareTabBar()
     }
     
     deinit {
@@ -105,6 +106,48 @@ class RecipeVC: UIViewController {
         view.addSubview(flavorTable)
         MaterialLayout.alignToParent(view, child: flavorTable, top: 85, left: 20, bottom: 49, right: 20)
         
+    }
+    
+    func prepareTabBar() {
+        
+        let tabBar: TabBar = TabBar()
+        tabBar.backgroundColor = colors.background
+        tabBar.line.tintColor = colors.light
+        
+        view.addSubview(tabBar)
+        
+        MaterialLayout.height(view, child: tabBar, height: 40)
+        MaterialLayout.alignFromBottom(view, child: tabBar, bottom: 0)
+        MaterialLayout.alignToParentHorizontally(view, child: tabBar, left: 0, right: 0)
+        
+        let btn1: FlatButton = FlatButton()
+        btn1.pulseColor = colors.medium
+        btn1.setTitle("Mix This Recipe", forState: .Normal)
+        btn1.setTitleColor(colors.textDark, forState: .Normal)
+        btn1.addTarget(nil, action: #selector(mixIt), forControlEvents: .TouchUpInside)
+        
+//        let btn2: FlatButton = FlatButton()
+//        btn2.pulseColor = MaterialColor.white
+//        btn2.setTitle("TWO", forState: .Normal)
+//        btn2.setTitleColor(MaterialColor.white, forState: .Normal)
+//        
+//        let btn3: FlatButton = FlatButton()
+//        btn3.pulseColor = MaterialColor.white
+//        btn3.setTitle("THREE", forState: .Normal)
+//        btn3.setTitleColor(MaterialColor.white, forState: .Normal)
+//        
+//        let btn4: FlatButton = FlatButton()
+//        btn4.pulseColor = MaterialColor.white
+//        btn4.setTitle("FOUR", forState: .Normal)
+//        btn4.setTitleColor(MaterialColor.white, forState: .Normal)
+        
+        
+        tabBar.buttons = [btn1]
+        
+    }
+    
+    func mixIt() {
+        navigationController?.pushViewController(MixPrepVC(recipe: self.recipe), animated: true)
     }
     
 }
