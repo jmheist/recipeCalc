@@ -20,5 +20,6 @@ class Colors: UIColor {
     let backgroundDark = MaterialColor.grey.darken4
     let textLight = MaterialColor.white
     let textDark = MaterialColor.grey.darken4
+    let errorRed = MaterialColor.red.darken1
     
 }

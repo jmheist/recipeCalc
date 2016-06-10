@@ -6,19 +6,24 @@
 //  Copyright © 2016 Vape&Prosper. All rights reserved.
 //
 
-import UIKit
-
-let mixSettings: MixSettingsManager = MixSettingsManager()
-
 struct Settings {
     
-    var amount = ""
-    var stregth = ""
-    var pg = ""
-    var vg = ""
+    var amount = Float()
+    var strength = Float()
+    var pg = Float()
+    var vg = Float()
+    var nic = Float()
+    var vgWeight = Float(1.26)
+    var pgWeight = Float(1.038)
+    var nicWeight = Float(1.01)
+    var flavorWeight = Float(1.0)
     
-}
-
-class MixSettingsManager: UIViewController {
-
+    init(amount: String, strength: String, pg: String, vg: String, nic: String) {
+        self.amount = Float(amount)!
+        self.strength = Float(strength)!
+        self.pg = Float(pg)!/100
+        self.vg = Float(vg)!/100
+        self.nic = Float(nic)!
+    }
+    
 }

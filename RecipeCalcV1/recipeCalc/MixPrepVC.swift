@@ -12,6 +12,13 @@ import Material
 class MixPrepVC: UIViewController {
     
     var recipe: Recipe!
+    var settings: Settings!
+    
+    var pg: T1!
+    var vg: T1!
+    var strength: T1!
+    var nic: T1!
+    var amount: T1!
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -31,6 +38,7 @@ class MixPrepVC: UIViewController {
         super.viewDidLoad()
         prepareView()
         prepareNavigationItem()
+        prepareTabBar()
         prepareRecipeInfo()
         prepareMixSettings()
     }
@@ -42,6 +50,44 @@ class MixPrepVC: UIViewController {
     /// Prepares the navigationItem.
     func prepareNavigationItem() {
         navigationItem.title = ""
+    }
+    
+    func prepareTabBar() {
+        
+        let tabBar: MixTabBar = MixTabBar()
+        
+        view.addSubview(tabBar)
+        MaterialLayout.height(view, child: tabBar, height: 40)
+        MaterialLayout.alignFromBottom(view, child: tabBar, bottom: 0)
+        MaterialLayout.alignToParentHorizontally(view, child: tabBar, left: 0, right: 0)
+        
+        let btn2: FlatButton = FlatButton()
+        btn2.pulseColor = colors.medium
+        btn2.setTitle("Back", forState: .Normal)
+        btn2.setTitleColor(colors.textDark, forState: .Normal)
+        btn2.addTarget(nil, action: #selector(back), forControlEvents: .TouchUpInside)
+        
+        let btn1: FlatButton = FlatButton()
+        btn1.pulseColor = colors.medium
+        btn1.setTitle("Mix It!", forState: .Normal)
+        btn1.setTitleColor(colors.textDark, forState: .Normal)
+        btn1.addTarget(nil, action: #selector(mixIt), forControlEvents: .TouchUpInside)
+        
+        tabBar.buttons = [btn2, btn1]
+        
+    }
+    func back() {
+        navigationController?.pushViewController(MyRecipeVC(recipe: self.recipe), animated: true)
+    }
+    func mixIt() {
+        self.settings = Settings(
+            amount: amount.text!,
+            strength: strength.text!,
+            pg: pg.text!,
+            vg: vg.text!,
+            nic: nic.text!
+        )
+        navigationController?.pushViewController(MixVC(recipe: self.recipe, settings: self.settings), animated: true)
     }
     
     func prepareRecipeInfo() {
@@ -75,24 +121,24 @@ class MixPrepVC: UIViewController {
         
         let settings: MaterialView = MaterialView()
         view.addSubview(settings)
-        MaterialLayout.alignToParent(view, child: settings, top: 60, left: 0, bottom: 49, right: 0)
+        MaterialLayout.alignToParent(view, child: settings, top: 80, left: 0, bottom: 49, right: 0)
         
-        let pg: T1 = T1()
-        let vg: T1 = T1()
-        let strength: T1 = T1()
-        let nic: T1 = T1()
-        let amount: T1 = T1()
+        pg = T1()
+        vg = T1()
+        strength = T1()
+        nic = T1()
+        amount = T1()
         
         amount.text = "30"
-        amount.placeholder = "Amount to make (mg)"
+        amount.placeholder = "Amount to make (ml)"
         strength.text = "3"
-        strength.placeholder = "Strength of nic in recipe"
+        strength.placeholder = "Target Nicotine (mg)"
         pg.text = recipe.vg
         pg.placeholder = "PG%"
         vg.text = recipe.pg
         vg.placeholder = "VG%"
         nic.text = "100"
-        nic.placeholder = "Nic Stregth"
+        nic.placeholder = "Nic Concentrate Strength"
         
         settings.addSubview(amount)
         settings.addSubview(strength)

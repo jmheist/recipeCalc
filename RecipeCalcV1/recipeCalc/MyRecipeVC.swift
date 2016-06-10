@@ -53,14 +53,15 @@ class MyRecipeVC: RecipeVC {
         print(recipe)
         if recipe.published == "true" {
             print("Recipe is Published")
-            publishButton.setTitle("Un-Publish", forState: .Normal)
+            publishButton.setTitle("Unshare", forState: .Normal)
             publishButton.addTarget(self, action: #selector(unPublishRecipe), forControlEvents: .TouchUpInside)
         } else {
             print("Recipe is not Published")
-            publishButton.setTitle("Publish", forState: .Normal)
+            publishButton.setTitle("Share", forState: .Normal)
             publishButton.addTarget(self, action: #selector(publishRecipe), forControlEvents: .TouchUpInside)
         }
         
         navigationItem.rightControls = [publishButton]
+        
     }
 }

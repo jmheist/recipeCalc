@@ -24,7 +24,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
     private var addFlavorName: T1!
     private var addFlavorBase: UISegmentedControl!
     private var addFlavorPct: T2!
-    private var addFlavorButton: B2!
+    private var addFlavorButton: B1!
     
     // flavors
     let flavorMGR: FlavorManager = FlavorManager()
@@ -105,6 +105,8 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         recipeName.placeholder = "Recipe Name"
         recipeName.font = RobotoFont.regularWithSize(24)
         recipeName.clearButtonMode = .WhileEditing
+        recipeName.errorCheck = true
+        recipeName.errorCheckFor = "text"
         recipeInfo.addSubview(recipeName)
         MaterialLayout.height(recipeInfo, child: recipeName, height: 28)
         MaterialLayout.alignFromTop(recipeInfo, child: recipeName, top: 25)
@@ -114,6 +116,8 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         recipeDesc.placeholder = "Recipe Description"
         recipeDesc.font = RobotoFont.regularWithSize(20)
         recipeDesc.clearButtonMode = .WhileEditing
+        recipeDesc.errorCheck = true
+        recipeDesc.errorCheckFor = "text"
         recipeInfo.addSubview(recipeDesc)
         MaterialLayout.height(recipeInfo, child: recipeDesc, height: 20)
         MaterialLayout.alignFromTop(recipeInfo, child: recipeDesc, top: 85)
@@ -165,6 +169,8 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         
         addFlavorName = T1()
         addFlavorName.placeholder = "Flavor Name"
+        addFlavorName.errorCheck = true
+        addFlavorName.errorCheckFor = "text"
         addFlavorName.font = RobotoFont.regularWithSize(20)
         addFlavorName.clearButtonMode = .WhileEditing
         addFlavorName.delegate = self
@@ -199,7 +205,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         MaterialLayout.alignFromLeft(flavorInfo, child: addFlavorBase, left: 215)
         MaterialLayout.alignFromTop(flavorInfo, child: addFlavorBase, top: 70)
         
-        addFlavorButton = B2()
+        addFlavorButton = B1()
         addFlavorButton.setTitle("Add Flavor", forState: .Normal)
         addFlavorButton.setTitleColor(colors.dark, forState: .Normal)
         addFlavorButton.addTarget(self, action: #selector(addFlavor), forControlEvents: .TouchUpInside)
@@ -244,40 +250,68 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         
         let author = AppState.sharedInstance.displayName
         let authorId = AppState.sharedInstance.uid
-        let name = recipeName.text
-        let desc = recipeDesc.text
-        let pg = recipePgPct.text
-        let vg = recipeVgPct.text
-        let strength = recipeNicStrength.text
-        let steepDays = recipeSteepDays.text
         
+        let errorMgr: ErrorManager = ErrorManager()
         
-        ///////////
-        /////////// Todo: Pass [Flavors] to recipeMgr and let than handle adding them.
-        ///////////
+        let fields = [recipeName, recipeDesc, recipePgPct, recipeVgPct, recipeNicStrength, recipeSteepDays]
         
-        let key = myRecipeMgr.sendToFirebase(Recipe(author: author!, authorId: authorId!, name: name!, desc: desc!, pg: pg!, vg: vg!, strength: strength!, steepDays: steepDays!))
+        for field in fields {
+            if field.errorCheck {
+                print("Checking field: '\(field.text)' for errors")
+                let res = errorMgr.checkForErrors(field.text!, checkFor: field.errorCheckFor)
+                if res.error {
+                    field.detail = res.errorMessage
+                    field.revealError = true
+                    field.detailColor = colors.errorRed
+                    field.dividerColor = colors.errorRed
+                } else {
+                    field.revealError = false
+                    field.detailColor = colors.dark
+                    field.dividerColor = colors.dark
+                }
+            }
+        }
         
-        // add flavors to the flavors db
-        flavorMGR.sendToFirebase(key, flavors: flavorMGR.flavors)
-        
-        // clear the form
-        recipeName.text = ""
-        recipeDesc.text = ""
-        recipePgPct.text = ""
-        recipeVgPct.text = ""
-        recipeSteepDays.text = ""
-        addFlavorName.text = ""
-        addFlavorBase.selectedSegmentIndex = 0
-        addFlavorPct.text = ""
-        flavorMGR.reset()
-        
-        view.endEditing(true)
-        self.view.resignFirstResponder()
-        
-        tabBarController?.selectedIndex = 0
+        if !errorMgr.errors { // no errors, save the recipe
+            print("No Errors Found: \(errorMgr.errors)")
+            let key = myRecipeMgr.sendToFirebase(
+                Recipe(
+                    author: author!,
+                    authorId: authorId!,
+                    name: recipeName.text!,
+                    desc: recipeDesc.text!,
+                    pg: recipePgPct.text!,
+                    vg: recipeVgPct.text!,
+                    strength: recipeNicStrength.text!,
+                    steepDays:recipeSteepDays.text!
+                )
+            )
+            
+            // add flavors to the flavors db
+            flavorMGR.sendToFirebase(key, flavors: flavorMGR.flavors)
+            
+            // clear the form
+            recipeName.text = ""
+            recipeDesc.text = ""
+            recipePgPct.text = ""
+            recipeVgPct.text = ""
+            recipeSteepDays.text = ""
+            addFlavorName.text = ""
+            addFlavorBase.selectedSegmentIndex = 0
+            addFlavorPct.text = ""
+            flavorMGR.reset()
+            
+            view.endEditing(true)
+            self.view.resignFirstResponder()
+            
+            tabBarController?.selectedIndex = 0
+            
+        } else { // there was errors
+            print("errors: \(errorMgr.errors)")
+            errorMgr.errors = false // clear the errors
+        }
     }
-        
+    
 }
 
 

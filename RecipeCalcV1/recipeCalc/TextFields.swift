@@ -9,7 +9,28 @@
 import UIKit
 import Material
 
-class T1: TextField {
+class myTextField: TextField { // creating a new root textview with errorchecl added
+    
+    /// Controls the visibility of detailLabel
+    @IBInspectable internal var revealError: Bool = false {
+        didSet {
+            detailLabel.hidden = !revealError
+        }
+    }
+    
+    // errorcheck is use to hold a label for what to error check for
+    var errorCheck: Bool = false
+    var errorCheckFor: String = ""
+    override func prepareView() {
+        super.prepareView()
+        
+        //error stuff
+        revealError = false
+    }
+}
+
+class T1: myTextField {
+    
     override func prepareView() {
         super.prepareView()
         super.placeholder = nil
@@ -54,12 +75,14 @@ class T1: TextField {
     }
 }
 
-class T2: TextField {
-    
+class T2: T1 {
+    override func prepareView() {
+        super.prepareView()
+        font = RobotoFont.regularWithSize(14)
+    }
 }
 
-class T3: TextField {
-    
+class T3: myTextField {
 }
 
 class TView: TextView {

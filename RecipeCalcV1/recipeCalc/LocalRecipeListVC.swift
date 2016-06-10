@@ -26,7 +26,8 @@ class LocalRecipeListVC: TableVC {
     /// Prepare tabBarItem.
     override func prepareTabBarItem() {
         tabBarItem.title = "My Recipes"
-        tabBarItem.image = MaterialIcon.menu    }
+        tabBarItem.image = MaterialIcon.menu
+    }
     
     /// Prepares the navigationItem.
     override func prepareNavigationItem() {

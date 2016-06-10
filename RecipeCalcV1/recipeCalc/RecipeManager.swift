@@ -140,16 +140,12 @@ class RecipeManager: NSObject {
     func indexOfKey(key: String) -> Int {
         var i = 0
         var index = -1
-        print("checking for index")
         for recipe in self.recipes {
-            print((recipe.key == key))
             if recipe.key == key {
                 index = i
-                print("index inside \(index)")
             }
             i += 1
         }
-        print(index)
-        return index as Int
+        return Int(index)
     }    
 }
