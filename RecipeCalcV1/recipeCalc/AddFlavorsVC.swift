@@ -103,7 +103,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         view.addSubview(flavorInfo)
         
         MaterialLayout.alignToParentHorizontally(view, child: flavorInfo, left: 14, right: 14)
-        MaterialLayout.alignToParentVertically(view, child: flavorInfo, top: 220, bottom: 49)
+        MaterialLayout.alignToParentVertically(view, child: flavorInfo, top: 0, bottom: 49)
         
         addFlavorName = T1()
         addFlavorName.placeholder = "Flavor Name"
@@ -132,7 +132,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         MaterialLayout.alignFromTop(flavorInfo, child: addFlavorPct, top: 70)
         
         
-        let flavorBaseLabel: L1 = L1()
+        let flavorBaseLabel: L3 = L3()
         flavorBaseLabel.text = "Flavor base"
         flavorInfo.addSubview(flavorBaseLabel)
         MaterialLayout.size(flavorInfo, child: flavorBaseLabel, width: 110, height: 22)
@@ -154,7 +154,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         // MaterialLayout.size(flavorInfo, child: addFlavorButton, width: 150, height: 40)
         MaterialLayout.height(flavorInfo, child: addFlavorButton, height: 40)
         MaterialLayout.alignToParentHorizontally(flavorInfo, child: addFlavorButton, left: 80, right: 80)
-        MaterialLayout.alignFromTop(flavorInfo, child: addFlavorButton, top: 100)
+        MaterialLayout.alignFromTop(flavorInfo, child: addFlavorButton, top: 140)
         
         flavorTable = UITableView()
         flavorTable.registerClass(MaterialTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
@@ -163,7 +163,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         
         // Use MaterialLayout to easily align the tableView.
         flavorInfo.addSubview(flavorTable)
-        MaterialLayout.alignToParent(view, child: flavorTable, top: 175, left: 0, bottom: 0, right: 0)
+        MaterialLayout.alignToParent(view, child: flavorTable, top: 195, left: 0, bottom: 0, right: 0)
         
     }
     
