@@ -19,8 +19,13 @@ class myTextField: TextField { // creating a new root textview with errorchecl a
     }
     
     // errorcheck is use to hold a label for what to error check for
+    
+    // adding fields for errors
     var errorCheck: Bool = false
     var errorCheckFor: String = ""
+    var textLength: Int = 0
+    
+    
     override func prepareView() {
         super.prepareView()
         

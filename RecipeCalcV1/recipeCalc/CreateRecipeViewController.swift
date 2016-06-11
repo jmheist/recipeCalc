@@ -31,6 +31,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
     
     // nav save button
     private var saveBtn: B2!
+    private var cancelBtn: B2!
     
     // table vars
     private var flavorTable: UITableView!
@@ -84,6 +85,11 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         saveBtn.setTitle("Save", forState: .Normal)
         saveBtn.addTarget(self, action: #selector(sendRecipe), forControlEvents: .TouchUpInside)
         
+        cancelBtn = B2()
+        cancelBtn.setTitle("Cancel", forState: .Normal)
+        cancelBtn.addTarget(self, action: #selector(cancelRecipe), forControlEvents: .TouchUpInside)
+        
+        navigationItem.leftControls = [cancelBtn]
         navigationItem.rightControls = [saveBtn]
         
     }
@@ -107,6 +113,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         recipeName.clearButtonMode = .WhileEditing
         recipeName.errorCheck = true
         recipeName.errorCheckFor = "text"
+        recipeName.textLength = 3
         recipeInfo.addSubview(recipeName)
         MaterialLayout.height(recipeInfo, child: recipeName, height: 28)
         MaterialLayout.alignFromTop(recipeInfo, child: recipeName, top: 25)
@@ -118,6 +125,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         recipeDesc.clearButtonMode = .WhileEditing
         recipeDesc.errorCheck = true
         recipeDesc.errorCheckFor = "text"
+        recipeDesc.textLength = 3
         recipeInfo.addSubview(recipeDesc)
         MaterialLayout.height(recipeInfo, child: recipeDesc, height: 20)
         MaterialLayout.alignFromTop(recipeInfo, child: recipeDesc, top: 85)
@@ -210,7 +218,8 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         addFlavorButton.setTitleColor(colors.dark, forState: .Normal)
         addFlavorButton.addTarget(self, action: #selector(addFlavor), forControlEvents: .TouchUpInside)
         flavorInfo.addSubview(addFlavorButton)
-        MaterialLayout.alignToParentHorizontally(flavorInfo, child: addFlavorButton, left: 30, right: 30)
+        MaterialLayout.size(flavorInfo, child: addFlavorButton, width: 150, height: 40)
+        MaterialLayout.alignToParentHorizontally(flavorInfo, child: addFlavorButton)
         MaterialLayout.alignFromTop(flavorInfo, child: addFlavorButton, top: 100)
         
         flavorTable = UITableView()
@@ -246,6 +255,11 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    func cancelRecipe() {
+        clearForm()
+        navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
     func sendRecipe() {
         
         let author = AppState.sharedInstance.displayName
@@ -258,7 +272,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         for field in fields {
             if field.errorCheck {
                 print("Checking field: '\(field.text)' for errors")
-                let res = errorMgr.checkForErrors(field.text!, checkFor: field.errorCheckFor)
+                let res = errorMgr.checkForErrors(field.text!, checkFor: Check(type: "text", length: field.textLength))
                 if res.error {
                     field.detail = res.errorMessage
                     field.revealError = true
@@ -290,16 +304,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
             // add flavors to the flavors db
             flavorMGR.sendToFirebase(key, flavors: flavorMGR.flavors)
             
-            // clear the form
-            recipeName.text = ""
-            recipeDesc.text = ""
-            recipePgPct.text = ""
-            recipeVgPct.text = ""
-            recipeSteepDays.text = ""
-            addFlavorName.text = ""
-            addFlavorBase.selectedSegmentIndex = 0
-            addFlavorPct.text = ""
-            flavorMGR.reset()
+            clearForm() // and flavors
             
             view.endEditing(true)
             self.view.resignFirstResponder()
@@ -310,6 +315,18 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
             print("errors: \(errorMgr.errors)")
             errorMgr.errors = false // clear the errors
         }
+    }
+    
+    func clearForm() {
+        recipeName.text = ""
+        recipeDesc.text = ""
+        recipePgPct.text = ""
+        recipeVgPct.text = ""
+        recipeSteepDays.text = ""
+        addFlavorName.text = ""
+        addFlavorBase.selectedSegmentIndex = 0
+        addFlavorPct.text = ""
+        flavorMGR.reset()
     }
     
 }
