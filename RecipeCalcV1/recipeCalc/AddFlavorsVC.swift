@@ -86,11 +86,6 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         saveBtn.setTitle("Save", forState: .Normal)
         saveBtn.addTarget(self, action: #selector(sendRecipe), forControlEvents: .TouchUpInside)
         
-        cancelBtn = B2()
-        cancelBtn.setTitle("Cancel", forState: .Normal)
-        cancelBtn.addTarget(self, action: #selector(cancelRecipe), forControlEvents: .TouchUpInside)
-        
-        navigationItem.leftControls = [cancelBtn]
         navigationItem.rightControls = [saveBtn]
         
     }
@@ -101,9 +96,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         
         let flavorInfo: MaterialView = MaterialView()
         view.addSubview(flavorInfo)
-        
-        MaterialLayout.alignToParentHorizontally(view, child: flavorInfo, left: 14, right: 14)
-        MaterialLayout.alignToParentVertically(view, child: flavorInfo, top: 0, bottom: 49)
+        MaterialLayout.alignToParent(view, child: flavorInfo, top: 0, left: 0, bottom: 49, right: 0)
         
         addFlavorName = T1()
         addFlavorName.placeholder = "Flavor Name"
@@ -115,7 +108,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         addFlavorName.delegate = self
         flavorInfo.addSubview(addFlavorName)
         MaterialLayout.height(flavorInfo, child: addFlavorName, height: 22)
-        MaterialLayout.alignFromTop(flavorInfo, child: addFlavorName, top: 22)
+        MaterialLayout.alignFromTop(flavorInfo, child: addFlavorName, top: 30)
         MaterialLayout.alignToParentHorizontally(flavorInfo, child: addFlavorName, left: 10, right: 10)
         
         addFlavorPct = T2()
@@ -127,24 +120,24 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         addFlavorPct.numberMax = 100
         addFlavorPct.delegate = self
         flavorInfo.addSubview(addFlavorPct)
-        MaterialLayout.size(flavorInfo, child: addFlavorPct, width: 50, height: 22)
-        MaterialLayout.alignFromLeft(flavorInfo, child: addFlavorPct, left: 10)
-        MaterialLayout.alignFromTop(flavorInfo, child: addFlavorPct, top: 70)
+        MaterialLayout.height(flavorInfo, child: addFlavorPct, height: 22)
+        MaterialLayout.alignFromTop(flavorInfo, child: addFlavorPct, top: 60)
+        MaterialLayout.alignToParentHorizontally(flavorInfo, child: addFlavorPct, left: 10, right: 10)
         
         
         let flavorBaseLabel: L3 = L3()
         flavorBaseLabel.text = "Flavor base"
         flavorInfo.addSubview(flavorBaseLabel)
         MaterialLayout.size(flavorInfo, child: flavorBaseLabel, width: 110, height: 22)
-        MaterialLayout.alignFromLeft(flavorInfo, child: flavorBaseLabel, left: 110)
-        MaterialLayout.alignFromTop(flavorInfo, child: flavorBaseLabel, top: 70)
+        MaterialLayout.alignFromLeft(flavorInfo, child: flavorBaseLabel, left: 10)
+        MaterialLayout.alignFromTop(flavorInfo, child: flavorBaseLabel, top: 90)
         
         addFlavorBase = UISegmentedControl(items: ["PG","VG"])
         addFlavorBase.selectedSegmentIndex = 0
         flavorInfo.addSubview(addFlavorBase)
         MaterialLayout.size(flavorInfo, child: addFlavorBase, width: 80, height: 22)
-        MaterialLayout.alignFromLeft(flavorInfo, child: addFlavorBase, left: 215)
-        MaterialLayout.alignFromTop(flavorInfo, child: addFlavorBase, top: 70)
+        MaterialLayout.alignFromLeft(flavorInfo, child: addFlavorBase, left: 140)
+        MaterialLayout.alignFromTop(flavorInfo, child: addFlavorBase, top: 90)
         
         addFlavorButton = B1()
         addFlavorButton.setTitle("Add Flavor", forState: .Normal)

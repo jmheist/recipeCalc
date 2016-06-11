@@ -40,7 +40,7 @@ class ErrorManager: NSObject {
     private var errors = [String]()
     
     func checkForErrors(data: String, placeholder: String, checkFor: Check) -> ErrorResponse {
-        print("Running checkForErrors")
+        print("Running ErrorManager.checkForErrors()")
         var error: Bool = false
         var errorMessage = ""
         
@@ -55,7 +55,7 @@ class ErrorManager: NSObject {
             
         case "number":
             
-            print("error number")
+            print("checking number")
             let num = Float(data)
             if num == nil {
                 error = true
@@ -72,18 +72,19 @@ class ErrorManager: NSObject {
             }
             
         default:
-            print("no errors")
+            print("nothing to check")
         } // end switch
         
         
         if error {
-            self.errors.append(placeholder)
-        } else {
-            let index = self.errors.indexOf(placeholder)
-            print(index)
-            if index != -1 && index != nil {
-                self.errors.removeAtIndex(index!)
+            if self.errors.indexOf(placeholder) < 0 {
+                self.errors.append(placeholder)
             }
+        } else {
+            while self.errors.indexOf(placeholder) != -1 && self.errors.indexOf(placeholder) != nil {
+                self.errors.removeAtIndex(self.errors.indexOf(placeholder)!)
+            }
+            print(errors, placeholder)
         }
         
         return ErrorResponse(error: error, errorMessage: errorMessage)

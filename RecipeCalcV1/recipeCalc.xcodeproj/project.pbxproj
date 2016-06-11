@@ -159,12 +159,13 @@
 		730233921D05D89C00A3B8C0 /* One-Offs */ = {
 			isa = PBXGroup;
 			children = (
+				73DCEABE1CF6254B002BA81C /* LoginViewController.swift */,
 				734C95D31D06169600EB79AD /* MyRecipeVC.swift */,
 				734C95D51D0617D500EB79AD /* PublicRecipeVC.swift */,
-				73DCEAC91CF62B75002BA81C /* UpdateProfileVC.swift */,
-				73DCEABE1CF6254B002BA81C /* LoginViewController.swift */,
 				73CC8D041D08CDD1003D3709 /* MixPrepVC.swift */,
 				73A3F77A1D0A0BC400B8C281 /* MixVC.swift */,
+				73F66DC11D0BD5D7008E73E1 /* AddFlavorsVC.swift */,
+				73DCEAC91CF62B75002BA81C /* UpdateProfileVC.swift */,
 			);
 			name = "One-Offs";
 			sourceTree = "<group>";
@@ -245,7 +246,6 @@
 			children = (
 				73DCEAC71CF62B5A002BA81C /* LocalRecipeListVC.swift */,
 				73DCEAD21CF65323002BA81C /* CreateRecipeViewController.swift */,
-				73F66DC11D0BD5D7008E73E1 /* AddFlavorsVC.swift */,
 				73DCEB031CF7598F002BA81C /* DiscoveryViewController.swift */,
 				73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */,
 				730233921D05D89C00A3B8C0 /* One-Offs */,

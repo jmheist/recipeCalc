@@ -90,9 +90,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         let recipeInfo: MaterialView = MaterialView()
         view.addSubview(recipeInfo)
         
-        MaterialLayout.height(view, child: recipeInfo, height: 220)
-        MaterialLayout.alignFromTop(view, child: recipeInfo, top: 0)
-        MaterialLayout.alignToParentHorizontally(view, child: recipeInfo, left: 14, right: 14)
+        MaterialLayout.alignToParent(view, child: recipeInfo, top: 0, left: 0, bottom: 49, right: 0)
         
         // recipe info fields
         
@@ -103,10 +101,6 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         recipeName.errorCheck = true
         recipeName.errorCheckFor = "text"
         recipeName.textLength = 3
-        recipeInfo.addSubview(recipeName)
-        MaterialLayout.height(recipeInfo, child: recipeName, height: 28)
-        MaterialLayout.alignFromTop(recipeInfo, child: recipeName, top: 25)
-        MaterialLayout.alignToParentHorizontally(recipeInfo, child: recipeName, left: 10, right: 10)
         
         recipeDesc = T2()
         recipeDesc.placeholder = "Recipe Description"
@@ -115,10 +109,6 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         recipeDesc.errorCheck = true
         recipeDesc.errorCheckFor = "text"
         recipeDesc.textLength = 3
-        recipeInfo.addSubview(recipeDesc)
-        MaterialLayout.height(recipeInfo, child: recipeDesc, height: 20)
-        MaterialLayout.alignFromTop(recipeInfo, child: recipeDesc, top: 85)
-        MaterialLayout.alignToParentHorizontally(recipeInfo, child: recipeDesc, left: 10, right: 10)
         
         recipePgPct = T2()
         recipePgPct.placeholder = "Recipe PG%"
@@ -128,10 +118,6 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         recipePgPct.errorCheckFor = "number"
         recipePgPct.numberMax = 100
         recipePgPct.addTarget(self, action: #selector(self.updatePgVg(_:)), forControlEvents: UIControlEvents.EditingChanged)
-        recipeInfo.addSubview(recipePgPct)
-        MaterialLayout.size(recipeInfo, child: recipePgPct, width: 150, height: 18)
-        MaterialLayout.alignFromLeft(recipeInfo, child: recipePgPct, left: 10)
-        MaterialLayout.alignFromTop(recipeInfo, child: recipePgPct, top: 130)
         
         recipeVgPct = T2()
         recipeVgPct.placeholder = "Recipe VG%"
@@ -141,10 +127,6 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         recipeVgPct.errorCheckFor = "number"
         recipeVgPct.numberMax = 100
         recipeVgPct.addTarget(self, action: #selector(self.updatePgVg(_:)), forControlEvents: UIControlEvents.EditingChanged)
-        recipeInfo.addSubview(recipeVgPct)
-        MaterialLayout.size(recipeInfo, child: recipeVgPct, width: 150, height: 18)
-        MaterialLayout.alignFromRight(recipeInfo, child: recipeVgPct, right: 10)
-        MaterialLayout.alignFromTop(recipeInfo, child: recipeVgPct, top: 130)
         
         recipeNicStrength = T2()
         recipeNicStrength.placeholder = "Nic Strength (mg)"
@@ -153,10 +135,6 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         recipeNicStrength.errorCheck = true
         recipeNicStrength.errorCheckFor = "number"
         recipeNicStrength.numberMax = 200
-        recipeInfo.addSubview(recipeNicStrength)
-        MaterialLayout.size(recipeInfo, child: recipeNicStrength, width: 150, height: 18)
-        MaterialLayout.alignFromLeft(recipeInfo, child: recipeNicStrength, left: 10)
-        MaterialLayout.alignFromTop(recipeInfo, child: recipeNicStrength, top: 170)
         
         recipeSteepDays = T2()
         recipeSteepDays.placeholder = "Days to Steep"
@@ -165,11 +143,18 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         recipeSteepDays.errorCheck = true
         recipeSteepDays.errorCheckFor = "number"
         recipeSteepDays.numberMax = 60
-        recipeInfo.addSubview(recipeSteepDays)
-        MaterialLayout.size(recipeInfo, child: recipeSteepDays, width: 150, height: 18)
-        MaterialLayout.alignFromRight(recipeInfo, child: recipeSteepDays, right: 10)
-        MaterialLayout.alignFromTop(recipeInfo, child: recipeSteepDays, top: 170)
-
+        
+        let children = [recipeName, recipeDesc, recipePgPct, recipeVgPct, recipeNicStrength, recipeSteepDays]
+        
+        var start = CGFloat(30)
+        let spacing = CGFloat(75)
+        for child in children {
+            recipeInfo.addSubview(child)
+            MaterialLayout.alignFromTop(recipeInfo, child: child, top: start)
+            MaterialLayout.alignToParentHorizontally(recipeInfo, child: child, left: 30, right: 30)
+            start += spacing
+        }
+        
     }
     
     func updatePgVg(sender: myTextField) {
@@ -194,7 +179,6 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
     
     func cancelRecipe() {
         clearForm()
-        navigationController?.popToRootViewControllerAnimated(true)
     }
     
     func sendRecipe() {
