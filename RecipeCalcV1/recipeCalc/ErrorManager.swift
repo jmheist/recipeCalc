@@ -12,10 +12,12 @@ import Material
 struct Check {
     var type = String()
     var length: Int = 0
+    var numberMax: Int = 0
     
-    init(type: String, length: Int?=0) {
+    init(type: String, length: Int?=0, numberMax: Int?=0) {
         self.type = type
         self.length = length!
+        self.numberMax = numberMax!
     }
 }
 
@@ -31,27 +33,57 @@ struct ErrorResponse {
 
 class ErrorManager: NSObject {
     
-    var errors = false
+    func hasErrors() -> Bool {
+        return self.errors.count > 0
+    }
     
-    func checkForErrors(data: String, checkFor: Check) -> ErrorResponse {
+    private var errors = [String]()
+    
+    func checkForErrors(data: String, placeholder: String, checkFor: Check) -> ErrorResponse {
         print("Running checkForErrors")
         var error: Bool = false
         var errorMessage = ""
         
         switch checkFor.type { // start switch
         case "text":
-            print(((checkFor.length != 0) && (data.characters.count <= checkFor.length)))
+            
+            print("checking text")
             if (checkFor.length != 0) && (data.characters.count <= checkFor.length) {
                 error = true
                 errorMessage = "Please use more than \(checkFor.length) characters"
             }
+            
+        case "number":
+            
+            print("error number")
+            let num = Float(data)
+            if num == nil {
+                error = true
+                errorMessage = "Must be a number"
+                
+            }
+            if num > Float(checkFor.numberMax) {
+                error = true
+                errorMessage = "Must be between \(checkFor.numberMax) and 0"
+            }
+            if num < Float(0) {
+                error = true
+                errorMessage = "Must be between \(checkFor.numberMax) and 0"
+            }
+            
         default:
-            break
+            print("no errors")
         } // end switch
         
         
         if error {
-            self.errors = true
+            self.errors.append(placeholder)
+        } else {
+            let index = self.errors.indexOf(placeholder)
+            print(index)
+            if index != -1 && index != nil {
+                self.errors.removeAtIndex(index!)
+            }
         }
         
         return ErrorResponse(error: error, errorMessage: errorMessage)

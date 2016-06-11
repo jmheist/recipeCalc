@@ -45,6 +45,7 @@
 		73F66DB61D0B0EDD008E73E1 /* MixCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F66DB51D0B0EDD008E73E1 /* MixCell.swift */; };
 		73F66DB81D0B22B2008E73E1 /* IngredientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F66DB71D0B22B2008E73E1 /* IngredientManager.swift */; };
 		73F66DBA1D0B57EF008E73E1 /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F66DB91D0B57EF008E73E1 /* ErrorManager.swift */; };
+		73F66DC21D0BD5D7008E73E1 /* AddFlavorsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F66DC11D0BD5D7008E73E1 /* AddFlavorsVC.swift */; };
 		73FEB26E1D00AB70008CD089 /* AppNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FEB26D1D00AB70008CD089 /* AppNav.swift */; };
 		73FEB2711D00BB5F008CD089 /* BottomNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FEB2701D00BB5F008CD089 /* BottomNav.swift */; };
 		BD70AB898FA3BEDEFE850CCA /* Pods_recipeCalc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2DD1A894F376BB0A75146F /* Pods_recipeCalc.framework */; };
@@ -111,6 +112,7 @@
 		73F66DB51D0B0EDD008E73E1 /* MixCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixCell.swift; sourceTree = "<group>"; };
 		73F66DB71D0B22B2008E73E1 /* IngredientManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientManager.swift; sourceTree = "<group>"; };
 		73F66DB91D0B57EF008E73E1 /* ErrorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
+		73F66DC11D0BD5D7008E73E1 /* AddFlavorsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFlavorsVC.swift; sourceTree = "<group>"; };
 		73FEB26D1D00AB70008CD089 /* AppNav.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNav.swift; sourceTree = "<group>"; };
 		73FEB2701D00BB5F008CD089 /* BottomNav.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomNav.swift; sourceTree = "<group>"; };
 		7F135C955F4FBDECAAA8E397 /* Pods_recipeCalcUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_recipeCalcUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -243,6 +245,7 @@
 			children = (
 				73DCEAC71CF62B5A002BA81C /* LocalRecipeListVC.swift */,
 				73DCEAD21CF65323002BA81C /* CreateRecipeViewController.swift */,
+				73F66DC11D0BD5D7008E73E1 /* AddFlavorsVC.swift */,
 				73DCEB031CF7598F002BA81C /* DiscoveryViewController.swift */,
 				73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */,
 				730233921D05D89C00A3B8C0 /* One-Offs */,
@@ -521,6 +524,7 @@
 				73425DE51D032F9100A69596 /* Firebase.swift in Sources */,
 				73FEB2711D00BB5F008CD089 /* BottomNav.swift in Sources */,
 				73DCEB041CF7598F002BA81C /* DiscoveryViewController.swift in Sources */,
+				73F66DC21D0BD5D7008E73E1 /* AddFlavorsVC.swift in Sources */,
 				73CC8D051D08CDD1003D3709 /* MixPrepVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

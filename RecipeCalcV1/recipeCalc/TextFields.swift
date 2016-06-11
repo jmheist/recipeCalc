@@ -24,7 +24,11 @@ class myTextField: TextField { // creating a new root textview with errorchecl a
     var errorCheck: Bool = false
     var errorCheckFor: String = ""
     var textLength: Int = 0
+    var numberMax: Int = 0
     
+    // adding fields for auto calcs, like updating pg/vg %
+    var autoUpdate = false
+    var autoUpdateFieldName = ""
     
     override func prepareView() {
         super.prepareView()
@@ -68,6 +72,7 @@ class T1: myTextField {
     
     /// Prepares the detailLabel.
     private func prepareDetailLabel() {
+        detailVerticalOffset = 6
         detailLabel.font = RobotoFont.regularWithSize(12)
         detailColor = colors.dark
         addSubview(detailLabel)
@@ -84,10 +89,16 @@ class T2: T1 {
     override func prepareView() {
         super.prepareView()
         font = RobotoFont.regularWithSize(14)
+        detailVerticalOffset = 0
     }
 }
 
-class T3: myTextField {
+class T3: T1 {
+    override func prepareView() {
+        super.prepareView()
+        font = RobotoFont.regularWithSize(14)
+        detailVerticalOffset = 0
+    }
 }
 
 class TView: TextView {

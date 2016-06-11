@@ -12,8 +12,10 @@ import Firebase
 
 class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
     
-    // text fields
+    let errorMgr: ErrorManager = ErrorManager()
+    var recipe: Recipe!
     
+    // text fields
     private var recipeName: T1!
     private var recipeDesc: T2!
     private var recipePgPct: T2!
@@ -21,26 +23,13 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
     private var recipeNicStrength: T2!
     private var recipeSteepDays: T2!
     
-    private var addFlavorName: T1!
-    private var addFlavorBase: UISegmentedControl!
-    private var addFlavorPct: T2!
-    private var addFlavorButton: B1!
-    
-    // flavors
-    let flavorMGR: FlavorManager = FlavorManager()
-    
     // nav save button
     private var saveBtn: B2!
     private var cancelBtn: B2!
     
-    // table vars
-    private var flavorTable: UITableView!
-    let cellIdentifier = "FlavorCell"
-    
     // db vars
     private var _refHandle: FIRDatabaseHandle!
 
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -82,7 +71,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         navigationItem.title = "Create"
         
         saveBtn = B2()
-        saveBtn.setTitle("Save", forState: .Normal)
+        saveBtn.setTitle("Add Flavors", forState: .Normal)
         saveBtn.addTarget(self, action: #selector(sendRecipe), forControlEvents: .TouchUpInside)
         
         cancelBtn = B2()
@@ -101,7 +90,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         let recipeInfo: MaterialView = MaterialView()
         view.addSubview(recipeInfo)
         
-        MaterialLayout.height(view, child: recipeInfo, height: 170)
+        MaterialLayout.height(view, child: recipeInfo, height: 220)
         MaterialLayout.alignFromTop(view, child: recipeInfo, top: 0)
         MaterialLayout.alignToParentHorizontally(view, child: recipeInfo, left: 14, right: 14)
         
@@ -109,8 +98,8 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         
         recipeName = T1()
         recipeName.placeholder = "Recipe Name"
-        recipeName.font = RobotoFont.regularWithSize(24)
         recipeName.clearButtonMode = .WhileEditing
+        recipeName.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         recipeName.errorCheck = true
         recipeName.errorCheckFor = "text"
         recipeName.textLength = 3
@@ -121,8 +110,8 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         
         recipeDesc = T2()
         recipeDesc.placeholder = "Recipe Description"
-        recipeDesc.font = RobotoFont.regularWithSize(20)
         recipeDesc.clearButtonMode = .WhileEditing
+        recipeDesc.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         recipeDesc.errorCheck = true
         recipeDesc.errorCheckFor = "text"
         recipeDesc.textLength = 3
@@ -133,126 +122,74 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         
         recipePgPct = T2()
         recipePgPct.placeholder = "Recipe PG%"
-        recipePgPct.font = RobotoFont.regularWithSize(14)
         recipePgPct.clearButtonMode = .WhileEditing
+        recipePgPct.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        recipePgPct.errorCheck = true
+        recipePgPct.errorCheckFor = "number"
+        recipePgPct.numberMax = 100
+        recipePgPct.addTarget(self, action: #selector(self.updatePgVg(_:)), forControlEvents: UIControlEvents.EditingChanged)
         recipeInfo.addSubview(recipePgPct)
-        MaterialLayout.size(recipeInfo, child: recipePgPct, width: 120, height: 18)
+        MaterialLayout.size(recipeInfo, child: recipePgPct, width: 150, height: 18)
         MaterialLayout.alignFromLeft(recipeInfo, child: recipePgPct, left: 10)
         MaterialLayout.alignFromTop(recipeInfo, child: recipePgPct, top: 130)
         
         recipeVgPct = T2()
         recipeVgPct.placeholder = "Recipe VG%"
-        recipeVgPct.font = RobotoFont.regularWithSize(14)
         recipeVgPct.clearButtonMode = .WhileEditing
+        recipeVgPct.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        recipeVgPct.errorCheck = true
+        recipeVgPct.errorCheckFor = "number"
+        recipeVgPct.numberMax = 100
+        recipeVgPct.addTarget(self, action: #selector(self.updatePgVg(_:)), forControlEvents: UIControlEvents.EditingChanged)
         recipeInfo.addSubview(recipeVgPct)
-        MaterialLayout.size(recipeInfo, child: recipeVgPct, width: 120, height: 18)
+        MaterialLayout.size(recipeInfo, child: recipeVgPct, width: 150, height: 18)
         MaterialLayout.alignFromRight(recipeInfo, child: recipeVgPct, right: 10)
         MaterialLayout.alignFromTop(recipeInfo, child: recipeVgPct, top: 130)
         
         recipeNicStrength = T2()
         recipeNicStrength.placeholder = "Nic Strength (mg)"
-        recipeNicStrength.font = RobotoFont.regularWithSize(14)
         recipeNicStrength.clearButtonMode = .WhileEditing
+        recipeNicStrength.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        recipeNicStrength.errorCheck = true
+        recipeNicStrength.errorCheckFor = "number"
+        recipeNicStrength.numberMax = 200
         recipeInfo.addSubview(recipeNicStrength)
-        MaterialLayout.size(recipeInfo, child: recipeNicStrength, width: 120, height: 18)
+        MaterialLayout.size(recipeInfo, child: recipeNicStrength, width: 150, height: 18)
         MaterialLayout.alignFromLeft(recipeInfo, child: recipeNicStrength, left: 10)
-        MaterialLayout.alignFromTop(recipeInfo, child: recipeNicStrength, top: 160)
+        MaterialLayout.alignFromTop(recipeInfo, child: recipeNicStrength, top: 170)
         
         recipeSteepDays = T2()
         recipeSteepDays.placeholder = "Days to Steep"
-        recipeSteepDays.font = RobotoFont.regularWithSize(14)
         recipeSteepDays.clearButtonMode = .WhileEditing
+        recipeSteepDays.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        recipeSteepDays.errorCheck = true
+        recipeSteepDays.errorCheckFor = "number"
+        recipeSteepDays.numberMax = 60
         recipeInfo.addSubview(recipeSteepDays)
-        MaterialLayout.size(recipeInfo, child: recipeSteepDays, width: 120, height: 18)
+        MaterialLayout.size(recipeInfo, child: recipeSteepDays, width: 150, height: 18)
         MaterialLayout.alignFromRight(recipeInfo, child: recipeSteepDays, right: 10)
-        MaterialLayout.alignFromTop(recipeInfo, child: recipeSteepDays, top: 160)
-        
-        // Flavor Info
-        
-        let flavorInfo: MaterialView = MaterialView()
-        view.addSubview(flavorInfo)
-        
-        MaterialLayout.alignToParentHorizontally(view, child: flavorInfo, left: 14, right: 14)
-        MaterialLayout.alignToParentVertically(view, child: flavorInfo, top: 195, bottom: 49)
-        
-        addFlavorName = T1()
-        addFlavorName.placeholder = "Flavor Name"
-        addFlavorName.errorCheck = true
-        addFlavorName.errorCheckFor = "text"
-        addFlavorName.font = RobotoFont.regularWithSize(20)
-        addFlavorName.clearButtonMode = .WhileEditing
-        addFlavorName.delegate = self
-        flavorInfo.addSubview(addFlavorName)
-        MaterialLayout.height(flavorInfo, child: addFlavorName, height: 22)
-        MaterialLayout.alignFromTop(flavorInfo, child: addFlavorName, top: 22)
-        MaterialLayout.alignToParentHorizontally(flavorInfo, child: addFlavorName, left: 10, right: 10)
-        
-        addFlavorPct = T2()
-        addFlavorPct.placeholder = "%"
-        addFlavorPct.font = RobotoFont.regularWithSize(18)
-        addFlavorPct.clearButtonMode = .WhileEditing
-        addFlavorPct.delegate = self
-        flavorInfo.addSubview(addFlavorPct)
-        MaterialLayout.size(flavorInfo, child: addFlavorPct, width: 50, height: 22)
-        MaterialLayout.alignFromLeft(flavorInfo, child: addFlavorPct, left: 10)
-        MaterialLayout.alignFromTop(flavorInfo, child: addFlavorPct, top: 70)
-        
-        
-        let flavorBaseLabel: L1 = L1()
-        flavorBaseLabel.text = "Flavor base"
-        flavorBaseLabel.font = RobotoFont.regularWithSize(16)
-        flavorInfo.addSubview(flavorBaseLabel)
-        MaterialLayout.size(flavorInfo, child: flavorBaseLabel, width: 110, height: 22)
-        MaterialLayout.alignFromLeft(flavorInfo, child: flavorBaseLabel, left: 110)
-        MaterialLayout.alignFromTop(flavorInfo, child: flavorBaseLabel, top: 70)
-        
-        addFlavorBase = UISegmentedControl(items: ["PG","VG"])
-        addFlavorBase.selectedSegmentIndex = 0
-        flavorInfo.addSubview(addFlavorBase)
-        MaterialLayout.size(flavorInfo, child: addFlavorBase, width: 80, height: 22)
-        MaterialLayout.alignFromLeft(flavorInfo, child: addFlavorBase, left: 215)
-        MaterialLayout.alignFromTop(flavorInfo, child: addFlavorBase, top: 70)
-        
-        addFlavorButton = B1()
-        addFlavorButton.setTitle("Add Flavor", forState: .Normal)
-        addFlavorButton.setTitleColor(colors.dark, forState: .Normal)
-        addFlavorButton.addTarget(self, action: #selector(addFlavor), forControlEvents: .TouchUpInside)
-        flavorInfo.addSubview(addFlavorButton)
-        MaterialLayout.size(flavorInfo, child: addFlavorButton, width: 150, height: 40)
-        MaterialLayout.alignToParentHorizontally(flavorInfo, child: addFlavorButton)
-        MaterialLayout.alignFromTop(flavorInfo, child: addFlavorButton, top: 100)
-        
-        flavorTable = UITableView()
-        flavorTable.registerClass(MaterialTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
-        flavorTable.dataSource = self
-        flavorTable.delegate = self
-        
-        // Use MaterialLayout to easily align the tableView.
-        flavorInfo.addSubview(flavorTable)
-        MaterialLayout.alignToParent(view, child: flavorTable, top: 175, left: 0, bottom: 0, right: 0)
+        MaterialLayout.alignFromTop(recipeInfo, child: recipeSteepDays, top: 170)
 
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()  //if desired
-        addFlavor()
-        return true
+    func updatePgVg(sender: myTextField) {
+        if Float(sender.text!) != nil {
+            if Float(sender.text!) <= Float(100) && Float(sender.text!) >= Float(0) {
+                print(Float(sender.text!), Float(recipeVgPct.text!), Float(recipePgPct.text!))
+                print(Float(sender.text!) == Float(recipeVgPct.text!))
+                if Float(sender.text!) == Float(recipePgPct.text!) {
+                    recipeVgPct.text = String(Float(100) - Float(sender.text!)!)
+                } else if Float(sender.text!) == Float(recipeVgPct.text!) {
+                    recipePgPct.text = String(Float(100) - Float(sender.text!)!)
+                }
+            }
+        }
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
         self.view.resignFirstResponder()
-    }
-    
-    func addFlavor() {
-
-        flavorMGR.addFlavor(Flavor(name: addFlavorName.text!, base: addFlavorBase.selectedSegmentIndex == 0 ? "PG" : "VG", pct: addFlavorPct.text!))
-        flavorTable.reloadData()
-        addFlavorName.text = ""
-        addFlavorBase.selectedSegmentIndex = 0
-        addFlavorPct.text = ""
-        
     }
     
     func cancelRecipe() {
@@ -265,109 +202,70 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         let author = AppState.sharedInstance.displayName
         let authorId = AppState.sharedInstance.uid
         
-        let errorMgr: ErrorManager = ErrorManager()
-        
         let fields = [recipeName, recipeDesc, recipePgPct, recipeVgPct, recipeNicStrength, recipeSteepDays]
         
         for field in fields {
-            if field.errorCheck {
-                print("Checking field: '\(field.text)' for errors")
-                let res = errorMgr.checkForErrors(field.text!, checkFor: Check(type: "text", length: field.textLength))
-                if res.error {
-                    field.detail = res.errorMessage
-                    field.revealError = true
-                    field.detailColor = colors.errorRed
-                    field.dividerColor = colors.errorRed
-                } else {
-                    field.revealError = false
-                    field.detailColor = colors.dark
-                    field.dividerColor = colors.dark
-                }
-            }
+            errorCheck(field)
         }
         
-        if !errorMgr.errors { // no errors, save the recipe
-            print("No Errors Found: \(errorMgr.errors)")
-            let key = myRecipeMgr.sendToFirebase(
-                Recipe(
-                    author: author!,
-                    authorId: authorId!,
-                    name: recipeName.text!,
-                    desc: recipeDesc.text!,
-                    pg: recipePgPct.text!,
-                    vg: recipeVgPct.text!,
-                    strength: recipeNicStrength.text!,
-                    steepDays:recipeSteepDays.text!
-                )
+        if !errorMgr.hasErrors() {
+            let recipe = Recipe(
+                author: author!,
+                authorId: authorId!,
+                name: recipeName.text!,
+                desc: recipeDesc.text!,
+                pg: recipePgPct.text!,
+                vg: recipeVgPct.text!,
+                strength: recipeNicStrength.text!,
+                steepDays:recipeSteepDays.text!
             )
-            
-            // add flavors to the flavors db
-            flavorMGR.sendToFirebase(key, flavors: flavorMGR.flavors)
-            
-            clearForm() // and flavors
             
             view.endEditing(true)
             self.view.resignFirstResponder()
             
-            tabBarController?.selectedIndex = 0
-            
+            navigationController!.pushViewController(AddFlavorsVC(recipe: recipe), animated: true)
+        
         } else { // there was errors
-            print("errors: \(errorMgr.errors)")
-            errorMgr.errors = false // clear the errors
+            print("errors: \(errorMgr.hasErrors())")
+            
+        }
+    }
+    
+    func errorCheck(field: myTextField) {
+        if field.errorCheck {
+            print("Checking field: '\(field.placeholder)' for errors")
+            let res = errorMgr.checkForErrors(
+                field.text!, // data:
+                placeholder: field.placeholder!,
+                checkFor: Check(
+                    type: field.errorCheckFor,
+                    length: field.textLength,
+                    numberMax: field.numberMax
+                )
+            )
+            if res.error {
+                print("found an error with \(field)")
+                field.detail = res.errorMessage
+                field.revealError = true
+                field.detailColor = colors.errorRed
+                field.dividerColor = colors.errorRed
+            } else {
+                field.revealError = false
+                field.detailColor = colors.dark
+                field.dividerColor = colors.dark
+            }
         }
     }
     
     func clearForm() {
+        view.endEditing(true)
+        self.view.resignFirstResponder()
         recipeName.text = ""
         recipeDesc.text = ""
         recipePgPct.text = ""
         recipeVgPct.text = ""
         recipeSteepDays.text = ""
-        addFlavorName.text = ""
-        addFlavorBase.selectedSegmentIndex = 0
-        addFlavorPct.text = ""
-        flavorMGR.reset()
     }
     
-}
-
-
-/// TableViewDataSource methods.
-extension CreateRecipeViewController: UITableViewDataSource {
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return flavorMGR.flavors.count
-    }
-    
-    /// Prepares the cells within the tableView.
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: RecipeCell = RecipeCell(style: .Subtitle, reuseIdentifier: cellIdentifier)
-        let flavor = flavorMGR.flavors[indexPath.row]
-        cell.textLabel?.text = flavor.name
-        cell.detailTextLabel?.text = "Base: \(flavor.base), Percent of Recipe: \(flavor.pct)"
-        return cell
-    }
-    
-}
-
-/// UITableViewDelegate methods.
-extension CreateRecipeViewController: UITableViewDelegate {
-    /// Sets the tableView cell height.
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 40
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //
-    }
-    
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
-        if(editingStyle == UITableViewCellEditingStyle.Delete){
-            flavorMGR.flavors.removeAtIndex(indexPath.row)
-            flavorTable.reloadData()
-        }
-        
-    }
 }
 
