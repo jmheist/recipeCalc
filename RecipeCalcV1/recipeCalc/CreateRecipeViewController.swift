@@ -29,7 +29,12 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
     
     // db vars
     private var _refHandle: FIRDatabaseHandle!
-
+    
+    convenience init(recipe: Recipe) {
+        self.init(nibName: nil, bundle: nil)
+        self.recipe = recipe
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -68,18 +73,23 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
     
     /// Prepares the navigationItem.
     private func prepareNavigationItem() {
-        navigationItem.title = "Create"
-        
+        if self.recipe != nil && self.recipe.key != "" {
+            navigationItem.title = "Edit"
+        } else {
+            navigationItem.title = "Create"
+        }
         saveBtn = B2()
         saveBtn.setTitle("Add Flavors", forState: .Normal)
         saveBtn.addTarget(self, action: #selector(sendRecipe), forControlEvents: .TouchUpInside)
         
-        cancelBtn = B2()
-        cancelBtn.setTitle("Cancel", forState: .Normal)
-        cancelBtn.addTarget(self, action: #selector(cancelRecipe), forControlEvents: .TouchUpInside)
-        
-        navigationItem.leftControls = [cancelBtn]
         navigationItem.rightControls = [saveBtn]
+        
+        if self.recipe != nil && self.recipe.key == "" {
+            cancelBtn = B2()
+            cancelBtn.setTitle("Cancel", forState: .Normal)
+            cancelBtn.addTarget(self, action: #selector(cancelRecipe), forControlEvents: .TouchUpInside)
+            navigationItem.leftControls = [cancelBtn]
+        }
         
     }
     
@@ -155,6 +165,15 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
             start += spacing
         }
         
+        if (self.recipe != nil && self.recipe.key != "") {
+            recipeName.text = recipe.name
+            recipeDesc.text = recipe.desc
+            recipePgPct.text = recipe.pg
+            recipeVgPct.text = recipe.vg
+            recipeNicStrength.text = recipe.strength
+            recipeSteepDays.text = recipe.steepDays
+        }
+        
     }
     
     func updatePgVg(sender: myTextField) {
@@ -193,7 +212,8 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         }
         
         if !errorMgr.hasErrors() {
-            let recipe = Recipe(
+            let key = recipe.key
+            recipe = Recipe(
                 author: author!,
                 authorId: authorId!,
                 name: recipeName.text!,
@@ -203,6 +223,8 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
                 strength: recipeNicStrength.text!,
                 steepDays:recipeSteepDays.text!
             )
+            
+            recipe.key = key
             
             view.endEditing(true)
             self.view.resignFirstResponder()

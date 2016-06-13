@@ -32,7 +32,7 @@ class AppNav: NavigationController {
         view.addSubview(statusBarView!)
         MaterialLayout.alignFromTop(view, child: statusBarView!)
         MaterialLayout.alignToParentHorizontally(view, child: statusBarView!)
-        MaterialLayout.height(view, child: statusBarView!, height: 20)
+        MaterialLayout.height(view, child: statusBarView!, height: 16)
     }
     
     /// Prepares the navigationBar
@@ -41,8 +41,9 @@ class AppNav: NavigationController {
         navigationBar.backgroundColor = colors.background
         let image: UIImage? = UIImage.imageWithColor(colors.dark, size: CGSizeMake(1, 1))
         navigationBar.shadowImage = image
-
+        
         navigationItem.titleLabel.textAlignment = .Center
         navigationItem.titleLabel.textColor = colors.dark
-        navigationItem.titleLabel.font = RobotoFont.thinWithSize(20)    }
+        navigationItem.titleLabel.font = RobotoFont.thinWithSize(16)
+    }
 }

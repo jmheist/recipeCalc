@@ -15,6 +15,7 @@ class RecipeVC: UIViewController {
     var recipe: Recipe!
     let flavorMgr: FlavorManager = FlavorManager()
     var _refHandle: FIRDatabaseHandle!
+    var tabBar: MixTabBar!
     
     var flavorTable: UITableView!
     
@@ -67,7 +68,7 @@ class RecipeVC: UIViewController {
     
     /// Prepares the navigationItem.
     func prepareNavigationItem() {
-        navigationItem.title = ""
+        navigationItem.title = recipe.name
     }
     
     func prepareRecipe() {
@@ -76,21 +77,14 @@ class RecipeVC: UIViewController {
         view.addSubview(recipeInfo)
         MaterialLayout.alignToParent(view, child: recipeInfo, top: 0, left: 0, bottom: 49, right: 0)
         
-        let recipeName: L1 = L1()
         let recipeDesc: L2 = L2()
         
-        recipeName.text = recipe.name
         recipeDesc.text = recipe.desc
-        recipeName.textAlignment = .Center
         recipeDesc.textAlignment = .Center
         
-        recipeInfo.addSubview(recipeName)
         recipeInfo.addSubview(recipeDesc)
         
-        
-        MaterialLayout.alignFromTop(recipeInfo, child: recipeName, top: 15)
-        MaterialLayout.alignFromTop(recipeInfo, child: recipeDesc, top: 45)
-        MaterialLayout.alignToParentHorizontally(recipeInfo, child: recipeName)
+        MaterialLayout.alignFromTop(recipeInfo, child: recipeDesc, top: 25)
         MaterialLayout.alignToParentHorizontally(recipeInfo, child: recipeDesc)
         
     }
@@ -110,7 +104,7 @@ class RecipeVC: UIViewController {
     
     func prepareTabBar() {
         
-        let tabBar: MixTabBar = MixTabBar()
+        let tabBar = MixTabBar()
         
         view.addSubview(tabBar)
         MaterialLayout.height(view, child: tabBar, height: 40)
@@ -119,7 +113,7 @@ class RecipeVC: UIViewController {
         
         let btn1: FlatButton = FlatButton()
         btn1.pulseColor = colors.medium
-        btn1.setTitle("Mix This Recipe", forState: .Normal)
+        btn1.setTitle("Mix", forState: .Normal)
         btn1.setTitleColor(colors.textDark, forState: .Normal)
         btn1.addTarget(nil, action: #selector(mixIt), forControlEvents: .TouchUpInside)
         

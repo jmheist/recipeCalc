@@ -78,7 +78,7 @@ class MixVC: UIViewController {
     }
     
     func back() {
-        navigationController?.pushViewController(MixPrepVC(recipe: self.recipe), animated: true)
+        navigationController?.popViewControllerAnimated(true)
     }
     
     func done() {

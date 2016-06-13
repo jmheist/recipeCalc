@@ -68,9 +68,15 @@ class RecipeManager: NSObject {
     }
     
     func sendToFirebase (recipe: Recipe) -> String {
-        let key = Queries.myRecipes.child(AppState.sharedInstance.uid!).childByAutoId().key
-        Queries.myRecipes.child(AppState.sharedInstance.uid!).child(key).setValue(recipe.fb())
-        return key
+        
+        if recipe.key == "" {
+            let key = Queries.myRecipes.child(AppState.sharedInstance.uid!).childByAutoId().key
+            Queries.myRecipes.child(AppState.sharedInstance.uid!).child(key).setValue(recipe.fb())
+            return key
+        } else {
+            Queries.myRecipes.child(AppState.sharedInstance.uid!).child(recipe.key).setValue(recipe.fb())
+            return recipe.key
+        }
     }
     
     func removeRecipe(key: String) {

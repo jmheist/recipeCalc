@@ -12,10 +12,9 @@ import Firebase
 
 class MyRecipeCell: RecipeCell {
     
-    var publishButton: B3 = B3()
-    
     override func prepareView() {
         super.prepareView()
+        
     }
     
 }

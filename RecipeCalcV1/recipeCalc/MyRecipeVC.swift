@@ -38,7 +38,7 @@ class MyRecipeVC: RecipeVC {
     }
     
     override func prepareNavigationItem() {
-        navigationItem.title = "My Recipe"
+        navigationItem.title = recipe.name
         preparePublishButton()
     }
     
@@ -64,5 +64,34 @@ class MyRecipeVC: RecipeVC {
         
         navigationItem.rightControls = [publishButton]
         
+    }
+    
+    override func prepareTabBar() {
+        
+        let tabBar = MixTabBar()
+        
+        view.addSubview(tabBar)
+        MaterialLayout.height(view, child: tabBar, height: 40)
+        MaterialLayout.alignFromBottom(view, child: tabBar, bottom: 0)
+        MaterialLayout.alignToParentHorizontally(view, child: tabBar, left: 0, right: 0)
+        
+        let btn1: FlatButton = FlatButton()
+        btn1.pulseColor = colors.medium
+        btn1.setTitle("Mix", forState: .Normal)
+        btn1.setTitleColor(colors.textDark, forState: .Normal)
+        btn1.addTarget(nil, action: #selector(mixIt), forControlEvents: .TouchUpInside)
+        
+        let btn2: FlatButton = FlatButton()
+        btn2.pulseColor = colors.medium
+        btn2.setTitle("Edit", forState: .Normal)
+        btn2.setTitleColor(colors.textDark, forState: .Normal)
+        btn2.addTarget(nil, action: #selector(editRecipe), forControlEvents: .TouchUpInside)
+        
+        tabBar.buttons = [btn2, btn1]
+        
+    }
+    
+    func editRecipe() {
+        navigationController?.pushViewController(CreateRecipeViewController(recipe: recipe), animated: true)
     }
 }

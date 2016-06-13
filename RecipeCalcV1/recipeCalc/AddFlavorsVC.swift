@@ -44,6 +44,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
     convenience init(recipe: Recipe) {
         self.init(nibName: nil, bundle: nil)
         self.recipe = recipe
+        print(recipe)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -57,13 +58,25 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureDatabase()
         prepareView()
         prepareNavigationItem()
         prepareTextFields()
+        configureDatabase()
     }
     
     func configureDatabase() {
+        if self.recipe != nil && self.recipe.key != "" {
+            print("should load flavors")
+            _refHandle = Queries.flavors.child(recipe.key).observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
+                let key = snapshot.key as String
+                let name = snapshot.value!["name"] as! String
+                let pct = snapshot.value!["pct"] as! String
+                let base = snapshot.value!["base"] as! String
+                self.flavorMGR.addFlavor(Flavor(name: name, base: base, pct: pct, key: key))
+                self.flavorTable.reloadData()
+                print("flavor added, reloading table")
+            })
+        }
     }
     
     /// General preparation statements.
@@ -208,7 +221,11 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
         self.view.resignFirstResponder()
         
-        tabBarController?.selectedIndex = 0
+        if (self.recipe != nil && self.recipe.key != "") {
+            navigationController?.popToRootViewControllerAnimated(true)
+        } else {
+            tabBarController?.selectedIndex = 0
+        }
     }
     
     func errorCheck(field: myTextField) {
@@ -281,6 +298,12 @@ extension AddFlavorsVC: UITableViewDelegate {
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
         if(editingStyle == UITableViewCellEditingStyle.Delete){
+            
+            if self.recipe != nil && self.recipe.key != "" && flavorMGR.flavors[indexPath.row].key != "" {
+                Queries.flavors.child(self.recipe.key).child(flavorMGR.flavors[indexPath.row].key).setValue(nil)
+                print("removing flavor from FB")
+            }
+            
             flavorMGR.flavors.removeAtIndex(indexPath.row)
             flavorTable.reloadData()
         }

@@ -14,6 +14,8 @@ class MixPrepVC: UIViewController {
     var recipe: Recipe!
     var settings: Settings!
     
+    let errorMgr: ErrorManager = ErrorManager()
+    
     var pg: T1!
     var vg: T1!
     var strength: T1!
@@ -77,17 +79,27 @@ class MixPrepVC: UIViewController {
         
     }
     func back() {
-        navigationController?.pushViewController(MyRecipeVC(recipe: self.recipe), animated: true)
+        navigationController?.popViewControllerAnimated(true)
     }
     func mixIt() {
-        self.settings = Settings(
-            amount: amount.text!,
-            strength: strength.text!,
-            pg: pg.text!,
-            vg: vg.text!,
-            nic: nic.text!
-        )
-        navigationController?.pushViewController(MixVC(recipe: self.recipe, settings: self.settings), animated: true)
+        
+        let children = [amount, strength, pg, vg, nic]
+        
+        
+        for child in children {
+            errorCheck(child)
+        }
+        
+        if !errorMgr.hasErrors() {
+            self.settings = Settings(
+                amount: amount.text!,
+                strength: strength.text!,
+                pg: pg.text!,
+                vg: vg.text!,
+                nic: nic.text!
+            )
+            navigationController?.pushViewController(MixVC(recipe: self.recipe, settings: self.settings), animated: true)
+        }
     }
     
     func prepareRecipeInfo() {
@@ -124,10 +136,34 @@ class MixPrepVC: UIViewController {
         MaterialLayout.alignToParent(view, child: settings, top: 80, left: 0, bottom: 49, right: 0)
         
         pg = T1()
+        pg.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        pg.errorCheck = true
+        pg.errorCheckFor = "number"
+        pg.numberMax = 100
+        
         vg = T1()
+        vg.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        vg.errorCheck = true
+        vg.errorCheckFor = "number"
+        vg.numberMax = 100
+        
         strength = T1()
+        strength.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        strength.errorCheck = true
+        strength.errorCheckFor = "number"
+        strength.numberMax = 40
+        
         nic = T1()
+        nic.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        nic.errorCheck = true
+        nic.errorCheckFor = "number"
+        nic.numberMax = 200
+        
         amount = T1()
+        amount.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        amount.errorCheck = true
+        amount.errorCheckFor = "number"
+        amount.numberMax = 10000
         
         amount.text = "30"
         amount.placeholder = "Amount to make (ml)"
@@ -140,20 +176,54 @@ class MixPrepVC: UIViewController {
         nic.text = "100"
         nic.placeholder = "Nic Concentrate Strength"
         
-        settings.addSubview(amount)
-        settings.addSubview(strength)
-        settings.addSubview(pg)
-        settings.addSubview(vg)
-        settings.addSubview(nic)
-        
         let children = [amount, strength, pg, vg, nic]
         
         var start: CGFloat = 15
         let spacing: CGFloat = 75
         for child in children {
+            settings.addSubview(child)
             MaterialLayout.alignFromTop(settings, child: child, top: start)
             MaterialLayout.alignToParentHorizontally(settings, child: child, left: 30, right: 30)
             start += spacing
+        }
+    }
+    
+    func updatePgVg(sender: myTextField) {
+        if Float(sender.text!) != nil {
+            if Float(sender.text!) <= Float(100) && Float(sender.text!) >= Float(0) {
+                print(Float(sender.text!) == Float(vg.text!))
+                if Float(sender.text!) == Float(pg.text!) {
+                    vg.text = String(Float(100) - Float(sender.text!)!)
+                } else if Float(sender.text!) == Float(vg.text!) {
+                    pg.text = String(Float(100) - Float(sender.text!)!)
+                }
+            }
+        }
+    }
+    
+    func errorCheck(field: myTextField) {
+        if field.errorCheck {
+            print("Checking field: '\(field.placeholder)' for errors")
+            let res = errorMgr.checkForErrors(
+                field.text!, // data:
+                placeholder: field.placeholder!,
+                checkFor: Check(
+                    type: field.errorCheckFor,
+                    length: field.textLength,
+                    numberMax: field.numberMax
+                )
+            )
+            if res.error {
+                print("found an error with \(field)")
+                field.detail = res.errorMessage
+                field.revealError = true
+                field.detailColor = colors.errorRed
+                field.dividerColor = colors.errorRed
+            } else {
+                field.revealError = false
+                field.detailColor = colors.dark
+                field.dividerColor = colors.dark
+            }
         }
     }
 }

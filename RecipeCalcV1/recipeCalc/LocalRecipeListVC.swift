@@ -100,6 +100,5 @@ class LocalRecipeListVC: TableVC {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         navigationController?.pushViewController(MyRecipeVC(recipe: myRecipeMgr.recipes[indexPath.row]), animated: true)
     }
-
-    
+        
 }

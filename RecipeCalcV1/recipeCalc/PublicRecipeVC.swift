@@ -17,6 +17,6 @@ class PublicRecipeVC: RecipeVC {
     }
     
     override func prepareNavigationItem() {
-        navigationItem.title = "A Public Recipe"
+        navigationItem.title = recipe.name
     }
 }

@@ -66,7 +66,7 @@ class DiscoveryViewController: TableVC {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Dequeue cell
-        let cell: MyRecipeCell = MyRecipeCell(style: .Default, reuseIdentifier: "publicRecipeCell")
+        let cell: PublicRecipeCell = PublicRecipeCell(style: .Default, reuseIdentifier: "publicRecipeCell")
         
         let recipe = publicRecipeMgr.recipes[indexPath.row]
         

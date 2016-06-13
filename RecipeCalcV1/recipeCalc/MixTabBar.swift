@@ -16,6 +16,10 @@ class MixTabBar: TabBar {
         backgroundColor = colors.background
         line.tintColor = colors.light
         prepareBottomLayer()
+        shadowColor = colors.dark
+        shadowOffset = CGSize(width: 0,height: -1)
+        shadowRadius = 1
+        shadowOpacity = 1
     }
     
     // Prepares the bottomLayer.
