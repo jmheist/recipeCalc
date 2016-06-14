@@ -13,7 +13,6 @@ import Material
 class MyRecipeVC: RecipeVC {
     
     var _refPublishedHandle: FIRDatabaseHandle!
-    let publishButton: B3 = B3()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +27,6 @@ class MyRecipeVC: RecipeVC {
     func prepareDatabase() {
         // Listen for new messages in the Firebase database
         _refPublishedHandle = Queries.myRecipes.child(AppState.sharedInstance.uid!).child(recipe.key).observeEventType(.ChildChanged, withBlock: { (snapshot) -> Void in
-            print("MyRecipeVC: Child Changed: Key \(snapshot.key)", "Value: \(snapshot.value)")
             self.preparePublishButton()
         })
     }
@@ -42,27 +40,27 @@ class MyRecipeVC: RecipeVC {
         preparePublishButton()
     }
     
-    func publishRecipe(sender: UIButton) {
+    func publishRecipe() {
         self.recipe = myRecipeMgr.publishRecipe(recipe.key)
     }
     
-    func unPublishRecipe(sender: UIButton) {
+    func unPublishRecipe() {
         self.recipe = myRecipeMgr.unPublishRecipe(recipe.key)
     }
     
     func preparePublishButton() {
-        print(recipe)
+        
+        let publishButton = UIBarButtonItem(title: "share", style: .Plain, target: self, action: #selector(publishRecipe))
+        
         if recipe.published == "true" {
-            print("Recipe is Published")
-            publishButton.setTitle("Unshare", forState: .Normal)
-            publishButton.addTarget(self, action: #selector(unPublishRecipe), forControlEvents: .TouchUpInside)
+            publishButton.title = "Unshare"
+            publishButton.action = #selector(unPublishRecipe)
         } else {
-            print("Recipe is not Published")
-            publishButton.setTitle("Share", forState: .Normal)
-            publishButton.addTarget(self, action: #selector(publishRecipe), forControlEvents: .TouchUpInside)
+            publishButton.title = "Share"
+            publishButton.action = #selector(publishRecipe)
         }
         
-        navigationItem.rightControls = [publishButton]
+        navigationItem.rightBarButtonItems = [publishButton]
         
     }
     
