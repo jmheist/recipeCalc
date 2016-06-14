@@ -57,9 +57,9 @@ class UpdateProfileVC: UIViewController, TextDelegate {
         let userInfo: MaterialView = MaterialView()
         view.addSubview(userInfo)
         
-        MaterialLayout.height(view, child: userInfo, height: 340)
-        MaterialLayout.alignFromTop(view, child: userInfo, top: 0)
-        MaterialLayout.alignToParentHorizontally(view, child: userInfo, left: 14, right: 14)
+        Layout.height(view, child: userInfo, height: 340)
+        Layout.top(view, child: userInfo, top: 0)
+        Layout.horizontally(view, child: userInfo, left: 14, right: 14)
         
         // recipe info fields
         
@@ -67,41 +67,41 @@ class UpdateProfileVC: UIViewController, TextDelegate {
         userName.placeholder = "Username"
         userName.font = RobotoFont.regularWithSize(24)
         userInfo.addSubview(userName)
-        MaterialLayout.height(userInfo, child: userName, height: 28)
-        MaterialLayout.alignFromTop(userInfo, child: userName, top: 25)
-        MaterialLayout.alignToParentHorizontally(userInfo, child: userName, left: 10, right: 10)
+        Layout.height(userInfo, child: userName, height: 28)
+        Layout.top(userInfo, child: userName, top: 25)
+        Layout.horizontally(userInfo, child: userName, left: 10, right: 10)
 
         userEmail = T1()
         userEmail.placeholder = "Email Addesss"
         userEmail.font = RobotoFont.regularWithSize(24)
         userInfo.addSubview(userEmail)
-        MaterialLayout.height(userInfo, child: userEmail, height: 28)
-        MaterialLayout.alignFromTop(userInfo, child: userEmail, top: 85)
-        MaterialLayout.alignToParentHorizontally(userInfo, child: userEmail, left: 10, right: 10)
+        Layout.height(userInfo, child: userEmail, height: 28)
+        Layout.top(userInfo, child: userEmail, top: 85)
+        Layout.horizontally(userInfo, child: userEmail, left: 10, right: 10)
         
         userCity = T1()
         userCity.placeholder = "City"
         userCity.font = RobotoFont.regularWithSize(24)
         userInfo.addSubview(userCity)
-        MaterialLayout.height(userInfo, child: userCity, height: 28)
-        MaterialLayout.alignFromTop(userInfo, child: userCity, top: 145)
-        MaterialLayout.alignToParentHorizontally(userInfo, child: userCity, left: 10, right: 10)
+        Layout.height(userInfo, child: userCity, height: 28)
+        Layout.top(userInfo, child: userCity, top: 145)
+        Layout.horizontally(userInfo, child: userCity, left: 10, right: 10)
         
         userState = T1()
         userState.placeholder = "State"
         userState.font = RobotoFont.regularWithSize(24)
         userInfo.addSubview(userState)
-        MaterialLayout.height(userInfo, child: userState, height: 28)
-        MaterialLayout.alignFromTop(userInfo, child: userState, top: 205)
-        MaterialLayout.alignToParentHorizontally(userInfo, child: userState, left: 10, right: 10)
+        Layout.height(userInfo, child: userState, height: 28)
+        Layout.top(userInfo, child: userState, top: 205)
+        Layout.horizontally(userInfo, child: userState, left: 10, right: 10)
         
         userCountry = T1()
         userCountry.placeholder = "Country"
         userCountry.font = RobotoFont.regularWithSize(24)
         userInfo.addSubview(userCountry)
-        MaterialLayout.height(userInfo, child: userCountry, height: 28)
-        MaterialLayout.alignFromTop(userInfo, child: userCountry, top: 265)
-        MaterialLayout.alignToParentHorizontally(userInfo, child: userCountry, left: 10, right: 10)
+        Layout.height(userInfo, child: userCountry, height: 28)
+        Layout.top(userInfo, child: userCountry, top: 265)
+        Layout.horizontally(userInfo, child: userCountry, left: 10, right: 10)
         
         ///// Start the crazy textview stuff
         
@@ -127,9 +127,9 @@ class UpdateProfileVC: UIViewController, TextDelegate {
         userBio.titleLabelActiveColor = colors.dark
         
         userInfo.addSubview(userBio)
-        MaterialLayout.height(userInfo, child: userBio, height: 90)
-        MaterialLayout.alignFromTop(userInfo, child: userBio, top: 335)
-        MaterialLayout.alignToParentHorizontally(userInfo, child: userBio, left: 10, right: 10)
+        Layout.height(userInfo, child: userBio, height: 90)
+        Layout.top(userInfo, child: userBio, top: 335)
+        Layout.horizontally(userInfo, child: userBio, left: 10, right: 10)
         
 
         /**

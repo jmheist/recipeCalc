@@ -59,9 +59,9 @@ class MixPrepVC: UIViewController {
         let tabBar: MixTabBar = MixTabBar()
         
         view.addSubview(tabBar)
-        MaterialLayout.height(view, child: tabBar, height: 40)
-        MaterialLayout.alignFromBottom(view, child: tabBar, bottom: 0)
-        MaterialLayout.alignToParentHorizontally(view, child: tabBar, left: 0, right: 0)
+        Layout.height(view, child: tabBar, height: 40)
+        Layout.bottom(view, child: tabBar, bottom: 0)
+        Layout.horizontally(view, child: tabBar, left: 0, right: 0)
         
         let btn2: FlatButton = FlatButton()
         btn2.pulseColor = colors.medium
@@ -106,9 +106,9 @@ class MixPrepVC: UIViewController {
         
         let recipeInfo: MaterialView = MaterialView()
         view.addSubview(recipeInfo)
-        MaterialLayout.alignFromTop(view, child: recipeInfo, top: 0)
-        MaterialLayout.height(view, child: recipeInfo, height: 50)
-        MaterialLayout.alignToParentHorizontally(view, child: recipeInfo, left: 10, right: 10)
+        Layout.top(view, child: recipeInfo, top: 0)
+        Layout.height(view, child: recipeInfo, height: 50)
+        Layout.horizontally(view, child: recipeInfo, left: 10, right: 10)
         
         let recipeName: L1 = L1()
         let recipeDesc: L2 = L2()
@@ -122,10 +122,10 @@ class MixPrepVC: UIViewController {
         recipeInfo.addSubview(recipeDesc)
         
         
-        MaterialLayout.alignFromTop(recipeInfo, child: recipeName, top: 15)
-        MaterialLayout.alignFromTop(recipeInfo, child: recipeDesc, top: 45)
-        MaterialLayout.alignToParentHorizontally(recipeInfo, child: recipeName)
-        MaterialLayout.alignToParentHorizontally(recipeInfo, child: recipeDesc)
+        Layout.top(recipeInfo, child: recipeName, top: 15)
+        Layout.top(recipeInfo, child: recipeDesc, top: 45)
+        Layout.horizontally(recipeInfo, child: recipeName)
+        Layout.horizontally(recipeInfo, child: recipeDesc)
         
     }
     
@@ -133,7 +133,7 @@ class MixPrepVC: UIViewController {
         
         let settings: MaterialView = MaterialView()
         view.addSubview(settings)
-        MaterialLayout.alignToParent(view, child: settings, top: 80, left: 0, bottom: 49, right: 0)
+        Layout.edges(view, child: settings, top: 80, left: 0, bottom: 49, right: 0)
         
         pg = T1()
         pg.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
@@ -182,8 +182,8 @@ class MixPrepVC: UIViewController {
         let spacing: CGFloat = 75
         for child in children {
             settings.addSubview(child)
-            MaterialLayout.alignFromTop(settings, child: child, top: start)
-            MaterialLayout.alignToParentHorizontally(settings, child: child, left: 30, right: 30)
+            Layout.top(settings, child: child, top: start)
+            Layout.horizontally(settings, child: child, left: 30, right: 30)
             start += spacing
         }
     }

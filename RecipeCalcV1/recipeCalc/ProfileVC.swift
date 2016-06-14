@@ -58,16 +58,16 @@ class ProfileVC: UIViewController {
         btn.setTitle("Sign Out", forState: .Normal)
         view.addSubview(btn)
         
-        MaterialLayout.alignFromBottom(view, child: btn, bottom: 60)
-        MaterialLayout.alignToParentHorizontally(view, child: btn, left: 50, right: 50)
+        Layout.bottom(view, child: btn, bottom: 60)
+        Layout.horizontally(view, child: btn, left: 50, right: 50)
         
         let btn2: B1 = B1()
         btn2.addTarget(self, action: #selector(didTapUpdateProfile), forControlEvents: .TouchUpInside)
         btn2.setTitle("Update Profile", forState: .Normal)
         view.addSubview(btn2)
         
-        MaterialLayout.alignFromBottom(view, child: btn2, bottom: 120)
-        MaterialLayout.alignToParentHorizontally(view, child: btn2, left: 50, right: 50)
+        Layout.bottom(view, child: btn2, bottom: 120)
+        Layout.horizontally(view, child: btn2, left: 50, right: 50)
     }
     
     /// Prepare tabBarItem.

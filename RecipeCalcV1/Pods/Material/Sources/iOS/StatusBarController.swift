@@ -30,8 +30,26 @@
 
 import UIKit
 
+public extension UIViewController {
+	/**
+	A convenience property that provides access to the StatusBarController.
+	This is the recommended method of accessing the StatusBarController
+	through child UIViewControllers.
+	*/
+	public var statusBarController: StatusBarController? {
+		var viewController: UIViewController? = self
+		while nil != viewController {
+			if viewController is StatusBarController {
+				return viewController as? StatusBarController
+			}
+			viewController = viewController?.parentViewController
+		}
+		return nil
+	}
+}
+
 @IBDesignable
-public class BarController : UIViewController {
+public class StatusBarController : UIViewController {
 	/// Device status bar style.
 	public var statusBarStyle: UIStatusBarStyle {
 		get {
@@ -41,6 +59,9 @@ public class BarController : UIViewController {
 			MaterialDevice.statusBarStyle = value
 		}
 	}
+	
+	/// A reference to the statusBarView.
+	public private(set) var statusBarView: MaterialView!
 	
 	/**
 	A Boolean property used to enable and disable interactivity
@@ -92,6 +113,11 @@ public class BarController : UIViewController {
 		prepareView()
 	}
 	
+	public override func viewWillLayoutSubviews() {
+		super.viewWillLayoutSubviews()
+		layoutSubviews()
+	}
+	
 	/**
 	A method to swap rootViewController objects.
 	- Parameter toViewController: The UIViewController to swap
@@ -113,12 +139,12 @@ public class BarController : UIViewController {
 		addChildViewController(toViewController)
 		toViewController.view.frame = rootViewController.view.frame
 		transitionFromViewController(rootViewController,
-			toViewController: toViewController,
-			duration: duration,
-			options: options,
-			animations: animations,
-			completion: { [weak self] (result: Bool) in
-				if let s: BarController = self {
+			 toViewController: toViewController,
+			 duration: duration,
+			 options: options,
+			 animations: animations,
+			 completion: { [weak self] (result: Bool) in
+				if let s: StatusBarController = self {
 					toViewController.didMoveToParentViewController(s)
 					s.rootViewController.removeFromParentViewController()
 					s.rootViewController = toViewController
@@ -140,7 +166,16 @@ public class BarController : UIViewController {
 	public func prepareView() {
 		view.clipsToBounds = true
 		view.contentScaleFactor = MaterialDevice.scale
+		prepareStatusBarView()
 		prepareRootViewController()
+	}
+	
+	/// Prepares the statusBarView.
+	private func prepareStatusBarView() {
+		statusBarView = MaterialView()
+		statusBarView.zPosition = 3000
+		statusBarView.backgroundColor = MaterialColor.black.colorWithAlphaComponent(0.12)
+		view.layout(statusBarView).top(0).horizontally().height(20)
 	}
 	
 	/// A method that prepares the rootViewController.
@@ -150,7 +185,7 @@ public class BarController : UIViewController {
 	
 	/**
 	A method that adds the passed in controller as a child of
-	the BarController within the passed in
+	the StatusBarController within the passed in
 	container view.
 	- Parameter viewController: A UIViewController to add as a child.
 	- Parameter container: A UIView that is the parent of the
@@ -165,5 +200,11 @@ public class BarController : UIViewController {
 			container.addSubview(v.view)
 			container.sendSubviewToBack(v.view)
 		}
+	}
+	
+	/// Layout subviews.
+	private func layoutSubviews() {
+		statusBarView.hidden = MaterialDevice.isLandscape && .iPhone == MaterialDevice.type
+		rootViewController.view.frame = view.bounds
 	}
 }

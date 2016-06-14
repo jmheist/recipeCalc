@@ -14,6 +14,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
     
     let errorMgr: ErrorManager = ErrorManager()
     var recipe: Recipe!
+    var edit: Bool = Bool()
     
     // text fields
     private var addFlavorName: T1!
@@ -41,9 +42,10 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         hidesBottomBarWhenPushed = true
     }
     
-    convenience init(recipe: Recipe) {
+    convenience init(recipe: Recipe, edit: Bool) {
         self.init(nibName: nil, bundle: nil)
         self.recipe = recipe
+        self.edit = edit
         print(recipe)
     }
     
@@ -65,7 +67,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
     }
     
     func configureDatabase() {
-        if self.recipe != nil && self.recipe.key != "" {
+        if edit {
             print("should load flavors")
             _refHandle = Queries.flavors.child(recipe.key).observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
                 let key = snapshot.key as String
@@ -109,7 +111,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         
         let flavorInfo: MaterialView = MaterialView()
         view.addSubview(flavorInfo)
-        MaterialLayout.alignToParent(view, child: flavorInfo, top: 0, left: 0, bottom: 49, right: 0)
+        Layout.edges(view, child: flavorInfo, top: 0, left: 0, bottom: 49, right: 0)
         
         addFlavorName = T1()
         addFlavorName.placeholder = "Flavor Name"
@@ -120,9 +122,9 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         addFlavorName.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         addFlavorName.delegate = self
         flavorInfo.addSubview(addFlavorName)
-        MaterialLayout.height(flavorInfo, child: addFlavorName, height: 22)
-        MaterialLayout.alignFromTop(flavorInfo, child: addFlavorName, top: 30)
-        MaterialLayout.alignToParentHorizontally(flavorInfo, child: addFlavorName, left: 10, right: 10)
+        Layout.height(flavorInfo, child: addFlavorName, height: 22)
+        Layout.top(flavorInfo, child: addFlavorName, top: 30)
+        Layout.horizontally(flavorInfo, child: addFlavorName, left: 10, right: 10)
         
         addFlavorPct = T2()
         addFlavorPct.placeholder = "%"
@@ -133,34 +135,34 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         addFlavorPct.numberMax = 100
         addFlavorPct.delegate = self
         flavorInfo.addSubview(addFlavorPct)
-        MaterialLayout.height(flavorInfo, child: addFlavorPct, height: 22)
-        MaterialLayout.alignFromTop(flavorInfo, child: addFlavorPct, top: 60)
-        MaterialLayout.alignToParentHorizontally(flavorInfo, child: addFlavorPct, left: 10, right: 10)
+        Layout.height(flavorInfo, child: addFlavorPct, height: 22)
+        Layout.top(flavorInfo, child: addFlavorPct, top: 60)
+        Layout.horizontally(flavorInfo, child: addFlavorPct, left: 10, right: 10)
         
         
         let flavorBaseLabel: L3 = L3()
         flavorBaseLabel.text = "Flavor base"
         flavorInfo.addSubview(flavorBaseLabel)
-        MaterialLayout.size(flavorInfo, child: flavorBaseLabel, width: 110, height: 22)
-        MaterialLayout.alignFromLeft(flavorInfo, child: flavorBaseLabel, left: 10)
-        MaterialLayout.alignFromTop(flavorInfo, child: flavorBaseLabel, top: 90)
+        Layout.size(flavorInfo, child: flavorBaseLabel, width: 110, height: 22)
+        Layout.left(flavorInfo, child: flavorBaseLabel, left: 10)
+        Layout.top(flavorInfo, child: flavorBaseLabel, top: 90)
         
         addFlavorBase = UISegmentedControl(items: ["PG","VG"])
         addFlavorBase.selectedSegmentIndex = 0
         flavorInfo.addSubview(addFlavorBase)
-        MaterialLayout.size(flavorInfo, child: addFlavorBase, width: 80, height: 22)
-        MaterialLayout.alignFromLeft(flavorInfo, child: addFlavorBase, left: 140)
-        MaterialLayout.alignFromTop(flavorInfo, child: addFlavorBase, top: 90)
+        Layout.size(flavorInfo, child: addFlavorBase, width: 80, height: 22)
+        Layout.left(flavorInfo, child: addFlavorBase, left: 140)
+        Layout.top(flavorInfo, child: addFlavorBase, top: 90)
         
         addFlavorButton = B1()
         addFlavorButton.setTitle("Add Flavor", forState: .Normal)
         addFlavorButton.setTitleColor(colors.dark, forState: .Normal)
         addFlavorButton.addTarget(self, action: #selector(addFlavor), forControlEvents: .TouchUpInside)
         flavorInfo.addSubview(addFlavorButton)
-        // MaterialLayout.size(flavorInfo, child: addFlavorButton, width: 150, height: 40)
-        MaterialLayout.height(flavorInfo, child: addFlavorButton, height: 40)
-        MaterialLayout.alignToParentHorizontally(flavorInfo, child: addFlavorButton, left: 80, right: 80)
-        MaterialLayout.alignFromTop(flavorInfo, child: addFlavorButton, top: 140)
+        // Layout.size(flavorInfo, child: addFlavorButton, width: 150, height: 40)
+        Layout.height(flavorInfo, child: addFlavorButton, height: 40)
+        Layout.horizontally(flavorInfo, child: addFlavorButton, left: 80, right: 80)
+        Layout.top(flavorInfo, child: addFlavorButton, top: 140)
         
         flavorTable = UITableView()
         flavorTable.registerClass(MaterialTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
@@ -169,7 +171,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         
         // Use MaterialLayout to easily align the tableView.
         flavorInfo.addSubview(flavorTable)
-        MaterialLayout.alignToParent(view, child: flavorTable, top: 195, left: 0, bottom: 0, right: 0)
+        Layout.edges(view, child: flavorTable, top: 195, left: 0, bottom: 0, right: 0)
         
     }
     
@@ -211,6 +213,8 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
     }
     
     func sendRecipe() {
+        print(recipe)
+        
         let key = myRecipeMgr.sendToFirebase(recipe)
         
         // add flavors to the flavors db
@@ -221,7 +225,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
         self.view.resignFirstResponder()
         
-        if (self.recipe != nil && self.recipe.key != "") {
+        if edit {
             navigationController?.popToRootViewControllerAnimated(true)
         } else {
             tabBarController?.selectedIndex = 0

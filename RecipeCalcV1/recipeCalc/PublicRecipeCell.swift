@@ -17,8 +17,8 @@ class PublicRecipeCell: RecipeCell {
         let starView: MaterialView = MaterialView()
         starView.backgroundColor = colors.light
         contentView.addSubview(starView)
-        MaterialLayout.size(contentView, child: starView, width: 70, height: 20)
-        MaterialLayout.alignFromTopRight(contentView, child: starView, top: 10, right: 10)
+        Layout.size(contentView, child: starView, width: 70, height: 20)
+        Layout.topRight(contentView, child: starView, top: 10, right: 10)
         
         let star1: UIImageView = UIImageView(image: MaterialIcon.star?.tintWithColor(colors.dark))
         let star2: UIImageView = UIImageView(image: MaterialIcon.star)
@@ -31,7 +31,7 @@ class PublicRecipeCell: RecipeCell {
             starView.addSubview(star)
             
         }
-        MaterialLayout.alignToParentVertically(starView, children: stars, top: 5, bottom: 5, spacing: 5)
+        Layout.vertically(starView, children: stars, top: 5, bottom: 5, spacing: 5)
         
         
     }

@@ -57,9 +57,9 @@ class MixVC: UIViewController {
         let tabBar: MixTabBar = MixTabBar()
         
         view.addSubview(tabBar)
-        MaterialLayout.height(view, child: tabBar, height: 40)
-        MaterialLayout.alignFromBottom(view, child: tabBar, bottom: 0)
-        MaterialLayout.alignToParentHorizontally(view, child: tabBar, left: 0, right: 0)
+        Layout.height(view, child: tabBar, height: 40)
+        Layout.bottom(view, child: tabBar, bottom: 0)
+        Layout.horizontally(view, child: tabBar, left: 0, right: 0)
         
         let btn2: FlatButton = FlatButton()
         btn2.pulseColor = colors.medium
@@ -109,8 +109,8 @@ class MixVC: UIViewController {
         title.text = self.recipe.name
         title.textAlignment = .Center
         view.addSubview(title)
-        MaterialLayout.alignFromTop(view, child: title, top: 10)
-        MaterialLayout.alignToParentHorizontally(view, child: title, left: 8, right: 8)
+        Layout.top(view, child: title, top: 10)
+        Layout.horizontally(view, child: title, left: 8, right: 8)
         
     }
 
@@ -121,7 +121,7 @@ class MixVC: UIViewController {
         mixTable.dataSource = self
         mixTable.delegate = self
         view.addSubview(mixTable)
-        MaterialLayout.alignToParent(view, child: mixTable, top: 60, left: 5, bottom: 48, right: 5)
+        Layout.edges(view, child: mixTable, top: 60, left: 5, bottom: 48, right: 5)
         
     }
 }

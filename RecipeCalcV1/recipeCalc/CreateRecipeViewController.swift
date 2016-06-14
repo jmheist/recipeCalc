@@ -14,6 +14,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
     
     let errorMgr: ErrorManager = ErrorManager()
     var recipe: Recipe!
+    var edit: Bool = Bool()
     
     // text fields
     private var recipeName: T1!
@@ -30,22 +31,19 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
     // db vars
     private var _refHandle: FIRDatabaseHandle!
     
-    convenience init(recipe: Recipe) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        prepareTabBarItem()
+    }
+    
+    convenience init(recipe: Recipe, edit: Bool) {
         self.init(nibName: nil, bundle: nil)
         self.recipe = recipe
+        self.edit = edit
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        prepareTabBarItem()
     }
     
     override func viewDidLoad() {
@@ -73,7 +71,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
     
     /// Prepares the navigationItem.
     private func prepareNavigationItem() {
-        if self.recipe != nil && self.recipe.key != "" {
+        if edit {
             navigationItem.title = "Edit"
         } else {
             navigationItem.title = "Create"
@@ -100,7 +98,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         let recipeInfo: MaterialView = MaterialView()
         view.addSubview(recipeInfo)
         
-        MaterialLayout.alignToParent(view, child: recipeInfo, top: 0, left: 0, bottom: 49, right: 0)
+        Layout.edges(view, child: recipeInfo, top: 0, left: 0, bottom: 49, right: 0)
         
         // recipe info fields
         
@@ -160,12 +158,12 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         let spacing = CGFloat(75)
         for child in children {
             recipeInfo.addSubview(child)
-            MaterialLayout.alignFromTop(recipeInfo, child: child, top: start)
-            MaterialLayout.alignToParentHorizontally(recipeInfo, child: child, left: 30, right: 30)
+            Layout.top(recipeInfo, child: child, top: start)
+            Layout.horizontally(recipeInfo, child: child, left: 30, right: 30)
             start += spacing
         }
         
-        if (self.recipe != nil && self.recipe.key != "") {
+        if edit {
             recipeName.text = recipe.name
             recipeDesc.text = recipe.desc
             recipePgPct.text = recipe.pg
@@ -212,24 +210,32 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         }
         
         if !errorMgr.hasErrors() {
-            let key = recipe.key
-            recipe = Recipe(
-                author: author!,
-                authorId: authorId!,
-                name: recipeName.text!,
-                desc: recipeDesc.text!,
-                pg: recipePgPct.text!,
-                vg: recipeVgPct.text!,
-                strength: recipeNicStrength.text!,
-                steepDays:recipeSteepDays.text!
-            )
             
-            recipe.key = key
+            
+            if edit {
+                recipe.name = recipeName.text!
+                recipe.desc = recipeDesc.text!
+                recipe.pg = recipePgPct.text!
+                recipe.vg = recipeVgPct.text!
+                recipe.strength = recipeNicStrength.text!
+                recipe.steepDays = recipeSteepDays.text!
+            } else {
+                recipe = Recipe(
+                    author: author!,
+                    authorId: authorId!,
+                    name: recipeName.text!,
+                    desc: recipeDesc.text!,
+                    pg: recipePgPct.text!,
+                    vg: recipeVgPct.text!,
+                    strength: recipeNicStrength.text!,
+                    steepDays: recipeSteepDays.text!
+                )
+            }
             
             view.endEditing(true)
             self.view.resignFirstResponder()
             
-            navigationController!.pushViewController(AddFlavorsVC(recipe: recipe), animated: true)
+            navigationController!.pushViewController(AddFlavorsVC(recipe: recipe, edit: self.edit), animated: true)
         
         } else { // there was errors
             print("errors: \(errorMgr.hasErrors())")

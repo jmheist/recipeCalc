@@ -82,7 +82,7 @@ class TableVC: UIViewController {
         recipeTable.delegate = self
         
         view.addSubview(recipeTable)
-        MaterialLayout.alignToParent(view, child: recipeTable, top: 0, left: 0, bottom: 49, right: 0)
+        Layout.edges(view, child: recipeTable, top: 0, left: 0, bottom: 49, right: 0)
         
     }
     

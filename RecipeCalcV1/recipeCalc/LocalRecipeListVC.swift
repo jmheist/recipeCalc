@@ -13,6 +13,7 @@ import Firebase
 class LocalRecipeListVC: TableVC {
     
     private var _refHandle: FIRDatabaseHandle!
+    private var _refUpdateHandle: FIRDatabaseHandle!
     private var _refRemovedHandle: FIRDatabaseHandle!
     
     deinit {
@@ -60,6 +61,23 @@ class LocalRecipeListVC: TableVC {
             myRecipeMgr.addRecipe(rec)
             self.recipeTable.reloadData()
         })
+        _refUpdateHandle = Queries.myRecipes.child(AppState.sharedInstance.uid!).observeEventType(.ChildChanged, withBlock: { (snapshot) -> Void in
+            print(snapshot)
+            let key = snapshot.key as String
+            let author = snapshot.value!["author"] as! String
+            let authorId = snapshot.value!["authorId"] as! String
+            let name = snapshot.value!["name"] as! String
+            let desc = snapshot.value!["desc"] as! String
+            let pg = snapshot.value!["pg"] as! String
+            let vg = snapshot.value!["vg"] as! String
+            let strength = snapshot.value!["strength"] as! String
+            let steepDays = snapshot.value!["steepDays"] as! String
+            let published = snapshot.value!["published"] as! String
+            let rec = Recipe(key: key, author: author, authorId: authorId, name: name, desc: desc, pg: pg, vg: vg, strength: strength, steepDays: steepDays, published: published)
+            myRecipeMgr.updateRecipe(rec)
+            self.recipeTable.reloadData()
+        })
+
         _refRemovedHandle = Queries.myRecipes.child(AppState.sharedInstance.uid!).observeEventType(.ChildRemoved, withBlock: { (snapshot) -> Void in
             print("Recipe Removed")
         })

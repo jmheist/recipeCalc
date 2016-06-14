@@ -103,15 +103,15 @@ class LoginViewController: UIViewController, TextFieldDelegate {
         
         // LAYOUT //
         
-        MaterialLayout.alignToParentHorizontally(loginView, child: emailField, left: 10, right: 10)
-        MaterialLayout.alignToParentHorizontally(loginView, child: passwordField, left: 10, right: 10)
-        MaterialLayout.alignToParentHorizontally(loginView, child: btn)
-        MaterialLayout.alignToParentHorizontally(loginView, child: btn2)
+        Layout.horizontally(loginView, child: emailField, left: 10, right: 10)
+        Layout.horizontally(loginView, child: passwordField, left: 10, right: 10)
+        Layout.horizontally(loginView, child: btn)
+        Layout.horizontally(loginView, child: btn2)
         
-        MaterialLayout.alignFromTop(loginView, child: emailField, top: 30)
-        MaterialLayout.alignFromTop(loginView, child: passwordField, top: 100)
-        MaterialLayout.alignFromTop(loginView, child: btn, top: 180)
-        MaterialLayout.alignFromTop(loginView, child: btn2, top: 245)
+        Layout.top(loginView, child: emailField, top: 30)
+        Layout.top(loginView, child: passwordField, top: 100)
+        Layout.top(loginView, child: btn, top: 180)
+        Layout.top(loginView, child: btn2, top: 245)
 
     }
     

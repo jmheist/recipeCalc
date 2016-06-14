@@ -75,7 +75,7 @@ class RecipeVC: UIViewController {
                 
         let recipeInfo: MaterialView = MaterialView()
         view.addSubview(recipeInfo)
-        MaterialLayout.alignToParent(view, child: recipeInfo, top: 0, left: 0, bottom: 49, right: 0)
+        Layout.edges(view, child: recipeInfo, top: 0, left: 0, bottom: 49, right: 0)
         
         let recipeDesc: L2 = L2()
         
@@ -84,8 +84,8 @@ class RecipeVC: UIViewController {
         
         recipeInfo.addSubview(recipeDesc)
         
-        MaterialLayout.alignFromTop(recipeInfo, child: recipeDesc, top: 25)
-        MaterialLayout.alignToParentHorizontally(recipeInfo, child: recipeDesc)
+        Layout.top(recipeInfo, child: recipeDesc, top: 25)
+        Layout.horizontally(recipeInfo, child: recipeDesc)
         
     }
     
@@ -98,7 +98,7 @@ class RecipeVC: UIViewController {
         flavorTable.delegate = self
         
         view.addSubview(flavorTable)
-        MaterialLayout.alignToParent(view, child: flavorTable, top: 85, left: 20, bottom: 49, right: 20)
+        Layout.edges(view, child: flavorTable, top: 85, left: 20, bottom: 49, right: 20)
         
     }
     
@@ -107,9 +107,9 @@ class RecipeVC: UIViewController {
         let tabBar = MixTabBar()
         
         view.addSubview(tabBar)
-        MaterialLayout.height(view, child: tabBar, height: 40)
-        MaterialLayout.alignFromBottom(view, child: tabBar, bottom: 0)
-        MaterialLayout.alignToParentHorizontally(view, child: tabBar, left: 0, right: 0)
+        Layout.height(view, child: tabBar, height: 40)
+        Layout.bottom(view, child: tabBar, bottom: 0)
+        Layout.horizontally(view, child: tabBar, left: 0, right: 0)
         
         let btn1: FlatButton = FlatButton()
         btn1.pulseColor = colors.medium

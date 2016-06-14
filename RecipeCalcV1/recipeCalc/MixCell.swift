@@ -22,7 +22,7 @@ class MixCell: MaterialTableViewCell {
         
         let cellView: MaterialView = MaterialView()
         contentView.addSubview(cellView)
-        MaterialLayout.alignToParent(contentView, child: cellView, top: 5, left: 8, bottom: 5, right: 8)
+        Layout.edges(contentView, child: cellView, top: 5, left: 8, bottom: 5, right: 8)
         
         cellView.backgroundColor = MaterialColor.clear
         
@@ -31,13 +31,13 @@ class MixCell: MaterialTableViewCell {
         for child in children {
             child.font = RobotoFont.lightWithSize(14)
             cellView.addSubview(child)
-            MaterialLayout.alignToParentVertically(cellView, child: child, top: 0, bottom: 0)
+            Layout.vertically(cellView, child: child, top: 0, bottom: 0)
         }
         
-        MaterialLayout.alignFromLeft(cellView, child: name, left: 0)
-        MaterialLayout.alignFromRight(cellView, child: grams, right: 90)
-        MaterialLayout.alignFromRight(cellView, child: ml, right: 45)
-        MaterialLayout.alignFromRight(cellView, child: pct, right: 0)
+        Layout.left(cellView, child: name, left: 0)
+        Layout.right(cellView, child: grams, right: 90)
+        Layout.right(cellView, child: ml, right: 45)
+        Layout.right(cellView, child: pct, right: 0)
         
     }
     

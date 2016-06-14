@@ -30,9 +30,9 @@ class AppNav: NavigationController {
         statusBarView = MaterialView()
         statusBarView!.backgroundColor = colors.dark
         view.addSubview(statusBarView!)
-        MaterialLayout.alignFromTop(view, child: statusBarView!)
-        MaterialLayout.alignToParentHorizontally(view, child: statusBarView!)
-        MaterialLayout.height(view, child: statusBarView!, height: 16)
+        Layout.top(view, child: statusBarView!)
+        Layout.horizontally(view, child: statusBarView!)
+        Layout.height(view, child: statusBarView!, height: 16)
     }
     
     /// Prepares the navigationBar

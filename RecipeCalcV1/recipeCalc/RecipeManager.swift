@@ -86,6 +86,15 @@ class RecipeManager: NSObject {
         }
     }
     
+    func updateRecipe(recipe: Recipe) {
+        let myIndex = myRecipeMgr.indexOfKey(recipe.key)
+        self.recipes[myIndex] = recipe
+        
+        if recipe.published == "true" {
+            Queries.publicRecipes.child(recipe.key).setValue(recipe.fb())
+        }
+    }
+    
     func removeRecipe(key: String) {
         let myIndex = myRecipeMgr.indexOfKey(key)
         let recipe = myRecipeMgr.recipes[myIndex]
