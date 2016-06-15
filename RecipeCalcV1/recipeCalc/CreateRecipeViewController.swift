@@ -211,7 +211,6 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         
         if !errorMgr.hasErrors() {
             
-            
             if edit {
                 recipe.name = recipeName.text!
                 recipe.desc = recipeDesc.text!
@@ -238,6 +237,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
             navigationController!.pushViewController(AddFlavorsVC(recipe: recipe, edit: self.edit), animated: true)
         
         } else { // there was errors
+            
             print("errors: \(errorMgr.hasErrors())")
             
         }
