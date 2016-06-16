@@ -43,6 +43,8 @@
 		73DCEAE21CF69758002BA81C /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAE11CF69758002BA81C /* Labels.swift */; };
 		73DCEAE41CF6988B002BA81C /* TextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAE31CF6988B002BA81C /* TextFields.swift */; };
 		73DCEB041CF7598F002BA81C /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEB031CF7598F002BA81C /* DiscoveryViewController.swift */; };
+		73DE44CD1D11BD310019DFD2 /* WDStarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DE44CC1D11BD310019DFD2 /* WDStarRatingView.swift */; };
+		73DE44CF1D11C74F0019DFD2 /* RatingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DE44CE1D11C74F0019DFD2 /* RatingManager.swift */; };
 		73F66DB61D0B0EDD008E73E1 /* MixCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F66DB51D0B0EDD008E73E1 /* MixCell.swift */; };
 		73F66DB81D0B22B2008E73E1 /* IngredientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F66DB71D0B22B2008E73E1 /* IngredientManager.swift */; };
 		73F66DBA1D0B57EF008E73E1 /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F66DB91D0B57EF008E73E1 /* ErrorManager.swift */; };
@@ -111,6 +113,8 @@
 		73DCEAE11CF69758002BA81C /* Labels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
 		73DCEAE31CF6988B002BA81C /* TextFields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFields.swift; sourceTree = "<group>"; };
 		73DCEB031CF7598F002BA81C /* DiscoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
+		73DE44CC1D11BD310019DFD2 /* WDStarRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WDStarRatingView.swift; sourceTree = "<group>"; };
+		73DE44CE1D11C74F0019DFD2 /* RatingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingManager.swift; sourceTree = "<group>"; };
 		73F66DB51D0B0EDD008E73E1 /* MixCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixCell.swift; sourceTree = "<group>"; };
 		73F66DB71D0B22B2008E73E1 /* IngredientManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientManager.swift; sourceTree = "<group>"; };
 		73F66DB91D0B57EF008E73E1 /* ErrorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
@@ -262,6 +266,7 @@
 				73DCEAC01CF629DC002BA81C /* MeasurementHelper.swift */,
 				73DCEAC31CF62A11002BA81C /* AppState.swift */,
 				73DCEAC41CF62A11002BA81C /* Constants.swift */,
+				73DE44CC1D11BD310019DFD2 /* WDStarRatingView.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -272,6 +277,7 @@
 				73425DE41D032F9100A69596 /* Firebase.swift */,
 				7325BE571D0762FF00CF0177 /* RecipeManager.swift */,
 				7325BE551D0762B100CF0177 /* FlavorManager.swift */,
+				73DE44CE1D11C74F0019DFD2 /* RatingManager.swift */,
 				73CC8D061D08CEE0003D3709 /* MixSettingsManager.swift */,
 				73F66DB71D0B22B2008E73E1 /* IngredientManager.swift */,
 				73F66DB91D0B57EF008E73E1 /* ErrorManager.swift */,
@@ -509,6 +515,7 @@
 				73A3F77B1D0A0BC400B8C281 /* MixVC.swift in Sources */,
 				7325BE561D0762B100CF0177 /* FlavorManager.swift in Sources */,
 				73DCEAD31CF65323002BA81C /* CreateRecipeViewController.swift in Sources */,
+				73DE44CD1D11BD310019DFD2 /* WDStarRatingView.swift in Sources */,
 				7314085B1CFE3FD800B5F8DF /* Colors.swift in Sources */,
 				7327970E1D04EFFF009C8BCB /* MyRecipesCell.swift in Sources */,
 				73F66DBA1D0B57EF008E73E1 /* ErrorManager.swift in Sources */,
@@ -526,6 +533,7 @@
 				734C95D41D06169600EB79AD /* MyRecipeVC.swift in Sources */,
 				73DCEADF1CF68FFF002BA81C /* Buttons.swift in Sources */,
 				73425DE51D032F9100A69596 /* Firebase.swift in Sources */,
+				73DE44CF1D11C74F0019DFD2 /* RatingManager.swift in Sources */,
 				73FEB2711D00BB5F008CD089 /* BottomNav.swift in Sources */,
 				73DCEB041CF7598F002BA81C /* DiscoveryViewController.swift in Sources */,
 				73F66DC21D0BD5D7008E73E1 /* AddFlavorsVC.swift in Sources */,

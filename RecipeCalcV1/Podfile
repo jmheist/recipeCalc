@@ -11,7 +11,10 @@ pod "Material"
 
 pod "IQKeyboardManagerSwift"
 
-# https://cocoapods.org/pods/SVPullToRefresh
-# pod "SVPullToRefresh"
+# https://github.com/justwudi/WDStarRatingView
+pod 'HMWDStarRatingView', '~> 0.4'
+
+# https://cocoapods.org/pods/Refresher
+pod 'Refresher', '~> 0.5'
 
 end

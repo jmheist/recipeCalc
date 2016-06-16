@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>HMWDStarRatingView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>IQKeyboardManagerSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -25,6 +30,11 @@
 			<false/>
 		</dict>
 		<key>Pods-recipeCalc.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SVPullToRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -52,7 +62,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>95DEAB965FE8ADB8478FDCF928966F0E</key>
+		<key>347F3334E442BAB5F3640B66FD97C8A1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4835825D88CF2BB04F0D8E38402FEE74</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DE26F0BB220A05997DC6248AB40025D1</key>
 		<dict>
 			<key>primary</key>
 			<true/>

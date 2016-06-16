@@ -13,7 +13,7 @@ let colors: Colors = Colors()
 
 class Colors: UIColor {
     
-    let light = MaterialColor.grey.lighten5
+    let light = MaterialColor.grey.lighten4
     let medium = MaterialColor.grey.base
     let dark = MaterialColor.grey.darken4
     let background = MaterialColor.white
@@ -21,5 +21,6 @@ class Colors: UIColor {
     let textLight = MaterialColor.white
     let textDark = MaterialColor.grey.darken4
     let errorRed = MaterialColor.red.darken1
+    let accent = MaterialColor.amber.darken3
     
 }

@@ -91,7 +91,6 @@ class MixVC: UIViewController {
     
     func prepareFlavors() {
         _refHandle = Queries.flavors.child(recipe.key).observeEventType(FIRDataEventType.ChildAdded, withBlock: { (snapshot) in
-            print(snapshot)
             let key = snapshot.key as String
             let name = snapshot.value!["name"] as! String
             let base = snapshot.value!["base"] as! String

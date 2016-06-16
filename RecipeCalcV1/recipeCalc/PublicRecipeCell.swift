@@ -10,30 +10,28 @@ import UIKit
 import Material
 import Firebase
 
-class PublicRecipeCell: RecipeCell {
+class PublicRecipeCell: RecipeCell, WDStarRatingDelegate {
+    
+    var starRatingView: WDStarRatingView!
     
     override func prepareView() {
         super.prepareView()
-        let starView: MaterialView = MaterialView()
-        starView.backgroundColor = colors.light
-        contentView.addSubview(starView)
-        Layout.size(contentView, child: starView, width: 70, height: 20)
-        Layout.topRight(contentView, child: starView, top: 10, right: 10)
         
-        let star1: UIImageView = UIImageView(image: MaterialIcon.star?.tintWithColor(colors.dark))
-        let star2: UIImageView = UIImageView(image: MaterialIcon.star)
-        let star3: UIImageView = UIImageView(image: MaterialIcon.star)
-        let star4: UIImageView = UIImageView(image: MaterialIcon.star)
-        let star5: UIImageView = UIImageView(image: MaterialIcon.star)
-        let stars = [star1, star2, star3, star4, star5]
+        self.starRatingView = WDStarRatingView()
+        self.starRatingView.delegate = self
+        self.starRatingView.maximumValue = 5
+        self.starRatingView.minimumValue = 0
+        self.starRatingView.value = 0
+        self.starRatingView.tintColor = colors.accent
+        //self.starRatingView.addTarget(self, action: #selector(ViewController.didChangeValue(_:)), forControlEvents: .ValueChanged)
+        self.starRatingView.enabled = false
         
-        for star in stars {
-            starView.addSubview(star)
-            
-        }
-        Layout.vertically(starView, children: stars, top: 5, bottom: 5, spacing: 5)
-        
+        contentView.layout(starRatingView).top(10).right(0).height(25).width(100)
         
     }
+    
+//    func didChangeValue(sender: WDStarRatingView) {
+//        NSLog("Changed rating to %.1f", sender.value)
+//    }
     
 }

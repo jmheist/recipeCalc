@@ -13,11 +13,10 @@ import Firebase
 class DiscoveryViewController: TableVC {
     
     private var _refHandle: FIRDatabaseHandle!
-    private var _refUpdateHandle: FIRDatabaseHandle!
     private var _refDeleteHandle: FIRDatabaseHandle!
     
     deinit {
-        ref.child("myRecipes").removeObserverWithHandle(_refHandle)
+        Queries.publicRecipes.removeAllObservers()
     }
     
     override func prepareView() {
@@ -35,44 +34,17 @@ class DiscoveryViewController: TableVC {
     }
     
     override func configureDatabase() {
+
         ///////
         /////// Todo: IMPLIMENT PULL TO REFRESH EVENTUALLY
         ///////
         
         // Listen for new messages in the Firebase database
         _refHandle = Queries.publicRecipes.observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
-            let key = snapshot.key as String
-            let author = snapshot.value!["author"] as! String
-            let authorId = snapshot.value!["authorId"] as! String
-            let name = snapshot.value!["name"] as! String
-            let desc = snapshot.value!["desc"] as! String
-            let pg = snapshot.value!["pg"] as! String
-            let vg = snapshot.value!["vg"] as! String
-            let strength = snapshot.value!["strength"] as! String
-            let steepDays = snapshot.value!["steepDays"] as! String
-            let published = snapshot.value!["published"] as! String
-            let rec = Recipe(key: key, author: author, authorId: authorId, name: name, desc: desc, pg: pg, vg: vg, strength: strength, steepDays: steepDays, published: published)
-            publicRecipeMgr.addRecipe(rec)
+            publicRecipeMgr.receiveFromFirebase(snapshot)
             self.recipeTable.reloadData()
         })
         
-        _refUpdateHandle = Queries.publicRecipes.observeEventType(.ChildChanged, withBlock: { (snapshot) -> Void in
-            print("Public Recipe Changed")
-            let key = snapshot.key as String
-            let author = snapshot.value!["author"] as! String
-            let authorId = snapshot.value!["authorId"] as! String
-            let name = snapshot.value!["name"] as! String
-            let desc = snapshot.value!["desc"] as! String
-            let pg = snapshot.value!["pg"] as! String
-            let vg = snapshot.value!["vg"] as! String
-            let strength = snapshot.value!["strength"] as! String
-            let steepDays = snapshot.value!["steepDays"] as! String
-            let published = snapshot.value!["published"] as! String
-            let rec = Recipe(key: key, author: author, authorId: authorId, name: name, desc: desc, pg: pg, vg: vg, strength: strength, steepDays: steepDays, published: published)
-            publicRecipeMgr.updateRecipe(rec)
-            self.recipeTable.reloadData()
-        })
-
         _refDeleteHandle = Queries.publicRecipes.observeEventType(.ChildRemoved, withBlock: { (snapshot) -> Void in
             print("public recipe deleted")
         })
@@ -88,6 +60,8 @@ class DiscoveryViewController: TableVC {
         let cell: PublicRecipeCell = PublicRecipeCell(style: .Default, reuseIdentifier: "publicRecipeCell")
         
         let recipe = publicRecipeMgr.recipes[indexPath.row]
+        
+        cell.starRatingView.value = recipe.stars
         
         cell.selectionStyle = .None
         cell.recipeName.text = recipe.name
@@ -113,5 +87,19 @@ class DiscoveryViewController: TableVC {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         navigationController?.pushViewController(PublicRecipeVC(recipe: publicRecipeMgr.recipes[indexPath.row]), animated: true)
     }
+    
+    func updateTable() {
+        print("refresh tapped")
+        Queries.publicRecipes.queryOrderedByChild("stars").observeSingleEventOfType(.Value, withBlock: { (snapshot) -> Void in
+            publicRecipeMgr.reset()
+            self.recipeTable.reloadData()
+            for child in snapshot.children {
+                let snap = child as! FIRDataSnapshot
+                publicRecipeMgr.receiveFromFirebase(snap)
+                self.recipeTable.reloadData()
+            }
+        })
 
+    }
+    
 }

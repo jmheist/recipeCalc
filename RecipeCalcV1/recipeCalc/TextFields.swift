@@ -33,6 +33,8 @@ class myTextField: TextField { // creating a new root textview with errorchecl a
     override func prepareView() {
         super.prepareView()
         
+        backgroundColor = colors.light
+        
         //error stuff
         revealError = false
     }
@@ -45,7 +47,6 @@ class T1: myTextField {
         super.placeholder = nil
         masksToBounds = false
         borderStyle = .None
-        backgroundColor = nil
         textColor = colors.dark
         font = RobotoFont.regularWithSize(16)
         contentScaleFactor = MaterialDevice.scale

@@ -137,12 +137,14 @@ class MixPrepVC: UIViewController {
         
         pg = T1()
         pg.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        pg.addTarget(self, action: #selector(self.updatePgVg(_:)), forControlEvents: UIControlEvents.EditingChanged)
         pg.errorCheck = true
         pg.errorCheckFor = "number"
         pg.numberMax = 100
         
         vg = T1()
         vg.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        vg.addTarget(self, action: #selector(self.updatePgVg(_:)), forControlEvents: UIControlEvents.EditingChanged)
         vg.errorCheck = true
         vg.errorCheckFor = "number"
         vg.numberMax = 100
@@ -169,9 +171,9 @@ class MixPrepVC: UIViewController {
         amount.placeholder = "Amount to make (ml)"
         strength.text = "3"
         strength.placeholder = "Target Nicotine (mg)"
-        pg.text = recipe.vg
+        pg.text = recipe.pg
         pg.placeholder = "PG%"
-        vg.text = recipe.pg
+        vg.text = recipe.vg
         vg.placeholder = "VG%"
         nic.text = "100"
         nic.placeholder = "Nic Concentrate Strength"

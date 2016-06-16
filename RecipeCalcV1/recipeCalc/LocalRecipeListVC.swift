@@ -46,35 +46,11 @@ class LocalRecipeListVC: TableVC {
     override func configureDatabase() {
         // Listen for new messages in the Firebase database
         _refHandle = Queries.myRecipes.child(AppState.sharedInstance.uid!).observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
-            print(snapshot)
-            let key = snapshot.key as String
-            let author = snapshot.value!["author"] as! String
-            let authorId = snapshot.value!["authorId"] as! String
-            let name = snapshot.value!["name"] as! String
-            let desc = snapshot.value!["desc"] as! String
-            let pg = snapshot.value!["pg"] as! String
-            let vg = snapshot.value!["vg"] as! String
-            let strength = snapshot.value!["strength"] as! String
-            let steepDays = snapshot.value!["steepDays"] as! String
-            let published = snapshot.value!["published"] as! String
-            let rec = Recipe(key: key, author: author, authorId: authorId, name: name, desc: desc, pg: pg, vg: vg, strength: strength, steepDays: steepDays, published: published)
-            myRecipeMgr.addRecipe(rec)
+            myRecipeMgr.receiveFromFirebase(snapshot)
             self.recipeTable.reloadData()
         })
         _refUpdateHandle = Queries.myRecipes.child(AppState.sharedInstance.uid!).observeEventType(.ChildChanged, withBlock: { (snapshot) -> Void in
-            print(snapshot)
-            let key = snapshot.key as String
-            let author = snapshot.value!["author"] as! String
-            let authorId = snapshot.value!["authorId"] as! String
-            let name = snapshot.value!["name"] as! String
-            let desc = snapshot.value!["desc"] as! String
-            let pg = snapshot.value!["pg"] as! String
-            let vg = snapshot.value!["vg"] as! String
-            let strength = snapshot.value!["strength"] as! String
-            let steepDays = snapshot.value!["steepDays"] as! String
-            let published = snapshot.value!["published"] as! String
-            let rec = Recipe(key: key, author: author, authorId: authorId, name: name, desc: desc, pg: pg, vg: vg, strength: strength, steepDays: steepDays, published: published)
-            myRecipeMgr.updateRecipe(rec)
+            myRecipeMgr.updateRecipe(snapshot)
             self.recipeTable.reloadData()
         })
 

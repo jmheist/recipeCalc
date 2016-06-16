@@ -67,7 +67,7 @@ class IngredientManager: NSObject {
                     pct: String((flavorAmount / settings.amount) * 100)
                 )
             )
-            if flavor.base == "pg" {
+            if flavor.base == "PG" {
                 remainingPg = remainingPg - flavorAmount
             } else {
                 remainingVg = remainingVg - flavorAmount

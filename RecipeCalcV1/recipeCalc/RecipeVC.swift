@@ -50,7 +50,6 @@ class RecipeVC: UIViewController {
     // Queries.flavors.child(recipes[indexPath.row].key)
     func prepareFlavors() {
         _refHandle = Queries.flavors.child(recipe.key).observeEventType(FIRDataEventType.ChildAdded, withBlock: { (snapshot) in
-            print(snapshot)
             let key = snapshot.key as String
             let name = snapshot.value!["name"] as! String
             let base = snapshot.value!["base"] as! String
@@ -98,7 +97,7 @@ class RecipeVC: UIViewController {
         flavorTable.delegate = self
         
         view.addSubview(flavorTable)
-        Layout.edges(view, child: flavorTable, top: 85, left: 20, bottom: 49, right: 20)
+        Layout.edges(view, child: flavorTable, top: 100, left: 20, bottom: 49, right: 20)
         
     }
     
