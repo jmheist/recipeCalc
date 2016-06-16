@@ -42,7 +42,7 @@ PODS:
   - HMWDStarRatingView (0.4)
   - IQKeyboardManagerSwift (4.0.3)
   - Material (1.42.1)
-  - SVPullToRefresh (0.4.1)
+  - Refresher (0.5.0)
 
 DEPENDENCIES:
   - Firebase
@@ -52,7 +52,7 @@ DEPENDENCIES:
   - HMWDStarRatingView (~> 0.4)
   - IQKeyboardManagerSwift
   - Material
-  - SVPullToRefresh
+  - Refresher (~> 0.5)
 
 SPEC CHECKSUMS:
   Firebase: 6c80ac28d59d06bfd9152a7b6ea17625ca93183d
@@ -68,8 +68,8 @@ SPEC CHECKSUMS:
   HMWDStarRatingView: 3a711ed4f6a3abfa68e4f20b0ebd8faeea5618f2
   IQKeyboardManagerSwift: b6883b720b0e76473692fdc80828442566e1075f
   Material: d4b27f1cb0993c66bf9dd92b7f80e06833fc4258
-  SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
+  Refresher: 485f5990e6315add7f3470db5a4ca106451b11d3
 
-PODFILE CHECKSUM: b761b62603294937cc5ed4abd8307dd1d78ef76c
+PODFILE CHECKSUM: 9307bd11cbd9c7f1b02aacef07ceb924d0f3f2da
 
 COCOAPODS: 1.0.1

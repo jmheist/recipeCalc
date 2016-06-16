@@ -46,11 +46,13 @@ class LocalRecipeListVC: TableVC {
     override func configureDatabase() {
         // Listen for new messages in the Firebase database
         _refHandle = Queries.myRecipes.child(AppState.sharedInstance.uid!).observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
-            myRecipeMgr.receiveFromFirebase(snapshot)
+            let rec = myRecipeMgr.receiveFromFirebase(snapshot)
+            myRecipeMgr.addRecipe(rec)
             self.recipeTable.reloadData()
         })
         _refUpdateHandle = Queries.myRecipes.child(AppState.sharedInstance.uid!).observeEventType(.ChildChanged, withBlock: { (snapshot) -> Void in
-            myRecipeMgr.updateRecipe(snapshot)
+            let rec = myRecipeMgr.receiveFromFirebase(snapshot)
+            myRecipeMgr.updateRecipe(rec)
             self.recipeTable.reloadData()
         })
 

@@ -9,6 +9,7 @@
 import UIKit
 import Material
 import Firebase
+import Refresher
 
 class DiscoveryViewController: TableVC {
     
@@ -21,6 +22,11 @@ class DiscoveryViewController: TableVC {
     
     override func prepareView() {
         super.prepareView()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        prepareRefresher()
     }
     
     /// Prepare tabBarItem.
@@ -40,14 +46,30 @@ class DiscoveryViewController: TableVC {
         ///////
         
         // Listen for new messages in the Firebase database
-        _refHandle = Queries.publicRecipes.observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
-            publicRecipeMgr.receiveFromFirebase(snapshot)
+        _refHandle = (Queries.publicRecipes).queryOrderedByChild("stars").observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
+            let rec = publicRecipeMgr.receiveFromFirebase(snapshot)
+            publicRecipeMgr.addRecipe(rec)
+            publicRecipeMgr.sortBy("stars")
             self.recipeTable.reloadData()
         })
         
         _refDeleteHandle = Queries.publicRecipes.observeEventType(.ChildRemoved, withBlock: { (snapshot) -> Void in
             print("public recipe deleted")
         })
+    }
+    
+    func prepareRefresher() {
+        let pacmanAnimator = PacmanAnimator(frame: CGRectMake(0, 0, 80, 80))
+        recipeTable.addPullToRefreshWithAction({
+            NSOperationQueue().addOperationWithBlock {
+                print("refreshing")
+                self.updateTable()
+                sleep(1)
+                NSOperationQueue.mainQueue().addOperationWithBlock {
+                    self.recipeTable.stopPullToRefresh()
+                }
+            }
+        }, withAnimator: pacmanAnimator)
     }
     
     // UITableViewDataSource protocol methods
@@ -89,13 +111,13 @@ class DiscoveryViewController: TableVC {
     }
     
     func updateTable() {
-        print("refresh tapped")
-        Queries.publicRecipes.queryOrderedByChild("stars").observeSingleEventOfType(.Value, withBlock: { (snapshot) -> Void in
+        (Queries.publicRecipes).queryOrderedByChild("stars").observeSingleEventOfType(.Value, withBlock: { (snapshot) -> Void in
             publicRecipeMgr.reset()
             self.recipeTable.reloadData()
             for child in snapshot.children {
                 let snap = child as! FIRDataSnapshot
-                publicRecipeMgr.receiveFromFirebase(snap)
+                let rec = publicRecipeMgr.receiveFromFirebase(snap)
+                publicRecipeMgr.addRecipe(rec)
                 self.recipeTable.reloadData()
             }
         })

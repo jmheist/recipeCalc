@@ -14,6 +14,7 @@
 		7315D5F41CF4E405002B2588 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7315D5F21CF4E405002B2588 /* LaunchScreen.storyboard */; };
 		7315D5FF1CF4E405002B2588 /* recipeCalcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7315D5FE1CF4E405002B2588 /* recipeCalcTests.swift */; };
 		7315D60A1CF4E405002B2588 /* recipeCalcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7315D6091CF4E405002B2588 /* recipeCalcUITests.swift */; };
+		731C96B91D12FD9100588FAD /* PacmanAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731C96B81D12FD9100588FAD /* PacmanAnimator.swift */; };
 		7325BE561D0762B100CF0177 /* FlavorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7325BE551D0762B100CF0177 /* FlavorManager.swift */; };
 		7325BE581D0762FF00CF0177 /* RecipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7325BE571D0762FF00CF0177 /* RecipeManager.swift */; };
 		7327970E1D04EFFF009C8BCB /* MyRecipesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7327970D1D04EFFF009C8BCB /* MyRecipesCell.swift */; };
@@ -86,6 +87,7 @@
 		7315D6051CF4E405002B2588 /* recipeCalcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = recipeCalcUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7315D6091CF4E405002B2588 /* recipeCalcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipeCalcUITests.swift; sourceTree = "<group>"; };
 		7315D60B1CF4E405002B2588 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		731C96B81D12FD9100588FAD /* PacmanAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PacmanAnimator.swift; sourceTree = "<group>"; };
 		7325BE551D0762B100CF0177 /* FlavorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlavorManager.swift; sourceTree = "<group>"; };
 		7325BE571D0762FF00CF0177 /* RecipeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeManager.swift; sourceTree = "<group>"; };
 		7327970D1D04EFFF009C8BCB /* MyRecipesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRecipesCell.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				73DCEAC31CF62A11002BA81C /* AppState.swift */,
 				73DCEAC41CF62A11002BA81C /* Constants.swift */,
 				73DE44CC1D11BD310019DFD2 /* WDStarRatingView.swift */,
+				731C96B81D12FD9100588FAD /* PacmanAnimator.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				73F66DB61D0B0EDD008E73E1 /* MixCell.swift in Sources */,
 				73DCEABF1CF6254B002BA81C /* LoginViewController.swift in Sources */,
 				73DCEAC81CF62B5A002BA81C /* LocalRecipeListVC.swift in Sources */,
+				731C96B91D12FD9100588FAD /* PacmanAnimator.swift in Sources */,
 				7315D5EF1CF4E405002B2588 /* recipeCalc.xcdatamodeld in Sources */,
 				73DCEAE41CF6988B002BA81C /* TextFields.swift in Sources */,
 				73DCEAD11CF63E2F002BA81C /* RecipeCell.swift in Sources */,

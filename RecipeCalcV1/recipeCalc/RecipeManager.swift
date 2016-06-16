@@ -26,7 +26,18 @@ struct Recipe {
     var published = ""
     var stars: CGFloat!
     
-    init(key: String? = "", author: String? = "", authorId: String? = "", name: String? = "", desc: String? = "", pg: String? = "", vg: String? = "", strength: String? = "", steepDays: String? = "", published: String? = "false", stars: CGFloat?=0) {
+    init(   key: String? = "",
+            author: String? = "",
+            authorId: String? = "",
+            name: String? = "",
+            desc: String? = "",
+            pg: String? = "",
+            vg: String? = "",
+            strength: String? = "",
+            steepDays: String? = "",
+            published: String? = "false",
+            stars: CGFloat?=0)
+    {
         self.key = key!
         self.author = author!
         self.authorId = authorId!
@@ -70,6 +81,18 @@ class RecipeManager: NSObject {
         recipes.removeAll()
     }
     
+    func sortBy(sortBy: String) {
+        switch sortBy {
+        case "stars":
+            self.recipes.sortInPlace {(recipe1:Recipe, recipe2:Recipe) -> Bool in
+                recipe1.stars > recipe2.stars
+            }
+        default:
+            break
+        }
+        
+    }
+    
     func sendToFirebase (recipe: Recipe) -> String {
         
         if recipe.key == "" {
@@ -89,8 +112,7 @@ class RecipeManager: NSObject {
         }
     }
     
-    func receiveFromFirebase(snapshot: FIRDataSnapshot) {
-        
+    func receiveFromFirebase(snapshot: FIRDataSnapshot) -> Recipe {
         let key = snapshot.key as String
         let author = snapshot.value!["author"] as! String
         let authorId = snapshot.value!["authorId"] as! String
@@ -103,24 +125,10 @@ class RecipeManager: NSObject {
         let published = snapshot.value!["published"] as! String
         let stars = snapshot.value!["stars"] as! CGFloat
         let rec = Recipe(key: key, author: author, authorId: authorId, name: name, desc: desc, pg: pg, vg: vg, strength: strength, steepDays: steepDays, published: published, stars: stars)
-        self.addRecipe(rec)
-        
+        return rec
     }
     
-    func updateRecipe(snapshot: FIRDataSnapshot) {
-        
-        let key = snapshot.key as String
-        let author = snapshot.value!["author"] as! String
-        let authorId = snapshot.value!["authorId"] as! String
-        let name = snapshot.value!["name"] as! String
-        let desc = snapshot.value!["desc"] as! String
-        let pg = snapshot.value!["pg"] as! String
-        let vg = snapshot.value!["vg"] as! String
-        let strength = snapshot.value!["strength"] as! String
-        let steepDays = snapshot.value!["steepDays"] as! String
-        let published = snapshot.value!["published"] as! String
-        let stars = snapshot.value!["stars"] as! CGFloat
-        let recipe = Recipe(key: key, author: author, authorId: authorId, name: name, desc: desc, pg: pg, vg: vg, strength: strength, steepDays: steepDays, published: published, stars: stars)
+    func updateRecipe(recipe: Recipe) {
         
         print("update called, \(recipe)")
         let myIndex = myRecipeMgr.indexOfKey(recipe.key)
