@@ -26,12 +26,8 @@ class PublicRecipeCell: RecipeCell, WDStarRatingDelegate {
         //self.starRatingView.addTarget(self, action: #selector(ViewController.didChangeValue(_:)), forControlEvents: .ValueChanged)
         self.starRatingView.enabled = false
         
-        contentView.layout(starRatingView).top(10).right(0).height(25).width(100)
+        contentView.layout(starRatingView).top(10).right(3).height(20).width(70)
         
     }
-    
-//    func didChangeValue(sender: WDStarRatingView) {
-//        NSLog("Changed rating to %.1f", sender.value)
-//    }
     
 }

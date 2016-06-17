@@ -37,9 +37,13 @@ class ProfileVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareView()
-        prepareButtons()
+        prepareNavButtons()
         prepareProfile()
         prepareNavigationItem()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        prepareNavButtons()
     }
     
     /// General preparation statements.
@@ -52,22 +56,11 @@ class ProfileVC: UIViewController {
         navigationItem.title = "Profile"
     }
     
-    func prepareButtons() {
-        let btn: B1 = B1()
-        btn.addTarget(self, action: #selector(signOut), forControlEvents: .TouchUpInside)
-        btn.setTitle("Sign Out", forState: .Normal)
-        view.addSubview(btn)
-        
-        Layout.bottom(view, child: btn, bottom: 60)
-        Layout.horizontally(view, child: btn, left: 50, right: 50)
-        
-        let btn2: B1 = B1()
-        btn2.addTarget(self, action: #selector(didTapUpdateProfile), forControlEvents: .TouchUpInside)
-        btn2.setTitle("Update Profile", forState: .Normal)
-        view.addSubview(btn2)
-        
-        Layout.bottom(view, child: btn2, bottom: 120)
-        Layout.horizontally(view, child: btn2, left: 50, right: 50)
+    func prepareNavButtons() {
+        let updateButton = UIBarButtonItem(title: "Update", style: .Plain, target: self, action: #selector(didTapUpdateProfile))
+        navigationItem.leftBarButtonItems = [updateButton]
+        let logoutButton = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: #selector(signOut))
+        navigationItem.rightBarButtonItems = [logoutButton]
     }
     
     /// Prepare tabBarItem.
@@ -78,16 +71,19 @@ class ProfileVC: UIViewController {
     
     func prepareProfile() {
         
-        //////
-        ////// Todo: Profile Stuff Goes here
-        //////
+        let username: L2 = L2()
+        username.text = AppState.sharedInstance.displayName
+        
+        let email: L2 = L2()
+        email.text = AppState.sharedInstance.email
+        
     }
     
     func didTapUpdateProfile() {
         navigationController?.pushViewController(UpdateProfileVC(), animated: true)
     }
     
-    func signOut(sender: UIButton) {
+    func signOut() {
         let firebaseAuth = FIRAuth.auth()
         do {
             try firebaseAuth?.signOut()
@@ -97,7 +93,7 @@ class ProfileVC: UIViewController {
             print("signed out")
             myRecipeMgr.reset()
             publicRecipeMgr.reset()
-            let vc = LoginViewController()
+            let vc = RegisterViewController()
             self.presentViewController(vc, animated: false, completion: nil)
         } catch let signOutError as NSError {
             print ("Error signing out: \(signOutError)")

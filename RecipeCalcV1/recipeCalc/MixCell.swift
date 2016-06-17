@@ -22,7 +22,7 @@ class MixCell: MaterialTableViewCell {
         
         let cellView: MaterialView = MaterialView()
         contentView.addSubview(cellView)
-        Layout.edges(contentView, child: cellView, top: 5, left: 8, bottom: 5, right: 8)
+        contentView.layout(cellView).top(8).left(8).bottom(8).right(8)
         
         cellView.backgroundColor = MaterialColor.clear
         

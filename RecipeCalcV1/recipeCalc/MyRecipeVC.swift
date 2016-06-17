@@ -19,6 +19,10 @@ class MyRecipeVC: RecipeVC {
         prepareDatabase()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        preparePublishButton()
+    }
+    
     deinit {
         // got a nil error on logout with the below code
         // Queries.myRecipes.child(AppState.sharedInstance.uid!).child(recipe.key).removeObserverWithHandle(_refPublishedHandle)

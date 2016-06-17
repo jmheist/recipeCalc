@@ -45,8 +45,11 @@ class PublicRecipeVC: RecipeVC, WDStarRatingDelegate {
         
         Queries.ratings.child(recipe.key).child(AppState.sharedInstance.uid!).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             self.starRatingView.addTarget(self, action: #selector(self.didChangeValue(_:)), forControlEvents: .ValueChanged)
-            self.starRatingView.value = snapshot.value as! CGFloat
-            
+            if snapshot.value!.isKindOfClass(NSNull) {
+                self.starRatingView.value = 0
+            } else {
+                self.starRatingView.value = snapshot.value as! CGFloat
+            }
         })
         
         let children = [ratingLabel, starRatingView]

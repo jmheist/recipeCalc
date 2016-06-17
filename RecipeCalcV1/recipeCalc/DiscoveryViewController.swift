@@ -118,6 +118,7 @@ class DiscoveryViewController: TableVC {
                 let snap = child as! FIRDataSnapshot
                 let rec = publicRecipeMgr.receiveFromFirebase(snap)
                 publicRecipeMgr.addRecipe(rec)
+                publicRecipeMgr.sortBy("stars")
                 self.recipeTable.reloadData()
             }
         })

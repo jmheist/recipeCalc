@@ -193,7 +193,6 @@ class MixPrepVC: UIViewController {
     func updatePgVg(sender: myTextField) {
         if Float(sender.text!) != nil {
             if Float(sender.text!) <= Float(100) && Float(sender.text!) >= Float(0) {
-                print(Float(sender.text!) == Float(vg.text!))
                 if Float(sender.text!) == Float(pg.text!) {
                     vg.text = String(Float(100) - Float(sender.text!)!)
                 } else if Float(sender.text!) == Float(vg.text!) {
@@ -205,7 +204,6 @@ class MixPrepVC: UIViewController {
     
     func errorCheck(field: myTextField) {
         if field.errorCheck {
-            print("Checking field: '\(field.placeholder)' for errors")
             let res = errorMgr.checkForErrors(
                 field.text!, // data:
                 placeholder: field.placeholder!,

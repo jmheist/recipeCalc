@@ -15,6 +15,7 @@
 		7315D5FF1CF4E405002B2588 /* recipeCalcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7315D5FE1CF4E405002B2588 /* recipeCalcTests.swift */; };
 		7315D60A1CF4E405002B2588 /* recipeCalcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7315D6091CF4E405002B2588 /* recipeCalcUITests.swift */; };
 		731C96B91D12FD9100588FAD /* PacmanAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731C96B81D12FD9100588FAD /* PacmanAnimator.swift */; };
+		731C96BB1D14859300588FAD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731C96BA1D14859300588FAD /* LoginViewController.swift */; };
 		7325BE561D0762B100CF0177 /* FlavorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7325BE551D0762B100CF0177 /* FlavorManager.swift */; };
 		7325BE581D0762FF00CF0177 /* RecipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7325BE571D0762FF00CF0177 /* RecipeManager.swift */; };
 		7327970E1D04EFFF009C8BCB /* MyRecipesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7327970D1D04EFFF009C8BCB /* MyRecipesCell.swift */; };
@@ -32,7 +33,7 @@
 		73B1DCFD1CF54558002D9E23 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73B1DCFA1CF54558002D9E23 /* GoogleService-Info.plist */; };
 		73CC8D051D08CDD1003D3709 /* MixPrepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CC8D041D08CDD1003D3709 /* MixPrepVC.swift */; };
 		73CC8D071D08CEE0003D3709 /* MixSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CC8D061D08CEE0003D3709 /* MixSettingsManager.swift */; };
-		73DCEABF1CF6254B002BA81C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEABE1CF6254B002BA81C /* LoginViewController.swift */; };
+		73DCEABF1CF6254B002BA81C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEABE1CF6254B002BA81C /* RegisterViewController.swift */; };
 		73DCEAC11CF629DC002BA81C /* MeasurementHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAC01CF629DC002BA81C /* MeasurementHelper.swift */; };
 		73DCEAC51CF62A11002BA81C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAC31CF62A11002BA81C /* AppState.swift */; };
 		73DCEAC61CF62A11002BA81C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAC41CF62A11002BA81C /* Constants.swift */; };
@@ -88,6 +89,7 @@
 		7315D6091CF4E405002B2588 /* recipeCalcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipeCalcUITests.swift; sourceTree = "<group>"; };
 		7315D60B1CF4E405002B2588 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		731C96B81D12FD9100588FAD /* PacmanAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PacmanAnimator.swift; sourceTree = "<group>"; };
+		731C96BA1D14859300588FAD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7325BE551D0762B100CF0177 /* FlavorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlavorManager.swift; sourceTree = "<group>"; };
 		7325BE571D0762FF00CF0177 /* RecipeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeManager.swift; sourceTree = "<group>"; };
 		7327970D1D04EFFF009C8BCB /* MyRecipesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRecipesCell.swift; sourceTree = "<group>"; };
@@ -103,7 +105,7 @@
 		73B1DCFA1CF54558002D9E23 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		73CC8D041D08CDD1003D3709 /* MixPrepVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixPrepVC.swift; sourceTree = "<group>"; };
 		73CC8D061D08CEE0003D3709 /* MixSettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixSettingsManager.swift; sourceTree = "<group>"; };
-		73DCEABE1CF6254B002BA81C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		73DCEABE1CF6254B002BA81C /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		73DCEAC01CF629DC002BA81C /* MeasurementHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurementHelper.swift; sourceTree = "<group>"; };
 		73DCEAC31CF62A11002BA81C /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		73DCEAC41CF62A11002BA81C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -167,7 +169,8 @@
 		730233921D05D89C00A3B8C0 /* One-Offs */ = {
 			isa = PBXGroup;
 			children = (
-				73DCEABE1CF6254B002BA81C /* LoginViewController.swift */,
+				73DCEABE1CF6254B002BA81C /* RegisterViewController.swift */,
+				731C96BA1D14859300588FAD /* LoginViewController.swift */,
 				734C95D31D06169600EB79AD /* MyRecipeVC.swift */,
 				734C95D51D0617D500EB79AD /* PublicRecipeVC.swift */,
 				73CC8D041D08CDD1003D3709 /* MixPrepVC.swift */,
@@ -508,7 +511,7 @@
 				73CC8D071D08CEE0003D3709 /* MixSettingsManager.swift in Sources */,
 				73DCEAC51CF62A11002BA81C /* AppState.swift in Sources */,
 				73F66DB61D0B0EDD008E73E1 /* MixCell.swift in Sources */,
-				73DCEABF1CF6254B002BA81C /* LoginViewController.swift in Sources */,
+				73DCEABF1CF6254B002BA81C /* RegisterViewController.swift in Sources */,
 				73DCEAC81CF62B5A002BA81C /* LocalRecipeListVC.swift in Sources */,
 				731C96B91D12FD9100588FAD /* PacmanAnimator.swift in Sources */,
 				7315D5EF1CF4E405002B2588 /* recipeCalc.xcdatamodeld in Sources */,
@@ -535,6 +538,7 @@
 				73A3F77D1D0A142600B8C281 /* MixTabBar.swift in Sources */,
 				73FEB26E1D00AB70008CD089 /* AppNav.swift in Sources */,
 				734C95D41D06169600EB79AD /* MyRecipeVC.swift in Sources */,
+				731C96BB1D14859300588FAD /* LoginViewController.swift in Sources */,
 				73DCEADF1CF68FFF002BA81C /* Buttons.swift in Sources */,
 				73425DE51D032F9100A69596 /* Firebase.swift in Sources */,
 				73DE44CF1D11C74F0019DFD2 /* RatingManager.swift in Sources */,

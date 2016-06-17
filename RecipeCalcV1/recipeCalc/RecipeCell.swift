@@ -22,21 +22,19 @@ class RecipeCell: MaterialTableViewCell {
         
         let cellView: MaterialView = MaterialView()
         contentView.addSubview(cellView)
-        Layout.edges(contentView, child: cellView, top: 10, left: 10, bottom: 10, right: 10)
+        contentView.layout(cellView).top(8).left(8).bottom(8).right(8)
         
         cellView.backgroundColor = MaterialColor.clear
         
-        cellView.addSubview(recipeName)
-        cellView.addSubview(recipeDesc)
-        cellView.addSubview(creator)
+        let children = [recipeName, recipeDesc, creator]
+        var dist = 0
+        let spacing = 20
+        for child in children {
+            cellView.addSubview(child)
+            cellView.layout(child).left(0).top(CGFloat(dist))
+            dist += spacing
+        }
         
-        Layout.width(contentView, child: recipeName, width: 300)
-        Layout.width(contentView, child: recipeDesc, width: 300)
-        Layout.width(contentView, child: creator, width: 300)
-        
-        Layout.topLeft(contentView, child: recipeName, top: 0, left: 0)
-        Layout.topLeft(contentView, child: recipeDesc, top: 20, left: 0)
-        Layout.topLeft(contentView, child: creator, top: 40, left: 0)
     }
 
 }

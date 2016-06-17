@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
 //        let bottomNavigationController: BottomNav = BottomNav()
 //        bottomNavigationController.viewControllers = [localRecipeList, createRecipeViewController, discoveryViewController, profileVC]
         
-        let loginVC: UIViewController = LoginViewController()
+        let loginVC: UIViewController = RegisterViewController()
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window!.rootViewController = loginVC

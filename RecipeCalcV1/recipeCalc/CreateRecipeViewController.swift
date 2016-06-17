@@ -50,8 +50,12 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         configureDatabase()
         prepareView()
-        prepareNavigationItem()
         prepareTextFields()
+        prepareNavigationItem()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        prepareNavigationItem()
     }
     
     func configureDatabase() {
@@ -75,20 +79,13 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
             navigationItem.title = "Edit"
         } else {
             navigationItem.title = "Create"
-        }
-        saveBtn = B2()
-        saveBtn.setTitle("Add Flavors", forState: .Normal)
-        saveBtn.addTarget(self, action: #selector(sendRecipe), forControlEvents: .TouchUpInside)
-        
-        navigationItem.rightControls = [saveBtn]
-        
-        if self.recipe != nil && self.recipe.key == "" {
-            cancelBtn = B2()
-            cancelBtn.setTitle("Cancel", forState: .Normal)
-            cancelBtn.addTarget(self, action: #selector(cancelRecipe), forControlEvents: .TouchUpInside)
-            navigationItem.leftControls = [cancelBtn]
+            let clearButton = UIBarButtonItem(title: "Clear", style: .Plain, target: self, action: #selector(cancelRecipe))
+            navigationItem.leftBarButtonItems = [clearButton]
         }
         
+        let nextButton = UIBarButtonItem(title: "Next", style: .Plain, target: self, action: #selector(sendRecipe))
+        navigationItem.rightBarButtonItems = [nextButton]
+                
     }
     
     func prepareTextFields() {
@@ -154,13 +151,12 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         
         let children = [recipeName, recipeDesc, recipePgPct, recipeVgPct, recipeNicStrength, recipeSteepDays]
         
-        var start = CGFloat(30)
-        let spacing = CGFloat(75)
+        var dist = 30
+        let spacing = 75
         for child in children {
             recipeInfo.addSubview(child)
-            Layout.top(recipeInfo, child: child, top: start)
-            Layout.horizontally(recipeInfo, child: child, left: 30, right: 30)
-            start += spacing
+            recipeInfo.layout(child).top(CGFloat(dist)).horizontally(left: 10, right: 10)
+            dist += spacing
         }
         
         if edit {
@@ -177,8 +173,6 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
     func updatePgVg(sender: myTextField) {
         if Float(sender.text!) != nil {
             if Float(sender.text!) <= Float(100) && Float(sender.text!) >= Float(0) {
-                print(Float(sender.text!), Float(recipeVgPct.text!), Float(recipePgPct.text!))
-                print(Float(sender.text!) == Float(recipeVgPct.text!))
                 if Float(sender.text!) == Float(recipePgPct.text!) {
                     recipeVgPct.text = String(Float(100) - Float(sender.text!)!)
                 } else if Float(sender.text!) == Float(recipeVgPct.text!) {
@@ -245,7 +239,6 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
     
     func errorCheck(field: myTextField) {
         if field.errorCheck {
-            print("Checking field: '\(field.placeholder)' for errors")
             let res = errorMgr.checkForErrors(
                 field.text!, // data:
                 placeholder: field.placeholder!,
@@ -272,6 +265,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
     func clearForm() {
         view.endEditing(true)
         self.view.resignFirstResponder()
+        self.recipe = nil
         recipeName.text = ""
         recipeDesc.text = ""
         recipePgPct.text = ""

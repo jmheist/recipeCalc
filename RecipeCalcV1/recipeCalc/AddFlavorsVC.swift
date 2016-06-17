@@ -20,7 +20,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
     private var addFlavorName: T1!
     private var addFlavorBase: UISegmentedControl!
     private var addFlavorPct: T2!
-    private var addFlavorButton: B1!
+    private var addFlavorButton: B2!
     
     // flavors
     let flavorMGR: FlavorManager = FlavorManager()
@@ -46,7 +46,6 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         self.init(nibName: nil, bundle: nil)
         self.recipe = recipe
         self.edit = edit
-        print(recipe)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -68,7 +67,6 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
     
     func configureDatabase() {
         if edit {
-            print("should load flavors")
             _refHandle = Queries.flavors.child(recipe.key).observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
                 let key = snapshot.key as String
                 let name = snapshot.value!["name"] as! String
@@ -76,7 +74,6 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
                 let base = snapshot.value!["base"] as! String
                 self.flavorMGR.addFlavor(Flavor(name: name, base: base, pct: pct, key: key))
                 self.flavorTable.reloadData()
-                print("flavor added, reloading table")
             })
         }
     }
@@ -97,12 +94,8 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
     private func prepareNavigationItem() {
         navigationItem.title = "Create"
         
-        saveBtn = B2()
-        saveBtn.setTitle("Save", forState: .Normal)
-        saveBtn.addTarget(self, action: #selector(sendRecipe), forControlEvents: .TouchUpInside)
-        
-        navigationItem.rightControls = [saveBtn]
-        
+        let saveButton = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: #selector(sendRecipe))
+        navigationItem.rightBarButtonItems = [saveButton]
     }
     
     func prepareTextFields() {
@@ -111,7 +104,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         
         let flavorInfo: MaterialView = MaterialView()
         view.addSubview(flavorInfo)
-        Layout.edges(view, child: flavorInfo, top: 0, left: 0, bottom: 49, right: 0)
+        view.layout(flavorInfo).top(10).bottom(49).left(8).right(8)
         
         addFlavorName = T1()
         addFlavorName.placeholder = "Flavor Name"
@@ -121,10 +114,6 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         addFlavorName.clearButtonMode = .WhileEditing
         addFlavorName.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         addFlavorName.delegate = self
-        flavorInfo.addSubview(addFlavorName)
-        Layout.height(flavorInfo, child: addFlavorName, height: 22)
-        Layout.top(flavorInfo, child: addFlavorName, top: 30)
-        Layout.horizontally(flavorInfo, child: addFlavorName, left: 10, right: 10)
         
         addFlavorPct = T2()
         addFlavorPct.placeholder = "%"
@@ -134,45 +123,40 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         addFlavorPct.errorCheckFor = "number"
         addFlavorPct.numberMax = 100
         addFlavorPct.delegate = self
-        flavorInfo.addSubview(addFlavorPct)
-        Layout.height(flavorInfo, child: addFlavorPct, height: 22)
-        Layout.top(flavorInfo, child: addFlavorPct, top: 60)
-        Layout.horizontally(flavorInfo, child: addFlavorPct, left: 10, right: 10)
         
+        let flavorBaseView: MaterialView = MaterialView()
+        flavorBaseView.height = 25
         
-        let flavorBaseLabel: L3 = L3()
-        flavorBaseLabel.text = "Flavor base"
-        flavorInfo.addSubview(flavorBaseLabel)
-        Layout.size(flavorInfo, child: flavorBaseLabel, width: 110, height: 22)
-        Layout.left(flavorInfo, child: flavorBaseLabel, left: 10)
-        Layout.top(flavorInfo, child: flavorBaseLabel, top: 90)
+            let flavorBaseLabel: L3 = L3()
+            flavorBaseLabel.text = "Flavor base"
+            
+            addFlavorBase = UISegmentedControl(items: ["PG","VG"])
+            addFlavorBase.selectedSegmentIndex = 0
         
-        addFlavorBase = UISegmentedControl(items: ["PG","VG"])
-        addFlavorBase.selectedSegmentIndex = 0
-        flavorInfo.addSubview(addFlavorBase)
-        Layout.size(flavorInfo, child: addFlavorBase, width: 80, height: 22)
-        Layout.left(flavorInfo, child: addFlavorBase, left: 140)
-        Layout.top(flavorInfo, child: addFlavorBase, top: 90)
+            let baseChildren = [flavorBaseLabel, addFlavorBase]
+            for child in baseChildren {
+                flavorBaseView.addSubview(child)
+            }
+            flavorBaseView.layout.horizontally(baseChildren, left: 20, right: 20, spacing: 60)
         
-        addFlavorButton = B1()
+        addFlavorButton = B2()
         addFlavorButton.setTitle("Add Flavor", forState: .Normal)
         addFlavorButton.setTitleColor(colors.dark, forState: .Normal)
         addFlavorButton.addTarget(self, action: #selector(addFlavor), forControlEvents: .TouchUpInside)
-        flavorInfo.addSubview(addFlavorButton)
-        // Layout.size(flavorInfo, child: addFlavorButton, width: 150, height: 40)
-        Layout.height(flavorInfo, child: addFlavorButton, height: 40)
-        Layout.horizontally(flavorInfo, child: addFlavorButton, left: 80, right: 80)
-        Layout.top(flavorInfo, child: addFlavorButton, top: 140)
         
         flavorTable = UITableView()
         flavorTable.registerClass(MaterialTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         flavorTable.dataSource = self
         flavorTable.delegate = self
         
-        // Use MaterialLayout to easily align the tableView.
-        flavorInfo.addSubview(flavorTable)
-        Layout.edges(view, child: flavorTable, top: 195, left: 0, bottom: 0, right: 0)
-        
+        let children = [addFlavorName, addFlavorPct, flavorBaseView, addFlavorButton]
+        var dist = 10
+        let spacing = 60
+        for child in children {
+            flavorInfo.addSubview(child)
+            flavorInfo.layout(child).top(CGFloat(dist)).horizontally(left: 10, right: 10)
+            dist += spacing
+        }
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -196,13 +180,11 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         }
         
         if !errorMgr.hasErrors() { // no errors, save the flavor
-            print("no errors adding flavor")
             flavorMGR.addFlavor(Flavor(name: addFlavorName.text!, base: addFlavorBase.selectedSegmentIndex == 0 ? "PG" : "VG", pct: addFlavorPct.text!))
             flavorTable.reloadData()
             addFlavorName.text = ""
             addFlavorBase.selectedSegmentIndex = 0
             addFlavorPct.text = ""
-            
         }
         
     }
@@ -213,7 +195,6 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
     }
     
     func sendRecipe() {
-        print(recipe)
         
         let key = myRecipeMgr.sendToFirebase(recipe)
         
@@ -234,7 +215,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
     
     func errorCheck(field: myTextField) {
         if field.errorCheck {
-            print("Checking field: '\(field.placeholder)' for errors")
+            
             let res = errorMgr.checkForErrors(
                 field.text!, // data:
                 placeholder: field.placeholder!,
@@ -305,7 +286,6 @@ extension AddFlavorsVC: UITableViewDelegate {
             
             if self.recipe != nil && self.recipe.key != "" && flavorMGR.flavors[indexPath.row].key != "" {
                 Queries.flavors.child(self.recipe.key).child(flavorMGR.flavors[indexPath.row].key).setValue(nil)
-                print("removing flavor from FB")
             }
             
             flavorMGR.flavors.removeAtIndex(indexPath.row)

@@ -17,4 +17,8 @@ pod 'HMWDStarRatingView', '~> 0.4'
 # https://cocoapods.org/pods/Refresher
 pod 'Refresher', '~> 0.5'
 
+# https://cocoapods.org/pods/SlackTextViewController
+# pod 'SlackTextViewController', '~> 1.9'
+# pod try SlackTextViewController
+
 end

@@ -1,18 +1,28 @@
 //
-//  LoginViewCOntroller.swift
-//  recipeCalc
+//  Copyright (c) 2015 Google Inc.
 //
-//  Created by Jacob Heisterkamp on 6/17/16.
-//  Copyright © 2016 Vape&Prosper. All rights reserved.
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//  http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 import UIKit
-import Material
+
 import Firebase
+import Material
 
-class LoginViewController: UIViewController, TextFieldDelegate {
-
-    private var emailField: T1!,
+class RegisterViewController: UIViewController, TextFieldDelegate {
+    
+    private var nameField: T1!,
+                emailField: T1!,
                 passwordField: T1!;
     
     
@@ -33,8 +43,8 @@ class LoginViewController: UIViewController, TextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareView()
-        prepareEmailLogin()
-        prepareCancelLink()
+        prepareEmailRegistration()
+        prepareSignInLink()
     }
     
     /// General preparation statements.
@@ -47,15 +57,20 @@ class LoginViewController: UIViewController, TextFieldDelegate {
     // Login Forms
     //
     
-    func prepareEmailLogin() {
+    func prepareEmailRegistration() {
         
         let loginView: MaterialView = MaterialView()
         view.addSubview(loginView)
         view.layout(loginView).top(20).left(20).right(20).bottom(60)
         
-        let loginLabel: L1 = L1()
-        loginLabel.text = "Login"
-        loginLabel.textAlignment = .Center
+        let registerLabel: L1 = L1()
+        registerLabel.text = "Register"
+        registerLabel.textAlignment = .Center
+        
+        nameField = T1()
+        nameField.placeholder = "Username"
+        nameField.enableClearIconButton = true
+        nameField.delegate = self
         
         // EMAIL FIELD //
         
@@ -73,19 +88,13 @@ class LoginViewController: UIViewController, TextFieldDelegate {
         // Setting the visibilityFlatButton color.
         passwordField.visibilityIconButton?.tintColor = colors.dark
         
-        // BUTTONS //
-        
-        let signInButton: B2 = B2()
-        signInButton.addTarget(self, action: #selector(didTapSignIn), forControlEvents: .TouchUpInside)
-        signInButton.setTitle("Sign In", forState: .Normal)
-        
-        let forgotPasswordButton: B2 = B2()
-        forgotPasswordButton.addTarget(self, action: #selector(didRequestPasswordReset), forControlEvents: .TouchUpInside)
-        forgotPasswordButton.setTitle("Forgot Password", forState: .Normal)
+        let registerButton: B2 = B2()
+        registerButton.addTarget(self, action: #selector(didTapSignUp), forControlEvents: .TouchUpInside)
+        registerButton.setTitle("Sign Up", forState: .Normal)
         
         // LAYOUT //
         
-        let children = [loginLabel, emailField, passwordField, signInButton, forgotPasswordButton]
+        let children = [registerLabel, nameField, emailField, passwordField, registerButton]
         var dist = 10
         let spacing = 65
         for child in children {
@@ -93,6 +102,20 @@ class LoginViewController: UIViewController, TextFieldDelegate {
             loginView.layout(child).top(CGFloat(dist)).horizontally(left: 10, right: 10)
             dist += spacing
         }
+    }
+    
+    func prepareSignInLink() {
+        
+        let signInView: MaterialView = MaterialView()
+        view.addSubview(signInView)
+        view.layout(signInView).height(40).bottom(20).horizontally(left: 20, right: 20)
+        
+        let signInButton: B2 = B2()
+        signInButton.addTarget(self, action: #selector(didTapSignIn), forControlEvents: .TouchUpInside)
+        signInButton.setTitle("Login", forState: .Normal)
+        
+        signInView.addSubview(signInButton)
+        signInView.layout(signInButton).center()
         
     }
     
@@ -129,38 +152,37 @@ class LoginViewController: UIViewController, TextFieldDelegate {
         return true
     }
     
+    
+    
+    
     //
     // Login Functions
     //
     
     func didTapSignIn() {
-        // Sign In with credentials.
-        FIRAuth.auth()?.signInWithEmail(emailField.text!, password: passwordField.text!) { (user, error) in
+        presentViewController(LoginViewController(), animated: true, completion: nil)
+    }
+    
+    func didTapSignUp() {
+        FIRAuth.auth()?.createUserWithEmail(emailField.text!, password: passwordField.text!) { (user, error) in
             if let error = error {
                 print(error.localizedDescription)
                 return
             }
-            self.signedIn(user!)
+            self.setDisplayName(user!)
         }
     }
     
-    func didRequestPasswordReset() {
-        let prompt = UIAlertController.init(title: nil, message: "Email:", preferredStyle: UIAlertControllerStyle.Alert)
-        let okAction = UIAlertAction.init(title: "OK", style: UIAlertActionStyle.Default) { (action) in
-            let userInput = prompt.textFields![0].text
-            if (userInput!.isEmpty) {
+    func setDisplayName(user: FIRUser) {
+        let changeRequest = user.profileChangeRequest()
+        changeRequest.displayName = user.email!.componentsSeparatedByString("@")[0]
+        changeRequest.commitChangesWithCompletion(){ (error) in
+            if let error = error {
+                print(error.localizedDescription)
                 return
             }
-            FIRAuth.auth()?.sendPasswordResetWithEmail(userInput!) { (error) in
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }
-            }
+            self.signedIn(FIRAuth.auth()?.currentUser)
         }
-        prompt.addTextFieldWithConfigurationHandler(nil)
-        prompt.addAction(okAction)
-        presentViewController(prompt, animated: true, completion: nil);
     }
     
     func signedIn(user: FIRUser?) {
@@ -192,22 +214,8 @@ class LoginViewController: UIViewController, TextFieldDelegate {
         super.touchesBegan(touches, withEvent: event)
     }
     
-    func prepareCancelLink() {
-        
-        let cancelView: MaterialView = MaterialView()
-        view.addSubview(cancelView)
-        view.layout(cancelView).height(40).bottom(20).horizontally(left: 20, right: 20)
-        
-        let cancelButton: B2 = B2()
-        cancelButton.addTarget(self, action: #selector(didTapCancel), forControlEvents: .TouchUpInside)
-        cancelButton.setTitle("Cancel", forState: .Normal)
-        
-        cancelView.addSubview(cancelButton)
-        cancelView.layout(cancelButton).center()
-        
-    }
+    //
+    // End Login Functions
+    //
     
-    func didTapCancel() {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
 }

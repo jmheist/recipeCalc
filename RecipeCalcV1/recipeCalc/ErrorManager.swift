@@ -40,14 +40,13 @@ class ErrorManager: NSObject {
     private var errors = [String]()
     
     func checkForErrors(data: String, placeholder: String, checkFor: Check) -> ErrorResponse {
-        print("Running ErrorManager.checkForErrors()")
+        
         var error: Bool = false
         var errorMessage = ""
         
         switch checkFor.type { // start switch
         case "text":
             
-            print("checking text")
             if (checkFor.length != 0) && (data.characters.count <= checkFor.length) {
                 error = true
                 errorMessage = "Please use more than \(checkFor.length) characters"
@@ -55,7 +54,6 @@ class ErrorManager: NSObject {
             
         case "number":
             
-            print("checking number")
             let num = Float(data)
             if num == nil {
                 error = true
@@ -72,7 +70,7 @@ class ErrorManager: NSObject {
             }
             
         default:
-            print("nothing to check")
+            break
         } // end switch
         
         
@@ -84,11 +82,9 @@ class ErrorManager: NSObject {
             while self.errors.indexOf(placeholder) != -1 && self.errors.indexOf(placeholder) != nil {
                 self.errors.removeAtIndex(self.errors.indexOf(placeholder)!)
             }
-            print(errors, placeholder)
         }
         
         return ErrorResponse(error: error, errorMessage: errorMessage)
-    
     }
     
     

@@ -46,7 +46,7 @@ class TableVC: UIViewController {
             // print("User is logged in")
         } else {
             print("User is not logged in yet, should load loginVC")
-            let vc = LoginViewController()
+            let vc = RegisterViewController()
             self.presentViewController(vc, animated: false, completion: nil)
         }
     }

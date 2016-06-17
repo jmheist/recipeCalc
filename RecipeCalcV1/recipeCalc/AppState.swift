@@ -22,6 +22,7 @@ class AppState: NSObject {
 
     var signedIn = false
     var displayName: String?=""
+    var email: String?=""
     var uid: String?=" "
     var photoUrl: NSURL?
 }
