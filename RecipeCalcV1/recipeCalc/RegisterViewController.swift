@@ -46,7 +46,6 @@ class RegisterViewController: UIViewController, TextFieldDelegate, FBSDKLoginBut
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UserMgr.getUsers()
         prepareView()
         prepareEmailRegistration()
         prepareSignInLink()

@@ -16,12 +16,15 @@ class DiscoveryViewController: TableVC {
     private var _refHandle: FIRDatabaseHandle!
     private var _refDeleteHandle: FIRDatabaseHandle!
     
+    private var searchBar: SearchBar!
+    
     deinit {
         Queries.publicRecipes.removeAllObservers()
     }
     
     override func prepareView() {
         super.prepareView()
+        prepareNavigationItem()
     }
     
     override func viewDidLoad() {
@@ -32,18 +35,22 @@ class DiscoveryViewController: TableVC {
     /// Prepare tabBarItem.
     override func prepareTabBarItem() {
         tabBarItem.title = "Discover"
-        tabBarItem.image = MaterialIcon.visibility    }
+        tabBarItem.image = MaterialIcon.visibility
+    }
     
     /// Prepares the navigationItem.
     override func prepareNavigationItem() {
         navigationItem.title = "Discover"
+        
+        let searchIcon = UIBarButtonItem(image: MaterialIcon.cm.search, style: .Plain, target: self, action: #selector(search))
+        navigationItem.rightBarButtonItems = [searchIcon]
+    }
+    
+    func search() {
+        presentViewController(SearchVC(), animated: true, completion: nil)
     }
     
     override func configureDatabase() {
-
-        ///////
-        /////// Todo: IMPLIMENT PULL TO REFRESH EVENTUALLY
-        ///////
         
         // Listen for new messages in the Firebase database
         _refHandle = (Queries.publicRecipes).queryOrderedByChild("stars").observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in

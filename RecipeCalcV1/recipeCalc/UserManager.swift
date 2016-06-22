@@ -27,32 +27,17 @@ let UserMgr: UserManager = UserManager()
 
 class UserManager: NSObject {
     
-    var users: [String: User] = [:]
-    
     func sendToFirebase(user: User, uid: String) {
-        
         Queries.users.child(uid).setValue(user.fb())
-        
     }
     
-    func reset() {
-        users = [:]
-    }
-    
-    func getUsers() {
-        print("getUsers()")
-        Queries.users.removeAllObservers()
-        Queries.users.observeSingleEventOfType(.Value, withBlock: {(snapshot) in
-            print("querying")
-            self.reset()
-            for child in snapshot.children {
-                let snap = child as! FIRDataSnapshot
-                self.users[snap.key] = User(
-                    username: snap.value!["username"] as! String,
-                    email: snap.value!["email"] as! String
-                )
-            }
-            print(self.users.count)
+    func getUserByKey(key: String, completionHandler:(User)->()) {
+        Queries.users.child(key).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            let user = User(
+                username: snapshot.value!["username"] as! String,
+                email: snapshot.value!["email"] as! String
+            )
+            completionHandler(user)
         })
     }
     

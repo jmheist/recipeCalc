@@ -13,7 +13,27 @@ class SearchManager: NSObject {
     
     var res = [Recipe]()
     
+    func reset() {
+        res = [Recipe]()
+    }
+    
+    func sortBy(sortBy: String) {
+        switch sortBy {
+        case "stars":
+            self.res.sortInPlace {(recipe1:Recipe, recipe2:Recipe) -> Bool in
+                recipe1.stars > recipe2.stars
+            }
+        default:
+            break
+        }
+        
+    }
+    
     func search(term: String, completionHandler:([Recipe])->()) {
+        
+        reset()
+        
+        let flavorMgr: FlavorManager = FlavorManager()
         
         var flavorsComplete = false
         var recipesComplete = false
@@ -26,6 +46,7 @@ class SearchManager: NSObject {
             }
             
             if flavorsComplete && recipesComplete {
+                sortBy("stars")
                 completionHandler(res)
             }
             
@@ -33,11 +54,12 @@ class SearchManager: NSObject {
         
         Queries.publicRecipes.observeSingleEventOfType(.Value, withBlock:  { (snapshot) in
             for child in snapshot.children {
-                let snap = child as! Dictionary<String,String>
-                for (_, val) in snap {
-                    if val.containsString(term) {
-                        self.res.append(publicRecipeMgr.receiveFromFirebase(child as! FIRDataSnapshot))
-                    }
+                let child = child as! FIRDataSnapshot
+                let snap = publicRecipeMgr.receiveFromFirebase(child)
+                if snap.name.containsString(term) {
+                    self.res.append(snap)
+                } else if snap.desc.lowercaseString.containsString(term.lowercaseString) {
+                    self.res.append(snap)
                 }
             }
             returnRes("recipes")
@@ -46,14 +68,12 @@ class SearchManager: NSObject {
         Queries.flavors.observeSingleEventOfType(.Value, withBlock:  { (snapshot) in
             for child in snapshot.children {
                 let child = child as! FIRDataSnapshot
-                for recipe in child.children {
-                    let flavor = recipe as! Dictionary<String,String>
-                    for (_, val) in flavor {
-                        if val.containsString(term) {
-                            Queries.publicRecipes.child(child.key).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                                self.res.append(publicRecipeMgr.receiveFromFirebase(snapshot))
-                            })
-                        }
+                for flavor in child.children {
+                    let flavor = flavorMgr.receiveFromFirebase(flavor as! FIRDataSnapshot)
+                    if flavor.name.lowercaseString.containsString(term.lowercaseString) {
+                        Queries.publicRecipes.child(child.key).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                            self.res.append(publicRecipeMgr.receiveFromFirebase(snapshot))
+                        })
                     }
                 }
             }

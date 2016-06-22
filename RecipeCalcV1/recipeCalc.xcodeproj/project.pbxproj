@@ -28,6 +28,7 @@
 		73991AF81D18565A004F3F07 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73991AF71D18565A004F3F07 /* UserManager.swift */; };
 		73991AFB1D1ADC97004F3F07 /* NotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73991AFA1D1ADC97004F3F07 /* NotesVC.swift */; };
 		73991AFD1D1AFF39004F3F07 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73991AFC1D1AFF39004F3F07 /* SearchManager.swift */; };
+		73991B091D1B16EC004F3F07 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73991B081D1B16EC004F3F07 /* SearchVC.swift */; };
 		73A3F77B1D0A0BC400B8C281 /* MixVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A3F77A1D0A0BC400B8C281 /* MixVC.swift */; };
 		73A3F77D1D0A142600B8C281 /* MixTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A3F77C1D0A142600B8C281 /* MixTabBar.swift */; };
 		73B1B5B01CFFA520009AFA20 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */; };
@@ -106,6 +107,7 @@
 		73991AF91D1A0634004F3F07 /* recipeCalc-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "recipeCalc-Bridging-Header.h"; sourceTree = "<group>"; };
 		73991AFA1D1ADC97004F3F07 /* NotesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesVC.swift; sourceTree = "<group>"; };
 		73991AFC1D1AFF39004F3F07 /* SearchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
+		73991B081D1B16EC004F3F07 /* SearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		73A3F77A1D0A0BC400B8C281 /* MixVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixVC.swift; sourceTree = "<group>"; };
 		73A3F77C1D0A142600B8C281 /* MixTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixTabBar.swift; sourceTree = "<group>"; };
 		73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
@@ -177,14 +179,15 @@
 			isa = PBXGroup;
 			children = (
 				73DCEABE1CF6254B002BA81C /* RegisterViewController.swift */,
-				73991AFA1D1ADC97004F3F07 /* NotesVC.swift */,
 				731C96BA1D14859300588FAD /* LoginViewController.swift */,
 				734C95D31D06169600EB79AD /* MyRecipeVC.swift */,
 				734C95D51D0617D500EB79AD /* PublicRecipeVC.swift */,
 				73CC8D041D08CDD1003D3709 /* MixPrepVC.swift */,
-				73A3F77A1D0A0BC400B8C281 /* MixVC.swift */,
 				73F66DC11D0BD5D7008E73E1 /* AddFlavorsVC.swift */,
+				73A3F77A1D0A0BC400B8C281 /* MixVC.swift */,
 				73DCEAC91CF62B75002BA81C /* UpdateProfileVC.swift */,
+				73991AFA1D1ADC97004F3F07 /* NotesVC.swift */,
+				73991B081D1B16EC004F3F07 /* SearchVC.swift */,
 			);
 			name = "One-Offs";
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				73DCEAC81CF62B5A002BA81C /* LocalRecipeListVC.swift in Sources */,
 				731C96B91D12FD9100588FAD /* PacmanAnimator.swift in Sources */,
 				7315D5EF1CF4E405002B2588 /* recipeCalc.xcdatamodeld in Sources */,
+				73991B091D1B16EC004F3F07 /* SearchVC.swift in Sources */,
 				73DCEAE41CF6988B002BA81C /* TextFields.swift in Sources */,
 				73DCEAD11CF63E2F002BA81C /* RecipeCell.swift in Sources */,
 				7315D5E71CF4E405002B2588 /* AppDelegate.swift in Sources */,

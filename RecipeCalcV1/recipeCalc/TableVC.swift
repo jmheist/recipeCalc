@@ -81,8 +81,7 @@ class TableVC: UIViewController {
         recipeTable.dataSource = self
         recipeTable.delegate = self
         
-        view.addSubview(recipeTable)
-        Layout.edges(view, child: recipeTable, top: 0, left: 0, bottom: 49, right: 0)
+        view.layout(recipeTable).top(0).left(0).right(0).bottom(0)
         
     }
     

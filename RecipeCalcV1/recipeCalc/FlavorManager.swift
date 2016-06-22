@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 struct Flavor {
     
@@ -52,6 +53,14 @@ class FlavorManager: NSObject {
                 Queries.flavors.child(key).child(flavor.key).setValue(flavor.fb())
             }
         }
+    }
+    
+    func receiveFromFirebase(snapshot: FIRDataSnapshot) -> Flavor {
+        let base = snapshot.value!["base"] as! String
+        let name = snapshot.value!["name"] as! String
+        let pct = snapshot.value!["pct"] as! String
+        let flav = Flavor(name: name, base: base, pct: pct)
+        return flav
     }
     
 }
