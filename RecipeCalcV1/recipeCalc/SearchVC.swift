@@ -8,8 +8,9 @@
 
 import UIKit
 import Material
+import GoogleMobileAds
 
-class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, TextFieldDelegate {
+class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, TextFieldDelegate, GADBannerViewDelegate {
     
     var searchBar: SearchBar!
     var recipeTable: UITableView!
@@ -40,6 +41,7 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Te
         prepareTableView()
         prepareContainerView()
         prepareSearchBar()
+        prepareAds()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -107,6 +109,19 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Te
     
     func goBack() {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func prepareAds() {
+        let bannerAd: GADBannerView = GADBannerView()
+        view.layout(bannerAd).height(50).width(320).bottom(0).centerHorizontally()
+        
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID]
+        bannerAd.delegate = self
+        bannerAd.adUnitID = adConstants.AdMobAdUnitID
+        bannerAd.rootViewController = self
+        bannerAd.loadRequest(request)
+        
     }
     
     /// Prepare table

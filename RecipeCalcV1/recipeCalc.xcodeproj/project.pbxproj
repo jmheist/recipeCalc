@@ -29,12 +29,11 @@
 		73991AFB1D1ADC97004F3F07 /* NotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73991AFA1D1ADC97004F3F07 /* NotesVC.swift */; };
 		73991AFD1D1AFF39004F3F07 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73991AFC1D1AFF39004F3F07 /* SearchManager.swift */; };
 		73991B091D1B16EC004F3F07 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73991B081D1B16EC004F3F07 /* SearchVC.swift */; };
+		73991B0B1D1B34B5004F3F07 /* AdMobManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73991B0A1D1B34B5004F3F07 /* AdMobManager.swift */; };
+		73A376311D1B3A5400BF9FC2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73A376301D1B3A5400BF9FC2 /* GoogleService-Info.plist */; };
 		73A3F77B1D0A0BC400B8C281 /* MixVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A3F77A1D0A0BC400B8C281 /* MixVC.swift */; };
 		73A3F77D1D0A142600B8C281 /* MixTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A3F77C1D0A142600B8C281 /* MixTabBar.swift */; };
 		73B1B5B01CFFA520009AFA20 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */; };
-		73B1DCFB1CF54558002D9E23 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73B1DCFA1CF54558002D9E23 /* GoogleService-Info.plist */; };
-		73B1DCFC1CF54558002D9E23 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73B1DCFA1CF54558002D9E23 /* GoogleService-Info.plist */; };
-		73B1DCFD1CF54558002D9E23 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73B1DCFA1CF54558002D9E23 /* GoogleService-Info.plist */; };
 		73CC8D051D08CDD1003D3709 /* MixPrepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CC8D041D08CDD1003D3709 /* MixPrepVC.swift */; };
 		73CC8D071D08CEE0003D3709 /* MixSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CC8D061D08CEE0003D3709 /* MixSettingsManager.swift */; };
 		73DCEABF1CF6254B002BA81C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEABE1CF6254B002BA81C /* RegisterViewController.swift */; };
@@ -108,10 +107,11 @@
 		73991AFA1D1ADC97004F3F07 /* NotesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesVC.swift; sourceTree = "<group>"; };
 		73991AFC1D1AFF39004F3F07 /* SearchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		73991B081D1B16EC004F3F07 /* SearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		73991B0A1D1B34B5004F3F07 /* AdMobManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobManager.swift; sourceTree = "<group>"; };
+		73A376301D1B3A5400BF9FC2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		73A3F77A1D0A0BC400B8C281 /* MixVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixVC.swift; sourceTree = "<group>"; };
 		73A3F77C1D0A142600B8C281 /* MixTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixTabBar.swift; sourceTree = "<group>"; };
 		73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
-		73B1DCFA1CF54558002D9E23 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		73CC8D041D08CDD1003D3709 /* MixPrepVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixPrepVC.swift; sourceTree = "<group>"; };
 		73CC8D061D08CEE0003D3709 /* MixSettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixSettingsManager.swift; sourceTree = "<group>"; };
 		73DCEABE1CF6254B002BA81C /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -228,7 +228,7 @@
 				7315D5F21CF4E405002B2588 /* LaunchScreen.storyboard */,
 				7315D5F51CF4E405002B2588 /* Info.plist */,
 				7315D5ED1CF4E405002B2588 /* recipeCalc.xcdatamodeld */,
-				73B1DCFA1CF54558002D9E23 /* GoogleService-Info.plist */,
+				73A376301D1B3A5400BF9FC2 /* GoogleService-Info.plist */,
 				73991AF91D1A0634004F3F07 /* recipeCalc-Bridging-Header.h */,
 			);
 			path = recipeCalc;
@@ -301,6 +301,7 @@
 				73F66DB91D0B57EF008E73E1 /* ErrorManager.swift */,
 				73991AF71D18565A004F3F07 /* UserManager.swift */,
 				73991AFC1D1AFF39004F3F07 /* SearchManager.swift */,
+				73991B0A1D1B34B5004F3F07 /* AdMobManager.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -445,8 +446,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7315D5F41CF4E405002B2588 /* LaunchScreen.storyboard in Resources */,
-				73B1DCFB1CF54558002D9E23 /* GoogleService-Info.plist in Resources */,
 				7315D5F11CF4E405002B2588 /* Assets.xcassets in Resources */,
+				73A376311D1B3A5400BF9FC2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,7 +455,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73B1DCFC1CF54558002D9E23 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,7 +462,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73B1DCFD1CF54558002D9E23 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,6 +535,7 @@
 				737A010B1D0F13D600CF76EA /* PublicRecipeCell.swift in Sources */,
 				73A3F77B1D0A0BC400B8C281 /* MixVC.swift in Sources */,
 				7325BE561D0762B100CF0177 /* FlavorManager.swift in Sources */,
+				73991B0B1D1B34B5004F3F07 /* AdMobManager.swift in Sources */,
 				73DCEAD31CF65323002BA81C /* CreateRecipeViewController.swift in Sources */,
 				73991AFD1D1AFF39004F3F07 /* SearchManager.swift in Sources */,
 				73DE44CD1D11BD310019DFD2 /* WDStarRatingView.swift in Sources */,

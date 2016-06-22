@@ -10,8 +10,9 @@ import UIKit
 import Material
 import Firebase
 import FBSDKCoreKit
+import GoogleMobileAds
 
-class ProfileVC: UIViewController  {
+class ProfileVC: UIViewController, GADBannerViewDelegate {
     
     /// NavigationBar title label.
     private var titleLabel: UILabel!
@@ -41,6 +42,7 @@ class ProfileVC: UIViewController  {
         prepareNavButtons()
         prepareProfile()
         prepareNavigationItem()
+        prepareAds()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -77,6 +79,20 @@ class ProfileVC: UIViewController  {
         
         let email: L2 = L2()
         email.text = AppState.sharedInstance.email
+        
+    }
+    
+    func prepareAds() {
+        let bannerAd: GADBannerView = GADBannerView()
+        bannerAd.layer.zPosition = -1;
+        view.layout(bannerAd).height(50).width(320).bottom(50).centerHorizontally()
+        
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID]
+        bannerAd.delegate = self
+        bannerAd.adUnitID = adConstants.AdMobAdUnitID
+        bannerAd.rootViewController = self
+        bannerAd.loadRequest(request)
         
     }
     

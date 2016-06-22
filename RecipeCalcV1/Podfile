@@ -6,6 +6,7 @@ pod "Firebase"
 pod "Firebase/Database"
 pod "Firebase/Crash"
 pod "Firebase/Auth"
+pod "Firebase/AdMob"
 
 pod "FBSDKLoginKit"
 

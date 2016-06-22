@@ -9,8 +9,9 @@
 import UIKit
 import Firebase
 import Material
+import GoogleMobileAds
 
-class RecipeVC: UIViewController {
+class RecipeVC: UIViewController, GADBannerViewDelegate {
     
     var recipe: Recipe!
     let flavorMgr: FlavorManager = FlavorManager()
@@ -41,6 +42,7 @@ class RecipeVC: UIViewController {
         prepareRecipe()
         prepareTableView()
         prepareTabBar()
+        prepareAds()
     }
     
     deinit {
@@ -74,7 +76,7 @@ class RecipeVC: UIViewController {
                 
         let recipeInfo: MaterialView = MaterialView()
         view.addSubview(recipeInfo)
-        Layout.edges(view, child: recipeInfo, top: 0, left: 0, bottom: 49, right: 0)
+        Layout.edges(view, child: recipeInfo, top: 0, left: 0, bottom: 90, right: 0)
         
         let recipeDesc: L2 = L2()
         
@@ -97,7 +99,7 @@ class RecipeVC: UIViewController {
         flavorTable.delegate = self
         
         view.addSubview(flavorTable)
-        Layout.edges(view, child: flavorTable, top: 100, left: 20, bottom: 49, right: 20)
+        Layout.edges(view, child: flavorTable, top: 100, left: 20, bottom: 90, right: 20)
         
     }
     
@@ -122,6 +124,20 @@ class RecipeVC: UIViewController {
     
     func mixIt() {
         navigationController?.pushViewController(MixPrepVC(recipe: self.recipe), animated: true)
+    }
+    
+    func prepareAds() {
+        let bannerAd: GADBannerView = GADBannerView()
+        bannerAd.layer.zPosition = -1;
+        view.layout(bannerAd).height(50).width(320).bottom(40).centerHorizontally()
+        
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID]
+        bannerAd.delegate = self
+        bannerAd.adUnitID = adConstants.AdMobAdUnitID
+        bannerAd.rootViewController = self
+        bannerAd.loadRequest(request)
+        
     }
     
 }

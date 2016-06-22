@@ -9,8 +9,9 @@
 import UIKit
 import Material
 import Firebase
+import GoogleMobileAds
 
-class MixVC: UIViewController {
+class MixVC: UIViewController, GADBannerViewDelegate {
 
     var recipe: Recipe!
     var settings: Settings!
@@ -46,6 +47,7 @@ class MixVC: UIViewController {
         prepareIngredients()
         prepareFlavors()
         prepareTable()
+        prepareAds()
     }
     
     func prepareView() {
@@ -120,7 +122,21 @@ class MixVC: UIViewController {
         mixTable.dataSource = self
         mixTable.delegate = self
         view.addSubview(mixTable)
-        Layout.edges(view, child: mixTable, top: 60, left: 5, bottom: 48, right: 5)
+        Layout.edges(view, child: mixTable, top: 60, left: 5, bottom: 90, right: 5)
+        
+    }
+    
+    func prepareAds() {
+        let bannerAd: GADBannerView = GADBannerView()
+        bannerAd.layer.zPosition = -1;
+        view.layout(bannerAd).height(50).width(320).bottom(40).centerHorizontally()
+        
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID]
+        bannerAd.delegate = self
+        bannerAd.adUnitID = adConstants.AdMobAdUnitID
+        bannerAd.rootViewController = self
+        bannerAd.loadRequest(request)
         
     }
 }

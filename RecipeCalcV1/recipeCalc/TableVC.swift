@@ -9,8 +9,9 @@
 import UIKit
 import Material
 import Firebase
+import GoogleMobileAds
 
-class TableVC: UIViewController {
+class TableVC: UIViewController, GADBannerViewDelegate {
     
     // VARS
     var recipeTable: UITableView!
@@ -38,6 +39,7 @@ class TableVC: UIViewController {
         prepareView()
         prepareNavigationItem()
         prepareTableView()
+        prepareAds()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -81,7 +83,20 @@ class TableVC: UIViewController {
         recipeTable.dataSource = self
         recipeTable.delegate = self
         
-        view.layout(recipeTable).top(0).left(0).right(0).bottom(0)
+        view.layout(recipeTable).top(0).left(0).right(0).bottom(100)
+        
+    }
+    
+    func prepareAds() {
+        let bannerAd: GADBannerView = GADBannerView()
+        view.layout(bannerAd).height(50).width(320).bottom(50).centerHorizontally()
+        
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID]
+        bannerAd.delegate = self
+        bannerAd.adUnitID = adConstants.AdMobAdUnitID
+        bannerAd.rootViewController = self
+        bannerAd.loadRequest(request)
         
     }
     
