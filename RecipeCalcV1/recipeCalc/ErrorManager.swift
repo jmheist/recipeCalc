@@ -40,10 +40,52 @@ class ErrorManager: NSObject {
     
     private var errors = [String]()
     
-    func checkForErrors(data: String, placeholder: String, checkFor: Check) -> ErrorResponse {
+    // runs the error checker, and then modifies the fields to show the errors
+    func errorCheck(field: myTextField) {
+        if field.errorCheck {
+            
+            self.checkForErrors(field.text!, // data:
+                placeholder: field.placeholder!,
+                checkFor: Check(
+                    type: field.errorCheckFor,
+                    length: field.textLength,
+                    numberMax: field.numberMax
+                ), completionHandler: { (res:ErrorResponse) in
+                    if res.error {
+                        print(res)
+                        field.detail = res.errorMessage
+                        field.revealError = true
+                        field.detailColor = colors.errorRed
+                        field.dividerColor = colors.errorRed
+                    } else {
+                        field.revealError = false
+                        field.detailColor = colors.dark
+                        field.dividerColor = colors.dark
+                    }
+            })
+            
+        }
+    }
+    
+    // does the actual error checking
+    func checkForErrors(data: String, placeholder: String, checkFor: Check, completionHandler:(ErrorResponse)->()) {
         
         var error: Bool = false
         var errorMessage = ""
+        
+        func returnError() {
+            if error {
+                if self.errors.indexOf(placeholder) < 0 {
+                    self.errors.append(placeholder)
+                }
+            } else {
+                while self.errors.indexOf(placeholder) != -1 && self.errors.indexOf(placeholder) != nil {
+                    self.errors.removeAtIndex(self.errors.indexOf(placeholder)!)
+                }
+            }
+            
+            completionHandler(ErrorResponse(error: error, errorMessage: errorMessage))
+        }
         
         switch checkFor.type { // start switch
         case "text":
@@ -51,7 +93,10 @@ class ErrorManager: NSObject {
             if (checkFor.length != 0) && (data.characters.count <= checkFor.length) {
                 error = true
                 errorMessage = "Please use more than \(checkFor.length) characters"
+                returnError()
             }
+            
+            returnError()
             
         case "number":
             
@@ -59,32 +104,39 @@ class ErrorManager: NSObject {
             if num == nil {
                 error = true
                 errorMessage = "Must be a number"
-                
+                returnError()
             }
             if num > Float(checkFor.numberMax) {
                 error = true
                 errorMessage = "Must be between \(checkFor.numberMax) and 0"
+                returnError()
             }
             if num < Float(0) {
                 error = true
                 errorMessage = "Must be between \(checkFor.numberMax) and 0"
+                returnError()
             }
+            
+            returnError()
             
         case "username":
             
             if (checkFor.length != 0) && (data.characters.count <= checkFor.length) {
                 error = true
                 errorMessage = "Please use more than \(checkFor.length) characters"
+                returnError()
             }
-            print("checking email address")
-            for (key, _) in UserMgr.users {
-                
-                if data == UserMgr.users[key]!.username {
+            
+            UserMgr.getUserByUsername(data, completionHandler: { (user:User) in
+                if data.lowercaseString == user.username.lowercaseString {
                     error = true
-                    errorMessage = "This username is already taken"
-                    break
+                    errorMessage = "Username is already taken"
+                    print(error, errorMessage)
+                    returnError()
                 }
-            }
+            })
+            
+            returnError()
             
         case "email":
             
@@ -94,40 +146,36 @@ class ErrorManager: NSObject {
             if !result {
                 error = true
                 errorMessage = "Please use a valid email address"
+                returnError()
             }
             
-            for (key, _) in UserMgr.users {
-                print("checking email address")
-                if data == UserMgr.users[key]!.email {
+            UserMgr.getUserByEmail(data, completionHandler: { (user:User) in
+                print(data == user.email)
+                print(data, user.email)
+                if data.lowercaseString == user.email.lowercaseString {
                     error = true
-                    errorMessage = "This email address is already taken"
-                    break
+                    errorMessage = "Email address is already taken"
+                    print(error, errorMessage)
+                    returnError()
                 }
-            }
+            })
+            
+            returnError()
             
         case "password":
             
             if (checkFor.length != 0) && (data.characters.count <= checkFor.length) {
                 error = true
                 errorMessage = "Please use more than \(checkFor.length) characters"
+                returnError()
             }
+            
+            returnError()
             
         default:
             break
         } // end switch
         
-        
-        if error {
-            if self.errors.indexOf(placeholder) < 0 {
-                self.errors.append(placeholder)
-            }
-        } else {
-            while self.errors.indexOf(placeholder) != -1 && self.errors.indexOf(placeholder) != nil {
-                self.errors.removeAtIndex(self.errors.indexOf(placeholder)!)
-            }
-        }
-        
-        return ErrorResponse(error: error, errorMessage: errorMessage)
     }
     
     

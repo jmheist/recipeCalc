@@ -47,9 +47,47 @@ class UserManager: NSObject {
             self.reset()
             for child in snapshot.children {
                 let snap = child as! FIRDataSnapshot
-                self.users[snap.key] = User(username: snap.value!["username"] as! String, email: snap.value!["email"] as! String)
+                self.users[snap.key] = User(
+                    username: snap.value!["username"] as! String,
+                    email: snap.value!["email"] as! String
+                )
             }
             print(self.users.count)
+        })
+    }
+    
+    func getUserByUsername(username: String, completionHandler:(User)->()) {
+        Queries.users.observeSingleEventOfType(.Value, withBlock: {(snapshot) in
+            print("querying by username")
+            for child in snapshot.children {
+                let snap = child as! FIRDataSnapshot
+                let name = snap.value!["username"] as! String
+                if name.lowercaseString == username.lowercaseString {
+                    let user = User(
+                        username: name,
+                        email: snap.value!["email"] as! String
+                    )
+                    completionHandler(user)
+                }
+            }
+        })
+    }
+    
+    func getUserByEmail(email: String, completionHandler:(User)->()) {
+        Queries.users.observeSingleEventOfType(.Value, withBlock: {(snapshot) in
+            print("querying by email")
+            for child in snapshot.children {
+                let snap = child as! FIRDataSnapshot
+                let emailval = snap.value!["email"] as! String
+                print(emailval)
+                if emailval.lowercaseString == email.lowercaseString {
+                    let user = User(
+                        username: snap.value!["username"] as! String,
+                        email: emailval
+                    )
+                    completionHandler(user)
+                }
+            }
         })
     }
     

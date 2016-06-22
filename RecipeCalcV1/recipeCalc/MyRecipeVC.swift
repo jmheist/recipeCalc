@@ -89,11 +89,22 @@ class MyRecipeVC: RecipeVC {
         btn2.setTitleColor(colors.textDark, forState: .Normal)
         btn2.addTarget(nil, action: #selector(editRecipe), forControlEvents: .TouchUpInside)
         
-        tabBar.buttons = [btn2, btn1]
+        let notesBtn: FlatButton = FlatButton()
+        notesBtn.pulseColor = colors.medium
+        notesBtn.setTitle("Notes", forState: .Normal)
+        notesBtn.setTitleColor(colors.textDark, forState: .Normal)
+        notesBtn.addTarget(nil, action: #selector(gotoNotes), forControlEvents: .TouchUpInside)
+        
+        tabBar.buttons = [btn2, notesBtn, btn1]
         
     }
     
     func editRecipe() {
         navigationController?.pushViewController(CreateRecipeViewController(recipe: recipe, edit: true), animated: true)
     }
+    
+    func gotoNotes() {
+        navigationController?.pushViewController(NotesVC(recipe: recipe), animated: true)
+    }
+    
 }

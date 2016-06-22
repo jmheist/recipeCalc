@@ -87,7 +87,7 @@ class MixPrepVC: UIViewController {
         
         
         for child in children {
-            errorCheck(child)
+            errorMgr.errorCheck(child)
         }
         
         if !errorMgr.hasErrors() {
@@ -136,33 +136,33 @@ class MixPrepVC: UIViewController {
         Layout.edges(view, child: settings, top: 80, left: 0, bottom: 49, right: 0)
         
         pg = T1()
-        pg.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        pg.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         pg.addTarget(self, action: #selector(self.updatePgVg(_:)), forControlEvents: UIControlEvents.EditingChanged)
         pg.errorCheck = true
         pg.errorCheckFor = "number"
         pg.numberMax = 100
         
         vg = T1()
-        vg.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        vg.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         vg.addTarget(self, action: #selector(self.updatePgVg(_:)), forControlEvents: UIControlEvents.EditingChanged)
         vg.errorCheck = true
         vg.errorCheckFor = "number"
         vg.numberMax = 100
         
         strength = T1()
-        strength.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        strength.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         strength.errorCheck = true
         strength.errorCheckFor = "number"
         strength.numberMax = 40
         
         nic = T1()
-        nic.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        nic.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         nic.errorCheck = true
         nic.errorCheckFor = "number"
         nic.numberMax = 200
         
         amount = T1()
-        amount.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        amount.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         amount.errorCheck = true
         amount.errorCheckFor = "number"
         amount.numberMax = 10000
@@ -202,27 +202,7 @@ class MixPrepVC: UIViewController {
         }
     }
     
-    func errorCheck(field: myTextField) {
-        if field.errorCheck {
-            let res = errorMgr.checkForErrors(
-                field.text!, // data:
-                placeholder: field.placeholder!,
-                checkFor: Check(
-                    type: field.errorCheckFor,
-                    length: field.textLength,
-                    numberMax: field.numberMax
-                )
-            )
-            if res.error {
-                field.detail = res.errorMessage
-                field.revealError = true
-                field.detailColor = colors.errorRed
-                field.dividerColor = colors.errorRed
-            } else {
-                field.revealError = false
-                field.detailColor = colors.dark
-                field.dividerColor = colors.dark
-            }
-        }
+    func liveCheck(field: myTextField) {
+        errorMgr.errorCheck(field)
     }
 }

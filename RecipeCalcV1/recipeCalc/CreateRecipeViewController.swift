@@ -102,7 +102,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         recipeName = T1()
         recipeName.placeholder = "Recipe Name"
         recipeName.clearButtonMode = .WhileEditing
-        recipeName.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        recipeName.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         recipeName.errorCheck = true
         recipeName.errorCheckFor = "text"
         recipeName.textLength = 3
@@ -110,7 +110,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         recipeDesc = T2()
         recipeDesc.placeholder = "Recipe Description"
         recipeDesc.clearButtonMode = .WhileEditing
-        recipeDesc.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        recipeDesc.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         recipeDesc.errorCheck = true
         recipeDesc.errorCheckFor = "text"
         recipeDesc.textLength = 3
@@ -118,7 +118,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         recipePgPct = T2()
         recipePgPct.placeholder = "Recipe PG%"
         recipePgPct.clearButtonMode = .WhileEditing
-        recipePgPct.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        recipePgPct.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         recipePgPct.errorCheck = true
         recipePgPct.errorCheckFor = "number"
         recipePgPct.numberMax = 100
@@ -127,7 +127,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         recipeVgPct = T2()
         recipeVgPct.placeholder = "Recipe VG%"
         recipeVgPct.clearButtonMode = .WhileEditing
-        recipeVgPct.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        recipeVgPct.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         recipeVgPct.errorCheck = true
         recipeVgPct.errorCheckFor = "number"
         recipeVgPct.numberMax = 100
@@ -136,7 +136,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         recipeNicStrength = T2()
         recipeNicStrength.placeholder = "Nic Strength (mg)"
         recipeNicStrength.clearButtonMode = .WhileEditing
-        recipeNicStrength.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        recipeNicStrength.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         recipeNicStrength.errorCheck = true
         recipeNicStrength.errorCheckFor = "number"
         recipeNicStrength.numberMax = 200
@@ -144,7 +144,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         recipeSteepDays = T2()
         recipeSteepDays.placeholder = "Days to Steep"
         recipeSteepDays.clearButtonMode = .WhileEditing
-        recipeSteepDays.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        recipeSteepDays.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         recipeSteepDays.errorCheck = true
         recipeSteepDays.errorCheckFor = "number"
         recipeSteepDays.numberMax = 60
@@ -202,7 +202,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         let fields = [recipeName, recipeDesc, recipePgPct, recipeVgPct, recipeNicStrength, recipeSteepDays]
         
         for field in fields {
-            errorCheck(field)
+            errorMgr.errorCheck(field)
         }
         
         if !errorMgr.hasErrors() {
@@ -239,28 +239,8 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func errorCheck(field: myTextField) {
-        if field.errorCheck {
-            let res = errorMgr.checkForErrors(
-                field.text!, // data:
-                placeholder: field.placeholder!,
-                checkFor: Check(
-                    type: field.errorCheckFor,
-                    length: field.textLength,
-                    numberMax: field.numberMax
-                )
-            )
-            if res.error {
-                field.detail = res.errorMessage
-                field.revealError = true
-                field.detailColor = colors.errorRed
-                field.dividerColor = colors.errorRed
-            } else {
-                field.revealError = false
-                field.detailColor = colors.dark
-                field.dividerColor = colors.dark
-            }
-        }
+    func liveCheck(field: myTextField) {
+        errorMgr.errorCheck(field)
     }
     
     func clearForm() {

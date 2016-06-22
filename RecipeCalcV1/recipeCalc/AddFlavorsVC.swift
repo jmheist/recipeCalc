@@ -104,13 +104,13 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         addFlavorName.errorCheckFor = "text"
         addFlavorName.textLength = 3
         addFlavorName.clearButtonMode = .WhileEditing
-        addFlavorName.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        addFlavorName.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         addFlavorName.delegate = self
         
         addFlavorPct = T2()
         addFlavorPct.placeholder = "%"
         addFlavorPct.clearButtonMode = .WhileEditing
-        addFlavorPct.addTarget(self, action: #selector(self.errorCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        addFlavorPct.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         addFlavorPct.errorCheck = true
         addFlavorPct.errorCheckFor = "number"
         addFlavorPct.numberMax = 100
@@ -161,7 +161,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         let fields = [addFlavorName, addFlavorPct]
         
         for field in fields {
-            errorCheck(field)
+            errorMgr.errorCheck(field)
         }
         
         if !errorMgr.hasErrors() { // no errors, save the flavor
@@ -198,29 +198,8 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func errorCheck(field: myTextField) {
-        if field.errorCheck {
-            
-            let res = errorMgr.checkForErrors(
-                field.text!, // data:
-                placeholder: field.placeholder!,
-                checkFor: Check(
-                    type: field.errorCheckFor,
-                    length: field.textLength,
-                    numberMax: field.numberMax
-                )
-            )
-            if res.error {
-                field.detail = res.errorMessage
-                field.revealError = true
-                field.detailColor = colors.errorRed
-                field.dividerColor = colors.errorRed
-            } else {
-                field.revealError = false
-                field.detailColor = colors.dark
-                field.dividerColor = colors.dark
-            }
-        }
+    func liveCheck(field: myTextField) {
+        errorMgr.errorCheck(field)
     }
     
     func clearForm() {

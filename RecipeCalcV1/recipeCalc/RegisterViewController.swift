@@ -205,7 +205,7 @@ class RegisterViewController: UIViewController, TextFieldDelegate, FBSDKLoginBut
         let fields = [nameField, emailField, passwordField]
         
         for field in fields {
-            errorCheck(field)
+            errorMgr.errorCheck(field)
         }
         
         if !errorMgr.hasErrors() {
@@ -260,7 +260,13 @@ class RegisterViewController: UIViewController, TextFieldDelegate, FBSDKLoginBut
             AppState.sharedInstance.signedIn = true
             print(user, user?.email, user?.displayName)
         }
-        UserMgr.sendToFirebase(User(username: AppState.sharedInstance.displayName!, email: AppState.sharedInstance.email!), uid: AppState.sharedInstance.uid!)
+        UserMgr.sendToFirebase(
+            User(
+                username: AppState.sharedInstance.displayName!,
+                email: AppState.sharedInstance.email!
+            ),
+            uid: AppState.sharedInstance.uid!
+        )
         NSNotificationCenter.defaultCenter().postNotificationName(Constants.NotificationKeys.SignedIn, object: nil, userInfo: nil)
         loadApp()
     }
@@ -282,29 +288,31 @@ class RegisterViewController: UIViewController, TextFieldDelegate, FBSDKLoginBut
         super.touchesBegan(touches, withEvent: event)
     }
         
-    func errorCheck(field: myTextField) {
-        if field.errorCheck {
-            let res = errorMgr.checkForErrors(
-                field.text!, // data:
-                placeholder: field.placeholder!,
-                checkFor: Check(
-                    type: field.errorCheckFor,
-                    length: field.textLength,
-                    numberMax: field.numberMax
-                )
-            )
-            if res.error {
-                field.detail = res.errorMessage
-                field.revealError = true
-                field.detailColor = colors.errorRed
-                field.dividerColor = colors.errorRed
-            } else {
-                field.revealError = false
-                field.detailColor = colors.dark
-                field.dividerColor = colors.dark
-            }
-        }
-    }
+//    func errorCheck(field: myTextField) {
+//        if field.errorCheck {
+//            
+//            errorMgr.checkForErrors(field.text!, // data:
+//                placeholder: field.placeholder!,
+//                checkFor: Check(
+//                    type: field.errorCheckFor,
+//                    length: field.textLength,
+//                    numberMax: field.numberMax
+//                ), completionHandler: { (res:ErrorResponse) in
+//                    if res.error {
+//                        print(res)
+//                        field.detail = res.errorMessage
+//                        field.revealError = true
+//                        field.detailColor = colors.errorRed
+//                        field.dividerColor = colors.errorRed
+//                    } else {
+//                        field.revealError = false
+//                        field.detailColor = colors.dark
+//                        field.dividerColor = colors.dark
+//                    }
+//            })
+//            
+//        }
+//    }
     
     //
     // End Registration Functions
