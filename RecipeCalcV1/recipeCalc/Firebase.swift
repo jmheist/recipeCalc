@@ -19,6 +19,7 @@ struct Queries {
     static let publicRecipes = ref.child("recipes")
     static let flavors = ref.child("flavors")
     static let ratings = ref.child("ratings")
+    static let users = ref.child("users")
     
 }
 

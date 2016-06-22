@@ -166,6 +166,8 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
             recipeVgPct.text = recipe.vg
             recipeNicStrength.text = recipe.strength
             recipeSteepDays.text = recipe.steepDays
+        } else {
+            clearForm()
         }
         
     }
@@ -249,7 +251,6 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
                 )
             )
             if res.error {
-                print("found an error with \(field)")
                 field.detail = res.errorMessage
                 field.revealError = true
                 field.detailColor = colors.errorRed
@@ -270,6 +271,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         recipeDesc.text = ""
         recipePgPct.text = ""
         recipeVgPct.text = ""
+        recipeNicStrength.text = ""
         recipeSteepDays.text = ""
     }
     

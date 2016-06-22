@@ -4,6 +4,21 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Bolts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FBSDKCoreKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FBSDKLoginKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>HMWDStarRatingView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,6 +67,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>0EB19C1377A747F81110D44E2D5FCF78</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1520003FEBEC114D6C84F832AFEDB994</key>
 		<dict>
 			<key>primary</key>
@@ -62,17 +82,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>25C7F63E538E60521B5AA8402C564DCB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>347F3334E442BAB5F3640B66FD97C8A1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CAD96D9544743A3EC88A802ADE88144B</key>
+		<key>52D82BFDD1E808D9CB257431922C1EE4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6EDC37F3FA92533C6AC3562458AA91F1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9CED7E1688F0FED4200FB2DA187CAE6D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C87F949EB65E0FA31F6B2D4343AAE82E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

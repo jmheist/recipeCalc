@@ -1,4 +1,14 @@
 PODS:
+  - Bolts (1.7.0):
+    - Bolts/AppLinks (= 1.7.0)
+    - Bolts/Tasks (= 1.7.0)
+  - Bolts/AppLinks (1.7.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.7.0)
+  - FBSDKCoreKit (4.13.1):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.13.1):
+    - FBSDKCoreKit
   - Firebase (3.2.1):
     - Firebase/Core (= 3.2.1)
   - Firebase/Analytics (3.2.1):
@@ -41,10 +51,11 @@ PODS:
     - GoogleSymbolUtilities (~> 1.0)
   - HMWDStarRatingView (0.4)
   - IQKeyboardManagerSwift (4.0.3)
-  - Material (1.42.1)
+  - Material (1.42.5)
   - Refresher (0.5.0)
 
 DEPENDENCIES:
+  - FBSDKLoginKit
   - Firebase
   - Firebase/Auth
   - Firebase/Crash
@@ -55,6 +66,9 @@ DEPENDENCIES:
   - Refresher (~> 0.5)
 
 SPEC CHECKSUMS:
+  Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
+  FBSDKCoreKit: 2807fe0da2ddb49a1469da6d6ff597f99912980f
+  FBSDKLoginKit: 6d350cb6a22d6956e9d078885de6ee8a0ebc51b4
   Firebase: 6c80ac28d59d06bfd9152a7b6ea17625ca93183d
   FirebaseAnalytics: 6f75b04e6bfb8e0b6e9ef298e04c24eea3b13863
   FirebaseAuth: 94b851fc345ce98036dfedfdc2eddeaef8fa3b4c
@@ -67,9 +81,9 @@ SPEC CHECKSUMS:
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
   HMWDStarRatingView: 3a711ed4f6a3abfa68e4f20b0ebd8faeea5618f2
   IQKeyboardManagerSwift: b6883b720b0e76473692fdc80828442566e1075f
-  Material: d4b27f1cb0993c66bf9dd92b7f80e06833fc4258
+  Material: 3f492c9f804f3d00915d1ab633ad18d0f5b98422
   Refresher: 485f5990e6315add7f3470db5a4ca106451b11d3
 
-PODFILE CHECKSUM: 9307bd11cbd9c7f1b02aacef07ceb924d0f3f2da
+PODFILE CHECKSUM: a88c5cc48fed508dc8b277e517691e7720704200
 
 COCOAPODS: 1.0.1

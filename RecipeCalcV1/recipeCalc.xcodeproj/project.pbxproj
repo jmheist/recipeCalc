@@ -25,6 +25,7 @@
 		734C95D61D0617D500EB79AD /* PublicRecipeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734C95D51D0617D500EB79AD /* PublicRecipeVC.swift */; };
 		734FBA431D03645B007FA0CA /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734FBA421D03645B007FA0CA /* TableVC.swift */; };
 		737A010B1D0F13D600CF76EA /* PublicRecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737A010A1D0F13D600CF76EA /* PublicRecipeCell.swift */; };
+		73991AF81D18565A004F3F07 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73991AF71D18565A004F3F07 /* UserManager.swift */; };
 		73A3F77B1D0A0BC400B8C281 /* MixVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A3F77A1D0A0BC400B8C281 /* MixVC.swift */; };
 		73A3F77D1D0A142600B8C281 /* MixTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A3F77C1D0A142600B8C281 /* MixTabBar.swift */; };
 		73B1B5B01CFFA520009AFA20 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */; };
@@ -99,6 +100,8 @@
 		734C95D51D0617D500EB79AD /* PublicRecipeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicRecipeVC.swift; sourceTree = "<group>"; };
 		734FBA421D03645B007FA0CA /* TableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
 		737A010A1D0F13D600CF76EA /* PublicRecipeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicRecipeCell.swift; sourceTree = "<group>"; };
+		73991AF71D18565A004F3F07 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		73991AF91D1A0634004F3F07 /* recipeCalc-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "recipeCalc-Bridging-Header.h"; sourceTree = "<group>"; };
 		73A3F77A1D0A0BC400B8C281 /* MixVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixVC.swift; sourceTree = "<group>"; };
 		73A3F77C1D0A142600B8C281 /* MixTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixTabBar.swift; sourceTree = "<group>"; };
 		73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
@@ -218,6 +221,7 @@
 				7315D5F51CF4E405002B2588 /* Info.plist */,
 				7315D5ED1CF4E405002B2588 /* recipeCalc.xcdatamodeld */,
 				73B1DCFA1CF54558002D9E23 /* GoogleService-Info.plist */,
+				73991AF91D1A0634004F3F07 /* recipeCalc-Bridging-Header.h */,
 			);
 			path = recipeCalc;
 			sourceTree = "<group>";
@@ -287,6 +291,7 @@
 				73CC8D061D08CEE0003D3709 /* MixSettingsManager.swift */,
 				73F66DB71D0B22B2008E73E1 /* IngredientManager.swift */,
 				73F66DB91D0B57EF008E73E1 /* ErrorManager.swift */,
+				73991AF71D18565A004F3F07 /* UserManager.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -545,6 +550,7 @@
 				73FEB2711D00BB5F008CD089 /* BottomNav.swift in Sources */,
 				73DCEB041CF7598F002BA81C /* DiscoveryViewController.swift in Sources */,
 				73F66DC21D0BD5D7008E73E1 /* AddFlavorsVC.swift in Sources */,
+				73991AF81D18565A004F3F07 /* UserManager.swift in Sources */,
 				73CC8D051D08CDD1003D3709 /* MixPrepVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

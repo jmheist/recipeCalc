@@ -9,6 +9,7 @@
 import UIKit
 import Material
 import Firebase
+import FBSDKCoreKit
 import CoreData
 import IQKeyboardManagerSwift
 
@@ -23,23 +24,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 20
         
         FIRApp.configure()
+        //FIRDatabase.setLoggingEnabled(true)
+        FIRDatabase.database().persistenceEnabled = true
         
         MaterialDevice.statusBarHidden = false
-        
-//        let localRecipeList: AppNav = AppNav(rootViewController: LocalRecipeListVC())
-//        let createRecipeViewController: AppNav = AppNav(rootViewController: CreateRecipeViewController())
-//        let discoveryViewController: AppNav = AppNav(rootViewController: DiscoveryViewController())
-//        let profileVC: AppNav = AppNav(rootViewController: ProfileVC())
-//        
-//        let bottomNavigationController: BottomNav = BottomNav()
-//        bottomNavigationController.viewControllers = [localRecipeList, createRecipeViewController, discoveryViewController, profileVC]
         
         let loginVC: UIViewController = RegisterViewController()
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window!.rootViewController = loginVC
         window!.makeKeyAndVisible()
-        return true
+        
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
 
     func applicationWillResignActive(application: UIApplication) {

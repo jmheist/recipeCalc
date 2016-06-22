@@ -9,8 +9,9 @@
 import UIKit
 import Material
 import Firebase
+import FBSDKCoreKit
 
-class ProfileVC: UIViewController {
+class ProfileVC: UIViewController  {
     
     /// NavigationBar title label.
     private var titleLabel: UILabel!
@@ -84,6 +85,7 @@ class ProfileVC: UIViewController {
     }
     
     func signOut() {
+        FBSDKAccessToken.setCurrentAccessToken(nil)
         let firebaseAuth = FIRAuth.auth()
         do {
             try firebaseAuth?.signOut()

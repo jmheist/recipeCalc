@@ -214,7 +214,6 @@ class MixPrepVC: UIViewController {
                 )
             )
             if res.error {
-                print("found an error with \(field)")
                 field.detail = res.errorMessage
                 field.revealError = true
                 field.detailColor = colors.errorRed

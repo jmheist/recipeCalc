@@ -170,7 +170,8 @@ class LoginViewController: UIViewController, TextFieldDelegate {
         AppState.sharedInstance.photoUrl = user?.photoURL
         AppState.sharedInstance.email = user?.email
         AppState.sharedInstance.signedIn = true
-        print("user: \(user?.displayName), uid: \(user?.uid)")
+        print(user, user?.email, user?.displayName)
+        UserMgr.sendToFirebase(User(username: AppState.sharedInstance.displayName!, email: AppState.sharedInstance.email!), uid: AppState.sharedInstance.uid!)
         NSNotificationCenter.defaultCenter().postNotificationName(Constants.NotificationKeys.SignedIn, object: nil, userInfo: nil)
         loadApp()
     }

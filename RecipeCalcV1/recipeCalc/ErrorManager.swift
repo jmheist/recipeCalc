@@ -8,6 +8,7 @@
 
 import UIKit
 import Material
+import Firebase
 
 struct Check {
     var type = String()
@@ -67,6 +68,48 @@ class ErrorManager: NSObject {
             if num < Float(0) {
                 error = true
                 errorMessage = "Must be between \(checkFor.numberMax) and 0"
+            }
+            
+        case "username":
+            
+            if (checkFor.length != 0) && (data.characters.count <= checkFor.length) {
+                error = true
+                errorMessage = "Please use more than \(checkFor.length) characters"
+            }
+            print("checking email address")
+            for (key, _) in UserMgr.users {
+                
+                if data == UserMgr.users[key]!.username {
+                    error = true
+                    errorMessage = "This username is already taken"
+                    break
+                }
+            }
+            
+        case "email":
+            
+            let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
+            let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+            let result = emailTest.evaluateWithObject(data)
+            if !result {
+                error = true
+                errorMessage = "Please use a valid email address"
+            }
+            
+            for (key, _) in UserMgr.users {
+                print("checking email address")
+                if data == UserMgr.users[key]!.email {
+                    error = true
+                    errorMessage = "This email address is already taken"
+                    break
+                }
+            }
+            
+        case "password":
+            
+            if (checkFor.length != 0) && (data.characters.count <= checkFor.length) {
+                error = true
+                errorMessage = "Please use more than \(checkFor.length) characters"
             }
             
         default:

@@ -54,7 +54,6 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        prepareTabBarItem()
     }
     
     override func viewDidLoad() {
@@ -82,13 +81,6 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
     private func prepareView() {
         view.backgroundColor = colors.background
     }
-    
-    /// Prepare tabBarItem.
-    private func prepareTabBarItem() {
-        tabBarItem.title = "Create: Flavors"
-        tabBarItem.image = MaterialIcon.add
-    }
-    
     
     /// Prepares the navigationItem.
     private func prepareNavigationItem() {
@@ -124,22 +116,14 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         addFlavorPct.numberMax = 100
         addFlavorPct.delegate = self
         
-        let flavorBaseView: MaterialView = MaterialView()
-        flavorBaseView.height = 25
-        
-            let flavorBaseLabel: L3 = L3()
-            flavorBaseLabel.text = "Flavor base"
+        let flavorBaseLabel: L3 = L3()
+        flavorBaseLabel.text = "Flavor base"
             
-            addFlavorBase = UISegmentedControl(items: ["PG","VG"])
-            addFlavorBase.selectedSegmentIndex = 0
-        
-            let baseChildren = [flavorBaseLabel, addFlavorBase]
-            for child in baseChildren {
-                flavorBaseView.addSubview(child)
-            }
-            flavorBaseView.layout.horizontally(baseChildren, left: 20, right: 20, spacing: 60)
+        addFlavorBase = UISegmentedControl(items: ["PG","VG"])
+        addFlavorBase.selectedSegmentIndex = 0
         
         addFlavorButton = B2()
+        addFlavorButton.height = 30
         addFlavorButton.setTitle("Add Flavor", forState: .Normal)
         addFlavorButton.setTitleColor(colors.dark, forState: .Normal)
         addFlavorButton.addTarget(self, action: #selector(addFlavor), forControlEvents: .TouchUpInside)
@@ -149,14 +133,15 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         flavorTable.dataSource = self
         flavorTable.delegate = self
         
-        let children = [addFlavorName, addFlavorPct, flavorBaseView, addFlavorButton]
+        let children = [addFlavorName, addFlavorPct, flavorBaseLabel, addFlavorBase, addFlavorButton]
         var dist = 10
         let spacing = 60
         for child in children {
-            flavorInfo.addSubview(child)
             flavorInfo.layout(child).top(CGFloat(dist)).horizontally(left: 10, right: 10)
-            dist += spacing
+            dist += dist < 80 || dist > 130 ? spacing : 20
         }
+        
+        flavorInfo.layout(flavorTable).top(270).bottom(-40).horizontally(left: 10, right: 10)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -226,7 +211,6 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
                 )
             )
             if res.error {
-                print("found an error with \(field)")
                 field.detail = res.errorMessage
                 field.revealError = true
                 field.detailColor = colors.errorRed
