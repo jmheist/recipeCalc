@@ -115,7 +115,7 @@ class RecipeVC: UIViewController, GADBannerViewDelegate {
         let btn1: FlatButton = FlatButton()
         btn1.pulseColor = colors.medium
         btn1.setTitle("Mix", forState: .Normal)
-        btn1.setTitleColor(colors.textDark, forState: .Normal)
+        btn1.setTitleColor(colors.text, forState: .Normal)
         btn1.addTarget(nil, action: #selector(mixIt), forControlEvents: .TouchUpInside)
         
         tabBar.buttons = [btn1]

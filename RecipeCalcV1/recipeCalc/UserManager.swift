@@ -76,4 +76,47 @@ class UserManager: NSObject {
         })
     }
     
+    func signedIn(user: FIRUser?, provider: Bool=false, sender: UIViewController) {
+        MeasurementHelper.sendLoginEvent()
+        if provider {
+            for profile in user!.providerData {
+                //let providerID = profile.providerID
+                print("providerId: \(profile.providerID)")
+                AppState.sharedInstance.uid = profile.uid;  // Provider-specific UID
+                AppState.sharedInstance.displayName = profile.displayName
+                AppState.sharedInstance.email = profile.email
+                AppState.sharedInstance.photoUrl = profile.photoURL
+                AppState.sharedInstance.signedIn = true
+            }
+        } else {
+            AppState.sharedInstance.displayName = user?.displayName ?? user?.email
+            AppState.sharedInstance.uid = user?.uid
+            AppState.sharedInstance.photoUrl = user?.photoURL
+            AppState.sharedInstance.email = user?.email
+            AppState.sharedInstance.signedIn = true
+            print(user, user?.email, user?.displayName)
+        }
+        UserMgr.sendToFirebase(
+            User(
+                username: AppState.sharedInstance.displayName!,
+                email: AppState.sharedInstance.email!
+            ),
+            uid: AppState.sharedInstance.uid!
+        )
+        NSNotificationCenter.defaultCenter().postNotificationName(Constants.NotificationKeys.SignedIn, object: nil, userInfo: nil)
+        loadApp(sender)
+    }
+    
+    func loadApp(sender: UIViewController) {
+        let localRecipeList: AppNav = AppNav(rootViewController: LocalRecipeListVC())
+        let createRecipeViewController: AppNav = AppNav(rootViewController: CreateRecipeViewController())
+        let discoveryViewController: AppNav = AppNav(rootViewController: DiscoveryViewController())
+        let profileVC: AppNav = AppNav(rootViewController: ProfileVC())
+        
+        let bottomNavigationController: BottomNav = BottomNav()
+        bottomNavigationController.viewControllers = [localRecipeList, createRecipeViewController, discoveryViewController, profileVC]
+        bottomNavigationController.selectedIndex = 0
+        sender.presentViewController(bottomNavigationController, animated: true, completion: nil)
+    }
+    
 }

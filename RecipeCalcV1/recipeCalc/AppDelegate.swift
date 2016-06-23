@@ -24,12 +24,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 20
         
         FIRApp.configure()
+        FIRApp.debugDescription()
         //FIRDatabase.setLoggingEnabled(true)
         FIRDatabase.database().persistenceEnabled = true
         
         MaterialDevice.statusBarHidden = false
+        MaterialDevice.statusBarStyle = .LightContent
         
-        let loginVC: UIViewController = RegisterViewController()
+        let loginVC: AppLandingVC = AppLandingVC()
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window!.rootViewController = loginVC

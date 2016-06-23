@@ -9,31 +9,26 @@
 import UIKit
 import Material
 import Firebase
+import FBSDKLoginKit
 
-class LoginViewController: UIViewController, TextFieldDelegate {
+class LoginViewController: UIViewController, TextFieldDelegate, FBSDKLoginButtonDelegate {
 
     private var emailField: T1!,
-                passwordField: T1!;
+                passwordField: T1!,
+                fbErrorLabel: L3!;
     
     
     override func viewWillAppear(animated: Bool) {
-        
     }
     
     override func viewDidAppear(animated: Bool) {
-        print("Checking if user is logged in")
-        if let user = FIRAuth.auth()?.currentUser {
-            print("User is signed in \(user.displayName)")
-            self.signedIn(user)
-        } else {
-            print("Not signed in yet")
-        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareView()
         prepareEmailLogin()
+        prepareFacebookLogin()
         prepareCancelLink()
     }
     
@@ -96,6 +91,33 @@ class LoginViewController: UIViewController, TextFieldDelegate {
         
     }
     
+    func prepareFacebookLogin() {
+        
+        let fbView: MaterialView = MaterialView()
+        view.layout(fbView).bottom(110).horizontally(left: 20, right: 20).height(100)
+        
+        let fbLabel: L3 = L3()
+        fbLabel.text = "Login with Facebook"
+        fbLabel.textAlignment = .Center
+        fbView.layout(fbLabel).top(0).horizontally()
+        
+        let fbButton: FBSDKLoginButton = FBSDKLoginButton()
+        fbView.layout(fbButton).top(30).center().width(200).height(50)
+        
+        fbErrorLabel = L3()
+        fbErrorLabel.hidden = true
+        fbErrorLabel.text = ""
+        fbErrorLabel.textAlignment = .Center
+        fbErrorLabel.lineBreakMode = .ByWordWrapping
+        fbErrorLabel.numberOfLines = 0;
+        fbErrorLabel.textColor = colors.error
+        fbView.layout(fbErrorLabel).top(85).horizontally()
+        
+        fbButton.delegate = self
+        fbButton.readPermissions = ["public_profile","email","user_friends"]
+        
+    }
+    
     // FUNCTIONS FOR EMAIL REGISTRATION FORM //
     
     /// Executed when the 'return' key is pressed when using the emailField.
@@ -140,7 +162,7 @@ class LoginViewController: UIViewController, TextFieldDelegate {
                 print(error.localizedDescription)
                 return
             }
-            self.signedIn(user!)
+            UserMgr.signedIn(user, sender: self)
         }
     }
     
@@ -161,31 +183,6 @@ class LoginViewController: UIViewController, TextFieldDelegate {
         prompt.addTextFieldWithConfigurationHandler(nil)
         prompt.addAction(okAction)
         presentViewController(prompt, animated: true, completion: nil);
-    }
-    
-    func signedIn(user: FIRUser?) {
-        MeasurementHelper.sendLoginEvent()
-        AppState.sharedInstance.displayName = user?.displayName ?? user?.email
-        AppState.sharedInstance.uid = user?.uid
-        AppState.sharedInstance.photoUrl = user?.photoURL
-        AppState.sharedInstance.email = user?.email
-        AppState.sharedInstance.signedIn = true
-        print(user, user?.email, user?.displayName)
-        UserMgr.sendToFirebase(User(username: AppState.sharedInstance.displayName!, email: AppState.sharedInstance.email!), uid: AppState.sharedInstance.uid!)
-        NSNotificationCenter.defaultCenter().postNotificationName(Constants.NotificationKeys.SignedIn, object: nil, userInfo: nil)
-        loadApp()
-    }
-    
-    func loadApp() {
-        let localRecipeList: AppNav = AppNav(rootViewController: LocalRecipeListVC())
-        let createRecipeViewController: AppNav = AppNav(rootViewController: CreateRecipeViewController())
-        let discoveryViewController: AppNav = AppNav(rootViewController: DiscoveryViewController())
-        let profileVC: AppNav = AppNav(rootViewController: ProfileVC())
-        
-        let bottomNavigationController: BottomNav = BottomNav()
-        bottomNavigationController.viewControllers = [localRecipeList, createRecipeViewController, discoveryViewController, profileVC]
-        bottomNavigationController.selectedIndex = 0
-        presentViewController(bottomNavigationController, animated: true, completion: nil)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
@@ -210,5 +207,42 @@ class LoginViewController: UIViewController, TextFieldDelegate {
     
     func didTapCancel() {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // FB Stuff 
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        self.fbErrorLabel.text = ""
+        self.fbErrorLabel.hidden = true
+        if error != nil {
+            print(error!.localizedDescription)
+            return
+        }
+        
+        if result.isCancelled {
+            return
+        }
+        
+        let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
+        
+        FIRAuth.auth()?.signInWithCredential(credential, completion: { (user, error) in
+            if error != nil {
+                print(error?.localizedDescription)
+                FBSDKAccessToken.setCurrentAccessToken(nil)
+                self.fbErrorLabel.text = error?.localizedDescription
+                self.fbErrorLabel.hidden = false
+                return
+            }
+            print("user logged in via fb")
+            UserMgr.signedIn(user, provider: true, sender: self)
+        })
+    }
+    
+    func loginButtonWillLogin(loginButton: FBSDKLoginButton!) -> Bool {
+        return true
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        try! FIRAuth.auth()?.signOut()
+        print("User logged out of facebook")
     }
 }

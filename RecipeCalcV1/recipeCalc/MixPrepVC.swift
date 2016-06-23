@@ -66,13 +66,13 @@ class MixPrepVC: UIViewController {
         let btn2: FlatButton = FlatButton()
         btn2.pulseColor = colors.medium
         btn2.setTitle("Back", forState: .Normal)
-        btn2.setTitleColor(colors.textDark, forState: .Normal)
+        btn2.setTitleColor(colors.text, forState: .Normal)
         btn2.addTarget(nil, action: #selector(back), forControlEvents: .TouchUpInside)
         
         let btn1: FlatButton = FlatButton()
         btn1.pulseColor = colors.medium
         btn1.setTitle("Mix It!", forState: .Normal)
-        btn1.setTitleColor(colors.textDark, forState: .Normal)
+        btn1.setTitleColor(colors.text, forState: .Normal)
         btn1.addTarget(nil, action: #selector(mixIt), forControlEvents: .TouchUpInside)
         
         tabBar.buttons = [btn2, btn1]

@@ -31,24 +31,16 @@ class RegisterViewController: UIViewController, TextFieldDelegate, FBSDKLoginBut
     
     
     override func viewWillAppear(animated: Bool) {
-        
     }
     
     override func viewDidAppear(animated: Bool) {
-        print("Checking if user is logged in")
-        if let user = FIRAuth.auth()?.currentUser {
-            print("User is signed in \(user.displayName)")
-            self.signedIn(user)
-        } else {
-            print("Not signed in yet")
-        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareView()
         prepareEmailRegistration()
-        prepareSignInLink()
+        prepareCancelLink()
         prepareFacebookLogin()
     }
     
@@ -122,7 +114,7 @@ class RegisterViewController: UIViewController, TextFieldDelegate, FBSDKLoginBut
         view.layout(fbView).bottom(110).horizontally(left: 20, right: 20).height(100)
         
         let fbLabel: L3 = L3()
-        fbLabel.text = "Login with Facebook"
+        fbLabel.text = "Register with Facebook"
         fbLabel.textAlignment = .Center
         fbView.layout(fbLabel).top(0).horizontally()
         
@@ -135,7 +127,7 @@ class RegisterViewController: UIViewController, TextFieldDelegate, FBSDKLoginBut
         fbErrorLabel.textAlignment = .Center
         fbErrorLabel.lineBreakMode = .ByWordWrapping
         fbErrorLabel.numberOfLines = 0;
-        fbErrorLabel.textColor = colors.errorRed
+        fbErrorLabel.textColor = colors.error
         fbView.layout(fbErrorLabel).top(85).horizontally()
         
         fbButton.delegate = self
@@ -143,18 +135,18 @@ class RegisterViewController: UIViewController, TextFieldDelegate, FBSDKLoginBut
         
     }
     
-    func prepareSignInLink() {
+    func prepareCancelLink() {
         
-        let signInView: MaterialView = MaterialView()
-        view.addSubview(signInView)
-        view.layout(signInView).height(40).bottom(20).horizontally(left: 20, right: 20)
+        let cancelView: MaterialView = MaterialView()
+        view.addSubview(cancelView)
+        view.layout(cancelView).height(40).bottom(20).horizontally(left: 20, right: 20)
         
-        let signInButton: B2 = B2()
-        signInButton.addTarget(self, action: #selector(didTapSignIn), forControlEvents: .TouchUpInside)
-        signInButton.setTitle("Login", forState: .Normal)
+        let cancelButton: B2 = B2()
+        cancelButton.addTarget(self, action: #selector(didTapCancel), forControlEvents: .TouchUpInside)
+        cancelButton.setTitle("Cancel", forState: .Normal)
         
-        signInView.addSubview(signInButton)
-        signInView.layout(signInButton).center()
+        cancelView.addSubview(cancelButton)
+        cancelView.layout(cancelButton).center()
         
     }
     
@@ -229,97 +221,22 @@ class RegisterViewController: UIViewController, TextFieldDelegate, FBSDKLoginBut
                 return
             }
             let user = FIRAuth.auth()?.currentUser
-            self.signedIn(user)
+            UserMgr.signedIn(user, sender: self)
         }
     }
     
-    func didTapSignIn() {
+    func didTapCancel() {
         self.fbErrorLabel.text = ""
         self.fbErrorLabel.hidden = true
-        presentViewController(LoginViewController(), animated: true, completion: nil)
-    }
-    
-    func signedIn(user: FIRUser?, provider: Bool=false) {
-        MeasurementHelper.sendLoginEvent()
-        if provider {
-            for profile in user!.providerData {
-                //let providerID = profile.providerID
-                print("providerId: \(profile.providerID)")
-                AppState.sharedInstance.uid = profile.uid;  // Provider-specific UID
-                AppState.sharedInstance.displayName = profile.displayName
-                AppState.sharedInstance.email = profile.email
-                AppState.sharedInstance.photoUrl = profile.photoURL
-                AppState.sharedInstance.signedIn = true
-            }
-        } else {
-            AppState.sharedInstance.displayName = user?.displayName ?? user?.email
-            AppState.sharedInstance.uid = user?.uid
-            AppState.sharedInstance.photoUrl = user?.photoURL
-            AppState.sharedInstance.email = user?.email
-            AppState.sharedInstance.signedIn = true
-            print(user, user?.email, user?.displayName)
-        }
-        UserMgr.sendToFirebase(
-            User(
-                username: AppState.sharedInstance.displayName!,
-                email: AppState.sharedInstance.email!
-            ),
-            uid: AppState.sharedInstance.uid!
-        )
-        NSNotificationCenter.defaultCenter().postNotificationName(Constants.NotificationKeys.SignedIn, object: nil, userInfo: nil)
-        loadApp()
-    }
-    
-    func loadApp() {
-        let localRecipeList: AppNav = AppNav(rootViewController: LocalRecipeListVC())
-        let createRecipeViewController: AppNav = AppNav(rootViewController: CreateRecipeViewController())
-        let discoveryViewController: AppNav = AppNav(rootViewController: DiscoveryViewController())
-        let profileVC: AppNav = AppNav(rootViewController: ProfileVC())
-        
-        let bottomNavigationController: BottomNav = BottomNav()
-        bottomNavigationController.viewControllers = [localRecipeList, createRecipeViewController, discoveryViewController, profileVC]
-        bottomNavigationController.selectedIndex = 0
-        presentViewController(bottomNavigationController, animated: true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
     }
-        
-//    func errorCheck(field: myTextField) {
-//        if field.errorCheck {
-//            
-//            errorMgr.checkForErrors(field.text!, // data:
-//                placeholder: field.placeholder!,
-//                checkFor: Check(
-//                    type: field.errorCheckFor,
-//                    length: field.textLength,
-//                    numberMax: field.numberMax
-//                ), completionHandler: { (res:ErrorResponse) in
-//                    if res.error {
-//                        print(res)
-//                        field.detail = res.errorMessage
-//                        field.revealError = true
-//                        field.detailColor = colors.errorRed
-//                        field.dividerColor = colors.errorRed
-//                    } else {
-//                        field.revealError = false
-//                        field.detailColor = colors.dark
-//                        field.dividerColor = colors.dark
-//                    }
-//            })
-//            
-//        }
-//    }
     
-    //
-    // End Registration Functions
-    //
-    
-    //
     // FB Stuff
-    //
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         self.fbErrorLabel.text = ""
@@ -344,7 +261,7 @@ class RegisterViewController: UIViewController, TextFieldDelegate, FBSDKLoginBut
                 return
             }
             print("user logged in via fb")
-            self.signedIn(user, provider: true)
+            UserMgr.signedIn(user, provider: true, sender: self)
         })
     }
     
@@ -355,6 +272,5 @@ class RegisterViewController: UIViewController, TextFieldDelegate, FBSDKLoginBut
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         try! FIRAuth.auth()?.signOut()
         print("User logged out of facebook")
-    }
-    
+    }    
 }

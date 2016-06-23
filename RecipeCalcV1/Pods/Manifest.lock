@@ -55,7 +55,7 @@ PODS:
     - GoogleSymbolUtilities (~> 1.0)
   - HMWDStarRatingView (0.4)
   - IQKeyboardManagerSwift (4.0.3)
-  - Material (1.42.5)
+  - Material (1.42.6)
   - Refresher (0.5.0)
 
 DEPENDENCIES:
@@ -87,7 +87,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
   HMWDStarRatingView: 3a711ed4f6a3abfa68e4f20b0ebd8faeea5618f2
   IQKeyboardManagerSwift: b6883b720b0e76473692fdc80828442566e1075f
-  Material: 3f492c9f804f3d00915d1ab633ad18d0f5b98422
+  Material: 76dc9b14ad8b3a2ad673b77ad73dd66ed1eee68c
   Refresher: 485f5990e6315add7f3470db5a4ca106451b11d3
 
 PODFILE CHECKSUM: e638665cdbbb11e378458098b4ab48c830807cfc

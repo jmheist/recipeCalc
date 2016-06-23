@@ -42,6 +42,7 @@ class ErrorManager: NSObject {
     
     // runs the error checker, and then modifies the fields to show the errors
     func errorCheck(field: myTextField) {
+        
         if field.errorCheck {
             
             self.checkForErrors(field.text!, // data:
@@ -55,8 +56,8 @@ class ErrorManager: NSObject {
                         print(res)
                         field.detail = res.errorMessage
                         field.revealError = true
-                        field.detailColor = colors.errorRed
-                        field.dividerColor = colors.errorRed
+                        field.detailColor = colors.error
+                        field.dividerColor = colors.error
                     } else {
                         field.revealError = false
                         field.detailColor = colors.dark

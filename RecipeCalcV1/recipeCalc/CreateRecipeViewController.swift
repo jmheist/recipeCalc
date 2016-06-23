@@ -10,19 +10,14 @@ import UIKit
 import Material
 import Firebase
 
-class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
+class CreateRecipeViewController: UIViewController, UITextFieldDelegate  {
     
     let errorMgr: ErrorManager = ErrorManager()
-    var recipe: Recipe!
-    var edit: Bool = Bool()
+    var edit: Bool = false
     
     // text fields
     private var recipeName: T1!
-    private var recipeDesc: T2!
-    private var recipePgPct: T2!
-    private var recipeVgPct: T2!
-    private var recipeNicStrength: T2!
-    private var recipeSteepDays: T2!
+    private var recipeDesc: TView!
     
     // nav save button
     private var saveBtn: B2!
@@ -31,19 +26,17 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
     // db vars
     private var _refHandle: FIRDatabaseHandle!
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        prepareTabBarItem()
-    }
-    
-    convenience init(recipe: Recipe, edit: Bool) {
-        self.init(nibName: nil, bundle: nil)
-        self.recipe = recipe
-        self.edit = edit
-    }
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        prepareTabBarItem()
     }
     
     override func viewDidLoad() {
@@ -51,7 +44,11 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         configureDatabase()
         prepareView()
         prepareTextFields()
-        prepareNavigationItem()
+        prepareKeyboardHandler()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        prepareData()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -59,6 +56,17 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
     }
     
     func configureDatabase() {
+    }
+    
+    func prepareData() {
+        if AppState.sharedInstance.recipe != nil {
+            self.edit = true
+            recipeName.text = AppState.sharedInstance.recipe.name
+            recipeDesc.text = AppState.sharedInstance.recipe.desc
+        } else {
+            AppState.sharedInstance.recipe = Recipe()
+            clearForm()
+        }
     }
     
     /// General preparation statements.
@@ -77,6 +85,8 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
     private func prepareNavigationItem() {
         if edit {
             navigationItem.title = "Edit"
+            navigationItem.backButton?.addTarget(self, action: #selector(cancelRecipe), forControlEvents: .TouchUpInside)
+            navigationItem.backButton?.titleLabel?.text = "Cancel"
         } else {
             navigationItem.title = "Create"
             let clearButton = UIBarButtonItem(title: "Clear", style: .Plain, target: self, action: #selector(cancelRecipe))
@@ -90,98 +100,44 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
     
     func prepareTextFields() {
         
-        // recipe info view
         
         let recipeInfo: MaterialView = MaterialView()
-        view.addSubview(recipeInfo)
+        view.layout(recipeInfo).top(0).left(14).right(14).bottom(0)
         
-        Layout.edges(view, child: recipeInfo, top: 0, left: 0, bottom: 49, right: 0)
+        let stepDesc: StepDescLabel = StepDescLabel()
+        stepDesc.text = "Give your recipe a name\nand then add a description."
         
         // recipe info fields
         
         recipeName = T1()
-        recipeName.placeholder = "Recipe Name"
+        recipeName.placeholder = "Name"
         recipeName.clearButtonMode = .WhileEditing
         recipeName.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         recipeName.errorCheck = true
         recipeName.errorCheckFor = "text"
         recipeName.textLength = 3
         
-        recipeDesc = T2()
-        recipeDesc.placeholder = "Recipe Description"
-        recipeDesc.clearButtonMode = .WhileEditing
-        recipeDesc.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
-        recipeDesc.errorCheck = true
-        recipeDesc.errorCheckFor = "text"
-        recipeDesc.textLength = 3
+        let noteLabel: L3 = L3()
+        noteLabel.text = "Description"
+        noteLabel.textAlignment = .Left
         
-        recipePgPct = T2()
-        recipePgPct.placeholder = "Recipe PG%"
-        recipePgPct.clearButtonMode = .WhileEditing
-        recipePgPct.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
-        recipePgPct.errorCheck = true
-        recipePgPct.errorCheckFor = "number"
-        recipePgPct.numberMax = 100
-        recipePgPct.addTarget(self, action: #selector(self.updatePgVg(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        recipeDesc = TView()
         
-        recipeVgPct = T2()
-        recipeVgPct.placeholder = "Recipe VG%"
-        recipeVgPct.clearButtonMode = .WhileEditing
-        recipeVgPct.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
-        recipeVgPct.errorCheck = true
-        recipeVgPct.errorCheckFor = "number"
-        recipeVgPct.numberMax = 100
-        recipeVgPct.addTarget(self, action: #selector(self.updatePgVg(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        recipeInfo.layout(recipeDesc).height(150)
         
-        recipeNicStrength = T2()
-        recipeNicStrength.placeholder = "Nic Strength (mg)"
-        recipeNicStrength.clearButtonMode = .WhileEditing
-        recipeNicStrength.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
-        recipeNicStrength.errorCheck = true
-        recipeNicStrength.errorCheckFor = "number"
-        recipeNicStrength.numberMax = 200
-        
-        recipeSteepDays = T2()
-        recipeSteepDays.placeholder = "Days to Steep"
-        recipeSteepDays.clearButtonMode = .WhileEditing
-        recipeSteepDays.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
-        recipeSteepDays.errorCheck = true
-        recipeSteepDays.errorCheckFor = "number"
-        recipeSteepDays.numberMax = 60
-        
-        let children = [recipeName, recipeDesc, recipePgPct, recipeVgPct, recipeNicStrength, recipeSteepDays]
+        let children = [stepDesc, recipeName, noteLabel, recipeDesc]
         
         var dist = 30
-        let spacing = 75
+        var spacing = 75
         for child in children {
             recipeInfo.addSubview(child)
-            recipeInfo.layout(child).top(CGFloat(dist)).horizontally(left: 10, right: 10)
+            recipeInfo.layout(child).top(CGFloat(dist)).horizontally(left: 14, right: 14)
+            if dist > 170 {
+                spacing = 25
+            }
             dist += spacing
         }
         
-        if edit {
-            recipeName.text = recipe.name
-            recipeDesc.text = recipe.desc
-            recipePgPct.text = recipe.pg
-            recipeVgPct.text = recipe.vg
-            recipeNicStrength.text = recipe.strength
-            recipeSteepDays.text = recipe.steepDays
-        } else {
-            clearForm()
-        }
-        
-    }
-    
-    func updatePgVg(sender: myTextField) {
-        if Float(sender.text!) != nil {
-            if Float(sender.text!) <= Float(100) && Float(sender.text!) >= Float(0) {
-                if Float(sender.text!) == Float(recipePgPct.text!) {
-                    recipeVgPct.text = String(Float(100) - Float(sender.text!)!)
-                } else if Float(sender.text!) == Float(recipeVgPct.text!) {
-                    recipePgPct.text = String(Float(100) - Float(sender.text!)!)
-                }
-            }
-        }
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
@@ -191,6 +147,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
     }
     
     func cancelRecipe() {
+        print("canceling edit recipe")
         clearForm()
     }
     
@@ -199,7 +156,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         let author = AppState.sharedInstance.displayName
         let authorId = AppState.sharedInstance.uid
         
-        let fields = [recipeName, recipeDesc, recipePgPct, recipeVgPct, recipeNicStrength, recipeSteepDays]
+        let fields = [recipeName]
         
         for field in fields {
             errorMgr.errorCheck(field)
@@ -208,29 +165,19 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
         if !errorMgr.hasErrors() {
             
             if edit {
-                recipe.name = recipeName.text!
-                recipe.desc = recipeDesc.text!
-                recipe.pg = recipePgPct.text!
-                recipe.vg = recipeVgPct.text!
-                recipe.strength = recipeNicStrength.text!
-                recipe.steepDays = recipeSteepDays.text!
+                AppState.sharedInstance.recipe.name = recipeName.text!
+                AppState.sharedInstance.recipe.desc = recipeDesc.text!
             } else {
-                recipe = Recipe(
-                    author: author!,
-                    authorId: authorId!,
-                    name: recipeName.text!,
-                    desc: recipeDesc.text!,
-                    pg: recipePgPct.text!,
-                    vg: recipeVgPct.text!,
-                    strength: recipeNicStrength.text!,
-                    steepDays: recipeSteepDays.text!
-                )
+                AppState.sharedInstance.recipe.author = author!
+                AppState.sharedInstance.recipe.authorId = authorId!
+                AppState.sharedInstance.recipe.name = recipeName.text!
+                AppState.sharedInstance.recipe.desc = recipeDesc.text!
             }
             
             view.endEditing(true)
             self.view.resignFirstResponder()
             
-            navigationController!.pushViewController(AddFlavorsVC(recipe: recipe, edit: self.edit), animated: true)
+            navigationController!.pushViewController(CreateRecipeSettingsVC(edit: self.edit), animated: true)
         
         } else { // there was errors
             
@@ -246,14 +193,40 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate {
     func clearForm() {
         view.endEditing(true)
         self.view.resignFirstResponder()
-        self.recipe = nil
+        AppState.sharedInstance.recipe = nil
         recipeName.text = ""
         recipeDesc.text = ""
-        recipePgPct.text = ""
-        recipeVgPct.text = ""
-        recipeNicStrength.text = ""
-        recipeSteepDays.text = ""
     }
+    
+    func prepareKeyboardHandler() {
+        // Call this method somewhere in your view controller setup code.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWasShown(_:)), name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillBeHidden(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        
+        // Called when the UIKeyboardDidShowNotification is sent.
+    }
+    
+    func keyboardWasShown(aNotification: NSNotification) {
+        print("keyboard shown")
+        hideStatusBar(-20)
+    }
+    // Called when the UIKeyboardWillHideNotification is sent
+    
+    func keyboardWillBeHidden(aNotification: NSNotification) {
+        print("keyboard hidden")
+        showStatusBar()
+    }
+    
+    func hideStatusBar(yOffset:CGFloat) { // -20.0 for example
+        let statusBarWindow = UIApplication.sharedApplication().valueForKey("statusBarWindow") as! UIWindow
+        statusBarWindow.frame = CGRectMake(0, yOffset, statusBarWindow.frame.size.width, statusBarWindow.frame.size.height)
+    }
+    
+    func showStatusBar() {
+        let statusBarWindow = UIApplication.sharedApplication().valueForKey("statusBarWindow") as! UIWindow
+        statusBarWindow.frame = CGRectMake(0, 0, statusBarWindow.frame.size.width, statusBarWindow.frame.size.height)
+    }
+
     
 }
 

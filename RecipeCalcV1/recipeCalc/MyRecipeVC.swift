@@ -80,19 +80,19 @@ class MyRecipeVC: RecipeVC {
         let btn1: FlatButton = FlatButton()
         btn1.pulseColor = colors.medium
         btn1.setTitle("Mix", forState: .Normal)
-        btn1.setTitleColor(colors.textDark, forState: .Normal)
+        btn1.setTitleColor(colors.text, forState: .Normal)
         btn1.addTarget(nil, action: #selector(mixIt), forControlEvents: .TouchUpInside)
         
         let btn2: FlatButton = FlatButton()
         btn2.pulseColor = colors.medium
         btn2.setTitle("Edit", forState: .Normal)
-        btn2.setTitleColor(colors.textDark, forState: .Normal)
+        btn2.setTitleColor(colors.text, forState: .Normal)
         btn2.addTarget(nil, action: #selector(editRecipe), forControlEvents: .TouchUpInside)
         
         let notesBtn: FlatButton = FlatButton()
         notesBtn.pulseColor = colors.medium
         notesBtn.setTitle("Notes", forState: .Normal)
-        notesBtn.setTitleColor(colors.textDark, forState: .Normal)
+        notesBtn.setTitleColor(colors.text, forState: .Normal)
         notesBtn.addTarget(nil, action: #selector(gotoNotes), forControlEvents: .TouchUpInside)
         
         tabBar.buttons = [btn2, notesBtn, btn1]
@@ -100,7 +100,8 @@ class MyRecipeVC: RecipeVC {
     }
     
     func editRecipe() {
-        navigationController?.pushViewController(CreateRecipeViewController(recipe: recipe, edit: true), animated: true)
+        AppState.sharedInstance.recipe = recipe
+        navigationController?.pushViewController(CreateRecipeViewController(), animated: true)
     }
     
     func gotoNotes() {

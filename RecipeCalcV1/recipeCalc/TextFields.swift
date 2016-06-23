@@ -108,11 +108,19 @@ class TView: TextView {
         contentScaleFactor = MaterialDevice.scale
         textContainerInset = MaterialEdgeInsetToValue(.None)
         backgroundColor = colors.background
-        borderColor = colors.dark
-        borderWidth = 1
-        cornerRadiusPreset = .Radius3
+        borderColor = colors.light
+        borderWidth = 0.7
+        cornerRadiusPreset = .None
         titleLabelColor = colors.dark
         titleLabelActiveColor = colors.dark
-        masksToBounds = false
+        masksToBounds = true
+        font = RobotoFont.regular
+        placeholderLabel = UILabel()
+        placeholderLabel!.textColor = MaterialColor.grey.base
+        placeholderLabel!.text = ""
+        titleLabel = UILabel()
+        titleLabel!.font = RobotoFont.mediumWithSize(12)
+        titleLabelColor = MaterialColor.grey.base
+        titleLabelActiveColor = MaterialColor.blue.accent3
     }
 }

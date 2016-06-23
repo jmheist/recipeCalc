@@ -25,4 +25,6 @@ class AppState: NSObject {
     var email: String?=""
     var uid: String?=" "
     var photoUrl: NSURL?
+    
+    var recipe: Recipe!
 }

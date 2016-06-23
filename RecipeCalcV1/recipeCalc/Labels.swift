@@ -26,3 +26,10 @@ class L3: MaterialLabel {
         font = RobotoFont.thinWithSize(16)
     }
 }
+
+class StepDescLabel: MaterialLabel {
+    override func prepareView() {
+        font = RobotoFont.thinWithSize(16)
+        numberOfLines = 0
+    }
+}

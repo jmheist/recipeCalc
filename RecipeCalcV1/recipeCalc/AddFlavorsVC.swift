@@ -13,7 +13,6 @@ import Firebase
 class AddFlavorsVC: UIViewController, UITextFieldDelegate {
     
     let errorMgr: ErrorManager = ErrorManager()
-    var recipe: Recipe!
     var edit: Bool = Bool()
     
     // text fields
@@ -42,9 +41,8 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         hidesBottomBarWhenPushed = true
     }
     
-    convenience init(recipe: Recipe, edit: Bool) {
+    convenience init(edit: Bool) {
         self.init(nibName: nil, bundle: nil)
-        self.recipe = recipe
         self.edit = edit
     }
     
@@ -54,6 +52,12 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
     
     init() {
         super.init(nibName: nil, bundle: nil)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        if AppState.sharedInstance.recipe == nil {
+            navigationController?.popToRootViewControllerAnimated(false)
+        }
     }
     
     override func viewDidLoad() {
@@ -66,7 +70,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
     
     func configureDatabase() {
         if edit {
-            _refHandle = Queries.flavors.child(recipe.key).observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
+            _refHandle = Queries.flavors.child(AppState.sharedInstance.recipe.key).observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
                 let key = snapshot.key as String
                 let name = snapshot.value!["name"] as! String
                 let pct = snapshot.value!["pct"] as! String
@@ -181,7 +185,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
     
     func sendRecipe() {
         
-        let key = myRecipeMgr.sendToFirebase(recipe)
+        let key = myRecipeMgr.sendToFirebase(AppState.sharedInstance.recipe)
         
         // add flavors to the flavors db
         flavorMGR.sendToFirebase(key, flavors: flavorMGR.flavors)
@@ -247,8 +251,8 @@ extension AddFlavorsVC: UITableViewDelegate {
         
         if(editingStyle == UITableViewCellEditingStyle.Delete){
             
-            if self.recipe != nil && self.recipe.key != "" && flavorMGR.flavors[indexPath.row].key != "" {
-                Queries.flavors.child(self.recipe.key).child(flavorMGR.flavors[indexPath.row].key).setValue(nil)
+            if self.edit && flavorMGR.flavors[indexPath.row].key != "" {
+                Queries.flavors.child(AppState.sharedInstance.recipe.key).child(flavorMGR.flavors[indexPath.row].key).setValue(nil)
             }
             
             flavorMGR.flavors.removeAtIndex(indexPath.row)

@@ -16,7 +16,7 @@ class AppNav: NavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        prepareStatusBarView()
+        //prepareStatusBarView()
         prepareNavigationBar()
     }
     

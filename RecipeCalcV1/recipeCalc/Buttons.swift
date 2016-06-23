@@ -13,18 +13,19 @@ class B1: FlatButton {
     internal override func prepareView() {
         super.prepareView()
         cornerRadiusPreset = .Radius1
-        contentEdgeInsetsPreset = .Square3
+        contentEdgeInsetsPreset = .Square2
         backgroundColor = colors.background
-        borderColor = colors.dark
-        borderWidth = 1
-        setTitleColor(colors.dark, forState: .Normal)
+        borderColor = colors.medium
+        borderWidth = 0.7
+        setTitleColor(colors.text, forState: .Normal)
+        titleLabel?.font = RobotoFont.lightWithSize(18)
     }
 }
 
 class B2: MaterialButton {
     internal override func prepareView() {
         super.prepareView()
-        setTitleColor(colors.textDark, forState: .Normal)
+        setTitleColor(colors.text, forState: .Normal)
         cornerRadiusPreset = .Radius1
         contentEdgeInsetsPreset = .Square3
         backgroundColor = colors.background
@@ -35,7 +36,7 @@ class B2: MaterialButton {
 class B3: MaterialButton {
     internal override func prepareView() {
         super.prepareView()
-        setTitleColor(colors.textDark, forState: .Normal)
+        setTitleColor(colors.text, forState: .Normal)
         cornerRadiusPreset = .Radius1
         contentEdgeInsetsPreset = .Square3
         backgroundColor = colors.background
