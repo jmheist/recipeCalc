@@ -38,15 +38,20 @@ class RatingManager: NSObject {
         Queries.ratings.child(rating.recKey).observeSingleEventOfType(.Value, withBlock: {(snapshot) in
             var ratings = [CGFloat]()
             var starTotal: Double = 0
+            var starCount: Int = 0
             for child in snapshot.children {
+                starCount += 1
                 let snap = child as! FIRDataSnapshot
                 ratings.append(snap.value as! CGFloat)
                 starTotal += snap.value as! Double
             }
+            print("Star Count: \(starCount)")
             let stars = String(CGFloat(starTotal / Double(ratings.count))) == "nan" ? CGFloat(0) : CGFloat(starTotal / Double(ratings.count))
             print("Updateing Stars on recipes with: \(stars)")
             Queries.myRecipes.child(rating.recAuthUid).child(rating.recKey).child("stars").setValue(stars)
-            Queries.publicRecipes.child(rating.recKey).child("starss").setValue(stars)
+            Queries.myRecipes.child(rating.recAuthUid).child(rating.recKey).child("starsCount").setValue(starCount)
+            Queries.publicRecipes.child(rating.recKey).child("stars").setValue(stars)
+            Queries.publicRecipes.child(rating.recKey).child("starsCount").setValue(starCount)
         }) // end get ratings
 
     }

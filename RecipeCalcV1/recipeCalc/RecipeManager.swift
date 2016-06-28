@@ -25,6 +25,7 @@ struct Recipe {
     var steepDays = ""
     var published = ""
     var stars: CGFloat!
+    var starsCount: Int!
     
     init(   key: String? = "",
             author: String? = "",
@@ -36,7 +37,9 @@ struct Recipe {
             strength: String? = "",
             steepDays: String? = "",
             published: String? = "false",
-            stars: CGFloat?=0)
+            stars: CGFloat?=0,
+            starsCount: Int?=0
+        )
     {
         self.key = key!
         self.author = author!
@@ -49,6 +52,7 @@ struct Recipe {
         self.steepDays = steepDays!
         self.published = published!
         self.stars = stars!
+        self.starsCount = starsCount
     }
     
     func fb() -> AnyObject {
@@ -64,6 +68,7 @@ struct Recipe {
         rec["steepDays"] = steepDays
         rec["published"] = published
         rec["stars"] = stars
+        rec["starsCount"] = starsCount
         return rec
     }
     
@@ -124,7 +129,8 @@ class RecipeManager: NSObject {
         let steepDays = snapshot.value!["steepDays"] as! String
         let published = snapshot.value!["published"] as! String
         let stars = snapshot.value!["stars"] as! CGFloat
-        let rec = Recipe(key: key, author: author, authorId: authorId, name: name, desc: desc, pg: pg, vg: vg, strength: strength, steepDays: steepDays, published: published, stars: stars)
+        let starsCount = snapshot.value!["starsCount"] as! Int
+        let rec = Recipe(key: key, author: author, authorId: authorId, name: name, desc: desc, pg: pg, vg: vg, strength: strength, steepDays: steepDays, published: published, stars: stars, starsCount: starsCount)
         return rec
     }
     

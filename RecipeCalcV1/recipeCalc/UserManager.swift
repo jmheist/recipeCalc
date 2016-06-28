@@ -96,6 +96,9 @@ class UserManager: NSObject {
             AppState.sharedInstance.signedIn = true
             print(user, user?.email, user?.displayName)
         }
+        
+        print("Username: \(AppState.sharedInstance.displayName), Email: \(AppState.sharedInstance.email), uid: \(AppState.sharedInstance.uid), photoUrl: \(AppState.sharedInstance.photoUrl)")
+        
         UserMgr.sendToFirebase(
             User(
                 username: AppState.sharedInstance.displayName!,

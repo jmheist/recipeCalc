@@ -88,14 +88,9 @@ class CreateRecipeSettingsVC: UIViewController, UITextFieldDelegate {
     
     /// Prepares the navigationItem.
     private func prepareNavigationItem() {
-        if edit {
-            navigationItem.title = "Edit"
-            navigationItem.backButton?.addTarget(self, action: #selector(cancelRecipe), forControlEvents: .TouchUpInside)
-        } else {
-            navigationItem.title = "Create"
-            let clearButton = UIBarButtonItem(title: "Clear", style: .Plain, target: self, action: #selector(cancelRecipe))
-            navigationItem.leftBarButtonItems = [clearButton]
-        }
+        
+        navigationItem.title = "Recipe Settings"
+        navigationItem.backButton?.addTarget(self, action: #selector(cancelRecipe), forControlEvents: .TouchUpInside)
         
         let nextButton = UIBarButtonItem(title: "Next", style: .Plain, target: self, action: #selector(sendRecipe))
         navigationItem.rightBarButtonItems = [nextButton]
@@ -107,7 +102,6 @@ class CreateRecipeSettingsVC: UIViewController, UITextFieldDelegate {
         
         let recipeInfo: MaterialView = MaterialView()
         view.layout(recipeInfo).top(0).left(14).right(14).bottom(0)
-        
         
         // recipe info fields
         

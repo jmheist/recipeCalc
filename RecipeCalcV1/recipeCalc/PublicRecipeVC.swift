@@ -44,12 +44,12 @@ class PublicRecipeVC: RecipeVC, WDStarRatingDelegate {
         self.starRatingView.tintColor = colors.accent
         
         Queries.ratings.child(recipe.key).child(AppState.sharedInstance.uid!).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-            self.starRatingView.addTarget(self, action: #selector(self.didChangeValue(_:)), forControlEvents: .ValueChanged)
             if snapshot.value!.isKindOfClass(NSNull) {
                 self.starRatingView.value = 0
             } else {
                 self.starRatingView.value = snapshot.value as! CGFloat
             }
+            self.starRatingView.addTarget(self, action: #selector(self.didChangeValue(_:)), forControlEvents: .ValueChanged)
         })
         
         let children = [ratingLabel, starRatingView]
@@ -70,7 +70,7 @@ class PublicRecipeVC: RecipeVC, WDStarRatingDelegate {
         
         let recipeInfo: MaterialView = MaterialView()
         view.addSubview(recipeInfo)
-        Layout.edges(view, child: recipeInfo, top: 0, left: 0, bottom: 49, right: 0)
+        Layout.edges(view, child: recipeInfo, top: 0, left: 0, bottom: 99, right: 0)
         
         let recipeName: L1 = L1()
         let recipeDesc: L2 = L2()

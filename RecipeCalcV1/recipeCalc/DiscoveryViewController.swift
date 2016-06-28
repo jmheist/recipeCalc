@@ -91,6 +91,7 @@ class DiscoveryViewController: TableVC {
         let recipe = publicRecipeMgr.recipes[indexPath.row]
         
         cell.starRatingView.value = recipe.stars
+        cell.starRatingCount.text = "(\(recipe.starsCount))"
         
         cell.selectionStyle = .None
         cell.recipeName.text = recipe.name

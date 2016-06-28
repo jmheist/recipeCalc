@@ -191,6 +191,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         flavorMGR.sendToFirebase(key, flavors: flavorMGR.flavors)
         
         clearForm() // and flavors
+        AppState.sharedInstance.recipe = nil
         
         view.endEditing(true)
         self.view.resignFirstResponder()

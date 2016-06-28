@@ -13,9 +13,14 @@ import Firebase
 class PublicRecipeCell: RecipeCell, WDStarRatingDelegate {
     
     var starRatingView: WDStarRatingView!
+    var starRatingContainer: MaterialView!
+    var starRatingCount: L3!
     
     override func prepareView() {
         super.prepareView()
+        
+        self.starRatingContainer = MaterialView()
+        contentView.layout(starRatingContainer).top(10).right(3).height(20).width(80)
         
         self.starRatingView = WDStarRatingView()
         self.starRatingView.delegate = self
@@ -25,8 +30,11 @@ class PublicRecipeCell: RecipeCell, WDStarRatingDelegate {
         self.starRatingView.tintColor = colors.accent
         //self.starRatingView.addTarget(self, action: #selector(ViewController.didChangeValue(_:)), forControlEvents: .ValueChanged)
         self.starRatingView.enabled = false
+        starRatingContainer.layout(starRatingView).edges(right: 20)
         
-        contentView.layout(starRatingView).top(10).right(3).height(20).width(70)
+        self.starRatingCount = L3()
+        self.starRatingCount.textLayer.textAlignment = .Center
+        starRatingContainer.layout(starRatingCount).top(0).bottom(0).right(0).width(20)
         
     }
     

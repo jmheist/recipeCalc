@@ -44,7 +44,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate  {
         configureDatabase()
         prepareView()
         prepareTextFields()
-        prepareKeyboardHandler()
+//        prepareKeyboardHandler()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -168,6 +168,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate  {
                 AppState.sharedInstance.recipe.name = recipeName.text!
                 AppState.sharedInstance.recipe.desc = recipeDesc.text!
             } else {
+                AppState.sharedInstance.recipe = Recipe()
                 AppState.sharedInstance.recipe.author = author!
                 AppState.sharedInstance.recipe.authorId = authorId!
                 AppState.sharedInstance.recipe.name = recipeName.text!
@@ -198,34 +199,34 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate  {
         recipeDesc.text = ""
     }
     
-    func prepareKeyboardHandler() {
-        // Call this method somewhere in your view controller setup code.
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWasShown(_:)), name: UIKeyboardDidShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillBeHidden(_:)), name: UIKeyboardWillHideNotification, object: nil)
-        
-        // Called when the UIKeyboardDidShowNotification is sent.
-    }
-    
-    func keyboardWasShown(aNotification: NSNotification) {
-        print("keyboard shown")
-        hideStatusBar(-20)
-    }
-    // Called when the UIKeyboardWillHideNotification is sent
-    
-    func keyboardWillBeHidden(aNotification: NSNotification) {
-        print("keyboard hidden")
-        showStatusBar()
-    }
-    
-    func hideStatusBar(yOffset:CGFloat) { // -20.0 for example
-        let statusBarWindow = UIApplication.sharedApplication().valueForKey("statusBarWindow") as! UIWindow
-        statusBarWindow.frame = CGRectMake(0, yOffset, statusBarWindow.frame.size.width, statusBarWindow.frame.size.height)
-    }
-    
-    func showStatusBar() {
-        let statusBarWindow = UIApplication.sharedApplication().valueForKey("statusBarWindow") as! UIWindow
-        statusBarWindow.frame = CGRectMake(0, 0, statusBarWindow.frame.size.width, statusBarWindow.frame.size.height)
-    }
+//    func prepareKeyboardHandler() {
+//        // Call this method somewhere in your view controller setup code.
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWasShown(_:)), name: UIKeyboardDidShowNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillBeHidden(_:)), name: UIKeyboardWillHideNotification, object: nil)
+//        
+//        // Called when the UIKeyboardDidShowNotification is sent.
+//    }
+//    
+//    func keyboardWasShown(aNotification: NSNotification) {
+//        print("keyboard shown")
+//        hideStatusBar(-20)
+//    }
+//    // Called when the UIKeyboardWillHideNotification is sent
+//    
+//    func keyboardWillBeHidden(aNotification: NSNotification) {
+//        print("keyboard hidden")
+//        showStatusBar()
+//    }
+//    
+//    func hideStatusBar(yOffset:CGFloat) { // -20.0 for example
+//        let statusBarWindow = UIApplication.sharedApplication().valueForKey("statusBarWindow") as! UIWindow
+//        statusBarWindow.frame = CGRectMake(0, yOffset, statusBarWindow.frame.size.width, statusBarWindow.frame.size.height)
+//    }
+//    
+//    func showStatusBar() {
+//        let statusBarWindow = UIApplication.sharedApplication().valueForKey("statusBarWindow") as! UIWindow
+//        statusBarWindow.frame = CGRectMake(0, 0, statusBarWindow.frame.size.width, statusBarWindow.frame.size.height)
+//    }
 
     
 }
