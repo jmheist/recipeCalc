@@ -78,11 +78,11 @@ class UserManager: NSObject {
     
     func signedIn(user: FIRUser?, provider: Bool=false, sender: UIViewController) {
         MeasurementHelper.sendLoginEvent()
+        AppState.sharedInstance.uid = user?.uid
         if provider {
             for profile in user!.providerData {
                 //let providerID = profile.providerID
                 print("providerId: \(profile.providerID)")
-                AppState.sharedInstance.uid = profile.uid;  // Provider-specific UID
                 AppState.sharedInstance.displayName = profile.displayName
                 AppState.sharedInstance.email = profile.email
                 AppState.sharedInstance.photoUrl = profile.photoURL
@@ -90,7 +90,6 @@ class UserManager: NSObject {
             }
         } else {
             AppState.sharedInstance.displayName = user?.displayName ?? user?.email
-            AppState.sharedInstance.uid = user?.uid
             AppState.sharedInstance.photoUrl = user?.photoURL
             AppState.sharedInstance.email = user?.email
             AppState.sharedInstance.signedIn = true

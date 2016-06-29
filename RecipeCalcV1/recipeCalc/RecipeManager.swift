@@ -26,6 +26,7 @@ struct Recipe {
     var published = ""
     var stars: CGFloat!
     var starsCount: Int!
+    var favCount: Int!
     
     init(   key: String? = "",
             author: String? = "",
@@ -38,7 +39,8 @@ struct Recipe {
             steepDays: String? = "",
             published: String? = "false",
             stars: CGFloat?=0,
-            starsCount: Int?=0
+            starsCount: Int?=0,
+            favCount: Int?=0
         )
     {
         self.key = key!
@@ -53,6 +55,7 @@ struct Recipe {
         self.published = published!
         self.stars = stars!
         self.starsCount = starsCount
+        self.favCount = favCount
     }
     
     func fb() -> AnyObject {
@@ -69,6 +72,7 @@ struct Recipe {
         rec["published"] = published
         rec["stars"] = stars
         rec["starsCount"] = starsCount
+        rec["favCount"] = favCount
         return rec
     }
     
@@ -118,6 +122,7 @@ class RecipeManager: NSObject {
     }
     
     func receiveFromFirebase(snapshot: FIRDataSnapshot) -> Recipe {
+        print(snapshot.value)
         let key = snapshot.key as String
         let author = snapshot.value!["author"] as! String
         let authorId = snapshot.value!["authorId"] as! String
@@ -129,8 +134,9 @@ class RecipeManager: NSObject {
         let steepDays = snapshot.value!["steepDays"] as! String
         let published = snapshot.value!["published"] as! String
         let stars = snapshot.value!["stars"] as! CGFloat
-        let starsCount = snapshot.value!["starsCount"] as! Int
-        let rec = Recipe(key: key, author: author, authorId: authorId, name: name, desc: desc, pg: pg, vg: vg, strength: strength, steepDays: steepDays, published: published, stars: stars, starsCount: starsCount)
+        let starsCount = snapshot.value!["starsCount"] as? Int ?? 0
+        let favCount = snapshot.value!["favCount"] as? Int ?? 0
+        let rec = Recipe(key: key, author: author, authorId: authorId, name: name, desc: desc, pg: pg, vg: vg, strength: strength, steepDays: steepDays, published: published, stars: stars, starsCount: starsCount, favCount: favCount)
         return rec
     }
     
