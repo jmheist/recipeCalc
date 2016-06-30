@@ -36,6 +36,7 @@
 		73A376311D1B3A5400BF9FC2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73A376301D1B3A5400BF9FC2 /* GoogleService-Info.plist */; };
 		73A3F77B1D0A0BC400B8C281 /* MixVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A3F77A1D0A0BC400B8C281 /* MixVC.swift */; };
 		73A3F77D1D0A142600B8C281 /* MixTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A3F77C1D0A142600B8C281 /* MixTabBar.swift */; };
+		73A946441D2595BE00745195 /* FavListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A946431D2595BE00745195 /* FavListVC.swift */; };
 		73B1B5B01CFFA520009AFA20 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */; };
 		73CC8D051D08CDD1003D3709 /* MixPrepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CC8D041D08CDD1003D3709 /* MixPrepVC.swift */; };
 		73CC8D071D08CEE0003D3709 /* MixSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CC8D061D08CEE0003D3709 /* MixSettingsManager.swift */; };
@@ -117,6 +118,7 @@
 		73A376301D1B3A5400BF9FC2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		73A3F77A1D0A0BC400B8C281 /* MixVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixVC.swift; sourceTree = "<group>"; };
 		73A3F77C1D0A142600B8C281 /* MixTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixTabBar.swift; sourceTree = "<group>"; };
+		73A946431D2595BE00745195 /* FavListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavListVC.swift; sourceTree = "<group>"; };
 		73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		73CC8D041D08CDD1003D3709 /* MixPrepVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixPrepVC.swift; sourceTree = "<group>"; };
 		73CC8D061D08CEE0003D3709 /* MixSettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixSettingsManager.swift; sourceTree = "<group>"; };
@@ -305,11 +307,20 @@
 			name = User;
 			sourceTree = "<group>";
 		};
+		73A946421D2595A900745195 /* favs */ = {
+			isa = PBXGroup;
+			children = (
+				73A946431D2595BE00745195 /* FavListVC.swift */,
+			);
+			name = favs;
+			sourceTree = "<group>";
+		};
 		73B1DCFE1CF547FB002D9E23 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				7372EF311D1C6BB900754613 /* Auth */,
 				7372EF321D1C6BD800754613 /* Root */,
+				73A946421D2595A900745195 /* favs */,
 				7372EF341D1C6C1A00754613 /* Mix */,
 				7372EF331D1C6C1300754613 /* Recipe */,
 				7372EF351D1C6C1F00754613 /* User */,
@@ -589,6 +600,7 @@
 				73DCEAE21CF69758002BA81C /* Labels.swift in Sources */,
 				734C95D61D0617D500EB79AD /* PublicRecipeVC.swift in Sources */,
 				7325BE581D0762FF00CF0177 /* RecipeManager.swift in Sources */,
+				73A946441D2595BE00745195 /* FavListVC.swift in Sources */,
 				73B1B5B01CFFA520009AFA20 /* ProfileVC.swift in Sources */,
 				734C95D21D06113700EB79AD /* RecipeVC.swift in Sources */,
 				734FBA431D03645B007FA0CA /* TableVC.swift in Sources */,

@@ -68,7 +68,8 @@ class TableVC: UIViewController, GADBannerViewDelegate {
     /// Prepare tabBarItem.
     func prepareTabBarItem() {
         tabBarItem.title = "My Recipes"
-        tabBarItem.image = MaterialIcon.menu    }
+        tabBarItem.image = MaterialIcon.menu
+    }
     
     /// Prepares the navigationItem.
     func prepareNavigationItem() {

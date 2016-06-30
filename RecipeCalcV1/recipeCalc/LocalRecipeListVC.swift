@@ -33,6 +33,8 @@ class LocalRecipeListVC: TableVC {
     /// Prepares the navigationItem.
     override func prepareNavigationItem() {
         navigationItem.title = "My Recipes"
+        let viewFavsButton = UIBarButtonItem(title: "view favs", style: .Plain, target: self, action: #selector(showFavs))
+        navigationItem.rightBarButtonItem = viewFavsButton
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -61,6 +63,10 @@ class LocalRecipeListVC: TableVC {
         })
     }
     
+    func showFavs() {
+        navigationController?.pushViewController(FavListVC(), animated: true)
+    }
+    
     // UITableViewDataSource protocol methods
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myRecipeMgr.recipes.count
@@ -74,16 +80,8 @@ class LocalRecipeListVC: TableVC {
         
         cell.selectionStyle = .None
         cell.recipeName.text = recipe.name
-        cell.recipeName.font = RobotoFont.regular
-        
         cell.recipeDesc.text = recipe.desc
-        cell.recipeDesc.font = RobotoFont.regular
-        cell.recipeDesc.textColor = MaterialColor.grey.darken1
-        
         cell.creator.text = recipe.author
-        cell.creator.font = RobotoFont.regular
-        cell.creator.textColor = MaterialColor.grey.darken1
-        
         cell.recipeID = recipe.key
         
         return cell

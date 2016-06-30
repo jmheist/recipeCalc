@@ -12,12 +12,17 @@ import Material
 
 class PublicRecipeVC: RecipeVC, WDStarRatingDelegate {
     
+    var myRecipe: Bool = false
+    let favMgr: FavoriteManager = FavoriteManager()
     var starRatingView: WDStarRatingView!
     
     override func viewDidLoad() {
+        myRecipe = (AppState.sharedInstance.uid == recipe.authorId)
         super.viewDidLoad()
-        prepareRating()
-        prepareFav()
+        if !myRecipe {
+            prepareRating()
+            prepareFav()
+        }
     }
     
     override func prepareView() {
@@ -65,6 +70,7 @@ class PublicRecipeVC: RecipeVC, WDStarRatingDelegate {
     
     func prepareFav() {
         let favView: MaterialView = MaterialView()
+        favView.userInteractionEnabled = true
         view.layout(favView).top(55).right(5).height(20).width(100)
         
         let heartCount: L3 = L3()
@@ -74,16 +80,30 @@ class PublicRecipeVC: RecipeVC, WDStarRatingDelegate {
         
         let imageView: UIImageView = UIImageView(frame: CGRectMake(0, 0, 20, 20))
         
-        Queries.favs.child(recipe.key).child(AppState.sharedInstance.uid!).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-            if !snapshot.value!.isKindOfClass(NSNull) && snapshot.value as! Bool == true {
+        favMgr.isRecipeFaved(recipe.key, uid: AppState.sharedInstance.uid!) { (isFaved) in
+            if isFaved {
                 imageView.image = MaterialIcon.favorite?.tintWithColor(colors.favorite)
                 heartCount.text = "un fav"
+                favView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.unFav)))
             } else {
                 imageView.image = MaterialIcon.favoriteBorder?.tintWithColor(colors.favorite)
                 heartCount.text = "fav this recipe"
+                
+                favView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.fav)))
             }
-        })
+        }
+        
         favView.layout(imageView).left(0).top(0).bottom(0).width(20)
+    }
+    
+    func fav() {
+        favMgr.fav(recipe.key, uid: AppState.sharedInstance.uid!, authorUid: recipe.authorId)
+        prepareFav()
+    }
+    
+    func unFav() {
+        favMgr.unFav(recipe.key, uid: AppState.sharedInstance.uid!, authorUid: recipe.authorId)
+        prepareFav()
     }
     
     func didChangeValue(sender: WDStarRatingView) {
@@ -105,8 +125,8 @@ class PublicRecipeVC: RecipeVC, WDStarRatingDelegate {
         
         recipeDesc.text = recipe.desc
         recipeDesc.textAlignment = .Left
-        
-        recipeAuthor.text = "by \(recipe.author)"
+        print(myRecipe)
+        recipeAuthor.text = "by \( myRecipe ? String("You") : recipe.author)"
         recipeAuthor.textAlignment = .Left
         
         let children = [recipeName, recipeDesc, recipeAuthor]

@@ -24,6 +24,12 @@ class RecipeCell: MaterialTableViewCell {
         contentView.addSubview(cellView)
         contentView.layout(cellView).top(8).left(8).bottom(8).right(8)
         
+        recipeName.font = RobotoFont.regular
+        recipeDesc.font = RobotoFont.regular
+        recipeDesc.textColor = MaterialColor.grey.darken1
+        creator.font = RobotoFont.regular
+        creator.textColor = MaterialColor.grey.darken1
+        
         cellView.backgroundColor = MaterialColor.clear
         
         let children = [recipeName, recipeDesc, creator]

@@ -1,68 +1,43 @@
 //
-//  DiscoveryViewController.swift
+//  FavListVC.swift
 //  recipeCalc
 //
-//  Created by Jacob Heisterkamp on 5/26/16.
+//  Created by Jacob Heisterkamp on 6/30/16.
 //  Copyright © 2016 Vape&Prosper. All rights reserved.
 //
 
 import UIKit
 import Material
 import Firebase
-import Refresher
 
-class DiscoveryViewController: TableVC {
+class FavListVC: TableVC {
     
-    private var _refHandle: FIRDatabaseHandle!
-    private var _refDeleteHandle: FIRDatabaseHandle!
-    
-    private var searchBar: SearchBar!
-    
-    deinit {
-        Queries.publicRecipes.removeAllObservers()
-    }
+    var favs: [Recipe] = []
+    let favMgr: FavoriteManager = FavoriteManager()
     
     override func prepareView() {
         super.prepareView()
-        prepareNavigationItem()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        prepareRefresher()
     }
     
     /// Prepare tabBarItem.
     override func prepareTabBarItem() {
-        tabBarItem.title = "Discover"
-        tabBarItem.image = MaterialIcon.visibility
+        hidesBottomBarWhenPushed = true
     }
     
     /// Prepares the navigationItem.
     override func prepareNavigationItem() {
-        navigationItem.title = "Discover"
-        
-        let searchIcon = UIBarButtonItem(image: MaterialIcon.cm.search, style: .Plain, target: self, action: #selector(search))
-        navigationItem.rightBarButtonItems = [searchIcon]
-    }
-    
-    func search() {
-        presentViewController(SearchVC(), animated: true, completion: nil)
+        navigationItem.title = "My Favorites"
     }
     
     override func configureDatabase() {
-        
-        // Listen for new messages in the Firebase database
-        _refHandle = (Queries.publicRecipes).queryOrderedByChild("stars").observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
-            let rec = publicRecipeMgr.receiveFromFirebase(snapshot)
-            publicRecipeMgr.addRecipe(rec)
-            publicRecipeMgr.sortBy("stars")
+        favMgr.getUserFavs(AppState.sharedInstance.uid!) { (recipes) in
+            self.favs = recipes
             self.recipeTable.reloadData()
-        })
-        
-        _refDeleteHandle = Queries.publicRecipes.observeEventType(.ChildRemoved, withBlock: { (snapshot) -> Void in
-            print("public recipe deleted")
-        })
+        }
+    }
+    
+    func showFavs() {
+        navigationController?.presentViewController(FavListVC(), animated: true, completion: nil)
     }
     
     func prepareRefresher() {
@@ -76,19 +51,19 @@ class DiscoveryViewController: TableVC {
                     self.recipeTable.stopPullToRefresh()
                 }
             }
-        }, withAnimator: pacmanAnimator)
+            }, withAnimator: pacmanAnimator)
     }
     
     // UITableViewDataSource protocol methods
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return publicRecipeMgr.recipes.count
+        return favs.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Dequeue cell
         let cell: PublicRecipeCell = PublicRecipeCell(style: .Default, reuseIdentifier: "publicRecipeCell")
         
-        let recipe = publicRecipeMgr.recipes[indexPath.row]
+        let recipe = favs[indexPath.row]
         
         cell.starRatingView.value = recipe.stars
         cell.starRatingCount.text = "(\(recipe.starsCount))"
@@ -107,7 +82,7 @@ class DiscoveryViewController: TableVC {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        navigationController?.pushViewController(PublicRecipeVC(recipe: publicRecipeMgr.recipes[indexPath.row]), animated: true)
+        navigationController?.pushViewController(PublicRecipeVC(recipe: favs[indexPath.row]), animated: true)
     }
     
     func updateTable() {
@@ -122,7 +97,20 @@ class DiscoveryViewController: TableVC {
                 self.recipeTable.reloadData()
             }
         })
-
+        
+    }
+    
+    override func prepareAds() {
+        let bannerAd: GADBannerView = GADBannerView()
+        view.layout(bannerAd).height(50).width(320).bottom(0).centerHorizontally()
+        
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID]
+        bannerAd.delegate = self
+        bannerAd.adUnitID = adConstants.AdMobAdUnitID
+        bannerAd.rootViewController = self
+        bannerAd.loadRequest(request)
+        
     }
     
 }

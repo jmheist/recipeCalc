@@ -122,7 +122,6 @@ class RecipeManager: NSObject {
     }
     
     func receiveFromFirebase(snapshot: FIRDataSnapshot) -> Recipe {
-        print(snapshot.value)
         let key = snapshot.key as String
         let author = snapshot.value!["author"] as! String
         let authorId = snapshot.value!["authorId"] as! String
