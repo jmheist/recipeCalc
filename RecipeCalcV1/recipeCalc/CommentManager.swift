@@ -29,6 +29,8 @@ struct Comment {
     
 }
 
+let commentMgr: CommentManager = CommentManager()
+
 class CommentManager: NSObject {
     
     func addComment(recipeId: String, comment: Comment, completion:([Comment])->()) {

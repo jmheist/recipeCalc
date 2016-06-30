@@ -167,6 +167,6 @@ class PublicRecipeVC: RecipeVC, WDStarRatingDelegate {
     }
     
     func commentOnRecipe() {
-        navigationController?.pushViewController(CommentsVC(), animated: true)
+        navigationController?.pushViewController(CommentsVC(recipe: self.recipe), animated: true)
     }
 }

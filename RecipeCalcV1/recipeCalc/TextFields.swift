@@ -114,6 +114,7 @@ class TView: TextView {
         titleLabelColor = colors.dark
         titleLabelActiveColor = colors.dark
         masksToBounds = true
+        clipsToBounds = true
         font = RobotoFont.regular
         placeholderLabel = UILabel()
         placeholderLabel!.textColor = MaterialColor.grey.base

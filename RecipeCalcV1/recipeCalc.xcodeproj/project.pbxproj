@@ -39,6 +39,7 @@
 		73A946441D2595BE00745195 /* FavListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A946431D2595BE00745195 /* FavListVC.swift */; };
 		73A946461D25B28F00745195 /* CommentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A946451D25B28F00745195 /* CommentManager.swift */; };
 		73A946481D25B8D900745195 /* CommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A946471D25B8D900745195 /* CommentsVC.swift */; };
+		73A9464A1D25BF0900745195 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A946491D25BF0900745195 /* CommentCell.swift */; };
 		73B1B5B01CFFA520009AFA20 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */; };
 		73CC8D051D08CDD1003D3709 /* MixPrepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CC8D041D08CDD1003D3709 /* MixPrepVC.swift */; };
 		73CC8D071D08CEE0003D3709 /* MixSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CC8D061D08CEE0003D3709 /* MixSettingsManager.swift */; };
@@ -123,6 +124,7 @@
 		73A946431D2595BE00745195 /* FavListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavListVC.swift; sourceTree = "<group>"; };
 		73A946451D25B28F00745195 /* CommentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentManager.swift; sourceTree = "<group>"; };
 		73A946471D25B8D900745195 /* CommentsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsVC.swift; sourceTree = "<group>"; };
+		73A946491D25BF0900745195 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		73CC8D041D08CDD1003D3709 /* MixPrepVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixPrepVC.swift; sourceTree = "<group>"; };
 		73CC8D061D08CEE0003D3709 /* MixSettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixSettingsManager.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				73DCEAD01CF63E2F002BA81C /* RecipeCell.swift */,
 				7327970D1D04EFFF009C8BCB /* MyRecipesCell.swift */,
 				737A010A1D0F13D600CF76EA /* PublicRecipeCell.swift */,
+				73A946491D25BF0900745195 /* CommentCell.swift */,
 				73F66DB51D0B0EDD008E73E1 /* MixCell.swift */,
 				734FBA421D03645B007FA0CA /* TableVC.swift */,
 				734C95D11D06113700EB79AD /* RecipeVC.swift */,
@@ -604,6 +607,7 @@
 				7327970E1D04EFFF009C8BCB /* MyRecipesCell.swift in Sources */,
 				73F66DBA1D0B57EF008E73E1 /* ErrorManager.swift in Sources */,
 				73DCEAC61CF62A11002BA81C /* Constants.swift in Sources */,
+				73A9464A1D25BF0900745195 /* CommentCell.swift in Sources */,
 				73DCEAE21CF69758002BA81C /* Labels.swift in Sources */,
 				734C95D61D0617D500EB79AD /* PublicRecipeVC.swift in Sources */,
 				7325BE581D0762FF00CF0177 /* RecipeManager.swift in Sources */,
