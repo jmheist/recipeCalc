@@ -17,6 +17,7 @@ class PublicRecipeVC: RecipeVC, WDStarRatingDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareRating()
+        prepareFav()
     }
     
     override func prepareView() {
@@ -30,10 +31,10 @@ class PublicRecipeVC: RecipeVC, WDStarRatingDelegate {
     func prepareRating() {
         
         let starView: MaterialView = MaterialView()
-        view.addSubview(starView)
         view.layout(starView).top(5).right(5).height(50).width(100)
         
         let ratingLabel: L3 = L3()
+        ratingLabel.textLayer.pointSize = 12
         ratingLabel.text = "rate this recipe"
         ratingLabel.textAlignment = .Right
         
@@ -60,6 +61,29 @@ class PublicRecipeVC: RecipeVC, WDStarRatingDelegate {
             starView.layout(child).top(CGFloat(dist)).right(5).height(25).width(100)
             dist += spacing
         }
+    }
+    
+    func prepareFav() {
+        let favView: MaterialView = MaterialView()
+        view.layout(favView).top(55).right(5).height(20).width(100)
+        
+        let heartCount: L3 = L3()
+        heartCount.textLayer.pointSize = 12
+        heartCount.text = ""
+        favView.layout(heartCount).left(20).top(0).bottom(0).width(80)
+        
+        let imageView: UIImageView = UIImageView(frame: CGRectMake(0, 0, 20, 20))
+        
+        Queries.favs.child(recipe.key).child(AppState.sharedInstance.uid!).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            if !snapshot.value!.isKindOfClass(NSNull) && snapshot.value as! Bool == true {
+                imageView.image = MaterialIcon.favorite?.tintWithColor(colors.favorite)
+                heartCount.text = "un fav"
+            } else {
+                imageView.image = MaterialIcon.favoriteBorder?.tintWithColor(colors.favorite)
+                heartCount.text = "fav this recipe"
+            }
+        })
+        favView.layout(imageView).left(0).top(0).bottom(0).width(20)
     }
     
     func didChangeValue(sender: WDStarRatingView) {

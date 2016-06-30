@@ -12,15 +12,17 @@ import Firebase
 
 class PublicRecipeCell: RecipeCell, WDStarRatingDelegate {
     
+    var ratingContainer: MaterialView!
     var starRatingView: WDStarRatingView!
-    var starRatingContainer: MaterialView!
     var starRatingCount: L3!
+    var hearts: MaterialView!
+    var heartCount: L3!
     
     override func prepareView() {
         super.prepareView()
         
-        self.starRatingContainer = MaterialView()
-        contentView.layout(starRatingContainer).top(10).right(3).height(20).width(80)
+        self.ratingContainer = MaterialView()
+        contentView.layout(ratingContainer).top(10).right(3).height(15).width(120)
         
         self.starRatingView = WDStarRatingView()
         self.starRatingView.delegate = self
@@ -28,14 +30,25 @@ class PublicRecipeCell: RecipeCell, WDStarRatingDelegate {
         self.starRatingView.minimumValue = 0
         self.starRatingView.value = 0
         self.starRatingView.tintColor = colors.accent
-        //self.starRatingView.addTarget(self, action: #selector(ViewController.didChangeValue(_:)), forControlEvents: .ValueChanged)
         self.starRatingView.enabled = false
-        starRatingContainer.layout(starRatingView).edges(right: 20)
+        ratingContainer.layout(starRatingView).edges(left: 25, right: 20)
         
         self.starRatingCount = L3()
-        self.starRatingCount.textLayer.textAlignment = .Center
-        starRatingContainer.layout(starRatingCount).top(0).bottom(0).right(0).width(20)
+        starRatingCount.textLayer.pointSize = 12
+        ratingContainer.layout(starRatingCount).right(0).top(0).bottom(0).width(20)
         
+        self.hearts = MaterialView()
+        ratingContainer.layout(hearts).left(0).top(0).bottom(0).width(30)
+        
+        self.heartCount = L3()
+        self.heartCount.text = "0"
+        self.heartCount.textLayer.pointSize = 12
+        hearts.layout(heartCount).left(15).top(0).bottom(0).width(10)
+        
+        let imageView: UIImageView = UIImageView(frame: CGRectMake(0, 0, 15, 15))
+        imageView.image = MaterialIcon.favorite?.tintWithColor(colors.favorite)
+        
+        hearts.layout(imageView).left(0).top(0).bottom(0).width(15)
     }
     
 }

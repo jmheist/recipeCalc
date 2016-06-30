@@ -21,5 +21,6 @@ class Colors: UIColor {
     let text = MaterialColor.grey.darken4
     let error = MaterialColor.red.darken1
     let accent = MaterialColor.amber.darken3
+    let favorite = MaterialColor.red.base
     
 }
