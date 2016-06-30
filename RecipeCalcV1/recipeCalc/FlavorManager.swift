@@ -24,12 +24,12 @@ struct Flavor {
     }
     
     func fb() -> AnyObject {
-        var rec = [String:String]()
-        rec["name"] = name
-        rec["base"] = base
-        rec["pct"] = pct
-        rec["key"] = key
-        return rec
+        var flav = [String:String]()
+        flav["name"] = name
+        flav["base"] = base
+        flav["pct"] = pct
+        flav["key"] = key
+        return flav
     }
 }
 

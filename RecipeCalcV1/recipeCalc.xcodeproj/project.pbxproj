@@ -37,6 +37,8 @@
 		73A3F77B1D0A0BC400B8C281 /* MixVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A3F77A1D0A0BC400B8C281 /* MixVC.swift */; };
 		73A3F77D1D0A142600B8C281 /* MixTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A3F77C1D0A142600B8C281 /* MixTabBar.swift */; };
 		73A946441D2595BE00745195 /* FavListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A946431D2595BE00745195 /* FavListVC.swift */; };
+		73A946461D25B28F00745195 /* CommentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A946451D25B28F00745195 /* CommentManager.swift */; };
+		73A946481D25B8D900745195 /* CommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A946471D25B8D900745195 /* CommentsVC.swift */; };
 		73B1B5B01CFFA520009AFA20 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */; };
 		73CC8D051D08CDD1003D3709 /* MixPrepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CC8D041D08CDD1003D3709 /* MixPrepVC.swift */; };
 		73CC8D071D08CEE0003D3709 /* MixSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CC8D061D08CEE0003D3709 /* MixSettingsManager.swift */; };
@@ -119,6 +121,8 @@
 		73A3F77A1D0A0BC400B8C281 /* MixVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixVC.swift; sourceTree = "<group>"; };
 		73A3F77C1D0A142600B8C281 /* MixTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixTabBar.swift; sourceTree = "<group>"; };
 		73A946431D2595BE00745195 /* FavListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavListVC.swift; sourceTree = "<group>"; };
+		73A946451D25B28F00745195 /* CommentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentManager.swift; sourceTree = "<group>"; };
+		73A946471D25B8D900745195 /* CommentsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsVC.swift; sourceTree = "<group>"; };
 		73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		73CC8D041D08CDD1003D3709 /* MixPrepVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixPrepVC.swift; sourceTree = "<group>"; };
 		73CC8D061D08CEE0003D3709 /* MixSettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixSettingsManager.swift; sourceTree = "<group>"; };
@@ -286,6 +290,7 @@
 				73F66DC11D0BD5D7008E73E1 /* AddFlavorsVC.swift */,
 				73991AFA1D1ADC97004F3F07 /* NotesVC.swift */,
 				73991B081D1B16EC004F3F07 /* SearchVC.swift */,
+				73A946471D25B8D900745195 /* CommentsVC.swift */,
 			);
 			name = Recipe;
 			sourceTree = "<group>";
@@ -354,6 +359,7 @@
 				73991AFC1D1AFF39004F3F07 /* SearchManager.swift */,
 				73991B0A1D1B34B5004F3F07 /* AdMobManager.swift */,
 				736C52BD1D244ACA005755F9 /* FavoriteManager.swift */,
+				73A946451D25B28F00745195 /* CommentManager.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -582,6 +588,7 @@
 				731C96B91D12FD9100588FAD /* PacmanAnimator.swift in Sources */,
 				7315D5EF1CF4E405002B2588 /* recipeCalc.xcdatamodeld in Sources */,
 				73991B091D1B16EC004F3F07 /* SearchVC.swift in Sources */,
+				73A946461D25B28F00745195 /* CommentManager.swift in Sources */,
 				73DCEAE41CF6988B002BA81C /* TextFields.swift in Sources */,
 				73DCEAD11CF63E2F002BA81C /* RecipeCell.swift in Sources */,
 				7315D5E71CF4E405002B2588 /* AppDelegate.swift in Sources */,
@@ -615,6 +622,7 @@
 				73425DE51D032F9100A69596 /* Firebase.swift in Sources */,
 				73DE44CF1D11C74F0019DFD2 /* RatingManager.swift in Sources */,
 				73FEB2711D00BB5F008CD089 /* BottomNav.swift in Sources */,
+				73A946481D25B8D900745195 /* CommentsVC.swift in Sources */,
 				73DCEB041CF7598F002BA81C /* DiscoveryViewController.swift in Sources */,
 				73F66DC21D0BD5D7008E73E1 /* AddFlavorsVC.swift in Sources */,
 				736C52BE1D244ACA005755F9 /* FavoriteManager.swift in Sources */,
