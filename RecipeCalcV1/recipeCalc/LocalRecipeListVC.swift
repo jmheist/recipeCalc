@@ -41,6 +41,7 @@ class LocalRecipeListVC: TableVC {
         if(editingStyle == UITableViewCellEditingStyle.Delete){
             let key = myRecipeMgr.recipes[indexPath.row].key
             myRecipeMgr.removeRecipe(key)
+            analyticsMgr.sendRecipeDeleted()
             recipeTable.reloadData()
         }
     }

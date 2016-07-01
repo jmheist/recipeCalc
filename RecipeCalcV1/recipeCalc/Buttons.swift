@@ -22,7 +22,7 @@ class B1: FlatButton {
     }
 }
 
-class B2: MaterialButton {
+class B2: B1 {
     internal override func prepareView() {
         super.prepareView()
         setTitleColor(colors.text, forState: .Normal)

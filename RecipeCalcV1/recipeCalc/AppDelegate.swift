@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         IQKeyboardManager.sharedManager().enable = true
         IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 20
         IQKeyboardManager.sharedManager().shouldShowTextFieldPlaceholder = true
+        IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
         
         FIRApp.configure()
         FIRApp.debugDescription()

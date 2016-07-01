@@ -101,21 +101,6 @@ class ProfileVC: UIViewController, GADBannerViewDelegate {
     }
     
     func signOut() {
-        FBSDKAccessToken.setCurrentAccessToken(nil)
-        let firebaseAuth = FIRAuth.auth()
-        do {
-            try firebaseAuth?.signOut()
-            Queries.myRecipes.child(AppState.sharedInstance.uid!).removeAllObservers()
-            AppState.sharedInstance.signedIn = false
-            AppState.sharedInstance.uid = nil
-            AppState.sharedInstance.recipe = nil
-            print("signed out")
-            myRecipeMgr.reset()
-            publicRecipeMgr.reset()
-            let vc = AppLandingVC()
-            self.presentViewController(vc, animated: false, completion: nil)
-        } catch let signOutError as NSError {
-            print ("Error signing out: \(signOutError)")
-        }
+        UserMgr.signOut(self)
     }    
 }

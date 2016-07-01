@@ -39,31 +39,82 @@ class ErrorManager: NSObject {
     }
     
     private var errors = [String]()
+    private var origLabelText = ""
     
     // runs the error checker, and then modifies the fields to show the errors
-    func errorCheck(field: myTextField) {
+    func errorCheck(field: myTextField?=nil, textview: TView?=nil, errorLabel: MaterialLabel?=nil) {
         
-        if field.errorCheck {
+        if (field != nil) {
+        
+            if field!.errorCheck {
+                
+                self.checkForErrors(field!.text!, // data:
+                    placeholder: field!.placeholder!,
+                    checkFor: Check(
+                        type: field!.errorCheckFor,
+                        length: field!.textLength,
+                        numberMax: field!.numberMax
+                    ), completionHandler: { (res:ErrorResponse) in
+                        if res.error {
+                            print(res)
+                            field!.detail = res.errorMessage
+                            field!.revealError = true
+                            field!.detailColor = colors.error
+                            field!.dividerColor = colors.error
+                        } else {
+                            field!.revealError = false
+                            field!.detailColor = colors.dark
+                            field!.dividerColor = colors.dark
+                        }
+                })
+            }
+        }
+        
+        if (textview != nil) {
             
-            self.checkForErrors(field.text!, // data:
-                placeholder: field.placeholder!,
-                checkFor: Check(
-                    type: field.errorCheckFor,
-                    length: field.textLength,
-                    numberMax: field.numberMax
-                ), completionHandler: { (res:ErrorResponse) in
-                    if res.error {
-                        print(res)
-                        field.detail = res.errorMessage
-                        field.revealError = true
-                        field.detailColor = colors.error
-                        field.dividerColor = colors.error
-                    } else {
-                        field.revealError = false
-                        field.detailColor = colors.dark
-                        field.dividerColor = colors.dark
+            if textview!.errorCheck {
+                
+                textview!.text = textview!.text.stringByReplacingOccurrencesOfString("  ", withString: " ")
+                
+                var error: Bool = false
+                var errorMessage = ""
+                
+                if errorLabel != nil && origLabelText.characters.count == 0 {
+                    origLabelText = (errorLabel?.text!)!
+                    print(origLabelText)
+                }
+                
+                print(textview?.text.characters.count)
+                
+                if textview?.maxLength > 0 && textview!.text.characters.count > textview?.maxLength {
+                    error = true
+                    errorMessage = "Comment is too long (-\(textview!.text.characters.count - (textview?.maxLength)!))"
+                }
+                
+                if textview!.text.characters.count < textview?.minLength {
+                    error = true
+                    errorMessage = "Comment is too short"
+                }
+                
+                if error {
+                    if errors.indexOf("TextView") < 0 {
+                        errors.append("TextView")
                     }
-            })
+                    if (errorLabel != nil) {
+                        errorLabel?.text = errorMessage
+                        errorLabel?.textColor = colors.error
+                    }
+                } else {
+                    if errors.indexOf("TextView") > -1 {
+                        errors.removeAtIndex(errors.indexOf("TextView")!)
+                    }
+                    if (errorLabel != nil) {
+                        errorLabel?.text = origLabelText
+                        errorLabel?.textColor = colors.text
+                    }
+                }
+                
+            }
             
         }
     }
@@ -73,6 +124,8 @@ class ErrorManager: NSObject {
         
         var error: Bool = false
         var errorMessage = ""
+        
+        let data = data.stringByReplacingOccurrencesOfString("  ", withString: " ")
         
         func returnError() {
             if error {
@@ -178,6 +231,5 @@ class ErrorManager: NSObject {
         } // end switch
         
     }
-    
     
 }

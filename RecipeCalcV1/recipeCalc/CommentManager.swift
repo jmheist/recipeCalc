@@ -11,19 +11,19 @@ import Firebase
 
 struct Comment {
     
-    var author: String = ""
+    var authorUid: String = ""
     var comment: String = ""
     var key: String = ""
     
-    init(author: String, comment: String, key: String?="") {
-        self.author = author
+    init(authorUid: String, comment: String, key: String?="") {
+        self.authorUid = authorUid
         self.comment = comment
     }
     
     func fb() -> AnyObject {
         var com = [String:String]()
-        com["name"] = author
-        com["base"] = comment
+        com["authorUid"] = authorUid
+        com["comment"] = comment
         return com
     }
     
@@ -44,7 +44,7 @@ class CommentManager: NSObject {
         var comments: [Comment] = []
         Queries.comments.child(recipeId).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             for child in snapshot.children {
-                comments.append(Comment(author: child.value!["author"] as! String, comment: child.value!["comment"] as! String, key: child.key))
+                comments.append(Comment(authorUid: child.value!["authorUid"] as! String, comment: child.value!["comment"] as! String, key: child.key))
             }
             completion(comments)
         })

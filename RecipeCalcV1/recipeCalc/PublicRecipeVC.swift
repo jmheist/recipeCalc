@@ -125,8 +125,9 @@ class PublicRecipeVC: RecipeVC, WDStarRatingDelegate {
         
         recipeDesc.text = recipe.desc
         recipeDesc.textAlignment = .Left
-        print(myRecipe)
-        recipeAuthor.text = "by \( myRecipe ? String("You") : recipe.author)"
+        UserMgr.getUserByKey(recipe.authorId) { (user) in
+            recipeAuthor.text = "by \( self.myRecipe ? String("You") : user.username)"
+        }
         recipeAuthor.textAlignment = .Left
         
         let children = [recipeName, recipeDesc, recipeAuthor]

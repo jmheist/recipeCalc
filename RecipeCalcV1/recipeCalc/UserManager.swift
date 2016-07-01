@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FBSDKCoreKit
 
 struct User {
     
@@ -77,7 +78,7 @@ class UserManager: NSObject {
     }
     
     func signedIn(user: FIRUser?, provider: Bool=false, sender: UIViewController) {
-        MeasurementHelper.sendLoginEvent()
+        analyticsMgr.sendLoginEvent()
         AppState.sharedInstance.uid = user?.uid
         if provider {
             for profile in user!.providerData {
@@ -107,6 +108,26 @@ class UserManager: NSObject {
         )
         NSNotificationCenter.defaultCenter().postNotificationName(Constants.NotificationKeys.SignedIn, object: nil, userInfo: nil)
         loadApp(sender)
+    }
+    
+    func signOut(sender: UIViewController) {
+        FBSDKAccessToken.setCurrentAccessToken(nil)
+        let firebaseAuth = FIRAuth.auth()
+        do {
+            try firebaseAuth?.signOut()
+            Queries.myRecipes.child(AppState.sharedInstance.uid!).removeAllObservers()
+            AppState.sharedInstance.signedIn = false
+            AppState.sharedInstance.uid = nil
+            AppState.sharedInstance.recipe = nil
+            analyticsMgr.sendLogoutEvent()
+            print("signed out")
+            myRecipeMgr.reset()
+            publicRecipeMgr.reset()
+            let vc = AppLandingVC()
+            sender.presentViewController(vc, animated: false, completion: nil)
+        } catch let signOutError as NSError {
+            print ("Error signing out: \(signOutError)")
+        }
     }
     
     func loadApp(sender: UIViewController) {

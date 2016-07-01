@@ -33,18 +33,18 @@
 		73991AFD1D1AFF39004F3F07 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73991AFC1D1AFF39004F3F07 /* SearchManager.swift */; };
 		73991B091D1B16EC004F3F07 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73991B081D1B16EC004F3F07 /* SearchVC.swift */; };
 		73991B0B1D1B34B5004F3F07 /* AdMobManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73991B0A1D1B34B5004F3F07 /* AdMobManager.swift */; };
-		73A376311D1B3A5400BF9FC2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73A376301D1B3A5400BF9FC2 /* GoogleService-Info.plist */; };
 		73A3F77B1D0A0BC400B8C281 /* MixVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A3F77A1D0A0BC400B8C281 /* MixVC.swift */; };
 		73A3F77D1D0A142600B8C281 /* MixTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A3F77C1D0A142600B8C281 /* MixTabBar.swift */; };
 		73A946441D2595BE00745195 /* FavListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A946431D2595BE00745195 /* FavListVC.swift */; };
 		73A946461D25B28F00745195 /* CommentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A946451D25B28F00745195 /* CommentManager.swift */; };
 		73A946481D25B8D900745195 /* CommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A946471D25B8D900745195 /* CommentsVC.swift */; };
 		73A9464A1D25BF0900745195 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A946491D25BF0900745195 /* CommentCell.swift */; };
+		73A9464C1D26DF3000745195 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A9464B1D26DF3000745195 /* AnalyticsManager.swift */; };
+		73A946501D26F7BD00745195 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73A9464F1D26F7BD00745195 /* GoogleService-Info.plist */; };
 		73B1B5B01CFFA520009AFA20 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */; };
 		73CC8D051D08CDD1003D3709 /* MixPrepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CC8D041D08CDD1003D3709 /* MixPrepVC.swift */; };
 		73CC8D071D08CEE0003D3709 /* MixSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CC8D061D08CEE0003D3709 /* MixSettingsManager.swift */; };
 		73DCEABF1CF6254B002BA81C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEABE1CF6254B002BA81C /* RegisterViewController.swift */; };
-		73DCEAC11CF629DC002BA81C /* MeasurementHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAC01CF629DC002BA81C /* MeasurementHelper.swift */; };
 		73DCEAC51CF62A11002BA81C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAC31CF62A11002BA81C /* AppState.swift */; };
 		73DCEAC61CF62A11002BA81C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAC41CF62A11002BA81C /* Constants.swift */; };
 		73DCEAC81CF62B5A002BA81C /* LocalRecipeListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAC71CF62B5A002BA81C /* LocalRecipeListVC.swift */; };
@@ -118,18 +118,18 @@
 		73991AFC1D1AFF39004F3F07 /* SearchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		73991B081D1B16EC004F3F07 /* SearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		73991B0A1D1B34B5004F3F07 /* AdMobManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobManager.swift; sourceTree = "<group>"; };
-		73A376301D1B3A5400BF9FC2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		73A3F77A1D0A0BC400B8C281 /* MixVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixVC.swift; sourceTree = "<group>"; };
 		73A3F77C1D0A142600B8C281 /* MixTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixTabBar.swift; sourceTree = "<group>"; };
 		73A946431D2595BE00745195 /* FavListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavListVC.swift; sourceTree = "<group>"; };
 		73A946451D25B28F00745195 /* CommentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentManager.swift; sourceTree = "<group>"; };
 		73A946471D25B8D900745195 /* CommentsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsVC.swift; sourceTree = "<group>"; };
 		73A946491D25BF0900745195 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		73A9464B1D26DF3000745195 /* AnalyticsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
+		73A9464F1D26F7BD00745195 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		73CC8D041D08CDD1003D3709 /* MixPrepVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixPrepVC.swift; sourceTree = "<group>"; };
 		73CC8D061D08CEE0003D3709 /* MixSettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixSettingsManager.swift; sourceTree = "<group>"; };
 		73DCEABE1CF6254B002BA81C /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		73DCEAC01CF629DC002BA81C /* MeasurementHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurementHelper.swift; sourceTree = "<group>"; };
 		73DCEAC31CF62A11002BA81C /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		73DCEAC41CF62A11002BA81C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		73DCEAC71CF62B5A002BA81C /* LocalRecipeListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalRecipeListVC.swift; sourceTree = "<group>"; };
@@ -223,9 +223,9 @@
 				73DCEAC21CF629E1002BA81C /* Helpers */,
 				7315D5F01CF4E405002B2588 /* Assets.xcassets */,
 				7315D5F21CF4E405002B2588 /* LaunchScreen.storyboard */,
+				73A9464F1D26F7BD00745195 /* GoogleService-Info.plist */,
 				7315D5F51CF4E405002B2588 /* Info.plist */,
 				7315D5ED1CF4E405002B2588 /* recipeCalc.xcdatamodeld */,
-				73A376301D1B3A5400BF9FC2 /* GoogleService-Info.plist */,
 				73991AF91D1A0634004F3F07 /* recipeCalc-Bridging-Header.h */,
 			);
 			path = recipeCalc;
@@ -339,7 +339,6 @@
 		73DCEAC21CF629E1002BA81C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				73DCEAC01CF629DC002BA81C /* MeasurementHelper.swift */,
 				73DCEAC31CF62A11002BA81C /* AppState.swift */,
 				73DCEAC41CF62A11002BA81C /* Constants.swift */,
 				73DE44CC1D11BD310019DFD2 /* WDStarRatingView.swift */,
@@ -363,6 +362,7 @@
 				73991B0A1D1B34B5004F3F07 /* AdMobManager.swift */,
 				736C52BD1D244ACA005755F9 /* FavoriteManager.swift */,
 				73A946451D25B28F00745195 /* CommentManager.swift */,
+				73A9464B1D26DF3000745195 /* AnalyticsManager.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -401,9 +401,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7315D5E21CF4E405002B2588 /* recipeCalc */ = {
+		7315D5E21CF4E405002B2588 /* Social Vape */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7315D60E1CF4E405002B2588 /* Build configuration list for PBXNativeTarget "recipeCalc" */;
+			buildConfigurationList = 7315D60E1CF4E405002B2588 /* Build configuration list for PBXNativeTarget "Social Vape" */;
 			buildPhases = (
 				82D1B092F86430FCDCD67C53 /* [CP] Check Pods Manifest.lock */,
 				7315D5DF1CF4E405002B2588 /* Sources */,
@@ -416,7 +416,7 @@
 			);
 			dependencies = (
 			);
-			name = recipeCalc;
+			name = "Social Vape";
 			productName = recipeCalc;
 			productReference = 7315D5E31CF4E405002B2588 /* recipeCalc.app */;
 			productType = "com.apple.product-type.application";
@@ -469,7 +469,7 @@
 				TargetAttributes = {
 					7315D5E21CF4E405002B2588 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 59Z4929K23;
+						DevelopmentTeam = ZJ8WATQ5YS;
 					};
 					7315D5F91CF4E405002B2588 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -494,7 +494,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7315D5E21CF4E405002B2588 /* recipeCalc */,
+				7315D5E21CF4E405002B2588 /* Social Vape */,
 				7315D5F91CF4E405002B2588 /* recipeCalcTests */,
 				7315D6041CF4E405002B2588 /* recipeCalcUITests */,
 			);
@@ -507,8 +507,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7315D5F41CF4E405002B2588 /* LaunchScreen.storyboard in Resources */,
+				73A946501D26F7BD00745195 /* GoogleService-Info.plist in Resources */,
 				7315D5F11CF4E405002B2588 /* Assets.xcassets in Resources */,
-				73A376311D1B3A5400BF9FC2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,7 +581,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73DCEAC11CF629DC002BA81C /* MeasurementHelper.swift in Sources */,
 				73CC8D071D08CEE0003D3709 /* MixSettingsManager.swift in Sources */,
 				73DCEAC51CF62A11002BA81C /* AppState.swift in Sources */,
 				73F66DB61D0B0EDD008E73E1 /* MixCell.swift in Sources */,
@@ -621,6 +620,7 @@
 				73FEB26E1D00AB70008CD089 /* AppNav.swift in Sources */,
 				734C95D41D06169600EB79AD /* MyRecipeVC.swift in Sources */,
 				731C96BB1D14859300588FAD /* LoginViewController.swift in Sources */,
+				73A9464C1D26DF3000745195 /* AnalyticsManager.swift in Sources */,
 				73991AFB1D1ADC97004F3F07 /* NotesVC.swift in Sources */,
 				73DCEADF1CF68FFF002BA81C /* Buttons.swift in Sources */,
 				73425DE51D032F9100A69596 /* Firebase.swift in Sources */,
@@ -656,12 +656,12 @@
 /* Begin PBXTargetDependency section */
 		7315D5FC1CF4E405002B2588 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7315D5E21CF4E405002B2588 /* recipeCalc */;
+			target = 7315D5E21CF4E405002B2588 /* Social Vape */;
 			targetProxy = 7315D5FB1CF4E405002B2588 /* PBXContainerItemProxy */;
 		};
 		7315D6071CF4E405002B2588 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7315D5E21CF4E405002B2588 /* recipeCalc */;
+			target = 7315D5E21CF4E405002B2588 /* Social Vape */;
 			targetProxy = 7315D6061CF4E405002B2588 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -773,7 +773,7 @@
 				INFOPLIST_FILE = recipeCalc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vapeandprosper.recipeCalc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vapeandprosper.socialVape;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -789,7 +789,7 @@
 				INFOPLIST_FILE = recipeCalc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vapeandprosper.recipeCalc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vapeandprosper.socialVape;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -853,7 +853,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7315D60E1CF4E405002B2588 /* Build configuration list for PBXNativeTarget "recipeCalc" */ = {
+		7315D60E1CF4E405002B2588 /* Build configuration list for PBXNativeTarget "Social Vape" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7315D60F1CF4E405002B2588 /* Debug */,

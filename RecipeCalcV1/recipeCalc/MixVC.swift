@@ -84,6 +84,7 @@ class MixVC: UIViewController, GADBannerViewDelegate {
     }
     
     func done() {
+        analyticsMgr.sendRecipeMixed()
         navigationController?.popToRootViewControllerAnimated(true)
     }
     

@@ -103,6 +103,11 @@ class T3: T1 {
 }
 
 class TView: TextView {
+    
+    var errorCheck: Bool = false
+    var minLength: Int = 1
+    var maxLength: Int = 0
+    
     internal override func prepareView() {
         super.prepareView()
         contentScaleFactor = MaterialDevice.scale

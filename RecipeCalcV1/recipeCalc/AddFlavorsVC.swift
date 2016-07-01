@@ -193,6 +193,8 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         clearForm() // and flavors
         AppState.sharedInstance.recipe = nil
         
+        analyticsMgr.sendRecipeCreated()
+        
         view.endEditing(true)
         self.view.resignFirstResponder()
         

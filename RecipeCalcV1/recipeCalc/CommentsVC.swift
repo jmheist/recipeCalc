@@ -11,14 +11,18 @@ import Material
 import GoogleMobileAds
 import IQKeyboardManagerSwift
 
-class CommentsVC: UIViewController, GADBannerViewDelegate, UITextFieldDelegate {
+class CommentsVC: UIViewController, GADBannerViewDelegate, UITextFieldDelegate, TextDelegate {
     
     // VARS
     var commentsTable: UITableView!
     var comments: [Comment] = []
     var recipe: Recipe!
     
+    let errorMgr: ErrorManager = ErrorManager()
+    
     var commentField: TView!
+    var commentLabel: L2!
+    let text: Text = Text()
     
     //
     // bottom nav setup
@@ -90,22 +94,32 @@ class CommentsVC: UIViewController, GADBannerViewDelegate, UITextFieldDelegate {
     
     func prepareTextField() {
         
+        let layoutManager: NSLayoutManager = NSLayoutManager()
+        let textContainer: NSTextContainer = NSTextContainer(size: view.bounds.size)
+        layoutManager.addTextContainer(textContainer)
+        
+        text.delegate = self
+        text.textStorage.addLayoutManager(layoutManager)
+        
         let commentingView: MaterialView = MaterialView()
         view.layout(commentingView).bottom(50).height(100).left(0).right(0)
         
-        let commentLabel: L2 = L2()
+        commentLabel = L2()
         commentLabel.text = "leave a comment"
         commentLabel.textAlignment = .Center
         commentingView.layout(commentLabel).top(0).height(20).left().right()
         
-        commentField = TView()
+        commentField = TView(textContainer: textContainer)
+        commentField.errorCheck = true
+        commentField.maxLength = 120
         commentField.placeholderText = "leave a comment"
-        commentingView.layout(commentField).bottom(0).top(26).left(0).right(60)
+        commentingView.layout(commentField).bottom(0).top(26).left(0).right(70)
         
         let send: B2 = B2()
         send.setTitle("Send", forState: .Normal)
+        send.titleLabel?.font = RobotoFont.lightWithSize(12)
         send.addTarget(self, action: #selector(leaveComment), forControlEvents: .TouchUpInside)
-        commentingView.layout(send).right(4).width(50).centerVertically()
+        commentingView.layout(send).right(4).width(70).centerVertically()
         
     }
     
@@ -123,15 +137,45 @@ class CommentsVC: UIViewController, GADBannerViewDelegate, UITextFieldDelegate {
     }
     
     func leaveComment() {
-        commentMgr.addComment(recipe.key, comment: Comment(author: AppState.sharedInstance.uid!, comment: commentField.text), completion: { (comments) in
-            self.comments = comments
-            self.commentsTable.reloadData()
-        })
+        if !checkForErrors(commentField) {
+            commentMgr.addComment(recipe.key, comment: Comment(authorUid: AppState.sharedInstance.uid!, comment: commentField.text), completion: { (comments) in
+                self.comments = comments
+                analyticsMgr.sendCommentMade()
+                self.commentsTable.reloadData()
+                self.commentField.text = ""
+                self.view.endEditing(true)
+                self.view.resignFirstResponder()
+            })
+        }
+    }
+    
+    func checkForErrors(sender: TView) -> Bool {
+        errorMgr.errorCheck(textview: sender, errorLabel: commentLabel)
+        return errorMgr.hasErrors()
     }
     
     func registerMyClass() {
         commentsTable.registerClass(MaterialTableViewCell.self, forCellReuseIdentifier: "commentCell")
     }
+    
+    
+    /**
+     When changes in the textView text are made, this delegation method
+     is executed with the added text string and range.
+     */
+    func textWillProcessEdit(text: Text, textStorage: TextStorage, string: String, range: NSRange) {
+        textStorage.removeAttribute(NSFontAttributeName, range: range)
+        textStorage.addAttribute(NSFontAttributeName, value: RobotoFont.regular, range: range)
+        checkForErrors(commentField)
+    }
+    
+    /**
+     When a match is detected within the textView text, this delegation
+     method is executed with the added text string and range.
+     */
+    func textDidProcessEdit(text: Text, textStorage: TextStorage, string: String, result: NSTextCheckingResult?, flags: NSMatchingFlags, stop: UnsafeMutablePointer<ObjCBool>) {
+        textStorage.addAttribute(NSFontAttributeName, value: UIFont.boldSystemFontOfSize(16), range: result!.range)
+    }    
 }
 
 /// UITableViewDelegate methods.
@@ -142,12 +186,16 @@ extension CommentsVC: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         // Dequeue cell
         let cell: CommentCell = CommentCell(style: .Default, reuseIdentifier: "commentCell")
         
         let comment = comments[indexPath.row]
         
-        cell.author.text = comment.author
+        UserMgr.getUserByKey(comment.authorUid) { (user) in
+            cell.author.text = user.username
+        }
+        
         cell.comment.text = comment.comment
         
         return cell

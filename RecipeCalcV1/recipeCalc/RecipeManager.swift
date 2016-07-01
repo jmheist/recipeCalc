@@ -161,7 +161,7 @@ class RecipeManager: NSObject {
                 publicRecipeMgr.recipes.removeAtIndex(pubIndex)
             }
         }
-
+        analyticsMgr.sendRecipeDeleted()
         Queries.myRecipes.child(AppState.sharedInstance.uid!).child(key).removeValue()
         Queries.publicRecipes.child(key).removeValue()
         Queries.flavors.child(key).removeValue()
@@ -179,6 +179,8 @@ class RecipeManager: NSObject {
         //update on FB
         Queries.myRecipes.child(AppState.sharedInstance.uid!).child(key).child("published").setValue("true")
         Queries.publicRecipes.child(key).setValue(recipe.fb())
+        
+        analyticsMgr.sendRecipePublished()
         
         // return updated recipe
         return recipe
@@ -201,6 +203,8 @@ class RecipeManager: NSObject {
         // delete public recipe
         Queries.myRecipes.child(AppState.sharedInstance.uid!).child(key).child("published").setValue("false")
         Queries.publicRecipes.child(key).setValue(nil)
+        
+        analyticsMgr.sendRecipeUnpublished()
         
         // return udated recipe
         return recipe
