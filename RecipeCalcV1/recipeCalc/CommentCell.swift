@@ -32,7 +32,7 @@ class CommentCell: MaterialTableViewCell {
         deleteButton.hidden = true
         
         cellView.layout(author).top(0).left(0).right(14).height(16)
-        cellView.layout(comment).top(20).left(0).right(0).height(60)
+        cellView.layout(comment).top(20).left(0).right(0).bottom(0)
         cellView.layout(deleteButton).top(0).right(0).height(14).width(14)
         
     }

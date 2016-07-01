@@ -107,6 +107,7 @@ class DiscoveryViewController: TableVC {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        analyticsMgr.sendPublicRecipeViewed()
         navigationController?.pushViewController(PublicRecipeVC(recipe: publicRecipeMgr.recipes[indexPath.row]), animated: true)
     }
     

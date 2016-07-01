@@ -143,6 +143,7 @@ class PublicRecipeVC: RecipeVC, WDStarRatingDelegate {
     }
     
     override func prepareTabBar() {
+       
         
         let tabBar = MixTabBar()
         
@@ -159,9 +160,17 @@ class PublicRecipeVC: RecipeVC, WDStarRatingDelegate {
         
         let btn2: FlatButton = FlatButton()
         btn2.pulseColor = colors.medium
-        btn2.setTitle("Comments (1)", forState: .Normal)
+        btn2.setTitle("Comments", forState: .Normal)
         btn2.setTitleColor(colors.text, forState: .Normal)
         btn2.addTarget(nil, action: #selector(commentOnRecipe), forControlEvents: .TouchUpInside)
+        
+        
+        // get comment count
+        commentMgr.getCommentCountForRecipe(recipe.key) { (count) in
+            if count > 0 {
+                btn2.setTitle("Comments (\(count))", forState: .Normal)
+            }
+        }
         
         tabBar.buttons = [btn2, btn1]
         

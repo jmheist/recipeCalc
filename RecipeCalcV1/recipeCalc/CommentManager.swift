@@ -40,6 +40,16 @@ class CommentManager: NSObject {
         }
     }
     
+    func getCommentCountForRecipe(recipeId: String, completion:(Int)->()) {
+        var counter = 0
+        Queries.comments.child(recipeId).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            for _ in snapshot.children {
+               counter += 1
+            }
+            completion(counter)
+        })
+    }
+    
     func getComments(recipeId: String, completion:([Comment])->()) {
         var comments: [Comment] = []
         Queries.comments.child(recipeId).observeSingleEventOfType(.Value, withBlock: { (snapshot) in

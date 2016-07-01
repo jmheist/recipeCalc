@@ -11,7 +11,7 @@ import Material
 import GoogleMobileAds
 import IQKeyboardManagerSwift
 
-class CommentsVC: UIViewController, GADBannerViewDelegate, UITextFieldDelegate, TextDelegate {
+class CommentsVC: UIViewController, GADBannerViewDelegate, UITextFieldDelegate, TextDelegate, TextViewDelegate {
     
     // VARS
     var commentsTable: UITableView!
@@ -23,6 +23,7 @@ class CommentsVC: UIViewController, GADBannerViewDelegate, UITextFieldDelegate, 
     var commentField: TView!
     var commentLabel: L2!
     let text: Text = Text()
+    var didSendComment: Bool = false
     
     //
     // bottom nav setup
@@ -84,9 +85,10 @@ class CommentsVC: UIViewController, GADBannerViewDelegate, UITextFieldDelegate, 
     func prepareTableView() {
         
         commentsTable = UITableView()
+        commentsTable.rowHeight = UITableViewAutomaticDimension
+        commentsTable.estimatedRowHeight = 80
         registerMyClass()
         commentsTable.dataSource = self
-        commentsTable.delegate = self
         
         view.layout(commentsTable).top(0).left(0).right(0).bottom(160)
         
@@ -139,14 +141,19 @@ class CommentsVC: UIViewController, GADBannerViewDelegate, UITextFieldDelegate, 
     func leaveComment() {
         if !checkForErrors(commentField) {
             commentMgr.addComment(recipe.key, comment: Comment(authorUid: AppState.sharedInstance.uid!, comment: commentField.text), completion: { (comments) in
-                self.comments = comments
-                analyticsMgr.sendCommentMade()
-                self.commentsTable.reloadData()
+                self.didSendComment = true
                 self.commentField.text = ""
                 self.view.endEditing(true)
                 self.view.resignFirstResponder()
+                self.comments = comments
+                analyticsMgr.sendCommentMade()
+                self.commentsTable.reloadData()
             })
         }
+    }
+    
+    func textViewDidEndEditing(textView: UITextView) {
+        self.commentLabel.text = "leave a comment"
     }
     
     func checkForErrors(sender: TView) -> Bool {
@@ -164,9 +171,13 @@ class CommentsVC: UIViewController, GADBannerViewDelegate, UITextFieldDelegate, 
      is executed with the added text string and range.
      */
     func textWillProcessEdit(text: Text, textStorage: TextStorage, string: String, range: NSRange) {
-        textStorage.removeAttribute(NSFontAttributeName, range: range)
-        textStorage.addAttribute(NSFontAttributeName, value: RobotoFont.regular, range: range)
-        checkForErrors(commentField)
+        if !didSendComment {
+            textStorage.removeAttribute(NSFontAttributeName, range: range)
+            textStorage.addAttribute(NSFontAttributeName, value: RobotoFont.regular, range: range)
+            checkForErrors(commentField)
+        } else {
+            didSendComment = false
+        }
     }
     
     /**
@@ -200,13 +211,4 @@ extension CommentsVC: UITableViewDataSource {
         
         return cell
     }
-}
-
-/// UITableViewDelegate methods.
-extension CommentsVC: UITableViewDelegate {
-    /// Sets the tableView cell height.
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 96
-    }
-    
 }

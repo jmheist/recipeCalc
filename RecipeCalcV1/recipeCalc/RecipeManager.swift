@@ -96,6 +96,10 @@ class RecipeManager: NSObject {
             self.recipes.sortInPlace {(recipe1:Recipe, recipe2:Recipe) -> Bool in
                 recipe1.stars > recipe2.stars
             }
+        case "favs":
+            self.recipes.sortInPlace {(recipe1:Recipe, recipe2:Recipe) -> Bool in
+                recipe1.favCount > recipe2.favCount
+            }
         default:
             break
         }

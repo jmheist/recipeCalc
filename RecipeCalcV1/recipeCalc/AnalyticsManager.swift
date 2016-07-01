@@ -45,4 +45,8 @@ class AnalyticsManager: NSObject {
         FIRAnalytics.logEventWithName("recipe_unpublished", parameters: nil)
     }
     
+    func sendPublicRecipeViewed() {
+        FIRAnalytics.logEventWithName("public_recipe_viewed", parameters: nil)
+    }
+    
 }
