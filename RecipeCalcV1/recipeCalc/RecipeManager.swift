@@ -114,7 +114,6 @@ class RecipeManager: NSObject {
             return key
         } else {
             print("recipe has a key already, should update it with new data")
-            print(recipe)
             Queries.myRecipes.child(AppState.sharedInstance.uid!).child(recipe.key).setValue(recipe.fb())
             
             if recipe.published == "true" {

@@ -100,7 +100,6 @@ class MixVC: UIViewController, GADBannerViewDelegate {
             let pct = snapshot.value!["pct"] as! String
             let flav = Flavor(name: name, base: base, pct: pct, key: key)
             self.ingredientMgr.addFlavor(flav)
-            print("flavor added")
             self.mixTable.reloadData()
         })
     }

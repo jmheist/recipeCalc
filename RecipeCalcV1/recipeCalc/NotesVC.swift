@@ -80,13 +80,11 @@ class NotesVC: UIViewController {
     }
     
     func keyboardWasShown(aNotification: NSNotification) {
-        print("keyboard shown")
         hideStatusBar(-20)
     }
     // Called when the UIKeyboardWillHideNotification is sent
     
     func keyboardWillBeHidden(aNotification: NSNotification) {
-        print("keyboard hidden")
         showStatusBar()
     }
     

@@ -147,7 +147,6 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate  {
     }
     
     func cancelRecipe() {
-        print("canceling edit recipe")
         clearForm()
     }
     
@@ -208,13 +207,11 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate  {
     }
     
     func keyboardWasShown(aNotification: NSNotification) {
-        print("keyboard shown")
         hideStatusBar(-20)
     }
     // Called when the UIKeyboardWillHideNotification is sent
     
     func keyboardWillBeHidden(aNotification: NSNotification) {
-        print("keyboard hidden")
         showStatusBar()
     }
     

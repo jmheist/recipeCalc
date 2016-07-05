@@ -30,7 +30,6 @@ let ratingMgr: RatingManager = RatingManager()
 class RatingManager: NSObject {
     
     func rate(rating: Rating) {
-        print("Added rating: \(rating.stars)")
         Queries.ratings.child(rating.recKey).child(rating.user).setValue(rating.stars)
         
         // Get the ratings for this recipe
@@ -45,7 +44,6 @@ class RatingManager: NSObject {
                 ratings.append(snap.value as! CGFloat)
                 starTotal += snap.value as! Double
             }
-            print("Star Count: \(starCount)")
             let stars = String(CGFloat(starTotal / Double(ratings.count))) == "nan" ? CGFloat(0) : CGFloat(starTotal / Double(ratings.count))
             print("Updateing Stars on recipes with: \(stars)")
             Queries.myRecipes.child(rating.recAuthUid).child(rating.recKey).child("stars").setValue(stars)

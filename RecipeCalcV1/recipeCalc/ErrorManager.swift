@@ -81,10 +81,7 @@ class ErrorManager: NSObject {
                 
                 if errorLabel != nil && origLabelText.characters.count == 0 {
                     origLabelText = (errorLabel?.text!)!
-                    print(origLabelText)
                 }
-                
-                print(textview?.text.characters.count)
                 
                 if textview?.maxLength > 0 && textview!.text.characters.count > textview?.maxLength {
                     error = true

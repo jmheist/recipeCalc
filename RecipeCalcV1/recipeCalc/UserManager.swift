@@ -44,7 +44,6 @@ class UserManager: NSObject {
     
     func getUserByUsername(username: String, completionHandler:(User)->()) {
         Queries.users.observeSingleEventOfType(.Value, withBlock: {(snapshot) in
-            print("querying by username")
             for child in snapshot.children {
                 let snap = child as! FIRDataSnapshot
                 let name = snap.value!["username"] as! String
@@ -61,11 +60,9 @@ class UserManager: NSObject {
     
     func getUserByEmail(email: String, completionHandler:(User)->()) {
         Queries.users.observeSingleEventOfType(.Value, withBlock: {(snapshot) in
-            print("querying by email")
             for child in snapshot.children {
                 let snap = child as! FIRDataSnapshot
                 let emailval = snap.value!["email"] as! String
-                print(emailval)
                 if emailval.lowercaseString == email.lowercaseString {
                     let user = User(
                         username: snap.value!["username"] as! String,

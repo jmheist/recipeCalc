@@ -100,13 +100,10 @@ class SearchManager: NSObject {
             }
             
             for child in snapshot.children {
-                print(child)
                 let child = child as! FIRDataSnapshot
                 for flavor in child.children {
-                    print(flavor)
                     let flavor = flavorMgr.receiveFromFirebase(flavor as! FIRDataSnapshot)
                     if flavor.name.lowercaseString.containsString(term.lowercaseString) {
-                        print("found matching flavor")
                         Queries.publicRecipes.child(child.key).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
                             self.addRes(publicRecipeMgr.receiveFromFirebase(snapshot))
                         })
