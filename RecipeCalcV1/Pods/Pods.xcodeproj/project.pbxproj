@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		007AA5E881C751EA4F687E7454F5BABF /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D06B268A776C9394D25199B884A501 /* PullToRefreshView.swift */; };
 		014AC8F8C6DB4D7D401B892F29E72B9A /* MaterialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7414064CC6A3EB2E0E766661AB87D4 /* MaterialCollectionViewCell.swift */; };
 		01B8630347578E18519265D6EEC4CE7E /* Material-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BF61031FCA8A10554BFEE68C96942EE9 /* Material-dummy.m */; };
 		0264E6DA5DAC8713C174F983B218D10D /* IQKeyboardManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3628110F320CDDDA73AC09B7A42EFE6 /* IQKeyboardManagerConstants.swift */; };
@@ -43,7 +44,6 @@
 		12D6C881B84169E4C77D2D74D760A7D8 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2E19C02FF53F541120F51DC1D0E37D /* BarView.swift */; };
 		132458EB60BAA5BC75398E85E9074E8C /* BFAppLinkResolving.h in Headers */ = {isa = PBXBuildFile; fileRef = A5A839118DD7D7CE41E9694FB624985E /* BFAppLinkResolving.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		139250EF8D4E404AD5019BA8966C0ED0 /* IQKeyboardManagerSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A4FB6AE1EC1E612BC532D2550A241501 /* IQKeyboardManagerSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		140CFE87693D4E66A0BB02EA4CD9D5E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7966EB938F3BE22BC7E22F845A48FEB7 /* Foundation.framework */; };
 		1434A073055312B7CE4FB95A1605C0A5 /* FBSDKTimeSpentData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA997F9B69A979BA782168195FCCA7B /* FBSDKTimeSpentData.m */; };
 		143A5E93285DA8E11755E9309805E3E2 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438CC654FB005944E42D7975D7CB9351 /* MenuController.swift */; };
 		1466EF30D00D1177D0DE725B8D61C061 /* FBSDKURLOpening.h in Headers */ = {isa = PBXBuildFile; fileRef = 7116D97C2F6702A5F119A904862A6C61 /* FBSDKURLOpening.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -55,7 +55,6 @@
 		18C410CF468AB9692992CFF61B7FDAF7 /* HMWDStarRatingView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A9119C50F8CC0A7C97B12BF354ABD4CD /* HMWDStarRatingView-dummy.m */; };
 		18CE9D61375040945DED78819CF3B09E /* BFCancellationTokenSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBABBA0204899C14A1B4EBCA3658DFCA /* BFCancellationTokenSource.m */; };
 		1A41AA1660DA17FD9EEE7CC544D1C0A4 /* _FBSDKTemporaryErrorRecoveryAttempter.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFA4C150A5C06E744565738B7E123EB /* _FBSDKTemporaryErrorRecoveryAttempter.m */; };
-		1B0DFBD51F3FEF61D56C573A190DB27B /* Refresher-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EA3B09271FE41DFF372F1F56E63FA28 /* Refresher-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1C46605C95626F58AE9A2015041C7B80 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADA538C0F7AAAA0ACC9A252AFE526C8 /* Grid.swift */; };
 		1CF8B8AD6CAA603A95B2C395AB4057B6 /* FBSDKIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE9ABEBFE8539EF4A9F1DF88D2F589D /* FBSDKIcon.m */; };
 		1D381BC1564E1E3BCCA8B4EBDCD18ABC /* MaterialPulseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B537412BBC3682A1FAE9E62F7EAE3F /* MaterialPulseView.swift */; };
@@ -87,6 +86,7 @@
 		319374205DEA0F4D1C7D83A73D689FF4 /* BottomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E588C83B0B92ED74B6A0B69137501181 /* BottomTabBar.swift */; };
 		3249F988C94C1B64192C42A11902D850 /* FBSDKLoginError.h in Headers */ = {isa = PBXBuildFile; fileRef = 839DC9EB9F3ABA27DC9B11527981A5E6 /* FBSDKLoginError.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		334A9EB0A89E519A4CD425EF39DCDA2F /* FBSDKLoginManager+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A22E3E01427437F4734E71FEDBB48F4 /* FBSDKLoginManager+Internal.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		33FF041E1824CB15C0B643950BE1B142 /* Refresher-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EA3B09271FE41DFF372F1F56E63FA28 /* Refresher-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		349308F0D458195CBF3C7D9078D59547 /* FBSDKDialogConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 04606AB01AED1D40E2135DFAF61B9975 /* FBSDKDialogConfiguration.m */; };
 		35DFEE88348C9B9B4151D8C7D6F10218 /* MaterialPulseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D67376FB5A63238E06668826CDF3AF /* MaterialPulseAnimation.swift */; };
 		3606A4DF8BB01301D9C86021F19BD2A5 /* BFAppLinkReturnToRefererView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC19B22D297E5967DA116FA614CCA66 /* BFAppLinkReturnToRefererView.m */; };
@@ -98,24 +98,27 @@
 		39697B9C546252368D85C843854EC754 /* MaterialBasicAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D741B991E8596CA25343F7CE1D68BB3 /* MaterialBasicAnimation.swift */; };
 		3A31EE2CDC26FC7889C0059514E91C3D /* FBSDKButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AA46C5BF38ADACA01142784D6B91D3 /* FBSDKButton.m */; };
 		3A31F18332839F98B3638A4EE49F3E35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7966EB938F3BE22BC7E22F845A48FEB7 /* Foundation.framework */; };
+		3A93CE9E92C789E3397A08117A0042BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7966EB938F3BE22BC7E22F845A48FEB7 /* Foundation.framework */; };
 		3B082E6ACCC2D096E28EE29CE82F89F6 /* IQUIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4960093590B41F987623B361D78C746 /* IQUIViewController+Additions.swift */; };
 		3B6D1D9F2B796BD9F852C60E9FB152FA /* ToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE21EBBFB028C854C158793F2D3F7B2 /* ToolbarController.swift */; };
+		3CB808BFE5D51500FADBFFAC36DCE65B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7966EB938F3BE22BC7E22F845A48FEB7 /* Foundation.framework */; };
 		3D75C1A03F08AB28F30D41A9E3E5389E /* FBSDKAccessTokenCacheV4.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A12C436A16D062C902746EE1FC1DBD /* FBSDKAccessTokenCacheV4.m */; };
 		3DB7D1D261D974F55FDB4DD7AAC42861 /* FBSDKErrorRecoveryAttempter.m in Sources */ = {isa = PBXBuildFile; fileRef = A014263160D4546C2A3D3B22D774AE9C /* FBSDKErrorRecoveryAttempter.m */; };
 		4091FBB9624025711B56808DA069BB99 /* FBSDKAccessTokenCacheV4.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C765CBB3FB65D51F26ACC90C129D2C7 /* FBSDKAccessTokenCacheV4.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		4151A1A3483D663770E5AC8E08E89474 /* FBSDKGraphRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 05A9F762CB5CB3025D849AA5035B9E08 /* FBSDKGraphRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		440C60AB9790CCB7298DD87A6DDA872B /* MaterialGravity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E3A02DB40A7C230FCF3CF6F5572ED6 /* MaterialGravity.swift */; };
 		44340AAACA7D3EA8B16B9C03BAC72020 /* MaterialDataSourceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260E02D9F00786FA2C1B80801B68187 /* MaterialDataSourceItem.swift */; };
+		443CE4DD1BBDCAE319EE6A3612F9D85B /* Pods-Social Vape-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B50B3784EEE0AFA2BAC6A80AEF3EDD4A /* Pods-Social Vape-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		44FB1E5AD3AA9CAE0C82E193C620F20B /* Material+UIImage+Blank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6510587931FDF759ED109010EA1EE2E1 /* Material+UIImage+Blank.swift */; };
 		4584E6AB0FD4AA2A226A3A658E652E98 /* Material+UIImage+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB43737C61027E8558B0C4B8C88E3D0E /* Material+UIImage+Color.swift */; };
 		4661599DD29BA022DEBD12A3D8B1CD85 /* MaterialIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D598D316FB1FE19C52C6BCB8912FAF /* MaterialIcon.swift */; };
 		46E961BEA7247217652A5F012F82FECC /* FBSDKTooltipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 297DE218BCCB794E1D00D720044F33F1 /* FBSDKTooltipView.m */; };
+		473F78D3BB530F2F9FB877EC42315A76 /* Refresher-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D94F4DC6FA7CBA34D6BC1C5D061180 /* Refresher-dummy.m */; };
 		4842CF7A08B39729833F408902F1ADF0 /* BFCancellationTokenSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CEC69085E69354E5620033E91764D3E /* BFCancellationTokenSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		484BA6D52FA1AAB3CE29A0A41F3F6EAB /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 475E3A4E5A9ECF72979260BEA286133D /* Bolts.framework */; };
 		48D316B28924DA4F52DD8CD9FE4211A8 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76EA5830F14AE88C6D66DAE8DD8D6C0 /* NavigationBar.swift */; };
 		48D8F32EC0B32EEE9FA0B8F60E447887 /* FBSDKPaymentObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 130D52A17B42CD496570D94355830F59 /* FBSDKPaymentObserver.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		49239C6CF815B92F2DF5B5D79FB9B5AF /* FBSDKTooltipView.h in Headers */ = {isa = PBXBuildFile; fileRef = 93137D54E513C1FECCFE1CCFDA208B80 /* FBSDKTooltipView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		49C6F917E305F3EEBD5CF178D3DCC975 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178777A0AE12BBCBF5EAE9A878C812E2 /* Animator.swift */; };
 		4B42AB3B0147E10869BABB83CC9D1770 /* FBSDKIcon.h in Headers */ = {isa = PBXBuildFile; fileRef = 086804F4A92363A48DD51BE297A7A3B9 /* FBSDKIcon.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		4B4B2B87CA851CEDEDF6AC671EC8D862 /* FBSDKKeychainStore.h in Headers */ = {isa = PBXBuildFile; fileRef = C30106CE324881E11C1943759222A696 /* FBSDKKeychainStore.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		4C15BC225D3A0953AB0A18E72D4BD77A /* MaterialSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CBF4C32E93D6EFB057614CFF2AC285 /* MaterialSwitch.swift */; };
@@ -127,14 +130,13 @@
 		4ECD20B3FB85C1CC4873DE1463254036 /* BFURL_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = C106F6093F82F9C28369D028B080BCFD /* BFURL_Internal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F3AF2A36297BA61978025EE89C7FE97 /* FBSDKAppEventsUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = EC05AEFAEB639E05096FF90BB690E76F /* FBSDKAppEventsUtility.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		518C27917941491F2434FDE54E13684E /* FBSDKWebDialogView.h in Headers */ = {isa = PBXBuildFile; fileRef = 978DB0204CC767D37E6B15DA239DB26E /* FBSDKWebDialogView.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		52665634C89C4105EA8ADBF5CF962EA6 /* io.cosmicmind.material.fonts.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E900DCFA085AB38755C8A5E50D191668 /* io.cosmicmind.material.fonts.bundle */; };
+		52665634C89C4105EA8ADBF5CF962EA6 /* io.cosmicmind.material.fonts.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F3E348E1A7CDD7A9BCFCC184B2ED206B /* io.cosmicmind.material.fonts.bundle */; };
 		537E710078694948A4693E42674ED1B9 /* FBSDKAccessToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D20153FA0C732931EC78817DE6DEA1C /* FBSDKAccessToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		538E4565A1286D23297E4D4AB4A5C9A9 /* BFCancellationToken.h in Headers */ = {isa = PBXBuildFile; fileRef = EF40E00773A6F4EF903E1F6F98A8CDA3 /* BFCancellationToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55844A207DAD926A4DAFC046046450B5 /* FBSDKServerConfigurationManager+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = AC795F13074B95F7876E575DCB7BA51F /* FBSDKServerConfigurationManager+Internal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		55D520F841A6C4E80AF017ABA09EBB07 /* MaterialCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D0B0DB6455D41B8C5EEEA4D473680C /* MaterialCollectionViewDataSource.swift */; };
 		55ECA0312F535997CA9126E808CA2B7E /* BFExecutor.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FFE79AC064A9E3FFDA79264795CDE8C /* BFExecutor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5611FBD348B8C8A4FFF9875FF2F5BDA6 /* FBSDKGraphRequestMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2299F20BA8A5648D2C31CBE9FBD0AB /* FBSDKGraphRequestMetadata.m */; };
-		57067F02AE42EBC63057AC50929DB72E /* Pods-recipeCalc-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 986910E1AA3B6372D7F76CC0BF8B5FB1 /* Pods-recipeCalc-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		57FA7FEEEF914BE0BF48A58ED1880B22 /* FBSDKAccessTokenCacheV3_21.m in Sources */ = {isa = PBXBuildFile; fileRef = 698DAF499F16BF7CB162A7F734DB28BB /* FBSDKAccessTokenCacheV3_21.m */; };
 		59837E92C1E6B0650A77FC8664DF9DA9 /* FBSDKWebDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = B133569549B58048D288869875D9AD4A /* FBSDKWebDialog.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		59B4A11C6CEB352D03892AF9828AB52B /* FBSDKBridgeAPIResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7F8DDDB1DF46FAB6ACF58ED4E0ED3 /* FBSDKBridgeAPIResponse.m */; };
@@ -146,6 +148,7 @@
 		60A2123AE07346F415CA44359F873F10 /* FBSDKAppEventsUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5FE411B3D5F7218C120B515A047E8 /* FBSDKAppEventsUtility.m */; };
 		6172440464122CCF0B60306E9A1F0E25 /* MaterialShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CC0EE97007C30B52BCD46707B0FBBE /* MaterialShape.swift */; };
 		6200682BC2425BD28680140B8EF3851E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7966EB938F3BE22BC7E22F845A48FEB7 /* Foundation.framework */; };
+		624D5971D6D6E5D3F124CDEB44D38FA5 /* Pods-Social Vape-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4360C52B8FA0C4078F6A4B5B86EBF5 /* Pods-Social Vape-dummy.m */; };
 		6312E1B8FE4FC1059BA2B23537E7B3D0 /* BFAppLink.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A0697D96E9321018AC5225EAE1FEFB /* BFAppLink.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6607F176EF0C2BDF9BCC417DD295D59D /* FBSDKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5604C628CA1ADB4F96036FE2EDF3C1 /* FBSDKBase64.m */; };
 		66667662C7BFC1C60A9196F7E883D59D /* Material+UIImage+FilterBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D0363CC4993EDF5EAF344C2FAC806A /* Material+UIImage+FilterBlur.swift */; };
@@ -213,7 +216,6 @@
 		9AE3BB10BC5F5D2AE74A19D30917617A /* FBSDKDialogConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = E7649C806F9FA9B46122A91AFFDE56F6 /* FBSDKDialogConfiguration.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		9AEF21BC71A0C2AF841513A013F197EC /* FBSDKApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 471B215FB4F2A3EDD9FEBAA10E0B7764 /* FBSDKApplicationDelegate.m */; };
 		9C54F07A5D6128AEA08BE4131CCCF746 /* FBSDKPaymentObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8374D39FD68E88CCC8B3E0D4D78DD5 /* FBSDKPaymentObserver.m */; };
-		9DE98A7D9FEE6521969A05A9FF7A7233 /* PullToRefreshExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B47C5EAAC087C7233828313CCD3E12 /* PullToRefreshExtension.swift */; };
 		9E95E63BED3B221DE22C0DF4093334FF /* NavigationDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CBD3B92653C67A3B411F7097344B51 /* NavigationDrawerController.swift */; };
 		9ED4B168116CB499803EC612E1DB1396 /* FBSDKGraphRequestConnection+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = A3814623282E0C3B64098331DEB2DE9D /* FBSDKGraphRequestConnection+Internal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		9F20AAF8B2187D38FF235C7F1AD1291C /* Material+UIImage+Crop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E144519ABAD1CBDA99E5CB1AB7D654E /* Material+UIImage+Crop.swift */; };
@@ -227,6 +229,7 @@
 		A4A4B6DCAD90B231B771EB8AAA9401BC /* Bolts-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D62A081025536A5A4C55406E579B5CF3 /* Bolts-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A59E0D04139EA956AF2F0E32B469E1E3 /* Bolts.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F5C5A55F9794B3ED081AC92A1DB6C2C /* Bolts.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A69128071A53DBC4882CC8DC76782334 /* FBSDKLoginTooltipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72170568DF1BCEDEDFDF685B2EDE5AE5 /* FBSDKLoginTooltipView.m */; };
+		A74A0FB950FA1BE3ED17C4EE7C7190C8 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178777A0AE12BBCBF5EAE9A878C812E2 /* Animator.swift */; };
 		A7E04563503B066374A95EDAFD8104DA /* FBSDKURLConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = E3D3D5A380712449A5F8730FE0577178 /* FBSDKURLConnection.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		AA363E22E4DDB87A037ED04A117ABC51 /* BFAppLinkTarget.h in Headers */ = {isa = PBXBuildFile; fileRef = 8329A7D79FF71FE65D47694527BC1F7A /* BFAppLinkTarget.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB221C6A426CC9274B00DEB45A2A7693 /* FBSDKBridgeAPIProtocolWebV2.h in Headers */ = {isa = PBXBuildFile; fileRef = 17C979D4B656C101405A31B8488C41D8 /* FBSDKBridgeAPIProtocolWebV2.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -257,12 +260,12 @@
 		BE0D3FDD3DC37A41E87E3ED4C1A98167 /* MaterialKeyframeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B8A4DFDCCF0609FC6E1778F7C12BB7 /* MaterialKeyframeAnimation.swift */; };
 		BF9787C62584C694E9263666FD94139F /* FBSDKMonotonicTime.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C9F8D579D335FBFBA8076F69A9E1A53 /* FBSDKMonotonicTime.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C0C062FB06B5A469FCABC55C619ABB2F /* FBSDKInternalUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEF47FB8BA9DFDFA0BBD6DB00B0C9C4 /* FBSDKInternalUtility.m */; };
-		C0DCECAD5E0D24F50A318557D89AAB31 /* io.cosmicmind.material.icons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5415980B46C6C6FE0E8B8BDB2B0FF435 /* io.cosmicmind.material.icons.bundle */; };
+		C0DCECAD5E0D24F50A318557D89AAB31 /* io.cosmicmind.material.icons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1450C65ED839733C163D937D3ED2DEBC /* io.cosmicmind.material.icons.bundle */; };
 		C1EB6BFF6A51DD9192796710C8214DB9 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE1898404E91824D4E61FA5DF89A265 /* Text.swift */; };
 		C1EEA41ECBE43FAF3E230A70F481C0D9 /* FBSDKTestUsersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 956A4636F93881D35E17B9E7A702796C /* FBSDKTestUsersManager.m */; };
 		C2905200A0CEA22AF403EE0B5E244CEF /* IQTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9249F6B0E2D516D58813B799572BF39C /* IQTextView.swift */; };
 		C382AD64490D77D61B1A4318A031DC7C /* FBSDKTimeSpentData.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FC38E53F5C632F0AB3FD8773B9107DB /* FBSDKTimeSpentData.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		C3B8F8DB8A3095E0684F0A7C3CB75DF4 /* Refresher-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D94F4DC6FA7CBA34D6BC1C5D061180 /* Refresher-dummy.m */; };
+		C3A71AB8399476C1A2C381461F807434 /* PullToRefreshExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B47C5EAAC087C7233828313CCD3E12 /* PullToRefreshExtension.swift */; };
 		C52665EDC9F106BD8B2418D97AAEC357 /* FBSDKGraphRequestPiggybackManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F7D314B3AB8E553516C1481B6951E52A /* FBSDKGraphRequestPiggybackManager.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C583FF6D5F3A73498E46D8D80B21E3DB /* FBSDKLoginKit+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 32770ED675FEF7111B85BB9D30026FE6 /* FBSDKLoginKit+Internal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C66E57E618FD5536917D0052777CC8EB /* IQTitleBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4550F6427ECC942B909A7D1D8EB012EE /* IQTitleBarButtonItem.swift */; };
@@ -283,13 +286,11 @@
 		D0379DD1F84E1FA4302325370FC583C9 /* FBSDKCoreKit+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 39A92F799A5617D5088FBFCB6CA3E4B0 /* FBSDKCoreKit+Internal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D133F0D8E202DE65A41D8F42ECEEE728 /* Material+UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A76FF3497C2AD67FAB1AF3292CB86 /* Material+UIImage+Resize.swift */; };
 		D1D0521423FC9587DACE99599F3871BF /* FBSDKErrorConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AADB20441CE9A02F6BB9BCC45BF2E5E /* FBSDKErrorConfiguration.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		D29553924DCCDC895E04CDE2CF2D26C1 /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D06B268A776C9394D25199B884A501 /* PullToRefreshView.swift */; };
 		D2E7CA26EBA86717C6F9EF5F4988903C /* FBSDKWebDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 666EBD41E0B2EF8923293C944D20D9E5 /* FBSDKWebDialogView.m */; };
 		D3142A3ABD647608F255030B5756C3A5 /* ErrorTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB74CFB167A044F093DE0F29B7220EC /* ErrorTextField.swift */; };
 		D383F164776657D6F6BBDB7ADAC4F87F /* BFMeasurementEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B95534961E0B82ACC15F0F72A9B1C3E /* BFMeasurementEvent.m */; };
 		D441FFFC4FE2E90573DBF2477DDF8B6E /* FBSDKOrganicDeeplinkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F669739B4F043CC6C56AC71DB31DE32 /* FBSDKOrganicDeeplinkHelper.m */; };
 		D47F5FD0F654ACB03A3948DB29B7EE2E /* FBSDKErrorRecoveryConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 091BC20F57F0F44DE72A034C9C51F457 /* FBSDKErrorRecoveryConfiguration.m */; };
-		D4A604F950D204E5B7A7350FD0BFD3A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7966EB938F3BE22BC7E22F845A48FEB7 /* Foundation.framework */; };
 		D5BAF5FC42E9BCD77EFC85D72EB2BA14 /* FBSDKContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD13958003FFE006D6C502D7DD6922A /* FBSDKContainerViewController.m */; };
 		D6961FE567A047B2EE394D527EF414E0 /* FBSDKGraphRequestPiggybackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5FAABC54CBB67F9C3D61DCD5DAFE90 /* FBSDKGraphRequestPiggybackManager.m */; };
 		D6A93D87E6D9F0596FF0B0FADA862421 /* FBSDKCopying.h in Headers */ = {isa = PBXBuildFile; fileRef = 4ED9CA430B88C913C05D2A3D28521813 /* FBSDKCopying.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -342,7 +343,6 @@
 		F39E6121BE9036ACFC1475198A549720 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BFC3173B24D83E0E2E5142B8BD50F5 /* UIKit.framework */; };
 		F40F684460430D5B19D41DF3A28C5A47 /* Material-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AE317C14A5ADF965CF9C29152B626FA9 /* Material-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F4A68E052EA9A46FDDB208F387CA38F5 /* MaterialSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6710F588891E30794FCFD4FD38F6F1F2 /* MaterialSpacing.swift */; };
-		F557FEA12FAE3ECBF54CFD14FA05D335 /* Pods-recipeCalc-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EAA1DD98C717D75CC89A88CA06E5FB /* Pods-recipeCalc-dummy.m */; };
 		F5605EA4F2ED84C2E0B1601D390129AB /* BFWebViewAppLinkResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BBC2A8945DA5461970EB74E1DB2FB7 /* BFWebViewAppLinkResolver.m */; };
 		F5F9597A3167E2AE7937E6CF4BD09AB8 /* FBSDKLoginCompletion.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1F00CB77E706FDBF18B3F4A1BB22AA /* FBSDKLoginCompletion.m */; };
 		F6A8E0247263C8C76087739D43A5E0B3 /* MaterialDepth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CDAB1E7D939987CA46A6E3CF854CC2 /* MaterialDepth.swift */; };
@@ -366,19 +366,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		241F9E281AC6C43997C1DFDE487A3006 /* PBXContainerItemProxy */ = {
+		05794217A0967A1A46F784767BEA2138 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1520003FEBEC114D6C84F832AFEDB994;
-			remoteInfo = IQKeyboardManagerSwift;
+			remoteGlobalIDString = 0EB19C1377A747F81110D44E2D5FCF78;
+			remoteInfo = FBSDKCoreKit;
 		};
-		3D68477B0ACEECB89E1EAEF0E36F53CF /* PBXContainerItemProxy */ = {
+		5054CE49F4BC88E617E8D9A1CC1CCBB9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 52D82BFDD1E808D9CB257431922C1EE4;
-			remoteInfo = Bolts;
+			remoteGlobalIDString = 347F3334E442BAB5F3640B66FD97C8A1;
+			remoteInfo = HMWDStarRatingView;
+		};
+		5BDA437889BC4DACB76DBBECD903FD45 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6EDC37F3FA92533C6AC3562458AA91F1;
+			remoteInfo = FBSDKLoginKit;
 		};
 		7BDFEC0F5B0693C2D315E9D3973E276E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -387,13 +394,6 @@
 			remoteGlobalIDString = 52D82BFDD1E808D9CB257431922C1EE4;
 			remoteInfo = Bolts;
 		};
-		95807A0B660ECBECACA9D7DB4B7B3B07 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C87F949EB65E0FA31F6B2D4343AAE82E;
-			remoteInfo = Refresher;
-		};
 		96ED980665C37E888F1B382080ED93E5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
@@ -401,19 +401,26 @@
 			remoteGlobalIDString = 1B006392A6DC63E06AC81DE6F08803B1;
 			remoteInfo = "Material-io.cosmicmind.material.icons";
 		};
-		9E40673AED288F6E862A1B04B588896A /* PBXContainerItemProxy */ = {
+		B87438775DD89F1A33023BC1E7D7F3B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 04693735BCFA74B873DE04047ECC5FBA;
-			remoteInfo = Material;
+			remoteGlobalIDString = 1520003FEBEC114D6C84F832AFEDB994;
+			remoteInfo = IQKeyboardManagerSwift;
 		};
-		9F81B5546CE5E6F2E69224C28CB868F6 /* PBXContainerItemProxy */ = {
+		B89DB357E0BFACA0CD4D9D226AE58A1F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 347F3334E442BAB5F3640B66FD97C8A1;
-			remoteInfo = HMWDStarRatingView;
+			remoteGlobalIDString = 52D82BFDD1E808D9CB257431922C1EE4;
+			remoteInfo = Bolts;
+		};
+		D447FFBF271A1C6410C7E7E6BB03A5C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C59E0E4874B2DD2D0A23CDD80D8E1580;
+			remoteInfo = Refresher;
 		};
 		DFB7D8638BEFDCC4CCF33BEB67F1B89B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -421,6 +428,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 52D82BFDD1E808D9CB257431922C1EE4;
 			remoteInfo = Bolts;
+		};
+		ED4E4A5348DFA88C43976CA0515A2D27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04693735BCFA74B873DE04047ECC5FBA;
+			remoteInfo = Material;
 		};
 		ED9B8F8F8F84D09DE8A86E81383E7B0D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -435,20 +449,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 08C670F14C5E0F92D52B4FD40051294F;
 			remoteInfo = "Material-io.cosmicmind.material.fonts";
-		};
-		FBB72FA7DE19228D7A5D111EB9F4FC9A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0EB19C1377A747F81110D44E2D5FCF78;
-			remoteInfo = FBSDKCoreKit;
-		};
-		FC22BC3DA28EED3933E5B107888CA6CA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6EDC37F3FA92533C6AC3562458AA91F1;
-			remoteInfo = FBSDKLoginKit;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -480,12 +480,12 @@
 		130D52A17B42CD496570D94355830F59 /* FBSDKPaymentObserver.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKPaymentObserver.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/AppEvents/FBSDKPaymentObserver.h; sourceTree = "<group>"; };
 		1371EB4B854360E7300BFBD5CA1A47E3 /* FBSDKDynamicFrameworkLoader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKDynamicFrameworkLoader.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKDynamicFrameworkLoader.h; sourceTree = "<group>"; };
 		13DCD5D84557B1AD830B1C22B04BC53B /* FBSDKBridgeAPICrypto.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKBridgeAPICrypto.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/FBSDKBridgeAPICrypto.m; sourceTree = "<group>"; };
+		1450C65ED839733C163D937D3ED2DEBC /* io.cosmicmind.material.icons.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = io.cosmicmind.material.icons.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		153E1F375F3A51E4EF78301A33C06E99 /* IQUIView+IQKeyboardToolbar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIView+IQKeyboardToolbar.swift"; path = "IQKeyboardManagerSwift/IQToolbar/IQUIView+IQKeyboardToolbar.swift"; sourceTree = "<group>"; };
 		16555FB6CF676616CEA05F2780C6E026 /* MaterialRadius.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MaterialRadius.swift; path = Sources/iOS/MaterialRadius.swift; sourceTree = "<group>"; };
 		16ACC9B2C532FE24764A807FACB08B8A /* Material+Obj-C.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Material+Obj-C.swift"; path = "Sources/iOS/Material+Obj-C.swift"; sourceTree = "<group>"; };
 		16EECBF54BA71EF84C975809B993F256 /* BFAppLinkReturnToRefererView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BFAppLinkReturnToRefererView.h; path = Bolts/iOS/BFAppLinkReturnToRefererView.h; sourceTree = "<group>"; };
 		1718BBB7765871B90348A9E6E1F4D792 /* MaterialTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MaterialTableViewCell.swift; path = Sources/iOS/MaterialTableViewCell.swift; sourceTree = "<group>"; };
-		1726ACB7F84302F3B5FD1525CA8C589B /* HMWDStarRatingView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HMWDStarRatingView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		178777A0AE12BBCBF5EAE9A878C812E2 /* Animator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Animator.swift; path = Refresher/Animator.swift; sourceTree = "<group>"; };
 		17C979D4B656C101405A31B8488C41D8 /* FBSDKBridgeAPIProtocolWebV2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKBridgeAPIProtocolWebV2.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/ProtocolVersions/FBSDKBridgeAPIProtocolWebV2.h; sourceTree = "<group>"; };
 		18B16E4D0DC7AA050964D98C47EA444F /* Material+UIImage+Network.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Material+UIImage+Network.swift"; path = "Sources/iOS/Material+UIImage+Network.swift"; sourceTree = "<group>"; };
@@ -493,6 +493,7 @@
 		18F2BD0FC018FC647F013C7C558F551A /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Frameworks/GoogleMobileAds.framework; sourceTree = "<group>"; };
 		1A84C523D26CAD35933B5613F435A0B8 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Sources/Assets.xcassets; sourceTree = "<group>"; };
 		1AB5E348A4B2694C1A7C0F877958F309 /* IQKeyboardManagerConstantsInternal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQKeyboardManagerConstantsInternal.swift; path = IQKeyboardManagerSwift/Constants/IQKeyboardManagerConstantsInternal.swift; sourceTree = "<group>"; };
+		1AF7375A11C8F10BB77A56021CE9D3E3 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBSDKLoginKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AF9441B47EC4B06650BE9DAE50D1853 /* FBSDKLoginManagerLoginResult.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKLoginManagerLoginResult.h; path = FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginManagerLoginResult.h; sourceTree = "<group>"; };
 		1B1B57FF03147D4CD3E8765FB5EC8354 /* FBSDKButton+Subclass.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBSDKButton+Subclass.h"; path = "FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKButton+Subclass.h"; sourceTree = "<group>"; };
 		1C0C5AAC07055FDDC41CF650E052FAAE /* FBSDKUtility.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKUtility.m; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKUtility.m; sourceTree = "<group>"; };
@@ -501,7 +502,6 @@
 		1D57F94D70A6DE8E0681FACF9D398F4C /* ControlView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ControlView.swift; path = Sources/iOS/ControlView.swift; sourceTree = "<group>"; };
 		1E2299F20BA8A5648D2C31CBE9FBD0AB /* FBSDKGraphRequestMetadata.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKGraphRequestMetadata.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/Network/FBSDKGraphRequestMetadata.m; sourceTree = "<group>"; };
 		1EA997F9B69A979BA782168195FCCA7B /* FBSDKTimeSpentData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKTimeSpentData.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/AppEvents/FBSDKTimeSpentData.m; sourceTree = "<group>"; };
-		1ECF4CEC2C4E173C1B99949314F15243 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBSDKCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FF82CE3058A3D5AD0A493906CCDEDB5 /* MaterialAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MaterialAnimation.swift; path = Sources/iOS/MaterialAnimation.swift; sourceTree = "<group>"; };
 		22D27CC1C136DF1E8B60788887486B8A /* MaterialTransitionAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MaterialTransitionAnimation.swift; path = Sources/iOS/MaterialTransitionAnimation.swift; sourceTree = "<group>"; };
 		2304981FBDC8A754BADF893E246A8F96 /* HMWDStarRatingView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HMWDStarRatingView-prefix.pch"; sourceTree = "<group>"; };
@@ -512,6 +512,7 @@
 		2510D28295421842A98E5584AAB322B4 /* FBSDKLoginManagerLoginResult+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBSDKLoginManagerLoginResult+Internal.h"; path = "FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKLoginManagerLoginResult+Internal.h"; sourceTree = "<group>"; };
 		265E5DBF55389C48230BFBD34EE43049 /* Material-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Material-prefix.pch"; sourceTree = "<group>"; };
 		275FC4708B48B576B84A4396786352DB /* MaterialLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MaterialLabel.swift; path = Sources/iOS/MaterialLabel.swift; sourceTree = "<group>"; };
+		28F3A239CA9A804291068FEDA5EDB380 /* Pods-Social Vape-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Social Vape-acknowledgements.markdown"; sourceTree = "<group>"; };
 		297DE218BCCB794E1D00D720044F33F1 /* FBSDKTooltipView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKTooltipView.m; path = FBSDKLoginKit/FBSDKLoginKit/FBSDKTooltipView.m; sourceTree = "<group>"; };
 		29DADB728EA12BB55F0F373017B12CBB /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAuth.framework; path = Frameworks/frameworks/FirebaseAuth.framework; sourceTree = "<group>"; };
 		29F4CA4FAF4D93785CBFB346436BAD6F /* CaptureView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CaptureView.swift; path = Sources/iOS/CaptureView.swift; sourceTree = "<group>"; };
@@ -536,11 +537,9 @@
 		332036ABCB340A88EE1F47EAE499E826 /* FBSDKErrorRecoveryConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKErrorRecoveryConfiguration.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/ServerConfiguration/FBSDKErrorRecoveryConfiguration.h; sourceTree = "<group>"; };
 		349BAE9DE73F582F7BB01D7547053ACE /* FBSDKApplicationDelegate+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBSDKApplicationDelegate+Internal.h"; path = "FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKApplicationDelegate+Internal.h"; sourceTree = "<group>"; };
 		3539B48CF9ED8D7B32C4542832094759 /* FBSDKGraphRequestConnection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKGraphRequestConnection.m; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKGraphRequestConnection.m; sourceTree = "<group>"; };
-		366207562529293C0061C2F5747D52B7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		368E937545B6219CE61ECAE32C533D16 /* FBSDKLogo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKLogo.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKLogo.h; sourceTree = "<group>"; };
 		36E3A02DB40A7C230FCF3CF6F5572ED6 /* MaterialGravity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MaterialGravity.swift; path = Sources/iOS/MaterialGravity.swift; sourceTree = "<group>"; };
 		38BC665AFCDE7F9F131018DB35FDD89A /* MaterialColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MaterialColor.swift; path = Sources/iOS/MaterialColor.swift; sourceTree = "<group>"; };
-		398A20BFC5BBCB3FEEBAC84289549016 /* Pods-recipeCalc-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-recipeCalc-resources.sh"; sourceTree = "<group>"; };
 		39A92F799A5617D5088FBFCB6CA3E4B0 /* FBSDKCoreKit+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBSDKCoreKit+Internal.h"; path = "FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKCoreKit+Internal.h"; sourceTree = "<group>"; };
 		3AFE16587CA0512E02E7A0CE242ECC8E /* GoogleNetworkingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleNetworkingUtilities.framework; path = Frameworks/GoogleNetworkingUtilities.framework; sourceTree = "<group>"; };
 		3DD500F3BE15D698FD79F8F11EC5E144 /* Layout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Layout.swift; path = Sources/iOS/Layout.swift; sourceTree = "<group>"; };
@@ -557,7 +556,6 @@
 		451940240107E91F477410A8D0F6EF4F /* Bolts-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Bolts-dummy.m"; sourceTree = "<group>"; };
 		4550F6427ECC942B909A7D1D8EB012EE /* IQTitleBarButtonItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQTitleBarButtonItem.swift; path = IQKeyboardManagerSwift/IQToolbar/IQTitleBarButtonItem.swift; sourceTree = "<group>"; };
 		46444360E2DA335FFD62BBBCF30FFAA4 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
-		46F6ACE6B306A5DB931F80BB2A3A932D /* Pods-recipeCalc-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-recipeCalc-frameworks.sh"; sourceTree = "<group>"; };
 		471B215FB4F2A3EDD9FEBAA10E0B7764 /* FBSDKApplicationDelegate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKApplicationDelegate.m; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKApplicationDelegate.m; sourceTree = "<group>"; };
 		475E3A4E5A9ECF72979260BEA286133D /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Bolts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4828B4B2325F693A7686C15CD346BAE4 /* Bolts-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Bolts-prefix.pch"; sourceTree = "<group>"; };
@@ -574,19 +572,16 @@
 		4EB5FE411B3D5F7218C120B515A047E8 /* FBSDKAppEventsUtility.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKAppEventsUtility.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/AppEvents/FBSDKAppEventsUtility.m; sourceTree = "<group>"; };
 		4ED9CA430B88C913C05D2A3D28521813 /* FBSDKCopying.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKCopying.h; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKCopying.h; sourceTree = "<group>"; };
 		4F3A989F62D5F4D7C18EC20659F531B1 /* FBSDKAppEventsStateManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKAppEventsStateManager.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/AppEvents/FBSDKAppEventsStateManager.m; sourceTree = "<group>"; };
-		4F84E697769D2CBBEDBD9C73FDB06EDF /* Pods_recipeCalc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_recipeCalc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50173C373C36249F71E682622F70C2E1 /* CardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardView.swift; path = Sources/iOS/CardView.swift; sourceTree = "<group>"; };
 		51B3BCED2D23E04EA30B6CD7730CEACC /* IQKeyboardManagerSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "IQKeyboardManagerSwift-dummy.m"; sourceTree = "<group>"; };
 		52EA4396CC9CC9F52F15787ED1BAB4C6 /* FBSDKBoltsMeasurementEventListener.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKBoltsMeasurementEventListener.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/AppLink/FBSDKBoltsMeasurementEventListener.m; sourceTree = "<group>"; };
 		531B89E4E477515644860DFE163E09CE /* FBSDKAppEventsState.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKAppEventsState.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/AppEvents/FBSDKAppEventsState.m; sourceTree = "<group>"; };
 		540D38F6493A63957679F76F7AF8014A /* BFTask.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BFTask.h; path = Bolts/Common/BFTask.h; sourceTree = "<group>"; };
-		5415980B46C6C6FE0E8B8BDB2B0FF435 /* io.cosmicmind.material.icons.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = io.cosmicmind.material.icons.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		5481B590C9E33E90A703608751DA2558 /* FBSDKAudioResourceLoader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKAudioResourceLoader.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKAudioResourceLoader.m; sourceTree = "<group>"; };
 		548C9C556D5D3AA5A80E0838A82666F3 /* FBSDKMath.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKMath.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKMath.h; sourceTree = "<group>"; };
 		54BC433929F843540EDABB14D7437CC1 /* IQToolbar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQToolbar.swift; path = IQKeyboardManagerSwift/IQToolbar/IQToolbar.swift; sourceTree = "<group>"; };
 		54C7E248D5EBC94CBB7EB88857502A48 /* Bolts.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Bolts.m; path = Bolts/Common/Bolts.m; sourceTree = "<group>"; };
 		553BBE50664FEA57EE9A226FBEC50E46 /* IQNSArray+Sort.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQNSArray+Sort.swift"; path = "IQKeyboardManagerSwift/Categories/IQNSArray+Sort.swift"; sourceTree = "<group>"; };
-		57644400F6F9BB883DCFD2DB69682067 /* Pods-recipeCalc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-recipeCalc.release.xcconfig"; sourceTree = "<group>"; };
 		593A6EFC6F75A83DD4EBF16C1ABA821E /* FBSDKDynamicFrameworkLoader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKDynamicFrameworkLoader.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal_NoARC/FBSDKDynamicFrameworkLoader.m; sourceTree = "<group>"; };
 		59A2298AA94174A51E87F4E0987F9E53 /* MaterialCollectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MaterialCollectionView.swift; path = Sources/iOS/MaterialCollectionView.swift; sourceTree = "<group>"; };
 		59B41431C5A5B6338D26914229C6443E /* FBSDKLoginKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FBSDKLoginKit.xcconfig; sourceTree = "<group>"; };
@@ -594,6 +589,7 @@
 		5CF29F52D091C48795FA737B02B59E08 /* FBSDKLoginError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKLoginError.m; path = FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKLoginError.m; sourceTree = "<group>"; };
 		5DF35F2FE2B51DD92456053567986C71 /* FBSDKCrypto.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKCrypto.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/Cryptography/FBSDKCrypto.h; sourceTree = "<group>"; };
 		5E24213AB48AB06F765D4F5C64E6D426 /* BFTaskCompletionSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BFTaskCompletionSource.h; path = Bolts/Common/BFTaskCompletionSource.h; sourceTree = "<group>"; };
+		5EE02DC7DCF588CCC6DF277194EB79F2 /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Bolts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F5FAABC54CBB67F9C3D61DCD5DAFE90 /* FBSDKGraphRequestPiggybackManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKGraphRequestPiggybackManager.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/Network/FBSDKGraphRequestPiggybackManager.m; sourceTree = "<group>"; };
 		5F7414064CC6A3EB2E0E766661AB87D4 /* MaterialCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MaterialCollectionViewCell.swift; path = Sources/iOS/MaterialCollectionViewCell.swift; sourceTree = "<group>"; };
 		5F8D3F53210A35B989264823FDFBF748 /* HMWDStarRatingView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HMWDStarRatingView-umbrella.h"; sourceTree = "<group>"; };
@@ -602,6 +598,7 @@
 		6320024D31E2D9B74B75FFA6CB8ADA5A /* FBSDKMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKMacros.h; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKMacros.h; sourceTree = "<group>"; };
 		6384BC7B270179A1B08259BAD7F5F946 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseDatabase.framework; path = Frameworks/FirebaseDatabase.framework; sourceTree = "<group>"; };
 		63C189AADE4444D1BE3B4F908FBC2C7C /* FBSDKAppLinkUtility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKAppLinkUtility.h; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKAppLinkUtility.h; sourceTree = "<group>"; };
+		640F65AADFF3EC1162F5FE078329B08C /* Pods-Social Vape-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Social Vape-acknowledgements.plist"; sourceTree = "<group>"; };
 		647A495E8B4AA146F6781D984E68B0EA /* FBSDKBridgeAPIProtocolWebV1.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKBridgeAPIProtocolWebV1.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/ProtocolVersions/FBSDKBridgeAPIProtocolWebV1.m; sourceTree = "<group>"; };
 		6510587931FDF759ED109010EA1EE2E1 /* Material+UIImage+Blank.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Material+UIImage+Blank.swift"; path = "Sources/iOS/Material+UIImage+Blank.swift"; sourceTree = "<group>"; };
 		654081EA71CC1ACAA5EADC0D1D46EFAA /* FBSDKKeychainStoreViaBundleID.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKKeychainStoreViaBundleID.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKKeychainStoreViaBundleID.m; sourceTree = "<group>"; };
@@ -613,6 +610,7 @@
 		66D9B67FE9F5AD4B6486A8DDF91FB5FE /* BFAppLinkReturnToRefererController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BFAppLinkReturnToRefererController.h; path = Bolts/iOS/BFAppLinkReturnToRefererController.h; sourceTree = "<group>"; };
 		66FCF0A2DD3F3E477672CAB465F2C00B /* FBSDKProfile.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKProfile.m; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKProfile.m; sourceTree = "<group>"; };
 		6710F588891E30794FCFD4FD38F6F1F2 /* MaterialSpacing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MaterialSpacing.swift; path = Sources/iOS/MaterialSpacing.swift; sourceTree = "<group>"; };
+		671A1123D75EC70D2536238152AC5FFF /* Pods-Social Vape-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Social Vape-frameworks.sh"; sourceTree = "<group>"; };
 		67E431F2F4FE7FA02C7BD005AD0E0A47 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68B5706DC05AF7AD89725B5B68C8F3D9 /* FBSDKLoginUtility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKLoginUtility.h; path = FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKLoginUtility.h; sourceTree = "<group>"; };
 		698DAF499F16BF7CB162A7F734DB28BB /* FBSDKAccessTokenCacheV3_21.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKAccessTokenCacheV3_21.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKAccessTokenCacheV3_21.m; sourceTree = "<group>"; };
@@ -637,7 +635,6 @@
 		739F943859AE85250F9E068075D11ABD /* FBSDKLoginUtility.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKLoginUtility.m; path = FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKLoginUtility.m; sourceTree = "<group>"; };
 		74F2240751A6E68D4A19BB3A5688CDF5 /* FBSDKBase64.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKBase64.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/Base64/FBSDKBase64.h; sourceTree = "<group>"; };
 		76185BF59A670D60C832837267119D7C /* FBSDKSettings.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKSettings.h; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKSettings.h; sourceTree = "<group>"; };
-		77232F9E210437924517B7533B8CD446 /* Pods-recipeCalc-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-recipeCalc-acknowledgements.plist"; sourceTree = "<group>"; };
 		78D458E82B8BD569F23EFC8AF569C8E9 /* FBSDKTestUsersManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKTestUsersManager.h; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKTestUsersManager.h; sourceTree = "<group>"; };
 		7966EB938F3BE22BC7E22F845A48FEB7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		7A57B940C3FD6B2856F5E6274C844EAA /* FBSDKAppLinkResolver.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKAppLinkResolver.h; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKAppLinkResolver.h; sourceTree = "<group>"; };
@@ -661,7 +658,6 @@
 		8329A7D79FF71FE65D47694527BC1F7A /* BFAppLinkTarget.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BFAppLinkTarget.h; path = Bolts/iOS/BFAppLinkTarget.h; sourceTree = "<group>"; };
 		839DC9EB9F3ABA27DC9B11527981A5E6 /* FBSDKLoginError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKLoginError.h; path = FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKLoginError.h; sourceTree = "<group>"; };
 		83CBD3B92653C67A3B411F7097344B51 /* NavigationDrawerController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NavigationDrawerController.swift; path = Sources/iOS/NavigationDrawerController.swift; sourceTree = "<group>"; };
-		84EAA1DD98C717D75CC89A88CA06E5FB /* Pods-recipeCalc-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-recipeCalc-dummy.m"; sourceTree = "<group>"; };
 		85A6C0F121528025C773DD53732F27FE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		86B26169D202649D7ABFEE758465E32F /* IQUIScrollView+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIScrollView+Additions.swift"; path = "IQKeyboardManagerSwift/Categories/IQUIScrollView+Additions.swift"; sourceTree = "<group>"; };
 		879BAEC2E3FD2CD25BDE29FC28A368FE /* TextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextView.swift; path = Sources/iOS/TextView.swift; sourceTree = "<group>"; };
@@ -672,7 +668,6 @@
 		8AD09999A10797F0B81DDD873E80D2F8 /* FBSDKAccessTokenCaching.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKAccessTokenCaching.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKAccessTokenCaching.h; sourceTree = "<group>"; };
 		8B447D1508775CD15D0AEB11D1F35584 /* FBSDKAppEventsState.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKAppEventsState.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/AppEvents/FBSDKAppEventsState.h; sourceTree = "<group>"; };
 		8BD4CDD5E897FC648767E9A3AEA125EA /* FBSDKCoreKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FBSDKCoreKit-umbrella.h"; sourceTree = "<group>"; };
-		8D1C8DC9BD0162C5527274A71F2AF938 /* Refresher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Refresher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D741B991E8596CA25343F7CE1D68BB3 /* MaterialBasicAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MaterialBasicAnimation.swift; path = Sources/iOS/MaterialBasicAnimation.swift; sourceTree = "<group>"; };
 		8EA3413D2889E9F2DE78511B3F440A51 /* FBSDKColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKColor.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKColor.h; sourceTree = "<group>"; };
 		8EA3B09271FE41DFF372F1F56E63FA28 /* Refresher-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Refresher-umbrella.h"; sourceTree = "<group>"; };
@@ -696,10 +691,10 @@
 		95A0032251A6741A4F0DD0A5ED0422FE /* Bolts.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Bolts.modulemap; sourceTree = "<group>"; };
 		96B486E3B2A22C2F4F7449A3A2E6DC28 /* FBSDKMaleSilhouetteIcon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKMaleSilhouetteIcon.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKMaleSilhouetteIcon.m; sourceTree = "<group>"; };
 		96C3D3A94FB86A46C7E249B7D7141D5E /* FBSDKWebDialog.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKWebDialog.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/WebDialog/FBSDKWebDialog.m; sourceTree = "<group>"; };
+		96E88C0899B96CF6B5162D19BF4E8151 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBSDKCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		978DB0204CC767D37E6B15DA239DB26E /* FBSDKWebDialogView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKWebDialogView.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/WebDialog/FBSDKWebDialogView.h; sourceTree = "<group>"; };
 		981BD654734821B8B74EF31AA61058FA /* _FBSDKTemporaryErrorRecoveryAttempter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _FBSDKTemporaryErrorRecoveryAttempter.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/ErrorRecovery/_FBSDKTemporaryErrorRecoveryAttempter.h; sourceTree = "<group>"; };
 		98309784688ADAB0A70F5B5CBC457EED /* FBSDKLoginKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FBSDKLoginKit-prefix.pch"; sourceTree = "<group>"; };
-		986910E1AA3B6372D7F76CC0BF8B5FB1 /* Pods-recipeCalc-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-recipeCalc-umbrella.h"; sourceTree = "<group>"; };
 		9883165D9DC7D91945FF2652D366BE7E /* FBSDKOrganicDeeplinkHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKOrganicDeeplinkHelper.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/AppLink/FBSDKOrganicDeeplinkHelper.h; sourceTree = "<group>"; };
 		98AEC3B936F00D499F22EEC350FCE4D5 /* FBSDKGraphRequestConnection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKGraphRequestConnection.h; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKGraphRequestConnection.h; sourceTree = "<group>"; };
 		995AF4B79AF5B84B70E458773529F124 /* FBSDKLoginCompletion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKLoginCompletion.h; path = FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKLoginCompletion.h; sourceTree = "<group>"; };
@@ -714,7 +709,6 @@
 		9D3A3C3F01E748804529EE3EE3AF3C89 /* FBSDKServerConfigurationManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKServerConfigurationManager.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/ServerConfiguration/FBSDKServerConfigurationManager.m; sourceTree = "<group>"; };
 		9D5273883E520C85D861DBB677E53AC2 /* MaterialEdgeInset.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MaterialEdgeInset.swift; path = Sources/iOS/MaterialEdgeInset.swift; sourceTree = "<group>"; };
 		9D59654D70F7413D50AF96C49A561908 /* Bolts.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Bolts.xcconfig; sourceTree = "<group>"; };
-		9D6C3C69BCAD18E894C3180E0FFAD0B4 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IQKeyboardManagerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DE1898404E91824D4E61FA5DF89A265 /* Text.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Text.swift; path = Sources/iOS/Text.swift; sourceTree = "<group>"; };
 		9EC19B22D297E5967DA116FA614CCA66 /* BFAppLinkReturnToRefererView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BFAppLinkReturnToRefererView.m; path = Bolts/iOS/BFAppLinkReturnToRefererView.m; sourceTree = "<group>"; };
 		9EEF47FB8BA9DFDFA0BBD6DB00B0C9C4 /* FBSDKInternalUtility.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKInternalUtility.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKInternalUtility.m; sourceTree = "<group>"; };
@@ -743,31 +737,31 @@
 		ADB86FCB2321A69901A6C3E92B2C6BA9 /* FBSDKSystemAccountStoreAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKSystemAccountStoreAdapter.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKSystemAccountStoreAdapter.h; sourceTree = "<group>"; };
 		AE317C14A5ADF965CF9C29152B626FA9 /* Material-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Material-umbrella.h"; sourceTree = "<group>"; };
 		AE60888145CAB9904343CADBC3AE81A2 /* FBSDKBridgeAPIProtocolWebV1.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKBridgeAPIProtocolWebV1.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/ProtocolVersions/FBSDKBridgeAPIProtocolWebV1.h; sourceTree = "<group>"; };
+		AEEE600B3FC5B15347463AFA784B7AA8 /* Material.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Material.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF4C99D99FB789CDBE67044FDEC978C6 /* FBSDKLoginButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKLoginButton.h; path = FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginButton.h; sourceTree = "<group>"; };
 		AF8C98516029D825770F3B5A256123DF /* IQKeyboardManagerSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IQKeyboardManagerSwift.xcconfig; sourceTree = "<group>"; };
 		B031ED17F0A3C4D90CA1D16EDD4558F0 /* FBSDKViewImpressionTracker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKViewImpressionTracker.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKViewImpressionTracker.h; sourceTree = "<group>"; };
 		B0BD95751D035B464A6733866C81289E /* FBSDKBridgeAPIProtocolNativeV1.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKBridgeAPIProtocolNativeV1.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/ProtocolVersions/FBSDKBridgeAPIProtocolNativeV1.h; sourceTree = "<group>"; };
 		B133569549B58048D288869875D9AD4A /* FBSDKWebDialog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKWebDialog.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/WebDialog/FBSDKWebDialog.h; sourceTree = "<group>"; };
+		B134C9EA55903A1FE1CBE57B8A8BD8D0 /* HMWDStarRatingView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HMWDStarRatingView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1AA46C5BF38ADACA01142784D6B91D3 /* FBSDKButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKButton.m; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKButton.m; sourceTree = "<group>"; };
 		B260E02D9F00786FA2C1B80801B68187 /* MaterialDataSourceItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MaterialDataSourceItem.swift; path = Sources/iOS/MaterialDataSourceItem.swift; sourceTree = "<group>"; };
 		B2B8A4DFDCCF0609FC6E1778F7C12BB7 /* MaterialKeyframeAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MaterialKeyframeAnimation.swift; path = Sources/iOS/MaterialKeyframeAnimation.swift; sourceTree = "<group>"; };
 		B3CBF4C32E93D6EFB057614CFF2AC285 /* MaterialSwitch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MaterialSwitch.swift; path = Sources/iOS/MaterialSwitch.swift; sourceTree = "<group>"; };
 		B4D0363CC4993EDF5EAF344C2FAC806A /* Material+UIImage+FilterBlur.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Material+UIImage+FilterBlur.swift"; path = "Sources/iOS/Material+UIImage+FilterBlur.swift"; sourceTree = "<group>"; };
-		B530736744939DF89DFCC78D007DC1A6 /* Pods-recipeCalc.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-recipeCalc.modulemap"; sourceTree = "<group>"; };
+		B50B3784EEE0AFA2BAC6A80AEF3EDD4A /* Pods-Social Vape-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Social Vape-umbrella.h"; sourceTree = "<group>"; };
 		B5783F0F35B3168804BFC13B78D737A1 /* HMWDStarRatingView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HMWDStarRatingView.xcconfig; sourceTree = "<group>"; };
 		B60996FE3E007CC3F40F7EB00686C607 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B85DF1BE72E764956AB3F86B3DB364A7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA9D088F5B06A1C69E7D671180D98648 /* FlatButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FlatButton.swift; path = Sources/iOS/FlatButton.swift; sourceTree = "<group>"; };
-		BA9F75AE6214A41F0AF6A56D6EFE4A3E /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBSDKLoginKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAC2C008B744048CCFDFF0A42CA3CFB7 /* FBSDKLogo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKLogo.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKLogo.m; sourceTree = "<group>"; };
 		BBABBA0204899C14A1B4EBCA3658DFCA /* BFCancellationTokenSource.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BFCancellationTokenSource.m; path = Bolts/Common/BFCancellationTokenSource.m; sourceTree = "<group>"; };
 		BC1EDF949ED68DF5A21D6A8C85722FDC /* MaterialDevice.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MaterialDevice.swift; path = Sources/iOS/MaterialDevice.swift; sourceTree = "<group>"; };
-		BCFC3D7655B05479215690BF78BBE6A8 /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Bolts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE10ACCE300E788452DE66F1FCD70040 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "Sources/Font/Roboto/Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		BEA792C7D92BA9C9C88CD2BC8ECBE1E2 /* FBSDKLoginManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKLoginManager.m; path = FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginManager.m; sourceTree = "<group>"; };
 		BEC54B2D7FD4AC6F2A4B93D47E1C7E3D /* FBSDKCoreKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = FBSDKCoreKit.modulemap; sourceTree = "<group>"; };
+		BEC78E9074995B426AEB41C9950EDF11 /* Pods_Social_Vape.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Social_Vape.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF2BEA59CE08C006D435C88CD1459B2F /* FBSDKSettings.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKSettings.m; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKSettings.m; sourceTree = "<group>"; };
-		BF4742CB2F560F3F5247C3A6E444F3F8 /* Pods-recipeCalc-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-recipeCalc-acknowledgements.markdown"; sourceTree = "<group>"; };
 		BF5DDCA76F0DDE7ED410BA52E9BAF203 /* MaterialCollectionReusableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MaterialCollectionReusableView.swift; path = Sources/iOS/MaterialCollectionReusableView.swift; sourceTree = "<group>"; };
 		BF61031FCA8A10554BFEE68C96942EE9 /* Material-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Material-dummy.m"; sourceTree = "<group>"; };
 		BFB0C6CB68748ABBEA3A0BB72F856ED7 /* FBSDKBoltsMeasurementEventListener.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKBoltsMeasurementEventListener.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/AppLink/FBSDKBoltsMeasurementEventListener.h; sourceTree = "<group>"; };
@@ -783,6 +777,7 @@
 		C307764A4AD67D47EEE938BCF5D9384B /* FBSDKCloseIcon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKCloseIcon.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKCloseIcon.h; sourceTree = "<group>"; };
 		C483D54535D6F995D5E1F22C8A81199D /* FBSDKCloseIcon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKCloseIcon.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKCloseIcon.m; sourceTree = "<group>"; };
 		C4B537412BBC3682A1FAE9E62F7EAE3F /* MaterialPulseView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MaterialPulseView.swift; path = Sources/iOS/MaterialPulseView.swift; sourceTree = "<group>"; };
+		C4CB0B8A15F74E9E856000A79FCB278E /* Refresher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Refresher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E43694AD10AF69C7B09FABF895B265 /* HMWDStarRatingView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = HMWDStarRatingView.modulemap; sourceTree = "<group>"; };
 		C65711BC35489AD6B586E2DCD0F8FE74 /* FBSDKAppEventsStateManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKAppEventsStateManager.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/AppEvents/FBSDKAppEventsStateManager.h; sourceTree = "<group>"; };
 		C6B2B734E9C29D080BB76B7AF551EDB9 /* IQUITextFieldView+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUITextFieldView+Additions.swift"; path = "IQKeyboardManagerSwift/Categories/IQUITextFieldView+Additions.swift"; sourceTree = "<group>"; };
@@ -797,7 +792,6 @@
 		D2E2111A02BC4981524BCF2D154D1A16 /* FBSDKLoginCompletion+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBSDKLoginCompletion+Internal.h"; path = "FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKLoginCompletion+Internal.h"; sourceTree = "<group>"; };
 		D33D009CC725F8E0A0BA0BE6D5F36A6E /* BFTask.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BFTask.m; path = Bolts/Common/BFTask.m; sourceTree = "<group>"; };
 		D3628110F320CDDDA73AC09B7A42EFE6 /* IQKeyboardManagerConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQKeyboardManagerConstants.swift; path = IQKeyboardManagerSwift/Constants/IQKeyboardManagerConstants.swift; sourceTree = "<group>"; };
-		D3CEEB7259DF5DFCCC48E78557F035D9 /* Pods-recipeCalc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-recipeCalc.debug.xcconfig"; sourceTree = "<group>"; };
 		D62A081025536A5A4C55406E579B5CF3 /* Bolts-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Bolts-umbrella.h"; sourceTree = "<group>"; };
 		D8F3ACA7F766834E21993EB0C9557BA6 /* FBSDKServerConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKServerConfiguration.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/ServerConfiguration/FBSDKServerConfiguration.m; sourceTree = "<group>"; };
 		D999B72B324AC7183F7E9386D7ADC176 /* CapturePreview.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CapturePreview.swift; path = Sources/iOS/CapturePreview.swift; sourceTree = "<group>"; };
@@ -815,6 +809,7 @@
 		E348DBF0E702D3025AE6A0471E8DA318 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		E3BBA13994B78CCE2331220A7549585D /* FBSDKConstants.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKConstants.m; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKConstants.m; sourceTree = "<group>"; };
 		E3D3D5A380712449A5F8730FE0577178 /* FBSDKURLConnection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKURLConnection.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/Network/FBSDKURLConnection.h; sourceTree = "<group>"; };
+		E46A65F7BF02C1579660DE43B17E71A9 /* Pods-Social Vape.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Social Vape.modulemap"; sourceTree = "<group>"; };
 		E4960093590B41F987623B361D78C746 /* IQUIViewController+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIViewController+Additions.swift"; path = "IQKeyboardManagerSwift/Categories/IQUIViewController+Additions.swift"; sourceTree = "<group>"; };
 		E588C83B0B92ED74B6A0B69137501181 /* BottomTabBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BottomTabBar.swift; path = Sources/iOS/BottomTabBar.swift; sourceTree = "<group>"; };
 		E5D67386553B6EA8D511FECAEFACDCA8 /* MaterialLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MaterialLayer.swift; path = Sources/iOS/MaterialLayer.swift; sourceTree = "<group>"; };
@@ -824,28 +819,31 @@
 		E698497B73BEFE957E2E8E944ABA5900 /* RootController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RootController.swift; path = Sources/iOS/RootController.swift; sourceTree = "<group>"; };
 		E7649C806F9FA9B46122A91AFFDE56F6 /* FBSDKDialogConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKDialogConfiguration.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/ServerConfiguration/FBSDKDialogConfiguration.h; sourceTree = "<group>"; };
 		E7881472651BE83D8ABB8E39DAECD5A3 /* FBSDKLoginManagerLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKLoginManagerLogger.h; path = FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKLoginManagerLogger.h; sourceTree = "<group>"; };
+		E7E1303F6251DDD86546A5B16A0AA71A /* Pods-Social Vape-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Social Vape-resources.sh"; sourceTree = "<group>"; };
 		E887AC3B7D68D7BA1227C0991A268E64 /* FBSDKCrypto.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKCrypto.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/Cryptography/FBSDKCrypto.m; sourceTree = "<group>"; };
-		E900DCFA085AB38755C8A5E50D191668 /* io.cosmicmind.material.fonts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = io.cosmicmind.material.fonts.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		E906A18D3CC41EE0D29F13094524335B /* FBSDKBridgeAPICrypto.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKBridgeAPICrypto.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/FBSDKBridgeAPICrypto.h; sourceTree = "<group>"; };
 		EA6D06B8B5CED9AC0B9FEE485C710E8F /* TextStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextStorage.swift; path = Sources/iOS/TextStorage.swift; sourceTree = "<group>"; };
 		EAF8153B4F3F08565651EF6E9EED2519 /* IQKeyboardReturnKeyHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQKeyboardReturnKeyHandler.swift; path = IQKeyboardManagerSwift/IQKeyboardReturnKeyHandler.swift; sourceTree = "<group>"; };
 		EB76CD741600BE985430B3E3D5F79F55 /* ResourceBundle-io.cosmicmind.material.fonts-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-io.cosmicmind.material.fonts-Info.plist"; sourceTree = "<group>"; };
 		EC05AEFAEB639E05096FF90BB690E76F /* FBSDKAppEventsUtility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKAppEventsUtility.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/AppEvents/FBSDKAppEventsUtility.h; sourceTree = "<group>"; };
+		EDBCF9165417ECBB42E2541FD50EC7A1 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IQKeyboardManagerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE611B5D7615FA3323C9D710D01C0166 /* FBSDKApplicationDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKApplicationDelegate.h; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKApplicationDelegate.h; sourceTree = "<group>"; };
 		EEE2824E1C9CD5A5B0DFB11A9043D7CB /* FBSDKGraphRequestDataAttachment.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKGraphRequestDataAttachment.m; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKGraphRequestDataAttachment.m; sourceTree = "<group>"; };
 		EF40E00773A6F4EF903E1F6F98A8CDA3 /* BFCancellationToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BFCancellationToken.h; path = Bolts/Common/BFCancellationToken.h; sourceTree = "<group>"; };
 		F06012372F2F4DE24A4A1A2A0E7A8C6F /* FBSDKContainerViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKContainerViewController.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKContainerViewController.h; sourceTree = "<group>"; };
 		F1377A63A7063F28F17DC851BCC418BB /* FBSDKAccessTokenCacheV3_17.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKAccessTokenCacheV3_17.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKAccessTokenCacheV3_17.m; sourceTree = "<group>"; };
 		F182F6AAFE3FB7DBE771CB88DDC286BE /* FirebaseCrash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCrash.framework; path = Frameworks/FirebaseCrash.framework; sourceTree = "<group>"; };
+		F1DAB0567C2146D04C86C268F8928EAE /* Pods-Social Vape.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Social Vape.release.xcconfig"; sourceTree = "<group>"; };
 		F2A0697D96E9321018AC5225EAE1FEFB /* BFAppLink.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BFAppLink.h; path = Bolts/iOS/BFAppLink.h; sourceTree = "<group>"; };
+		F3E348E1A7CDD7A9BCFCC184B2ED206B /* io.cosmicmind.material.fonts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = io.cosmicmind.material.fonts.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		F48F8CD93757C4D9F04F523A81458F29 /* FBSDKProfilePictureView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKProfilePictureView.m; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKProfilePictureView.m; sourceTree = "<group>"; };
 		F50A76FF3497C2AD67FAB1AF3292CB86 /* Material+UIImage+Resize.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Material+UIImage+Resize.swift"; path = "Sources/iOS/Material+UIImage+Resize.swift"; sourceTree = "<group>"; };
 		F53E62FEAE92E4A40E2C2EDC1A24C18F /* IconButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IconButton.swift; path = Sources/iOS/IconButton.swift; sourceTree = "<group>"; };
+		F56659DA7C8E409BC01D0B41181927B6 /* Pods-Social Vape.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Social Vape.debug.xcconfig"; sourceTree = "<group>"; };
 		F64F4B90A1EE08B872D98ACCB75F0AF4 /* FBSDKBridgeAPIRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKBridgeAPIRequest.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/FBSDKBridgeAPIRequest.h; sourceTree = "<group>"; };
 		F68D8F90F1C782CC897E12DD577B2E64 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = "Roboto-Thin.ttf"; path = "Sources/Font/Roboto/Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		F76EA5830F14AE88C6D66DAE8DD8D6C0 /* NavigationBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NavigationBar.swift; path = Sources/iOS/NavigationBar.swift; sourceTree = "<group>"; };
 		F7D314B3AB8E553516C1481B6951E52A /* FBSDKGraphRequestPiggybackManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKGraphRequestPiggybackManager.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/Network/FBSDKGraphRequestPiggybackManager.h; sourceTree = "<group>"; };
-		F805DF88C9FF238EFD767154898E4EDB /* Material.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Material.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F86603C886FAB19823EBD2DB944B68F3 /* FBSDKErrorRecoveryAttempter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKErrorRecoveryAttempter.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/ErrorRecovery/FBSDKErrorRecoveryAttempter.h; sourceTree = "<group>"; };
 		F89D5362BD475E3BDAF94F7798A4B8B7 /* BFTaskCompletionSource.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BFTaskCompletionSource.m; path = Bolts/Common/BFTaskCompletionSource.m; sourceTree = "<group>"; };
 		F9DBB71E22309AEC1F395EECBFEE0036 /* FBSDKAccessTokenCacheV3_21.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKAccessTokenCacheV3_21.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKAccessTokenCacheV3_21.h; sourceTree = "<group>"; };
@@ -858,8 +856,10 @@
 		FDBDD082EA96342487E07BCA51338CD8 /* FBSDKGraphRequestBody.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKGraphRequestBody.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/Network/FBSDKGraphRequestBody.m; sourceTree = "<group>"; };
 		FE7C0DC8C1693DFFA83B7747B50836F2 /* NavigationItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NavigationItem.swift; path = Sources/iOS/NavigationItem.swift; sourceTree = "<group>"; };
 		FEAC84D217139E7F0B1238AF53BF620C /* FBSDKAccessTokenCacheV3.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKAccessTokenCacheV3.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKAccessTokenCacheV3.h; sourceTree = "<group>"; };
+		FF4360C52B8FA0C4078F6A4B5B86EBF5 /* Pods-Social Vape-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Social Vape-dummy.m"; sourceTree = "<group>"; };
 		FF9235AD65976D7DE38B26B2C0B637FC /* FBSDKBridgeAPIProtocolType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKBridgeAPIProtocolType.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/FBSDKBridgeAPIProtocolType.h; sourceTree = "<group>"; };
 		FF9A205A46A46BFADA50E57DF02DF311 /* FBSDKServerConfigurationManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKServerConfigurationManager.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/ServerConfiguration/FBSDKServerConfigurationManager.h; sourceTree = "<group>"; };
+		FFD1FACF0F8876B70EAEB3BABC34846F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFFA4C150A5C06E744565738B7E123EB /* _FBSDKTemporaryErrorRecoveryAttempter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = _FBSDKTemporaryErrorRecoveryAttempter.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/ErrorRecovery/_FBSDKTemporaryErrorRecoveryAttempter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -888,6 +888,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		471954FD91F48B302674FF1C8ED1296F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CB808BFE5D51500FADBFFAC36DCE65B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5F240EC2E1E7F76CA22386F9552295F0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -898,27 +906,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		60D8248AED906DEE34F75709D25530AA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D4A604F950D204E5B7A7350FD0BFD3A7 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		98DC6BFA5B62ECE1D8CBDE34EFA05FFD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				8194B67553D82F346DCBD4106B5E3E77 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A8DB65DFC687245520696972CFBF446E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				140CFE87693D4E66A0BB02EA4CD9D5E9 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -934,6 +926,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A31F18332839F98B3638A4EE49F3E35 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED7BE4CAF07A9476DC18F575602CBB5D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A93CE9E92C789E3397A08117A0042BD /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1008,14 +1008,6 @@
 				1F8977E1F56210A073ECCBDCF924D4FF /* Frameworks */,
 			);
 			path = GoogleNetworkingUtilities;
-			sourceTree = "<group>";
-		};
-		346B005B0CA0B8DEADDCACA1112F92D2 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				9D01CCEE83565BF715F8FD2A19F4023B /* Pods-recipeCalc */,
-			);
-			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 		39A563D4603C7DE064CD006975FB32AF /* Frameworks */ = {
@@ -1151,8 +1143,8 @@
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				ED2E703BA3A50A30EB27552BC6101124 /* Frameworks */,
 				49BBF5ED55665A33924F502A8F68DAFA /* Pods */,
-				AD1DDA075E53807BD417A70E68AC5A66 /* Products */,
-				346B005B0CA0B8DEADDCACA1112F92D2 /* Targets Support Files */,
+				E62F5C1C999A61C06B6F6157F7A35824 /* Products */,
+				BB4758964FB10072D7A0E40130DAFA73 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1173,6 +1165,24 @@
 				8E223ACF29C53E4B7D2DC11D5EC71D58 /* Frameworks */,
 			);
 			path = FirebaseInstanceID;
+			sourceTree = "<group>";
+		};
+		804352792C00BA1771427A15A0A7CAC0 /* Pods-Social Vape */ = {
+			isa = PBXGroup;
+			children = (
+				FFD1FACF0F8876B70EAEB3BABC34846F /* Info.plist */,
+				E46A65F7BF02C1579660DE43B17E71A9 /* Pods-Social Vape.modulemap */,
+				28F3A239CA9A804291068FEDA5EDB380 /* Pods-Social Vape-acknowledgements.markdown */,
+				640F65AADFF3EC1162F5FE078329B08C /* Pods-Social Vape-acknowledgements.plist */,
+				FF4360C52B8FA0C4078F6A4B5B86EBF5 /* Pods-Social Vape-dummy.m */,
+				671A1123D75EC70D2536238152AC5FFF /* Pods-Social Vape-frameworks.sh */,
+				E7E1303F6251DDD86546A5B16A0AA71A /* Pods-Social Vape-resources.sh */,
+				B50B3784EEE0AFA2BAC6A80AEF3EDD4A /* Pods-Social Vape-umbrella.h */,
+				F56659DA7C8E409BC01D0B41181927B6 /* Pods-Social Vape.debug.xcconfig */,
+				F1DAB0567C2146D04C86C268F8928EAE /* Pods-Social Vape.release.xcconfig */,
+			);
+			name = "Pods-Social Vape";
+			path = "Target Support Files/Pods-Social Vape";
 			sourceTree = "<group>";
 		};
 		86EDA708628B9A6B99634AD74D7A297A /* Resources */ = {
@@ -1411,24 +1421,6 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		9D01CCEE83565BF715F8FD2A19F4023B /* Pods-recipeCalc */ = {
-			isa = PBXGroup;
-			children = (
-				366207562529293C0061C2F5747D52B7 /* Info.plist */,
-				B530736744939DF89DFCC78D007DC1A6 /* Pods-recipeCalc.modulemap */,
-				BF4742CB2F560F3F5247C3A6E444F3F8 /* Pods-recipeCalc-acknowledgements.markdown */,
-				77232F9E210437924517B7533B8CD446 /* Pods-recipeCalc-acknowledgements.plist */,
-				84EAA1DD98C717D75CC89A88CA06E5FB /* Pods-recipeCalc-dummy.m */,
-				46F6ACE6B306A5DB931F80BB2A3A932D /* Pods-recipeCalc-frameworks.sh */,
-				398A20BFC5BBCB3FEEBAC84289549016 /* Pods-recipeCalc-resources.sh */,
-				986910E1AA3B6372D7F76CC0BF8B5FB1 /* Pods-recipeCalc-umbrella.h */,
-				D3CEEB7259DF5DFCCC48E78557F035D9 /* Pods-recipeCalc.debug.xcconfig */,
-				57644400F6F9BB883DCFD2DB69682067 /* Pods-recipeCalc.release.xcconfig */,
-			);
-			name = "Pods-recipeCalc";
-			path = "Target Support Files/Pods-recipeCalc";
-			sourceTree = "<group>";
-		};
 		9FFF8CE80B0FA73CC2A15387726D8A0F /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1505,23 +1497,6 @@
 				54C7E248D5EBC94CBB7EB88857502A48 /* Bolts.m */,
 			);
 			name = Tasks;
-			sourceTree = "<group>";
-		};
-		AD1DDA075E53807BD417A70E68AC5A66 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				BCFC3D7655B05479215690BF78BBE6A8 /* Bolts.framework */,
-				1ECF4CEC2C4E173C1B99949314F15243 /* FBSDKCoreKit.framework */,
-				BA9F75AE6214A41F0AF6A56D6EFE4A3E /* FBSDKLoginKit.framework */,
-				1726ACB7F84302F3B5FD1525CA8C589B /* HMWDStarRatingView.framework */,
-				E900DCFA085AB38755C8A5E50D191668 /* io.cosmicmind.material.fonts.bundle */,
-				5415980B46C6C6FE0E8B8BDB2B0FF435 /* io.cosmicmind.material.icons.bundle */,
-				9D6C3C69BCAD18E894C3180E0FFAD0B4 /* IQKeyboardManagerSwift.framework */,
-				F805DF88C9FF238EFD767154898E4EDB /* Material.framework */,
-				4F84E697769D2CBBEDBD9C73FDB06EDF /* Pods_recipeCalc.framework */,
-				8D1C8DC9BD0162C5527274A71F2AF938 /* Refresher.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		AEA76EB0E6CA8F4A794A00BD841196D3 /* Material */ = {
@@ -1637,6 +1612,14 @@
 			path = GoogleSymbolUtilities;
 			sourceTree = "<group>";
 		};
+		BB4758964FB10072D7A0E40130DAFA73 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				804352792C00BA1771427A15A0A7CAC0 /* Pods-Social Vape */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
 		C33ECBAF36587BFCBAC7607B35F1BA59 /* GoogleUtilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -1678,6 +1661,23 @@
 				4207BF9C73B18AB87720900EBFEF9573 /* Frameworks */,
 			);
 			path = FirebaseCrash;
+			sourceTree = "<group>";
+		};
+		E62F5C1C999A61C06B6F6157F7A35824 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5EE02DC7DCF588CCC6DF277194EB79F2 /* Bolts.framework */,
+				96E88C0899B96CF6B5162D19BF4E8151 /* FBSDKCoreKit.framework */,
+				1AF7375A11C8F10BB77A56021CE9D3E3 /* FBSDKLoginKit.framework */,
+				B134C9EA55903A1FE1CBE57B8A8BD8D0 /* HMWDStarRatingView.framework */,
+				F3E348E1A7CDD7A9BCFCC184B2ED206B /* io.cosmicmind.material.fonts.bundle */,
+				1450C65ED839733C163D937D3ED2DEBC /* io.cosmicmind.material.icons.bundle */,
+				EDBCF9165417ECBB42E2541FD50EC7A1 /* IQKeyboardManagerSwift.framework */,
+				AEEE600B3FC5B15347463AFA784B7AA8 /* Material.framework */,
+				BEC78E9074995B426AEB41C9950EDF11 /* Pods_Social_Vape.framework */,
+				C4CB0B8A15F74E9E856000A79FCB278E /* Refresher.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		E85F4FB835F3153F891DE8F5EB2CB2D3 /* Support Files */ = {
@@ -1783,19 +1783,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		20698B7FC5C1B4CE07BD78724316097A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				443CE4DD1BBDCAE319EE6A3612F9D85B /* Pods-Social Vape-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2DC11A7DF584A0D019AFBEC1DFA72D5E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F40F684460430D5B19D41DF3A28C5A47 /* Material-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4B8852C0F79DA6FBA1BEF93B48408583 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1B0DFBD51F3FEF61D56C573A190DB27B /* Refresher-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1904,11 +1904,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AD6CB8311BC5E436B37C208E11B6F4A2 /* Headers */ = {
+		8ED524FBB624C4E079D6113A2EB56CF4 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57067F02AE42EBC63057AC50929DB72E /* Pods-recipeCalc-umbrella.h in Headers */,
+				33FF041E1824CB15C0B643950BE1B142 /* Refresher-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1968,7 +1968,7 @@
 			);
 			name = Material;
 			productName = Material;
-			productReference = F805DF88C9FF238EFD767154898E4EDB /* Material.framework */;
+			productReference = AEEE600B3FC5B15347463AFA784B7AA8 /* Material.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		08C670F14C5E0F92D52B4FD40051294F /* Material-io.cosmicmind.material.fonts */ = {
@@ -1985,7 +1985,7 @@
 			);
 			name = "Material-io.cosmicmind.material.fonts";
 			productName = "Material-io.cosmicmind.material.fonts";
-			productReference = E900DCFA085AB38755C8A5E50D191668 /* io.cosmicmind.material.fonts.bundle */;
+			productReference = F3E348E1A7CDD7A9BCFCC184B2ED206B /* io.cosmicmind.material.fonts.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		0EB19C1377A747F81110D44E2D5FCF78 /* FBSDKCoreKit */ = {
@@ -2003,7 +2003,7 @@
 			);
 			name = FBSDKCoreKit;
 			productName = FBSDKCoreKit;
-			productReference = 1ECF4CEC2C4E173C1B99949314F15243 /* FBSDKCoreKit.framework */;
+			productReference = 96E88C0899B96CF6B5162D19BF4E8151 /* FBSDKCoreKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		1520003FEBEC114D6C84F832AFEDB994 /* IQKeyboardManagerSwift */ = {
@@ -2021,7 +2021,7 @@
 			);
 			name = IQKeyboardManagerSwift;
 			productName = IQKeyboardManagerSwift;
-			productReference = 9D6C3C69BCAD18E894C3180E0FFAD0B4 /* IQKeyboardManagerSwift.framework */;
+			productReference = EDBCF9165417ECBB42E2541FD50EC7A1 /* IQKeyboardManagerSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		1B006392A6DC63E06AC81DE6F08803B1 /* Material-io.cosmicmind.material.icons */ = {
@@ -2038,7 +2038,7 @@
 			);
 			name = "Material-io.cosmicmind.material.icons";
 			productName = "Material-io.cosmicmind.material.icons";
-			productReference = 5415980B46C6C6FE0E8B8BDB2B0FF435 /* io.cosmicmind.material.icons.bundle */;
+			productReference = 1450C65ED839733C163D937D3ED2DEBC /* io.cosmicmind.material.icons.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		347F3334E442BAB5F3640B66FD97C8A1 /* HMWDStarRatingView */ = {
@@ -2055,7 +2055,7 @@
 			);
 			name = HMWDStarRatingView;
 			productName = HMWDStarRatingView;
-			productReference = 1726ACB7F84302F3B5FD1525CA8C589B /* HMWDStarRatingView.framework */;
+			productReference = B134C9EA55903A1FE1CBE57B8A8BD8D0 /* HMWDStarRatingView.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		52D82BFDD1E808D9CB257431922C1EE4 /* Bolts */ = {
@@ -2072,7 +2072,7 @@
 			);
 			name = Bolts;
 			productName = Bolts;
-			productReference = BCFC3D7655B05479215690BF78BBE6A8 /* Bolts.framework */;
+			productReference = 5EE02DC7DCF588CCC6DF277194EB79F2 /* Bolts.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		6EDC37F3FA92533C6AC3562458AA91F1 /* FBSDKLoginKit */ = {
@@ -2091,40 +2091,16 @@
 			);
 			name = FBSDKLoginKit;
 			productName = FBSDKLoginKit;
-			productReference = BA9F75AE6214A41F0AF6A56D6EFE4A3E /* FBSDKLoginKit.framework */;
+			productReference = 1AF7375A11C8F10BB77A56021CE9D3E3 /* FBSDKLoginKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		9CED7E1688F0FED4200FB2DA187CAE6D /* Pods-recipeCalc */ = {
+		C59E0E4874B2DD2D0A23CDD80D8E1580 /* Refresher */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3C9848B3B8ACB76BD2FEAA95A9E1A331 /* Build configuration list for PBXNativeTarget "Pods-recipeCalc" */;
+			buildConfigurationList = EC8FC5B35B819352311983EF31271994 /* Build configuration list for PBXNativeTarget "Refresher" */;
 			buildPhases = (
-				413B8765A2FA0C04FF85079D5FBDC013 /* Sources */,
-				A8DB65DFC687245520696972CFBF446E /* Frameworks */,
-				AD6CB8311BC5E436B37C208E11B6F4A2 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3E211CBF13199A0B68D3CE7D9182A2B4 /* PBXTargetDependency */,
-				DD673BAFEA07619DEF015ED805C1343D /* PBXTargetDependency */,
-				1E6280271FA9CD70ADAFFAD2C7A44DD3 /* PBXTargetDependency */,
-				24734B4E3C173FCFDAD2CFA205786A51 /* PBXTargetDependency */,
-				43C7AF23C34B06A95A430865E8BCF119 /* PBXTargetDependency */,
-				A42101E8BA88DA545262E5EB7FCDE28B /* PBXTargetDependency */,
-				46B521CB7392A92EC36A29F4AC7A6222 /* PBXTargetDependency */,
-			);
-			name = "Pods-recipeCalc";
-			productName = "Pods-recipeCalc";
-			productReference = 4F84E697769D2CBBEDBD9C73FDB06EDF /* Pods_recipeCalc.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		C87F949EB65E0FA31F6B2D4343AAE82E /* Refresher */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 77B000D83365685AFDE19E3474C4AE6D /* Build configuration list for PBXNativeTarget "Refresher" */;
-			buildPhases = (
-				AB7983AE1BDD31002AB851A62C02786F /* Sources */,
-				60D8248AED906DEE34F75709D25530AA /* Frameworks */,
-				4B8852C0F79DA6FBA1BEF93B48408583 /* Headers */,
+				5A87AF2962F0E57C3436C04143C2C5C7 /* Sources */,
+				471954FD91F48B302674FF1C8ED1296F /* Frameworks */,
+				8ED524FBB624C4E079D6113A2EB56CF4 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -2132,7 +2108,31 @@
 			);
 			name = Refresher;
 			productName = Refresher;
-			productReference = 8D1C8DC9BD0162C5527274A71F2AF938 /* Refresher.framework */;
+			productReference = C4CB0B8A15F74E9E856000A79FCB278E /* Refresher.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FA8C28119B8D9870774A0C8CA71B30ED /* Pods-Social Vape */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD4219615125B6CD8E3A77B37364EE81 /* Build configuration list for PBXNativeTarget "Pods-Social Vape" */;
+			buildPhases = (
+				8B97F0F30238663BC12888D807F2A7D8 /* Sources */,
+				ED7BE4CAF07A9476DC18F575602CBB5D /* Frameworks */,
+				20698B7FC5C1B4CE07BD78724316097A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C0C10E6273D60BB3FBA07CD94E292F4F /* PBXTargetDependency */,
+				FC5AAFBA8AE0025DDBE99D3F7DBE9A3B /* PBXTargetDependency */,
+				4CB9525261F13CE4866AE0FCDE34544C /* PBXTargetDependency */,
+				AF907FC7667F46EDF10CC7D4E5FF433B /* PBXTargetDependency */,
+				0B5E848A145CB61DA6D0E25A1F485C42 /* PBXTargetDependency */,
+				5FF33A00A3089A2F3DF66B66C99412F8 /* PBXTargetDependency */,
+				D46CF65E2EAD277C1C14F8891F9CDB1A /* PBXTargetDependency */,
+			);
+			name = "Pods-Social Vape";
+			productName = "Pods-Social Vape";
+			productReference = BEC78E9074995B426AEB41C9950EDF11 /* Pods_Social_Vape.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -2152,7 +2152,7 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = AD1DDA075E53807BD417A70E68AC5A66 /* Products */;
+			productRefGroup = E62F5C1C999A61C06B6F6157F7A35824 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -2164,8 +2164,8 @@
 				04693735BCFA74B873DE04047ECC5FBA /* Material */,
 				08C670F14C5E0F92D52B4FD40051294F /* Material-io.cosmicmind.material.fonts */,
 				1B006392A6DC63E06AC81DE6F08803B1 /* Material-io.cosmicmind.material.icons */,
-				9CED7E1688F0FED4200FB2DA187CAE6D /* Pods-recipeCalc */,
-				C87F949EB65E0FA31F6B2D4343AAE82E /* Refresher */,
+				FA8C28119B8D9870774A0C8CA71B30ED /* Pods-Social Vape */,
+				C59E0E4874B2DD2D0A23CDD80D8E1580 /* Refresher */,
 			);
 		};
 /* End PBXProject section */
@@ -2235,11 +2235,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		413B8765A2FA0C04FF85079D5FBDC013 /* Sources */ = {
+		5A87AF2962F0E57C3436C04143C2C5C7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F557FEA12FAE3ECBF54CFD14FA05D335 /* Pods-recipeCalc-dummy.m in Sources */,
+				A74A0FB950FA1BE3ED17C4EE7C7190C8 /* Animator.swift in Sources */,
+				C3A71AB8399476C1A2C381461F807434 /* PullToRefreshExtension.swift in Sources */,
+				007AA5E881C751EA4F687E7454F5BABF /* PullToRefreshView.swift in Sources */,
+				473F78D3BB530F2F9FB877EC42315A76 /* Refresher-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2282,6 +2285,14 @@
 				F5605EA4F2ED84C2E0B1601D390129AB /* BFWebViewAppLinkResolver.m in Sources */,
 				D9D122FDBEB9A3DD165D36FB2E889EC6 /* Bolts-dummy.m in Sources */,
 				21C2EDD822EFC4620D4709B0B4AF6154 /* Bolts.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B97F0F30238663BC12888D807F2A7D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				624D5971D6D6E5D3F124CDEB44D38FA5 /* Pods-Social Vape-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2375,17 +2386,6 @@
 			files = (
 				18C410CF468AB9692992CFF61B7FDAF7 /* HMWDStarRatingView-dummy.m in Sources */,
 				E1C9155F340B72A4B27564FEF554D204 /* WDStarRatingView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AB7983AE1BDD31002AB851A62C02786F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				49C6F917E305F3EEBD5CF178D3DCC975 /* Animator.swift in Sources */,
-				9DE98A7D9FEE6521969A05A9FF7A7233 /* PullToRefreshExtension.swift in Sources */,
-				D29553924DCCDC895E04CDE2CF2D26C1 /* PullToRefreshView.swift in Sources */,
-				C3B8F8DB8A3095E0684F0A7C3CB75DF4 /* Refresher-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2485,41 +2485,29 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1E6280271FA9CD70ADAFFAD2C7A44DD3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = FBSDKLoginKit;
-			target = 6EDC37F3FA92533C6AC3562458AA91F1 /* FBSDKLoginKit */;
-			targetProxy = FC22BC3DA28EED3933E5B107888CA6CA /* PBXContainerItemProxy */;
-		};
-		24734B4E3C173FCFDAD2CFA205786A51 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = HMWDStarRatingView;
-			target = 347F3334E442BAB5F3640B66FD97C8A1 /* HMWDStarRatingView */;
-			targetProxy = 9F81B5546CE5E6F2E69224C28CB868F6 /* PBXContainerItemProxy */;
-		};
-		3E211CBF13199A0B68D3CE7D9182A2B4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Bolts;
-			target = 52D82BFDD1E808D9CB257431922C1EE4 /* Bolts */;
-			targetProxy = 3D68477B0ACEECB89E1EAEF0E36F53CF /* PBXContainerItemProxy */;
-		};
-		43C7AF23C34B06A95A430865E8BCF119 /* PBXTargetDependency */ = {
+		0B5E848A145CB61DA6D0E25A1F485C42 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = IQKeyboardManagerSwift;
 			target = 1520003FEBEC114D6C84F832AFEDB994 /* IQKeyboardManagerSwift */;
-			targetProxy = 241F9E281AC6C43997C1DFDE487A3006 /* PBXContainerItemProxy */;
-		};
-		46B521CB7392A92EC36A29F4AC7A6222 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Refresher;
-			target = C87F949EB65E0FA31F6B2D4343AAE82E /* Refresher */;
-			targetProxy = 95807A0B660ECBECACA9D7DB4B7B3B07 /* PBXContainerItemProxy */;
+			targetProxy = B87438775DD89F1A33023BC1E7D7F3B8 /* PBXContainerItemProxy */;
 		};
 		4A2A4A039944577C369BBE84367A1720 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Bolts;
 			target = 52D82BFDD1E808D9CB257431922C1EE4 /* Bolts */;
 			targetProxy = 7BDFEC0F5B0693C2D315E9D3973E276E /* PBXContainerItemProxy */;
+		};
+		4CB9525261F13CE4866AE0FCDE34544C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FBSDKLoginKit;
+			target = 6EDC37F3FA92533C6AC3562458AA91F1 /* FBSDKLoginKit */;
+			targetProxy = 5BDA437889BC4DACB76DBBECD903FD45 /* PBXContainerItemProxy */;
+		};
+		5FF33A00A3089A2F3DF66B66C99412F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Material;
+			target = 04693735BCFA74B873DE04047ECC5FBA /* Material */;
+			targetProxy = ED4E4A5348DFA88C43976CA0515A2D27 /* PBXContainerItemProxy */;
 		};
 		74D984BDE4B03385C352CD8722B3A93F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2533,17 +2521,23 @@
 			target = 08C670F14C5E0F92D52B4FD40051294F /* Material-io.cosmicmind.material.fonts */;
 			targetProxy = F78E354F57AAA94D92F4504482F92FDE /* PBXContainerItemProxy */;
 		};
-		A42101E8BA88DA545262E5EB7FCDE28B /* PBXTargetDependency */ = {
+		AF907FC7667F46EDF10CC7D4E5FF433B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = Material;
-			target = 04693735BCFA74B873DE04047ECC5FBA /* Material */;
-			targetProxy = 9E40673AED288F6E862A1B04B588896A /* PBXContainerItemProxy */;
+			name = HMWDStarRatingView;
+			target = 347F3334E442BAB5F3640B66FD97C8A1 /* HMWDStarRatingView */;
+			targetProxy = 5054CE49F4BC88E617E8D9A1CC1CCBB9 /* PBXContainerItemProxy */;
 		};
-		DD673BAFEA07619DEF015ED805C1343D /* PBXTargetDependency */ = {
+		C0C10E6273D60BB3FBA07CD94E292F4F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = FBSDKCoreKit;
-			target = 0EB19C1377A747F81110D44E2D5FCF78 /* FBSDKCoreKit */;
-			targetProxy = FBB72FA7DE19228D7A5D111EB9F4FC9A /* PBXContainerItemProxy */;
+			name = Bolts;
+			target = 52D82BFDD1E808D9CB257431922C1EE4 /* Bolts */;
+			targetProxy = B89DB357E0BFACA0CD4D9D226AE58A1F /* PBXContainerItemProxy */;
+		};
+		D46CF65E2EAD277C1C14F8891F9CDB1A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Refresher;
+			target = C59E0E4874B2DD2D0A23CDD80D8E1580 /* Refresher */;
+			targetProxy = D447FFBF271A1C6410C7E7E6BB03A5C5 /* PBXContainerItemProxy */;
 		};
 		EE4106E226CB0BEB4B8D5572E612A79A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2556,6 +2550,12 @@
 			name = Bolts;
 			target = 52D82BFDD1E808D9CB257431922C1EE4 /* Bolts */;
 			targetProxy = DFB7D8638BEFDCC4CCF33BEB67F1B89B /* PBXContainerItemProxy */;
+		};
+		FC5AAFBA8AE0025DDBE99D3F7DBE9A3B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FBSDKCoreKit;
+			target = 0EB19C1377A747F81110D44E2D5FCF78 /* FBSDKCoreKit */;
+			targetProxy = 05794217A0967A1A46F784767BEA2138 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2709,6 +2709,35 @@
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
+		};
+		41908C0F86B6A64568E35ED46A980E59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA1FF86AE51F42605BB6AE0E05C6340F /* Refresher.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Refresher/Refresher-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Refresher/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Refresher/Refresher.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Refresher;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		47BEF9D903506B003EA5C2B249729489 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -2888,6 +2917,40 @@
 			};
 			name = Debug;
 		};
+		845A926A494B5865AE493548B89076DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F56659DA7C8E409BC01D0B41181927B6 /* Pods-Social Vape.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Social Vape/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Social Vape/Pods-Social Vape.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Social_Vape;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		854B1A0FBABCC23E55F97B83AC2D5F15 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 59B41431C5A5B6338D26914229C6443E /* FBSDKLoginKit.xcconfig */;
@@ -2911,40 +2974,6 @@
 				PRODUCT_NAME = FBSDKLoginKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		980C3AD875FCC722794A31A81708EAF2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D3CEEB7259DF5DFCCC48E78557F035D9 /* Pods-recipeCalc.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-recipeCalc/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-recipeCalc/Pods-recipeCalc.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_recipeCalc;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -3009,35 +3038,6 @@
 			};
 			name = Release;
 		};
-		A6D33ECD57AD27A2856B71F1C6C29780 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA1FF86AE51F42605BB6AE0E05C6340F /* Refresher.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Refresher/Refresher-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Refresher/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Refresher/Refresher.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = Refresher;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		AAF678CED40D3499169D10F63CA0719E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3093,7 +3093,7 @@
 			};
 			name = Debug;
 		};
-		D086F3CD4000C9F2012850E03C90BD5A /* Debug */ = {
+		D5C57CB7A6D7C070628BFE9125CEFF54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DA1FF86AE51F42605BB6AE0E05C6340F /* Refresher.xcconfig */;
 			buildSettings = {
@@ -3123,39 +3123,6 @@
 			};
 			name = Debug;
 		};
-		D92DFFE717AA9EF88C2D2A91E6906794 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 57644400F6F9BB883DCFD2DB69682067 /* Pods-recipeCalc.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-recipeCalc/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-recipeCalc/Pods-recipeCalc.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_recipeCalc;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		DE29E17EF9D69AAB47289CF7F77588BA /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D012D620F193351AB245102761055A81 /* FBSDKCoreKit.xcconfig */;
@@ -3177,6 +3144,39 @@
 				MODULEMAP_FILE = "Target Support Files/FBSDKCoreKit/FBSDKCoreKit.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = FBSDKCoreKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E40ED89B15D512B0D45B0706B6177A5A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1DAB0567C2146D04C86C268F8928EAE /* Pods-Social Vape.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Social Vape/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Social Vape/Pods-Social Vape.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Social_Vape;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3224,24 +3224,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3C9848B3B8ACB76BD2FEAA95A9E1A331 /* Build configuration list for PBXNativeTarget "Pods-recipeCalc" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				980C3AD875FCC722794A31A81708EAF2 /* Debug */,
-				D92DFFE717AA9EF88C2D2A91E6906794 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		77B000D83365685AFDE19E3474C4AE6D /* Build configuration list for PBXNativeTarget "Refresher" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D086F3CD4000C9F2012850E03C90BD5A /* Debug */,
-				A6D33ECD57AD27A2856B71F1C6C29780 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		7F53C29A72B6CC355FE4F6B52F98F774 /* Build configuration list for PBXNativeTarget "FBSDKCoreKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -3269,6 +3251,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		AD4219615125B6CD8E3A77B37364EE81 /* Build configuration list for PBXNativeTarget "Pods-Social Vape" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				845A926A494B5865AE493548B89076DF /* Debug */,
+				E40ED89B15D512B0D45B0706B6177A5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C699FAA820BB13BC8F76CB119BB92805 /* Build configuration list for PBXNativeTarget "Material-io.cosmicmind.material.fonts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -3283,6 +3274,15 @@
 			buildConfigurations = (
 				4B60EC629CCF1519426E1BE72242369C /* Debug */,
 				1BF048887B7C1938923BBCEE91228A4E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC8FC5B35B819352311983EF31271994 /* Build configuration list for PBXNativeTarget "Refresher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5C57CB7A6D7C070628BFE9125CEFF54 /* Debug */,
+				41908C0F86B6A64568E35ED46A980E59 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

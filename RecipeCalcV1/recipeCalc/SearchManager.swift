@@ -8,10 +8,27 @@
 
 import UIKit
 import Firebase
+import Darwin
 
 class SearchManager: NSObject {
     
+    func setTimeout(delay:NSTimeInterval, block:()->Void) -> NSTimer {
+        return NSTimer.scheduledTimerWithTimeInterval(delay, target: NSBlockOperation(block: block), selector: #selector(NSOperation.main), userInfo: nil, repeats: false)
+    }
+    
+    func setInterval(interval:NSTimeInterval, block:()->Void) -> NSTimer {
+        return NSTimer.scheduledTimerWithTimeInterval(interval, target: NSBlockOperation(block: block), selector: #selector(NSOperation.main), userInfo: nil, repeats: true)
+    }
+    
     var res = [Recipe]()
+    
+    func addRes(newRec: Recipe) {
+        
+        if res.indexOf({$0.name == newRec.name}) == nil {
+            res.append(newRec)
+        }
+        
+    }
     
     func reset() {
         res = [Recipe]()
@@ -22,6 +39,10 @@ class SearchManager: NSObject {
         case "stars":
             self.res.sortInPlace {(recipe1:Recipe, recipe2:Recipe) -> Bool in
                 recipe1.stars > recipe2.stars
+            }
+        case "favs":
+            self.res.sortInPlace {(recipe1:Recipe, recipe2:Recipe) -> Bool in
+                recipe1.favCount > recipe2.favCount
             }
         default:
             break
@@ -45,9 +66,13 @@ class SearchManager: NSObject {
                 recipesComplete = true
             }
             
-            if flavorsComplete && recipesComplete {
+            func finish() {
                 sortBy("stars")
                 completionHandler(res)
+            }
+            
+            if flavorsComplete && recipesComplete {
+                finish()
             }
             
         }
@@ -56,28 +81,40 @@ class SearchManager: NSObject {
             for child in snapshot.children {
                 let child = child as! FIRDataSnapshot
                 let snap = publicRecipeMgr.receiveFromFirebase(child)
-                if snap.name.containsString(term) {
-                    self.res.append(snap)
-                } else if snap.desc.lowercaseString.containsString(term.lowercaseString) {
-                    self.res.append(snap)
+                if snap.name.lowercaseString.containsString(term.lowercaseString) || snap.desc.lowercaseString.containsString(term.lowercaseString) {
+                    self.addRes(snap)
                 }
             }
             returnRes("recipes")
         })
         
         Queries.flavors.observeSingleEventOfType(.Value, withBlock:  { (snapshot) in
+
+            var recCount = 0
+            var recReceivedCount = 0
+
+            func timeToReturn() {
+                self.setTimeout(1, block: { 
+                    returnRes("flavors")
+                })
+            }
+            
             for child in snapshot.children {
+                print(child)
                 let child = child as! FIRDataSnapshot
                 for flavor in child.children {
+                    print(flavor)
                     let flavor = flavorMgr.receiveFromFirebase(flavor as! FIRDataSnapshot)
                     if flavor.name.lowercaseString.containsString(term.lowercaseString) {
+                        print("found matching flavor")
                         Queries.publicRecipes.child(child.key).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                            self.res.append(publicRecipeMgr.receiveFromFirebase(snapshot))
+                            self.addRes(publicRecipeMgr.receiveFromFirebase(snapshot))
                         })
+                        break
                     }
                 }
+                timeToReturn()
             }
-            returnRes("flavors")
         })
         
     }

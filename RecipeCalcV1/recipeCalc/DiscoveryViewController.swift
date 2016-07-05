@@ -24,12 +24,14 @@ class DiscoveryViewController: TableVC {
     
     override func prepareView() {
         super.prepareView()
-        prepareNavigationItem()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareRefresher()
+    }
+    override func viewDidAppear(animated: Bool) {
+        prepareNavigationItem()
     }
     
     /// Prepare tabBarItem.

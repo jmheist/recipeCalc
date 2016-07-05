@@ -41,13 +41,14 @@ class ProfileVC: UIViewController, GADBannerViewDelegate {
         prepareView()
         prepareNavButtons()
         prepareProfile()
-        prepareNavigationItem()
         prepareAds()
     }
     
     override func viewDidAppear(animated: Bool) {
+        prepareNavigationItem()
         prepareNavButtons()
     }
+    
     
     /// General preparation statements.
     private func prepareView() {

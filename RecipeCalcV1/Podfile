@@ -1,6 +1,6 @@
 platform :ios, '8.0'
 use_frameworks!
-target 'recipeCalc' do
+target 'Social Vape' do
 
 pod "Firebase"
 pod "Firebase/Database"

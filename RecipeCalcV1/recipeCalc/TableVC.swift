@@ -37,7 +37,6 @@ class TableVC: UIViewController, GADBannerViewDelegate {
         super.viewDidLoad()
         configureDatabase()
         prepareView()
-        prepareNavigationItem()
         prepareTableView()
         prepareAds()
     }
@@ -46,6 +45,7 @@ class TableVC: UIViewController, GADBannerViewDelegate {
         //check if user is logged in
         if AppState.sharedInstance.signedIn {
             // print("User is logged in")
+            prepareNavigationItem()
         } else {
             print("User is not logged in yet, should load loginVC")
             let vc = RegisterViewController()

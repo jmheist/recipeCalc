@@ -39,10 +39,13 @@ class MixPrepVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareView()
-        prepareNavigationItem()
         prepareTabBar()
         prepareRecipeInfo()
         prepareMixSettings()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        prepareNavigationItem()
     }
     
     func prepareView() {
@@ -85,20 +88,10 @@ class MixPrepVC: UIViewController {
         
         let children = [amount, strength, pg, vg, nic]
         
-        var errors: Bool = false
-        
         for child in children {
             errorMgr.errorCheck(child)
         }
-        
-//        for child in children {
-//            errorMgr.errorCheck(child, completion: { (err) in
-//                if err {
-//                    errors = err
-//                }
-//            })
-//        }
-        
+                
         if !errorMgr.hasErrors() {
             self.settings = Settings(
                 amount: amount.text!,

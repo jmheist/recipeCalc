@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         //FIRDatabase.database().persistenceEnabled = true
         
         MaterialDevice.statusBarHidden = false
-        MaterialDevice.statusBarStyle = .LightContent
+        MaterialDevice.statusBarStyle = UIStatusBarStyle.Default
         
         let loginVC: AppLandingVC = AppLandingVC()
         

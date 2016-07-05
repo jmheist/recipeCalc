@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9CED7E1688F0FED4200FB2DA187CAE6D"
-               BuildableName = "Pods_recipeCalc.framework"
-               BlueprintName = "Pods-recipeCalc"
+               BlueprintIdentifier = "FA8C28119B8D9870774A0C8CA71B30ED"
+               BuildableName = "Pods_Social_Vape.framework"
+               BlueprintName = "Pods-Social Vape"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9CED7E1688F0FED4200FB2DA187CAE6D"
-            BuildableName = "Pods_recipeCalc.framework"
-            BlueprintName = "Pods-recipeCalc"
+            BlueprintIdentifier = "FA8C28119B8D9870774A0C8CA71B30ED"
+            BuildableName = "Pods_Social_Vape.framework"
+            BlueprintName = "Pods-Social Vape"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

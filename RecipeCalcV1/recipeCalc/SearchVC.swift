@@ -44,17 +44,6 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Te
         prepareAds()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        //check if user is logged in
-        if AppState.sharedInstance.signedIn {
-            // print("User is logged in")
-        } else {
-            print("User is not logged in yet, should load loginVC")
-            let vc = RegisterViewController()
-            self.presentViewController(vc, animated: false, completion: nil)
-        }
-    }
-    
     override func viewWillAppear(animated: Bool) {
         self.recipeTable.reloadData()
     }

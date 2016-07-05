@@ -38,11 +38,14 @@ class RecipeVC: UIViewController, GADBannerViewDelegate {
         super.viewDidLoad()
         prepareFlavors()
         prepareView()
-        prepareNavigationItem()
         prepareRecipe()
         prepareTableView()
         prepareTabBar()
         prepareAds()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        prepareNavigationItem()
     }
     
     deinit {
