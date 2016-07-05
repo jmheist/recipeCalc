@@ -132,7 +132,7 @@ class CommentsVC: UIViewController, GADBannerViewDelegate, UITextFieldDelegate, 
         let request = GADRequest()
         request.testDevices = [kGADSimulatorID]
         bannerAd.delegate = self
-        bannerAd.adUnitID = adConstants.AdMobAdUnitID
+        bannerAd.adUnitID = adConstants.comments
         bannerAd.rootViewController = self
         bannerAd.loadRequest(request)
         

@@ -8,7 +8,14 @@
 
 struct adConstants {
     
-    static let AdMobAdUnitID = "ca-app-pub-8196182321788212/7069279083"
-    static let AdMobAppID = "ca-app-pub-8196182321788212~1162346289"
+    static let AdMobAppID = "ca-app-pub-8196182321788212~4264453087"
+    
+    static let recipeList = "ca-app-pub-8196182321788212/5741186280"
+    static let comments = "ca-app-pub-8196182321788212/3635011085"
+    static let profile = "ca-app-pub-8196182321788212/2158277881"
+    static let reciepMix = "ca-app-pub-8196182321788212/9681544686"
+    static let recipeView = "ca-app-pub-8196182321788212/8204811483"
+    static let favList = "ca-app-pub-8196182321788212/7786009089"
+    static let search = "ca-app-pub-8196182321788212/6728078283"
     
 }

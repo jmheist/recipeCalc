@@ -199,17 +199,17 @@ class RegisterViewController: UIViewController, TextFieldDelegate, FBSDKLoginBut
             errorMgr.errorCheck(field)
         }
         
-        if !errorMgr.hasErrors() {
-        
-            FIRAuth.auth()?.createUserWithEmail(emailField.text!, password: passwordField.text!) { (user, error) in
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }
-                self.setDisplayName(user!)
-            }
-            
-        }
+//        if !errorMgr.hasErrors() {
+//        
+//            FIRAuth.auth()?.createUserWithEmail(emailField.text!, password: passwordField.text!) { (user, error) in
+//                if let error = error {
+//                    print(error.localizedDescription)
+//                    return
+//                }
+//                self.setDisplayName(user!)
+//            }
+//            
+//        }
     }
     
     func setDisplayName(user: FIRUser) {

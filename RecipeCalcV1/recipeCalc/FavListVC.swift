@@ -107,7 +107,7 @@ class FavListVC: TableVC {
         let request = GADRequest()
         request.testDevices = [kGADSimulatorID]
         bannerAd.delegate = self
-        bannerAd.adUnitID = adConstants.AdMobAdUnitID
+        bannerAd.adUnitID = adConstants.favList
         bannerAd.rootViewController = self
         bannerAd.loadRequest(request)
         

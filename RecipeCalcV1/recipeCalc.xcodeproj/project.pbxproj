@@ -86,7 +86,7 @@
 /* Begin PBXFileReference section */
 		4B2DD1A894F376BB0A75146F /* Pods_recipeCalc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_recipeCalc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7314085A1CFE3FD800B5F8DF /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		7315D5E31CF4E405002B2588 /* recipeCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = recipeCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7315D5E31CF4E405002B2588 /* Social Vape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Social Vape.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7315D5E61CF4E405002B2588 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7315D5EE1CF4E405002B2588 /* recipeCalc.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = recipeCalc.xcdatamodel; sourceTree = "<group>"; };
 		7315D5F01CF4E405002B2588 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -204,7 +204,7 @@
 		7315D5E41CF4E405002B2588 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7315D5E31CF4E405002B2588 /* recipeCalc.app */,
+				7315D5E31CF4E405002B2588 /* Social Vape.app */,
 				7315D5FA1CF4E405002B2588 /* recipeCalcTests.xctest */,
 				7315D6051CF4E405002B2588 /* recipeCalcUITests.xctest */,
 			);
@@ -418,7 +418,7 @@
 			);
 			name = "Social Vape";
 			productName = recipeCalc;
-			productReference = 7315D5E31CF4E405002B2588 /* recipeCalc.app */;
+			productReference = 7315D5E31CF4E405002B2588 /* Social Vape.app */;
 			productType = "com.apple.product-type.application";
 		};
 		7315D5F91CF4E405002B2588 /* recipeCalcTests */ = {

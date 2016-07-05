@@ -135,7 +135,7 @@ class MixVC: UIViewController, GADBannerViewDelegate {
         let request = GADRequest()
         request.testDevices = [kGADSimulatorID]
         bannerAd.delegate = self
-        bannerAd.adUnitID = adConstants.AdMobAdUnitID
+        bannerAd.adUnitID = adConstants.reciepMix
         bannerAd.rootViewController = self
         bannerAd.loadRequest(request)
         

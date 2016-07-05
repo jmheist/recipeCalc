@@ -85,10 +85,19 @@ class MixPrepVC: UIViewController {
         
         let children = [amount, strength, pg, vg, nic]
         
+        var errors: Bool = false
         
         for child in children {
             errorMgr.errorCheck(child)
         }
+        
+//        for child in children {
+//            errorMgr.errorCheck(child, completion: { (err) in
+//                if err {
+//                    errors = err
+//                }
+//            })
+//        }
         
         if !errorMgr.hasErrors() {
             self.settings = Settings(
