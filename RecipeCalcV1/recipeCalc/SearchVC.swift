@@ -18,6 +18,7 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Te
     
     let searchMgr: SearchManager = SearchManager()
     var searchResults = [Recipe]()
+    var searchDidReturn = false
     
     //
     // bottom nav setup
@@ -33,6 +34,11 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Te
     
     init() {
         super.init(nibName: nil, bundle: nil)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        print("mem warning.")
     }
     
     override func viewDidLoad() {
@@ -84,10 +90,21 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Te
     }
     
     func search(textfield: UITextField) {
-        searchMgr.search(textfield.text!, completionHandler: { (recipes:[Recipe]) in
+//        setTimeout(1) {
+//            print("running")
+//            self.searchMgr.search(textfield.text!, completionHandler: { (recipes:[Recipe]) in
+//                self.searchResults = recipes
+//                self.recipeTable.reloadData()
+//            })
+//        }
+    }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        print("running")
+        self.searchMgr.search(textField.text!, completionHandler: { (recipes:[Recipe]) in
             self.searchResults = recipes
             self.recipeTable.reloadData()
         })
+        return true
     }
     
     func clearSearch() {
@@ -105,7 +122,7 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Te
         view.layout(bannerAd).height(50).width(320).bottom(0).centerHorizontally()
         
         let request = GADRequest()
-        request.testDevices = [kGADSimulatorID]
+        request.testDevices = adConstants.testDevices
         bannerAd.delegate = self
         bannerAd.adUnitID = adConstants.search
         bannerAd.rootViewController = self

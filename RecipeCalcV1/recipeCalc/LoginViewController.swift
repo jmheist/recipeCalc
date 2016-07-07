@@ -114,6 +114,7 @@ class LoginViewController: UIViewController, TextFieldDelegate, FBSDKLoginButton
         fbView.layout(fbErrorLabel).top(85).horizontally()
         
         fbButton.delegate = self
+        fbButton.placeholderText = "Login with Facebook"
         fbButton.readPermissions = ["public_profile","email","user_friends"]
         
     }

@@ -173,7 +173,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         }
         
         if !errorMgr.hasErrors() { // no errors, save the flavor
-            flavorMGR.addFlavor(Flavor(name: addFlavorName.text!, base: addFlavorBase.selectedSegmentIndex == 0 ? "PG" : "VG", pct: addFlavorPct.text!))
+            flavorMGR.addFlavor(Flavor(name: addFlavorName.text!, base: addFlavorBase.selectedSegmentIndex == 0 ? "PG" : "VG", pct: addFlavorPct.text!), isNewRecipe: true)
             flavorTable.reloadData()
             addFlavorName.text = ""
             addFlavorBase.selectedSegmentIndex = 0

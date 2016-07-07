@@ -29,6 +29,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ImagePicker-ImagePicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ImagePicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Material-io.cosmicmind.material.fonts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -97,12 +107,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C59E0E4874B2DD2D0A23CDD80D8E1580</key>
+		<key>9F0C00D382F5E8DDCDB2C3728E9E677E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FA8C28119B8D9870774A0C8CA71B30ED</key>
+		<key>A2330A8237B9F93884A5FC77CE29B114</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CC3B65EC2CCC62A41F84E69FC27B7A5F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EE1EF86E8A9EF6B1DCDC35D84503C747</key>
 		<dict>
 			<key>primary</key>
 			<true/>

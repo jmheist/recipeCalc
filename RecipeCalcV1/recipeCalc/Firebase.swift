@@ -12,7 +12,6 @@ import Firebase
 
 var ref: FIRDatabaseReference = FIRDatabase.database().reference()
 
-
 struct Queries {
     
     static let myRecipes = ref.child("myRecipes")

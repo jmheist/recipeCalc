@@ -6,7 +6,11 @@
 //  Copyright © 2016 Vape&Prosper. All rights reserved.
 //
 
+import GoogleMobileAds
+
 struct adConstants {
+    
+    static let testDevices = [kGADSimulatorID, "c85e0990f8d8f9460802ca5656a54184"]
     
     static let AdMobAppID = "ca-app-pub-8196182321788212~4264453087"
     

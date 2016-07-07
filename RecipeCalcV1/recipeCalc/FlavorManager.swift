@@ -37,7 +37,10 @@ class FlavorManager: NSObject {
     
     var flavors = [Flavor]()
     
-    func addFlavor(flavor: Flavor) {
+    func addFlavor(flavor: Flavor, isNewRecipe:Bool?=false) {
+        if isNewRecipe! as Bool {
+            analyticsMgr.sendFlavorAdded(flavor.name, pct: flavor.pct, base: flavor.base)
+        }
         flavors.append(flavor)
     }
     

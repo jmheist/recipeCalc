@@ -7,15 +7,22 @@
 //
 
 import UIKit
-import Material
+
 import Firebase
 import FBSDKCoreKit
 import GoogleMobileAds
+import Material
+import ImagePicker
 
-class ProfileVC: UIViewController, GADBannerViewDelegate {
+class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate {
     
     /// NavigationBar title label.
     private var titleLabel: UILabel!
+    
+    var profilePicView: UIImageView!
+    var profileImage: UIImage!
+    
+    let imagePicker: ImagePickerController = ImagePickerController()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -42,6 +49,7 @@ class ProfileVC: UIViewController, GADBannerViewDelegate {
         prepareNavButtons()
         prepareProfile()
         prepareAds()
+        prepareImagePicker()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -75,11 +83,48 @@ class ProfileVC: UIViewController, GADBannerViewDelegate {
     
     func prepareProfile() {
         
+        let profileView: MaterialView = MaterialView()
+        view.layout(profileView).left(8).right(8).top(8).height(400)
+        
+        self.profilePicView = UIImageView()
+        self.profilePicView.layer.cornerRadius = 40
+        self.profilePicView.clipsToBounds = true
+        self.profilePicView.backgroundColor = colors.background
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.showImagePicker))
+        profileView.addGestureRecognizer(tap)
+        profileView.userInteractionEnabled = true
+        profileView.layout(self.profilePicView).top(0).left(0).height(80).width(80)
+        
+        storageMgr.getProfilePic(AppState.sharedInstance.uid!) { (image, imageFound) in
+            if imageFound {
+                self.profileImage = image
+            } else {
+                self.profileImage = MaterialIcon.image
+            }
+            
+            self.profilePicView.image = self.profileImage
+        }
+        
         let username: L2 = L2()
         username.text = AppState.sharedInstance.displayName
+        profileView.layout(username).left(0).top(88).width(300)
         
-        let email: L2 = L2()
-        email.text = AppState.sharedInstance.email
+        let joined: L3 = L3()
+        joined.text = "Joined: "+AppState.sharedInstance.joined!
+        joined.textAlignment = .Right
+        profileView.layout(joined).top(88).right(0).width(150)
+        
+        // max length for bio should be around 75-80 characters
+        let bio: L2 = L2()
+        bio.text = "This is my bio, just a blip about me. This is my bio, just a blip about me."
+        bio.numberOfLines = 2
+        bio.font = RobotoFont.lightWithSize(14)
+        profileView.layout(bio).top(114).left(0).width(250)
+        
+        
+        // start on recipe stats
+        
+        
         
     }
     
@@ -89,12 +134,49 @@ class ProfileVC: UIViewController, GADBannerViewDelegate {
         view.layout(bannerAd).height(50).width(320).bottom(50).centerHorizontally()
         
         let request = GADRequest()
-        request.testDevices = [kGADSimulatorID]
+        request.testDevices = adConstants.testDevices
         bannerAd.delegate = self
         bannerAd.adUnitID = adConstants.profile
         bannerAd.rootViewController = self
         bannerAd.loadRequest(request)
+    }
+    
+    func prepareImagePicker() {
+        imagePicker.delegate = self
+        imagePicker.imageLimit = 1
+    }
+    
+    func showImagePicker() {
+        print("show image picker")
+        imagePicker.showGalleryView()
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    func wrapperDidPress(images: [UIImage]) {
+        print("wrapper")
+        imagePicker.showGalleryView()
+    }
+    
+    func doneButtonDidPress(images: [UIImage]) {
+        print("done")
+        let selectedImage = imagePicker.stack.assets[0]
+        print(selectedImage)
         
+        storageMgr.saveProfileImage(selectedImage, uid: AppState.sharedInstance.uid!) { (image, imageFound) in
+            if imageFound {
+                self.profileImage = image
+            } else {
+                self.profileImage = MaterialIcon.image
+            }
+            analyticsMgr.sendProfilePicUpdated()
+            self.profilePicView.image = self.profileImage
+        }
+        
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func cancelButtonDidPress() {
+        print("cancel")
     }
     
     func didTapUpdateProfile() {
@@ -103,5 +185,6 @@ class ProfileVC: UIViewController, GADBannerViewDelegate {
     
     func signOut() {
         UserMgr.signOut(self)
-    }    
+    }
+
 }

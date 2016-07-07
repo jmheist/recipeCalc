@@ -23,3 +23,11 @@ struct Constants {
     }
     
 }
+
+func setTimeout(delay:NSTimeInterval, block:()->Void) -> NSTimer {
+    return NSTimer.scheduledTimerWithTimeInterval(delay, target: NSBlockOperation(block: block), selector: #selector(NSOperation.main), userInfo: nil, repeats: false)
+}
+
+func setInterval(interval:NSTimeInterval, block:()->Void) -> NSTimer {
+    return NSTimer.scheduledTimerWithTimeInterval(interval, target: NSBlockOperation(block: block), selector: #selector(NSOperation.main), userInfo: nil, repeats: true)
+}

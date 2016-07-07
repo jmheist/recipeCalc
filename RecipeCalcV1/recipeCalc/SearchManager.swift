@@ -12,13 +12,7 @@ import Darwin
 
 class SearchManager: NSObject {
     
-    func setTimeout(delay:NSTimeInterval, block:()->Void) -> NSTimer {
-        return NSTimer.scheduledTimerWithTimeInterval(delay, target: NSBlockOperation(block: block), selector: #selector(NSOperation.main), userInfo: nil, repeats: false)
-    }
-    
-    func setInterval(interval:NSTimeInterval, block:()->Void) -> NSTimer {
-        return NSTimer.scheduledTimerWithTimeInterval(interval, target: NSBlockOperation(block: block), selector: #selector(NSOperation.main), userInfo: nil, repeats: true)
-    }
+    var reportedSearchTerm = ""
     
     var res = [Recipe]()
     
@@ -69,6 +63,7 @@ class SearchManager: NSObject {
             func finish() {
                 sortBy("stars")
                 completionHandler(res)
+                reportSearch(term)
             }
             
             if flavorsComplete && recipesComplete {
@@ -94,7 +89,7 @@ class SearchManager: NSObject {
             var recReceivedCount = 0
 
             func timeToReturn() {
-                self.setTimeout(1, block: { 
+                setTimeout(1, block: {
                     returnRes("flavors")
                 })
             }
@@ -114,6 +109,16 @@ class SearchManager: NSObject {
             }
         })
         
+    }
+    
+    func reportSearch(term: String) {
+        if term != reportedSearchTerm {
+            reportedSearchTerm = term
+            setTimeout(3) {
+                print("search reported: \(self.reportedSearchTerm)")
+                analyticsMgr.sendSearchEvent(self.reportedSearchTerm)
+            }
+        }
     }
     
 }

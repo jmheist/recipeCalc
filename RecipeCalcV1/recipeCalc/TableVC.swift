@@ -93,7 +93,7 @@ class TableVC: UIViewController, GADBannerViewDelegate {
         view.layout(bannerAd).height(50).width(320).bottom(50).centerHorizontally()
         
         let request = GADRequest()
-        request.testDevices = [kGADSimulatorID]
+        request.testDevices = adConstants.testDevices
         bannerAd.delegate = self
         bannerAd.adUnitID = adConstants.recipeList
         bannerAd.rootViewController = self

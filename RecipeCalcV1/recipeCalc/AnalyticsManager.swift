@@ -33,8 +33,8 @@ class AnalyticsManager: NSObject {
         FIRAnalytics.logEventWithName("comment_made", parameters: nil)
     }
     
-    func sendRecipeMixed() {
-        FIRAnalytics.logEventWithName("recipe_mixed", parameters: nil)
+    func sendRecipeMixed(recipeName: String?="") {
+        FIRAnalytics.logEventWithName("recipe_mixed", parameters: ["name":recipeName!])
     }
     
     func sendRecipePublished() {
@@ -47,6 +47,18 @@ class AnalyticsManager: NSObject {
     
     func sendPublicRecipeViewed() {
         FIRAnalytics.logEventWithName("public_recipe_viewed", parameters: nil)
+    }
+    
+    func sendSearchEvent(term: String?="") {
+        FIRAnalytics.logEventWithName("searched", parameters: ["term":term!])
+    }
+    
+    func sendFlavorAdded(flavor: String, pct: String, base: String) {
+        FIRAnalytics.logEventWithName("searched", parameters: ["flavor":flavor, "pct":pct, "base":base])
+    }
+    
+    func sendProfilePicUpdated() {
+        FIRAnalytics.logEventWithName("profile_pic_uploaded", parameters: nil)
     }
     
 }

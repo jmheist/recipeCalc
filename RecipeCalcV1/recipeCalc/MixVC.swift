@@ -84,7 +84,7 @@ class MixVC: UIViewController, GADBannerViewDelegate {
     }
     
     func done() {
-        analyticsMgr.sendRecipeMixed()
+        analyticsMgr.sendRecipeMixed(recipe.name)
         navigationController?.popToRootViewControllerAnimated(true)
     }
     
@@ -132,7 +132,7 @@ class MixVC: UIViewController, GADBannerViewDelegate {
         view.layout(bannerAd).height(50).width(320).bottom(40).centerHorizontally()
         
         let request = GADRequest()
-        request.testDevices = [kGADSimulatorID]
+        request.testDevices = adConstants.testDevices
         bannerAd.delegate = self
         bannerAd.adUnitID = adConstants.reciepMix
         bannerAd.rootViewController = self

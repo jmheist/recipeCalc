@@ -14,13 +14,16 @@ struct User {
     
     var username: String
     var email: String
+    var profileImage: String
+    var joined: String?=""
     
-    func fb() -> AnyObject {
-        var user = [String:AnyObject]()
-        user["username"] = self.username
-        user["email"] = self.email
-        return user
-    }
+//    func fb() -> AnyObject {
+//        var user = [String:AnyObject]()
+//        user["username"] = self.username
+//        user["email"] = self.email
+//        user["profileImage"] = self.profileImage
+//        return user
+//    }
     
 }
 
@@ -28,15 +31,17 @@ let UserMgr: UserManager = UserManager()
 
 class UserManager: NSObject {
     
-    func sendToFirebase(user: User, uid: String) {
-        Queries.users.child(uid).setValue(user.fb())
+    func sendDataToFirebase(userUid: String, key: String, value: String) {
+        Queries.users.child(userUid).child(key).setValue(value)
     }
     
     func getUserByKey(key: String, completionHandler:(User)->()) {
         Queries.users.child(key).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             let user = User(
-                username: snapshot.value!["username"] as! String,
-                email: snapshot.value!["email"] as! String
+                username: snapshot.value!["username"] as? String ?? "",
+                email: snapshot.value!["email"] as? String ?? "",
+                profileImage: snapshot.value!["profileImage"] as? String ?? "",
+                joined: snapshot.value!["joined"] as? String ?? ""
             )
             completionHandler(user)
         })
@@ -50,7 +55,9 @@ class UserManager: NSObject {
                 if name.lowercaseString == username.lowercaseString {
                     let user = User(
                         username: name,
-                        email: snap.value!["email"] as! String
+                        email: snap.value!["email"] as! String,
+                        profileImage: snapshot.value!["profileImage"] as? String ?? "",
+                        joined: snapshot.value!["joined"] as? String ?? ""
                     )
                     completionHandler(user)
                 }
@@ -66,7 +73,9 @@ class UserManager: NSObject {
                 if emailval.lowercaseString == email.lowercaseString {
                     let user = User(
                         username: snap.value!["username"] as! String,
-                        email: emailval
+                        email: emailval,
+                        profileImage: snapshot.value!["profileImage"] as? String ?? "",
+                        joined: snapshot.value!["joined"] as? String ?? ""
                     )
                     completionHandler(user)
                 }
@@ -77,34 +86,62 @@ class UserManager: NSObject {
     func signedIn(user: FIRUser?, provider: Bool=false, sender: UIViewController) {
         analyticsMgr.sendLoginEvent()
         AppState.sharedInstance.uid = user?.uid
-        if provider {
-            for profile in user!.providerData {
-                //let providerID = profile.providerID
-                print("providerId: \(profile.providerID)")
-                AppState.sharedInstance.displayName = profile.displayName
-                AppState.sharedInstance.email = profile.email
-                AppState.sharedInstance.photoUrl = profile.photoURL
-                AppState.sharedInstance.signedIn = true
-            }
-        } else {
-            AppState.sharedInstance.displayName = user?.displayName ?? user?.email
-            AppState.sharedInstance.photoUrl = user?.photoURL
-            AppState.sharedInstance.email = user?.email
-            AppState.sharedInstance.signedIn = true
-            print(user, user?.email, user?.displayName)
+        
+        func finish() {
+            print(
+                "Username: \(AppState.sharedInstance.displayName), \n",
+                " Email: \(AppState.sharedInstance.email), \n",
+                " uid: \(AppState.sharedInstance.uid), \n",
+                " photoUrl: \(AppState.sharedInstance.profileImage)"
+            )
+            
+            UserMgr.sendDataToFirebase((user?.uid)!, key: "username", value: AppState.sharedInstance.displayName!)
+            UserMgr.sendDataToFirebase((user?.uid)!, key: "email", value: AppState.sharedInstance.email!)
+            NSNotificationCenter.defaultCenter().postNotificationName(Constants.NotificationKeys.SignedIn, object: nil, userInfo: nil)
+            loadApp(sender)
         }
         
-        print("Username: \(AppState.sharedInstance.displayName), Email: \(AppState.sharedInstance.email), uid: \(AppState.sharedInstance.uid), photoUrl: \(AppState.sharedInstance.photoUrl)")
-        
-        UserMgr.sendToFirebase(
-            User(
-                username: AppState.sharedInstance.displayName!,
-                email: AppState.sharedInstance.email!
-            ),
-            uid: AppState.sharedInstance.uid!
-        )
-        NSNotificationCenter.defaultCenter().postNotificationName(Constants.NotificationKeys.SignedIn, object: nil, userInfo: nil)
-        loadApp(sender)
+        UserMgr.getUserByKey(AppState.sharedInstance.uid!) { (firebaseUser) in
+            
+            if firebaseUser.username != "" {
+                print("user already in DB")
+                AppState.sharedInstance.displayName = firebaseUser.username
+                AppState.sharedInstance.email = firebaseUser.email
+                AppState.sharedInstance.profileImage = firebaseUser.profileImage
+                AppState.sharedInstance.joined = firebaseUser.joined
+                AppState.sharedInstance.signedIn = true
+                finish()
+            } else {
+                print("user not in db yet")
+                let now = NSDate()
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.locale = NSLocale(localeIdentifier: "en_US")
+                dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+                let convertedDate = dateFormatter.stringFromDate(now)
+                UserMgr.sendDataToFirebase((user?.uid)!, key: "joined", value: convertedDate)
+                AppState.sharedInstance.joined = convertedDate
+                if provider {
+                    for profile in user!.providerData {
+                        //let providerID = profile.providerID
+                        print("providerId: \(profile.providerID)")
+                        AppState.sharedInstance.displayName = profile.displayName
+                        AppState.sharedInstance.email = profile.email
+                        AppState.sharedInstance.signedIn = true
+                        
+                        storageMgr.storeFBImage(user!, completionHandler: { (profileImageUrl) in
+                            AppState.sharedInstance.profileImage = profileImageUrl
+                            UserMgr.sendDataToFirebase((user?.uid)!, key: "profileImage", value: AppState.sharedInstance.profileImage!)
+                            finish()
+                        })
+                    }
+                } else {
+                    AppState.sharedInstance.displayName = user?.displayName ?? user?.email
+                    AppState.sharedInstance.email = user?.email
+                    AppState.sharedInstance.signedIn = true
+                    finish()
+                }
+            }
+        }
     }
     
     func signOut(sender: UIViewController) {

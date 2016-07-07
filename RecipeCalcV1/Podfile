@@ -7,12 +7,16 @@ pod "Firebase/Database"
 pod "Firebase/Crash"
 pod "Firebase/Auth"
 pod "Firebase/AdMob"
+pod "Firebase/Storage"
 
 pod "FBSDKLoginKit"
 
 pod "Material"
 
 pod "IQKeyboardManagerSwift"
+
+# https://github.com/hyperoslo/ImagePicker
+pod "ImagePicker"
 
 # https://github.com/justwudi/WDStarRatingView
 pod 'HMWDStarRatingView', '~> 0.4'

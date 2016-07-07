@@ -135,7 +135,7 @@ class RecipeVC: UIViewController, GADBannerViewDelegate {
         view.layout(bannerAd).height(50).width(320).bottom(40).centerHorizontally()
         
         let request = GADRequest()
-        request.testDevices = [kGADSimulatorID]
+        request.testDevices = adConstants.testDevices
         bannerAd.delegate = self
         bannerAd.adUnitID = adConstants.recipeView
         bannerAd.rootViewController = self

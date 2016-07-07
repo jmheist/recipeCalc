@@ -130,7 +130,7 @@ class CommentsVC: UIViewController, GADBannerViewDelegate, UITextFieldDelegate, 
         view.layout(bannerAd).height(50).width(320).bottom(0).centerHorizontally()
         
         let request = GADRequest()
-        request.testDevices = [kGADSimulatorID]
+        request.testDevices = adConstants.testDevices
         bannerAd.delegate = self
         bannerAd.adUnitID = adConstants.comments
         bannerAd.rootViewController = self
