@@ -16,6 +16,7 @@ struct User {
     var email: String
     var profileImage: String
     var joined: String?=""
+    var bio: String?=""
     
 //    func fb() -> AnyObject {
 //        var user = [String:AnyObject]()
@@ -41,7 +42,8 @@ class UserManager: NSObject {
                 username: snapshot.value!["username"] as? String ?? "",
                 email: snapshot.value!["email"] as? String ?? "",
                 profileImage: snapshot.value!["profileImage"] as? String ?? "",
-                joined: snapshot.value!["joined"] as? String ?? ""
+                joined: snapshot.value!["joined"] as? String ?? "",
+                bio: snapshot.value!["bio"] as? String ?? ""
             )
             completionHandler(user)
         })
@@ -57,7 +59,8 @@ class UserManager: NSObject {
                         username: name,
                         email: snap.value!["email"] as! String,
                         profileImage: snapshot.value!["profileImage"] as? String ?? "",
-                        joined: snapshot.value!["joined"] as? String ?? ""
+                        joined: snapshot.value!["joined"] as? String ?? "",
+                        bio: snapshot.value!["bio"] as? String ?? ""
                     )
                     completionHandler(user)
                 }
@@ -75,7 +78,8 @@ class UserManager: NSObject {
                         username: snap.value!["username"] as! String,
                         email: emailval,
                         profileImage: snapshot.value!["profileImage"] as? String ?? "",
-                        joined: snapshot.value!["joined"] as? String ?? ""
+                        joined: snapshot.value!["joined"] as? String ?? "",
+                        bio: snapshot.value!["bio"] as? String ?? ""
                     )
                     completionHandler(user)
                 }
@@ -109,6 +113,7 @@ class UserManager: NSObject {
                 AppState.sharedInstance.email = firebaseUser.email
                 AppState.sharedInstance.profileImage = firebaseUser.profileImage
                 AppState.sharedInstance.joined = firebaseUser.joined
+                AppState.sharedInstance.bio = firebaseUser.bio
                 AppState.sharedInstance.signedIn = true
                 finish()
             } else {

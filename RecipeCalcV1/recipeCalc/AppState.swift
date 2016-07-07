@@ -26,6 +26,7 @@ class AppState: NSObject {
     var uid: String?=" "
     var profileImage: String?=""
     var joined: String?=""
+    var bio: String?=""
     
     var recipe: Recipe!
 }
