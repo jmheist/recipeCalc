@@ -8,10 +8,12 @@
  *
  */
 
-#import "Bolts.h"
+#import <Bolts/BFMeasurementEvent.h>
+/*!
+ Provides methods for posting notifications from the Bolts framework
+ */
+@interface BFMeasurementEvent (Internal)
 
-NS_ASSUME_NONNULL_BEGIN
++ (void)postNotificationForEventName:(NSString *)name args:(NSDictionary *)args;
 
-NSString *const BoltsFrameworkVersionString = @"1.8.1";
-
-NS_ASSUME_NONNULL_END
+@end

@@ -8,10 +8,8 @@
  *
  */
 
-#import "Bolts.h"
+#import <Bolts/BFURL.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
-NSString *const BoltsFrameworkVersionString = @"1.8.1";
-
-NS_ASSUME_NONNULL_END
+@interface BFURL (Internal)
++ (BFURL *)URLForRenderBackToReferrerBarURL:(NSURL *)url;
+@end

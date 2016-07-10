@@ -8,10 +8,10 @@
  *
  */
 
-#import "Bolts.h"
+#import <Bolts/BFAppLinkReturnToRefererView.h>
 
-NS_ASSUME_NONNULL_BEGIN
+@interface BFAppLinkReturnToRefererView (Internal)
 
-NSString *const BoltsFrameworkVersionString = @"1.8.1";
+- (CGFloat)statusBarHeight;
 
-NS_ASSUME_NONNULL_END
+@end
