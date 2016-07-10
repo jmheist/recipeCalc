@@ -64,8 +64,6 @@
 		73F66DC21D0BD5D7008E73E1 /* AddFlavorsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F66DC11D0BD5D7008E73E1 /* AddFlavorsVC.swift */; };
 		73FEB26E1D00AB70008CD089 /* AppNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FEB26D1D00AB70008CD089 /* AppNav.swift */; };
 		73FEB2711D00BB5F008CD089 /* BottomNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FEB2701D00BB5F008CD089 /* BottomNav.swift */; };
-		7D40D3B392E1C9953C33AF4A /* Pods_Social_Vape.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 022EAC9F3A19B24F286DE702 /* Pods_Social_Vape.framework */; };
-		BD70AB898FA3BEDEFE850CCA /* Pods_recipeCalc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2DD1A894F376BB0A75146F /* Pods_recipeCalc.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,8 +84,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		022EAC9F3A19B24F286DE702 /* Pods_Social_Vape.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Social_Vape.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4B2DD1A894F376BB0A75146F /* Pods_recipeCalc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_recipeCalc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		554776C50B1389B5FE2A7810 /* Pods-Social Vape.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social Vape.release.xcconfig"; path = "Pods/Target Support Files/Pods-Social Vape/Pods-Social Vape.release.xcconfig"; sourceTree = "<group>"; };
 		70E08FD719313BDEC68CA0E9 /* Pods-Social Vape.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social Vape.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Social Vape/Pods-Social Vape.debug.xcconfig"; sourceTree = "<group>"; };
 		7314085A1CFE3FD800B5F8DF /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -154,10 +150,6 @@
 		73F66DC11D0BD5D7008E73E1 /* AddFlavorsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFlavorsVC.swift; sourceTree = "<group>"; };
 		73FEB26D1D00AB70008CD089 /* AppNav.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNav.swift; sourceTree = "<group>"; };
 		73FEB2701D00BB5F008CD089 /* BottomNav.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomNav.swift; sourceTree = "<group>"; };
-		7F135C955F4FBDECAAA8E397 /* Pods_recipeCalcUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_recipeCalcUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		872C207450B87D66E90D26CD /* Pods-recipeCalc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-recipeCalc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-recipeCalc/Pods-recipeCalc.debug.xcconfig"; sourceTree = "<group>"; };
-		9DEB14830D49651E7F008BB7 /* Pods_recipeCalcTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_recipeCalcTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AFADDE1CE73C514F163FCBCB /* Pods-recipeCalc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-recipeCalc.release.xcconfig"; path = "Pods/Target Support Files/Pods-recipeCalc/Pods-recipeCalc.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,8 +157,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD70AB898FA3BEDEFE850CCA /* Pods_recipeCalc.framework in Frameworks */,
-				7D40D3B392E1C9953C33AF4A /* Pods_Social_Vape.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,8 +180,6 @@
 		31B9AB14F4D7A978C72C3DED /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				872C207450B87D66E90D26CD /* Pods-recipeCalc.debug.xcconfig */,
-				AFADDE1CE73C514F163FCBCB /* Pods-recipeCalc.release.xcconfig */,
 				70E08FD719313BDEC68CA0E9 /* Pods-Social Vape.debug.xcconfig */,
 				554776C50B1389B5FE2A7810 /* Pods-Social Vape.release.xcconfig */,
 			);
@@ -401,10 +389,6 @@
 		DC9389527519C695F6055A73 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4B2DD1A894F376BB0A75146F /* Pods_recipeCalc.framework */,
-				9DEB14830D49651E7F008BB7 /* Pods_recipeCalcTests.framework */,
-				7F135C955F4FBDECAAA8E397 /* Pods_recipeCalcUITests.framework */,
-				022EAC9F3A19B24F286DE702 /* Pods_Social_Vape.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
