@@ -113,6 +113,11 @@ class MixVC: UIViewController, GADBannerViewDelegate {
         Layout.top(view, child: title, top: 10)
         Layout.horizontally(view, child: title, left: 8, right: 8)
         
+        let steepDays: L3 = L3()
+        steepDays.textLayer.pointSize = 14
+        steepDays.textAlignment = .Center
+        steepDays.text = "Suggested Steep Days: \(self.recipe.steepDays)"
+        view.layout(steepDays).top(40).centerHorizontally()
     }
 
     func prepareTable() {
@@ -122,7 +127,7 @@ class MixVC: UIViewController, GADBannerViewDelegate {
         mixTable.dataSource = self
         mixTable.delegate = self
         view.addSubview(mixTable)
-        Layout.edges(view, child: mixTable, top: 60, left: 5, bottom: 90, right: 5)
+        Layout.edges(view, child: mixTable, top: 70, left: 5, bottom: 90, right: 5)
         
     }
     

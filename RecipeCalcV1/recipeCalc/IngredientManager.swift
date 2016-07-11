@@ -63,9 +63,9 @@ class IngredientManager: NSObject {
                 Ingredient(
                     type: "flavor",
                     name: flavor.name,
-                    ml: String(flavorAmount),
+                    ml: String(format: "%.2f", flavorAmount),
                     grams: String(format: "%.2f", flavorAmount * weightSettings.flavorWeight),
-                    pct: String((flavorAmount / settings.amount) * 100)
+                    pct: String(format: "%.2f", (flavorAmount / settings.amount) * 100)
                 )
             )
             if flavor.base == "PG" {
@@ -83,9 +83,9 @@ class IngredientManager: NSObject {
             Ingredient(
                 type: "base",
                 name: "PG",
-                ml: String(remainingPg),
+                ml: String(format: "%.2f", remainingPg),
                 grams: String(format: "%.2f", remainingPg * weightSettings.pgWeight),
-                pct: String((remainingPg / settings.amount) * 100)
+                pct: String(format: "%.2f", (remainingPg / settings.amount) * 100)
             )
         )
         
@@ -94,9 +94,9 @@ class IngredientManager: NSObject {
             Ingredient(
                 type: "base",
                 name: "VG",
-                ml: String(remainingVg),
+                ml: String(format: "%.2f", remainingVg),
                 grams: String(format: "%.2f", remainingVg * weightSettings.vgWeight),
-                pct: String((remainingVg / settings.amount) * 100)
+                pct: String(format: "%.2f", (remainingVg / settings.amount) * 100)
             )
         )
         
@@ -106,9 +106,9 @@ class IngredientManager: NSObject {
             Ingredient(
                 type: "base",
                 name: "Nicotine",
-                ml: String(nicAmount),
+                ml: String(format: "%.2f", nicAmount),
                 grams: String(format: "%.2f", nicAmount * weightSettings.nicWeight),
-                pct: String((nicAmount / settings.amount) * 100)
+                pct: String(format: "%.2f", (nicAmount / settings.amount) * 100)
             )
         )
         
