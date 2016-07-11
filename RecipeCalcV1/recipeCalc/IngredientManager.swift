@@ -32,11 +32,12 @@ class IngredientManager: NSObject {
     
     // turn these into Ingredients and return [Ingredients]
     
-    var settings: Settings!
+    var settings: MixSettings!
+    let weightSettings: WeightSettings = WeightSettings()
     
     var flavors = [Flavor]()
     
-    func setup(newSettings: Settings) {
+    func setup(newSettings: MixSettings) {
         settings = newSettings
         updateMix()
     }
@@ -49,8 +50,8 @@ class IngredientManager: NSObject {
     func updateMix() {
         
         ingredients = []
-        var remainingVg = settings.amount * settings.vg
-        var remainingPg = settings.amount * settings.pg
+        var remainingVg = settings.amount * (settings.vg / 100)
+        var remainingPg = settings.amount * (settings.pg / 100)
         
         var flavorIngredients = [Ingredient]()
         var baseIngredients = [Ingredient]()
@@ -63,7 +64,7 @@ class IngredientManager: NSObject {
                     type: "flavor",
                     name: flavor.name,
                     ml: String(flavorAmount),
-                    grams: String(format: "%.2f", flavorAmount * settings.flavorWeight),
+                    grams: String(format: "%.2f", flavorAmount * weightSettings.flavorWeight),
                     pct: String((flavorAmount / settings.amount) * 100)
                 )
             )
@@ -83,7 +84,7 @@ class IngredientManager: NSObject {
                 type: "base",
                 name: "PG",
                 ml: String(remainingPg),
-                grams: String(format: "%.2f", remainingPg * settings.pgWeight),
+                grams: String(format: "%.2f", remainingPg * weightSettings.pgWeight),
                 pct: String((remainingPg / settings.amount) * 100)
             )
         )
@@ -94,7 +95,7 @@ class IngredientManager: NSObject {
                 type: "base",
                 name: "VG",
                 ml: String(remainingVg),
-                grams: String(format: "%.2f", remainingVg * settings.vgWeight),
+                grams: String(format: "%.2f", remainingVg * weightSettings.vgWeight),
                 pct: String((remainingVg / settings.amount) * 100)
             )
         )
@@ -106,7 +107,7 @@ class IngredientManager: NSObject {
                 type: "base",
                 name: "Nicotine",
                 ml: String(nicAmount),
-                grams: String(format: "%.2f", nicAmount * settings.nicWeight),
+                grams: String(format: "%.2f", nicAmount * weightSettings.nicWeight),
                 pct: String((nicAmount / settings.amount) * 100)
             )
         )

@@ -14,7 +14,7 @@ import GoogleMobileAds
 class MixVC: UIViewController, GADBannerViewDelegate {
 
     var recipe: Recipe!
-    var settings: Settings!
+    var settings: MixSettings!
     var mixTable: UITableView!
     var _refHandle: FIRDatabaseHandle!
     let flavorMgr: FlavorManager = FlavorManager()
@@ -25,7 +25,7 @@ class MixVC: UIViewController, GADBannerViewDelegate {
         hidesBottomBarWhenPushed = true
     }
     
-    convenience init(recipe: Recipe, settings: Settings) {
+    convenience init(recipe: Recipe, settings: MixSettings) {
         self.init(nibName: nil, bundle: nil)
         self.recipe = recipe
         self.settings = settings

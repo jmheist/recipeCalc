@@ -23,6 +23,7 @@ struct Queries {
     static let favs = ref.child("favorites")
     static let userFavs = ref.child("userFavList")
     static let comments = ref.child("comments")
+    static let mixSettings = ref.child("mixSettings")
     
 }
 

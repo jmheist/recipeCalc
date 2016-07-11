@@ -12,7 +12,7 @@ import Material
 class MixPrepVC: UIViewController {
     
     var recipe: Recipe!
-    var settings: Settings!
+    var settings: MixSettings!
     
     let errorMgr: ErrorManager = ErrorManager()
     
@@ -93,13 +93,14 @@ class MixPrepVC: UIViewController {
         }
                 
         if !errorMgr.hasErrors() {
-            self.settings = Settings(
-                amount: amount.text!,
-                strength: strength.text!,
-                pg: pg.text!,
-                vg: vg.text!,
-                nic: nic.text!
+            self.settings = MixSettings(
+                amount: Float(amount.text!)!,
+                strength: Float(strength.text!)!,
+                pg: Float(pg.text!)!,
+                vg: Float(vg.text!)!,
+                nic: Float(nic.text!)!
             )
+            mixMgr.saveMixSettingsToFB(AppState.sharedInstance.uid!, recipe: recipe.key, settings: self.settings)
             navigationController?.pushViewController(MixVC(recipe: self.recipe, settings: self.settings), animated: true)
         }
     }
@@ -171,7 +172,7 @@ class MixPrepVC: UIViewController {
         
         amount.text = "30"
         amount.placeholder = "Amount to make (ml)"
-        strength.text = "3"
+        strength.text = recipe.strength
         strength.placeholder = "Target Nicotine (mg)"
         pg.text = recipe.pg
         pg.placeholder = "PG%"
@@ -179,6 +180,15 @@ class MixPrepVC: UIViewController {
         vg.placeholder = "VG%"
         nic.text = "100"
         nic.placeholder = "Nic Concentrate Strength"
+        
+        mixMgr.getUserRecipeSettings(AppState.sharedInstance.uid!, recipe: recipe.key) { (mixSettings) in
+            self.amount.text = String(mixSettings.amount)
+            self.strength.text = String(mixSettings.strength)
+            self.pg.text = String(mixSettings.pg)
+            self.vg.text = String(mixSettings.vg)
+            self.nic.text = String(mixSettings.nic)
+            print("Loaded remote settings")
+        }
         
         let children = [amount, strength, pg, vg, nic]
         
