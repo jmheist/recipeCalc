@@ -107,6 +107,7 @@ class CreateRecipeSettingsVC: UIViewController, UITextFieldDelegate {
         // recipe info fields
         
         recipePgPct = T2()
+        recipePgPct.keyboardType = UIKeyboardType.NumbersAndPunctuation
         recipePgPct.placeholder = "Recipe PG%"
         recipePgPct.clearButtonMode = .WhileEditing
         recipePgPct.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
@@ -116,6 +117,7 @@ class CreateRecipeSettingsVC: UIViewController, UITextFieldDelegate {
         recipePgPct.addTarget(self, action: #selector(self.updatePgVg(_:)), forControlEvents: UIControlEvents.EditingChanged)
         
         recipeVgPct = T2()
+        recipeVgPct.keyboardType = UIKeyboardType.NumbersAndPunctuation
         recipeVgPct.placeholder = "Recipe VG%"
         recipeVgPct.clearButtonMode = .WhileEditing
         recipeVgPct.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
@@ -125,6 +127,7 @@ class CreateRecipeSettingsVC: UIViewController, UITextFieldDelegate {
         recipeVgPct.addTarget(self, action: #selector(self.updatePgVg(_:)), forControlEvents: UIControlEvents.EditingChanged)
         
         recipeNicStrength = T2()
+        recipeNicStrength.keyboardType = UIKeyboardType.NumbersAndPunctuation
         recipeNicStrength.placeholder = "Nic Strength (mg)"
         recipeNicStrength.clearButtonMode = .WhileEditing
         recipeNicStrength.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
@@ -133,6 +136,7 @@ class CreateRecipeSettingsVC: UIViewController, UITextFieldDelegate {
         recipeNicStrength.numberMax = 200
         
         recipeSteepDays = T2()
+        recipeSteepDays.keyboardType = UIKeyboardType.NumbersAndPunctuation
         recipeSteepDays.placeholder = "Days to Steep"
         recipeSteepDays.clearButtonMode = .WhileEditing
         recipeSteepDays.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)

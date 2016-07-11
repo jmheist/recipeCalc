@@ -21,6 +21,7 @@ struct Recipe {
     var name = ""
     var desc = ""
     var dateCreated = ""
+    var dateEdited = ""
     var pg = ""
     var vg = ""
     var strength = ""
@@ -36,6 +37,7 @@ struct Recipe {
             name: String? = "",
             desc: String? = "",
             dateCreated: String? = "",
+            dateEdited: String? = "",
             pg: String? = "",
             vg: String? = "",
             strength: String? = "",
@@ -52,6 +54,7 @@ struct Recipe {
         self.name = name!
         self.desc = desc!
         self.dateCreated = dateCreated!
+        self.dateEdited = dateEdited!
         self.pg = pg!
         self.vg = vg!
         self.strength = strength!
@@ -70,6 +73,7 @@ struct Recipe {
         rec["name"] = name
         rec["desc"] = desc
         rec["dateCreated"] = dateCreated
+        rec["dateEdited"] = dateEdited
         rec["pg"] = pg
         rec["vg"] = vg
         rec["strength"] = strength
@@ -136,6 +140,7 @@ class RecipeManager: NSObject {
         let name = snapshot.value!["name"] as! String
         let desc = snapshot.value!["desc"] as! String
         let dateCreated = snapshot.value!["dateCreated"] as? String ?? ""
+        let dateEdited = snapshot.value!["dateEdited"] as? String ?? ""
         let pg = snapshot.value!["pg"] as! String
         let vg = snapshot.value!["vg"] as! String
         let strength = snapshot.value!["strength"] as! String
@@ -144,7 +149,7 @@ class RecipeManager: NSObject {
         let stars = snapshot.value!["stars"] as! CGFloat
         let starsCount = snapshot.value!["starsCount"] as? Int ?? 0
         let favCount = snapshot.value!["favCount"] as? Int ?? 0
-        let rec = Recipe(key: key, author: author, authorId: authorId, name: name, desc: desc, dateCreated: dateCreated, pg: pg, vg: vg, strength: strength, steepDays: steepDays, published: published, stars: stars, starsCount: starsCount, favCount: favCount)
+        let rec = Recipe(key: key, author: author, authorId: authorId, name: name, desc: desc, dateCreated: dateCreated, dateEdited: dateEdited, pg: pg, vg: vg, strength: strength, steepDays: steepDays, published: published, stars: stars, starsCount: starsCount, favCount: favCount)
         return rec
     }
     

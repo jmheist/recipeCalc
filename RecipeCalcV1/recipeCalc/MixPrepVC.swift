@@ -139,6 +139,7 @@ class MixPrepVC: UIViewController {
         Layout.edges(view, child: settings, top: 80, left: 0, bottom: 49, right: 0)
         
         pg = T1()
+        pg.keyboardType = UIKeyboardType.NumbersAndPunctuation
         pg.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         pg.addTarget(self, action: #selector(self.updatePgVg(_:)), forControlEvents: UIControlEvents.EditingChanged)
         pg.errorCheck = true
@@ -146,6 +147,7 @@ class MixPrepVC: UIViewController {
         pg.numberMax = 100
         
         vg = T1()
+        vg.keyboardType = UIKeyboardType.NumbersAndPunctuation
         vg.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         vg.addTarget(self, action: #selector(self.updatePgVg(_:)), forControlEvents: UIControlEvents.EditingChanged)
         vg.errorCheck = true
@@ -153,18 +155,21 @@ class MixPrepVC: UIViewController {
         vg.numberMax = 100
         
         strength = T1()
+        strength.keyboardType = UIKeyboardType.NumbersAndPunctuation
         strength.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         strength.errorCheck = true
         strength.errorCheckFor = "number"
         strength.numberMax = 40
         
         nic = T1()
+        nic.keyboardType = UIKeyboardType.NumbersAndPunctuation
         nic.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         nic.errorCheck = true
         nic.errorCheckFor = "number"
         nic.numberMax = 200
         
         amount = T1()
+        amount.keyboardType = UIKeyboardType.NumbersAndPunctuation
         amount.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         amount.errorCheck = true
         amount.errorCheckFor = "number"

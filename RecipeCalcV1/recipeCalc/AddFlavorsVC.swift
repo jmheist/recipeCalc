@@ -116,6 +116,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         addFlavorName.delegate = self
         
         addFlavorPct = T2()
+        addFlavorPct.keyboardType = UIKeyboardType.NumbersAndPunctuation
         addFlavorPct.placeholder = "%"
         addFlavorPct.clearButtonMode = .WhileEditing
         addFlavorPct.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
@@ -193,8 +194,12 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         dateFormatter.locale = NSLocale(localeIdentifier: "en_US")
         dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
         let convertedDate = dateFormatter.stringFromDate(now)
-        AppState.sharedInstance.recipe.dateCreated = convertedDate
-        
+        if edit {
+            AppState.sharedInstance.recipe.dateEdited = convertedDate
+        } else {
+            AppState.sharedInstance.recipe.dateCreated = convertedDate
+        }
+            
         let key = myRecipeMgr.sendToFirebase(AppState.sharedInstance.recipe)
         
         // add flavors to the flavors db
