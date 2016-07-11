@@ -188,13 +188,11 @@ class UserManager: NSObject {
         
         recipeManager.getUserPublishedRecipes(uid) { (recipes) in
             var starTotal = 0.0
-            print(recipes)
             for rec in recipes {
                 favs += rec.favCount
                 published += 1
                 starTotal += Double(rec.stars)
             }
-            print(starTotal, published, favs)
             stars = starTotal == 0.0 ? 0.0 : starTotal/Double(recipes.count)
             completionHandler(publishedRecipeCount: published, starAvg: floor(stars * 100) / 100, favCount: favs)
         }

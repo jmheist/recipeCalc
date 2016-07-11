@@ -173,7 +173,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         }
         
         if !errorMgr.hasErrors() { // no errors, save the flavor
-            flavorMGR.addFlavor(Flavor(name: addFlavorName.text!, base: addFlavorBase.selectedSegmentIndex == 0 ? "PG" : "VG", pct: addFlavorPct.text!), isNewRecipe: true)
+            flavorMGR.addFlavor(Flavor(name: addFlavorName.text!, base: addFlavorBase.selectedSegmentIndex == 0 ? "PG" : "VG", pct: addFlavorPct.text!), isNewRecipe: !edit)
             flavorTable.reloadData()
             addFlavorName.text = ""
             addFlavorBase.selectedSegmentIndex = 0
@@ -188,6 +188,12 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
     }
     
     func sendRecipe() {
+        let now = NSDate()
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US")
+        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        let convertedDate = dateFormatter.stringFromDate(now)
+        AppState.sharedInstance.recipe.dateCreated = convertedDate
         
         let key = myRecipeMgr.sendToFirebase(AppState.sharedInstance.recipe)
         
