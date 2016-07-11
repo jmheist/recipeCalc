@@ -228,10 +228,6 @@ class RecipeManager: NSObject {
         self.recipes.removeAtIndex(index)
     }
     
-    func updateRecipeAtIndex(index: Int, name: String, value: String) {
-        
-    }
-    
     func indexOfKey(key: String) -> Int {
         var i = 0
         var index = -1
@@ -256,5 +252,5 @@ class RecipeManager: NSObject {
             completionHandler(fetchedRecipes)
         })
     }
-    
+
 }

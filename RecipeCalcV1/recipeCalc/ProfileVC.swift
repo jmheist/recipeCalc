@@ -14,7 +14,7 @@ import GoogleMobileAds
 import Material
 import ImagePicker
 
-class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, UITextViewDelegate {
+class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
     /// NavigationBar title label.
     private var titleLabel: UILabel!
@@ -22,10 +22,18 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     var profilePicView: UIImageView!
     var profileImage: UIImage!
     
+    var favTable: UITableView!
+    var recTable: UITableView!
+    
+    var favs: [Recipe] = []
+    let favMgr: FavoriteManager = FavoriteManager()
+    
+    var recipes: [Recipe] = []
+    let recMgr: RecipeManager = RecipeManager()
+    
     let imagePicker: ImagePickerController = ImagePickerController()
     
     var bio: L2!
-    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -51,6 +59,10 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
         prepareView()
         prepareNavButtons()
         prepareProfile()
+        prepareDatabase()
+        prepareTables()
+        prepareRefresher()
+        prepareTabBar()
         prepareAds()
         prepareImagePicker()
     }
@@ -59,7 +71,6 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
         prepareNavigationItem()
         prepareNavButtons()
     }
-    
     
     /// General preparation statements.
     private func prepareView() {
@@ -84,10 +95,19 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
         tabBarItem.image = MaterialIcon.settings
     }
     
+    func prepareDatabase() {
+        favMgr.getUserFavs(AppState.sharedInstance.uid!) { (recipes) in
+            self.favs = recipes
+            self.favTable.reloadData()
+        }
+        
+        // recMgr.getUserRecipes
+    }
+    
     func prepareProfile() {
         
         let profileView: MaterialView = MaterialView()
-        view.layout(profileView).left(8).right(8).top(8).height(400)
+        view.layout(profileView).left(8).right(8).top(8).height(175)
         
         self.profilePicView = UIImageView()
         self.profilePicView.layer.cornerRadius = 40
@@ -202,8 +222,29 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
         profileStatsView.grid.contentInsetPreset = .Square2
         profileStatsView.grid.views = labels
         
-
+    }
+    
+    func prepareTables() {
         
+    }
+    
+    func prepareTabBar() {
+        let tabBar: TabBar = TabBar()
+        view.layout(tabBar).top(175).left(0).right(0).height(40)
+        tabBar.backgroundColor = colors.background
+        tabBar.line.backgroundColor = colors.medium
+        
+        let btn1: FlatButton = FlatButton()
+        btn1.pulseColor = colors.medium
+        btn1.setTitle("Recipes", forState: .Normal)
+        btn1.setTitleColor(colors.text, forState: .Normal)
+        
+        let btn2: FlatButton = FlatButton()
+        btn2.pulseColor = colors.medium
+        btn2.setTitle("Favorites", forState: .Normal)
+        btn2.setTitleColor(colors.text, forState: .Normal)
+        
+        tabBar.buttons = [btn1, btn2]
     }
     
     func prepareAds() {
@@ -304,5 +345,118 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
             textView.textColor = UIColor.darkGrayColor()
         }
     }
+    
+    func prepareRefresher() {
+        let pacmanAnimator = PacmanAnimator(frame: CGRectMake(0, 0, 80, 80))
+        recTable.addPullToRefreshWithAction({
+            NSOperationQueue().addOperationWithBlock {
+                print("refreshing")
+                self.updateRecTable()
+                sleep(1)
+                NSOperationQueue.mainQueue().addOperationWithBlock {
+                    self.recTable.stopPullToRefresh()
+                }
+            }
+        }, withAnimator: pacmanAnimator)
+        favTable.addPullToRefreshWithAction({
+            NSOperationQueue().addOperationWithBlock {
+                print("refreshing")
+                self.updateFavTable()
+                sleep(1)
+                NSOperationQueue.mainQueue().addOperationWithBlock {
+                    self.favTable.stopPullToRefresh()
+                }
+            }
+        }, withAnimator: pacmanAnimator)
+    }
+    
+    // UITableViewDataSource protocol methods
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView === self.favTable {
+            return favs.count
+        } else if tableView === self.recTable {
+            return myRecipeMgr.recipes.count
+        } else {
+            return 0
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if tableView === self.favTable {
+            
+            let cell: PublicRecipeCell = PublicRecipeCell(style: .Default, reuseIdentifier: "favRecipeCell")
+            
+            let recipe = favs[indexPath.row]
+            
+            cell.starRatingView.value = recipe.stars
+            cell.starRatingCount.text = "(\(recipe.starsCount))"
+            cell.heartCount.text = "\(recipe.favCount)"
+            cell.selectionStyle = .None
+            cell.recipeName.text = recipe.name
+            cell.recipeDesc.text = recipe.desc
+            cell.creator.text = recipe.author
+            cell.recipeID = recipe.key
+            
+            return cell
+            
+        } else if tableView === self.recTable {
+            
+            let cell: MyRecipeCell = MyRecipeCell(style: .Default, reuseIdentifier: "recipeCell")
+            
+            let recipe = myRecipeMgr.recipes[indexPath.row]
+            
+            cell.selectionStyle = .None
+            cell.recipeName.text = recipe.name
+            cell.recipeDesc.text = recipe.desc
+            cell.creator.text = recipe.author
+            cell.recipeID = recipe.key
+            
+            return cell
+        } else {
+            let cell: MyRecipeCell = MyRecipeCell(style: .Default, reuseIdentifier: "recipeCell")
+            return cell
+        }
+    }
+    
+    func registerFavClass() {
+        recTable.registerClass(MaterialTableViewCell.self, forCellReuseIdentifier: "favRecipeCell")
+    }
+    
+    func registerRecClass() {
+        recTable.registerClass(MaterialTableViewCell.self, forCellReuseIdentifier: "recipeCell")
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        navigationController?.pushViewController(PublicRecipeVC(recipe: favs[indexPath.row]), animated: true)
+    }
+    
+    func updateRecTable() {
+        (Queries.publicRecipes).queryOrderedByChild("stars").observeSingleEventOfType(.Value, withBlock: { (snapshot) -> Void in
+            publicRecipeMgr.reset()
+            self.recTable.reloadData()
+            for child in snapshot.children {
+                let snap = child as! FIRDataSnapshot
+                let rec = publicRecipeMgr.receiveFromFirebase(snap)
+                publicRecipeMgr.addRecipe(rec)
+                publicRecipeMgr.sortBy("stars")
+                self.recTable.reloadData()
+            }
+        })
+    }
+    
+    func updateFavTable() {
+        (Queries.publicRecipes).queryOrderedByChild("stars").observeSingleEventOfType(.Value, withBlock: { (snapshot) -> Void in
+            publicRecipeMgr.reset()
+            self.recTable.reloadData()
+            for child in snapshot.children {
+                let snap = child as! FIRDataSnapshot
+                let rec = publicRecipeMgr.receiveFromFirebase(snap)
+                publicRecipeMgr.addRecipe(rec)
+                publicRecipeMgr.sortBy("stars")
+                self.recTable.reloadData()
+            }
+        })
+    }
+    
     
 }

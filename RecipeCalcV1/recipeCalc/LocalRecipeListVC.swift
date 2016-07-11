@@ -14,7 +14,6 @@ class LocalRecipeListVC: TableVC {
     
     private var _refHandle: FIRDatabaseHandle!
     private var _refUpdateHandle: FIRDatabaseHandle!
-    private var _refRemovedHandle: FIRDatabaseHandle!
     
     deinit {
         Queries.myRecipes.child(AppState.sharedInstance.uid!).removeAllObservers()
@@ -57,10 +56,6 @@ class LocalRecipeListVC: TableVC {
             let rec = myRecipeMgr.receiveFromFirebase(snapshot)
             myRecipeMgr.updateRecipe(rec)
             self.recipeTable.reloadData()
-        })
-
-        _refRemovedHandle = Queries.myRecipes.child(AppState.sharedInstance.uid!).observeEventType(.ChildRemoved, withBlock: { (snapshot) -> Void in
-            print("Recipe Removed")
         })
     }
     
