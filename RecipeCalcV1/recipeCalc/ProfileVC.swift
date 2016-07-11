@@ -148,15 +148,15 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
         }
         
         let recipesLabel: statHeader = statHeader()
-        recipesLabel.text = "Recipes"
+        recipesLabel.text = "Published"
         profileStatsView.addSubview(recipesLabel)
         
         let starsLabel: statHeader = statHeader()
-        starsLabel.text = "Stars"
+        starsLabel.text = "Avg Stars"
         profileStatsView.addSubview(starsLabel)
         
         let favsLabel: statHeader = statHeader()
-        favsLabel.text = "Favs"
+        favsLabel.text = " Total Favs"
         profileStatsView.addSubview(favsLabel)
         
         let recipes: stat = stat()
@@ -170,6 +170,12 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
         let favs: stat = stat()
         favs.text = "197"
         profileStatsView.addSubview(favs)
+        
+        UserMgr.loadUserStats(AppState.sharedInstance.uid!) { (publishedRecipeCount, starAvg, favCount) in
+            recipes.text = String(publishedRecipeCount)
+            stars.text = String(starAvg)
+            favs.text = String(favCount)
+        }
         
         let labels = [recipesLabel, starsLabel, favsLabel, recipes, stars, favs]
         var rowOffset = 0

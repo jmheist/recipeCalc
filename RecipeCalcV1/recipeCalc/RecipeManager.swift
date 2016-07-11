@@ -11,6 +11,7 @@ import Firebase
 
 let myRecipeMgr: RecipeManager = RecipeManager()
 let publicRecipeMgr: RecipeManager = RecipeManager()
+let recipeManager: RecipeManager = RecipeManager()
 
 struct Recipe {
     
@@ -231,5 +232,19 @@ class RecipeManager: NSObject {
             i += 1
         }
         return Int(index)
-    }    
+    }
+    
+    func getUserPublishedRecipes(uid: String, completionHandler:([Recipe])->()) {
+        var fetchedRecipes = [Recipe]()
+        Queries.myRecipes.child(uid).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            for snap in snapshot.children {
+                let snap = self.receiveFromFirebase(snap as! FIRDataSnapshot)
+                if snap.published == "true" {
+                    fetchedRecipes.append(snap)
+                }
+            }
+            completionHandler(fetchedRecipes)
+        })
+    }
+    
 }
