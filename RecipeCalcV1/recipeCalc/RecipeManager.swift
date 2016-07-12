@@ -9,9 +9,7 @@
 import UIKit
 import Firebase
 
-let myRecipeMgr: RecipeManager = RecipeManager()
-let publicRecipeMgr: RecipeManager = RecipeManager()
-let recipeManager: RecipeManager = RecipeManager()
+let recipeMgr: RecipeManager = RecipeManager()
 
 struct Recipe {
     
@@ -89,30 +87,24 @@ struct Recipe {
 
 class RecipeManager: NSObject {
     
-    var recipes = [Recipe]()
-    
-    func addRecipe(recipe: Recipe) {
-        recipes.append(recipe)
-    }
-    
-    func reset() {
-        recipes.removeAll()
-    }
-    
-    func sortBy(sortBy: String) {
+    func sortBy(sortBy: String, recipes: [Recipe]) -> [Recipe] {
+        
+        var recs = recipes
+        
         switch sortBy {
         case "stars":
-            self.recipes.sortInPlace {(recipe1:Recipe, recipe2:Recipe) -> Bool in
+            recs.sortInPlace {(recipe1:Recipe, recipe2:Recipe) -> Bool in
                 recipe1.stars > recipe2.stars
             }
         case "favs":
-            self.recipes.sortInPlace {(recipe1:Recipe, recipe2:Recipe) -> Bool in
+            recs.sortInPlace {(recipe1:Recipe, recipe2:Recipe) -> Bool in
                 recipe1.favCount > recipe2.favCount
             }
         default:
             break
         }
         
+        return recs
     }
     
     func sendToFirebase (recipe: Recipe) -> String {
@@ -153,65 +145,34 @@ class RecipeManager: NSObject {
         return rec
     }
     
-    func updateRecipe(recipe: Recipe) {
+    func deleteRecipe(key: String, completionHandler:([Recipe])->()) {
         
-        print("update called, \(recipe)")
-        let myIndex = myRecipeMgr.indexOfKey(recipe.key)
-        self.recipes[myIndex] = recipe
-        
-        if recipe.published == "true" {
-            Queries.publicRecipes.child(recipe.key).setValue(recipe.fb())
-        }
-    }
-    
-    func removeRecipe(key: String) {
-        let myIndex = myRecipeMgr.indexOfKey(key)
-        let recipe = myRecipeMgr.recipes[myIndex]
-        myRecipeMgr.recipes.removeAtIndex(myIndex)
-        
-        if recipe.published == "true" {
-            let pubIndex = publicRecipeMgr.indexOfKey(key)
-            if pubIndex > -1 {
-                publicRecipeMgr.recipes.removeAtIndex(pubIndex)
-            }
-        }
         analyticsMgr.sendRecipeDeleted()
         Queries.myRecipes.child(AppState.sharedInstance.uid!).child(key).removeValue()
         Queries.publicRecipes.child(key).removeValue()
         Queries.flavors.child(key).removeValue()
+        
+        getUserRecipes(AppState.sharedInstance.uid!, sort: "stars") { (recipes) in
+            completionHandler(recipes)
+        }
 
     }
     
-    func publishRecipe(key: String) -> Recipe {
+    func publishRecipe(key: String, completionHandler:(Recipe)->()) {
         print("Publishing now from RecipeManager")
-        
-        //update locally
-        let index = myRecipeMgr.indexOfKey(key)
-        myRecipeMgr.recipes[index].published = "true"
-        let recipe = myRecipeMgr.recipes[index]
         
         //update on FB
         Queries.myRecipes.child(AppState.sharedInstance.uid!).child(key).child("published").setValue("true")
-        Queries.publicRecipes.child(key).setValue(recipe.fb())
-        
-        analyticsMgr.sendRecipePublished()
-        
-        // return updated recipe
-        return recipe
+        Queries.myRecipes.child(AppState.sharedInstance.uid!).child(key).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            analyticsMgr.sendRecipePublished()
+            let rec = self.receiveFromFirebase(snapshot)
+            Queries.publicRecipes.child(key).setValue(rec.fb())
+            completionHandler(rec)
+        })
     }
     
-    func unPublishRecipe(key: String) -> Recipe {
+    func unPublishRecipe(key: String, completionHandler:(Recipe)->()){
         print("UN-Publishing now from RecipeManager")
-        
-        //update locally
-        let index = myRecipeMgr.indexOfKey(key)
-        myRecipeMgr.recipes[index].published = "false"
-        let recipe = myRecipeMgr.recipes[index]
-        
-        let pubIndex = publicRecipeMgr.indexOfKey(key)
-        if pubIndex > -1 {
-            publicRecipeMgr.recipes.removeAtIndex(pubIndex)
-        }
         
         // update on fb
         // delete public recipe
@@ -220,34 +181,42 @@ class RecipeManager: NSObject {
         
         analyticsMgr.sendRecipeUnpublished()
         
-        // return udated recipe
-        return recipe
+        Queries.myRecipes.child(AppState.sharedInstance.uid!).child(key).observeSingleEventOfType(.Value, withBlock:  { (snapshot) in
+            completionHandler(self.receiveFromFirebase(snapshot))
+        })
+        
     }
     
-    func removeRecipeAtIndex(index: Int) {
-        self.recipes.removeAtIndex(index)
-    }
-    
-    func indexOfKey(key: String) -> Int {
-        var i = 0
-        var index = -1
-        for recipe in self.recipes {
-            if recipe.key == key {
-                index = i
+    func getUserPublishedRecipes(uid: String, sort: String, completionHandler:([Recipe])->()) {
+        var publisheRecipes = [Recipe]()
+        self.getUserRecipes(uid, sort: sort) { (recipes) in
+            for rec in recipes {
+                if rec.published == "true" {
+                    publisheRecipes.append(rec)
+                }
             }
-            i += 1
+            completionHandler(publisheRecipes)
         }
-        return Int(index)
+        
     }
     
-    func getUserPublishedRecipes(uid: String, completionHandler:([Recipe])->()) {
+    func getUserRecipes(uid: String, sort: String, completionHandler:([Recipe])->()) {
+        
         var fetchedRecipes = [Recipe]()
         Queries.myRecipes.child(uid).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             for snap in snapshot.children {
-                let snap = self.receiveFromFirebase(snap as! FIRDataSnapshot)
-                if snap.published == "true" {
-                    fetchedRecipes.append(snap)
-                }
+                fetchedRecipes.append(self.receiveFromFirebase(snap as! FIRDataSnapshot))
+            }
+            completionHandler(fetchedRecipes)
+        })
+        
+    }
+    
+    func getPublishedRecipes(sort: String, completionHandler:([Recipe])->()) {
+        var fetchedRecipes = [Recipe]()
+        Queries.publicRecipes.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            for snap in snapshot.children {
+                fetchedRecipes.append(self.receiveFromFirebase(snap as! FIRDataSnapshot))
             }
             completionHandler(fetchedRecipes)
         })

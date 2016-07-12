@@ -43,7 +43,7 @@ class FavoriteManager: NSObject {
         func getRecipeData() {
             for key in favKeys {
                 Queries.publicRecipes.child(key).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                    favs.append(publicRecipeMgr.receiveFromFirebase(snapshot))
+                    favs.append(recipeMgr.receiveFromFirebase(snapshot))
                     if favs.count == favKeys.count {
                         finish()
                     }

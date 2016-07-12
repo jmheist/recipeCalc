@@ -90,13 +90,13 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Te
     }
     
     func search(textfield: UITextField) {
-//        setTimeout(1) {
-//            print("running")
-//            self.searchMgr.search(textfield.text!, completionHandler: { (recipes:[Recipe]) in
-//                self.searchResults = recipes
-//                self.recipeTable.reloadData()
-//            })
-//        }
+        setTimeout(1) {
+            print("running")
+            self.searchMgr.search(textfield.text!, completionHandler: { (recipes:[Recipe]) in
+                self.searchResults = recipes
+                self.recipeTable.reloadData()
+            })
+        }
     }
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         print("running")

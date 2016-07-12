@@ -9,7 +9,6 @@
 import UIKit
 import Material
 import Firebase
-import Refresher
 
 class FavListVC: TableVC {
     
@@ -41,20 +40,6 @@ class FavListVC: TableVC {
         navigationController?.presentViewController(FavListVC(), animated: true, completion: nil)
     }
     
-    func prepareRefresher() {
-        let pacmanAnimator = PacmanAnimator(frame: CGRectMake(0, 0, 80, 80))
-        recipeTable.addPullToRefreshWithAction({
-            NSOperationQueue().addOperationWithBlock {
-                print("refreshing")
-                self.updateTable()
-                sleep(1)
-                NSOperationQueue.mainQueue().addOperationWithBlock {
-                    self.recipeTable.stopPullToRefresh()
-                }
-            }
-            }, withAnimator: pacmanAnimator)
-    }
-    
     // UITableViewDataSource protocol methods
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return favs.count
@@ -84,21 +69,6 @@ class FavListVC: TableVC {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         navigationController?.pushViewController(PublicRecipeVC(recipe: favs[indexPath.row]), animated: true)
-    }
-    
-    func updateTable() {
-        (Queries.publicRecipes).queryOrderedByChild("stars").observeSingleEventOfType(.Value, withBlock: { (snapshot) -> Void in
-            publicRecipeMgr.reset()
-            self.recipeTable.reloadData()
-            for child in snapshot.children {
-                let snap = child as! FIRDataSnapshot
-                let rec = publicRecipeMgr.receiveFromFirebase(snap)
-                publicRecipeMgr.addRecipe(rec)
-                publicRecipeMgr.sortBy("stars")
-                self.recipeTable.reloadData()
-            }
-        })
-        
     }
     
     override func prepareAds() {

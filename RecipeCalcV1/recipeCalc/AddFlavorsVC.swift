@@ -200,7 +200,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
             AppState.sharedInstance.recipe.dateCreated = convertedDate
         }
             
-        let key = myRecipeMgr.sendToFirebase(AppState.sharedInstance.recipe)
+        let key = recipeMgr.sendToFirebase(AppState.sharedInstance.recipe)
         
         // add flavors to the flavors db
         flavorMGR.sendToFirebase(key, flavors: flavorMGR.flavors)

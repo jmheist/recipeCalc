@@ -75,7 +75,7 @@ class SearchManager: NSObject {
         Queries.publicRecipes.observeSingleEventOfType(.Value, withBlock:  { (snapshot) in
             for child in snapshot.children {
                 let child = child as! FIRDataSnapshot
-                let snap = publicRecipeMgr.receiveFromFirebase(child)
+                let snap = recipeMgr.receiveFromFirebase(child)
                 if snap.name.lowercaseString.containsString(term.lowercaseString) || snap.desc.lowercaseString.containsString(term.lowercaseString) {
                     self.addRes(snap)
                 }
@@ -100,7 +100,7 @@ class SearchManager: NSObject {
                     let flavor = flavorMgr.receiveFromFirebase(flavor as! FIRDataSnapshot)
                     if flavor.name.lowercaseString.containsString(term.lowercaseString) {
                         Queries.publicRecipes.child(child.key).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                            self.addRes(publicRecipeMgr.receiveFromFirebase(snapshot))
+                            self.addRes(recipeMgr.receiveFromFirebase(snapshot))
                         })
                         break
                     }

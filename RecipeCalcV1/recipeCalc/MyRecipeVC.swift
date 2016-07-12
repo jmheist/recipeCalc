@@ -12,8 +12,6 @@ import Material
 
 class MyRecipeVC: RecipeVC {
     
-    var _refPublishedHandle: FIRDatabaseHandle!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareDatabase()
@@ -29,10 +27,7 @@ class MyRecipeVC: RecipeVC {
     }
     
     func prepareDatabase() {
-        // Listen for new messages in the Firebase database
-        _refPublishedHandle = Queries.myRecipes.child(AppState.sharedInstance.uid!).child(recipe.key).observeEventType(.ChildChanged, withBlock: { (snapshot) -> Void in
-            self.preparePublishButton()
-        })
+        
     }
     
     override func prepareView() {
@@ -45,11 +40,15 @@ class MyRecipeVC: RecipeVC {
     }
     
     func publishRecipe() {
-        self.recipe = myRecipeMgr.publishRecipe(recipe.key)
+        recipeMgr.publishRecipe(self.recipe.key) { (rec) in
+            self.recipe = rec
+        }
     }
     
     func unPublishRecipe() {
-        self.recipe = myRecipeMgr.unPublishRecipe(recipe.key)
+        recipeMgr.unPublishRecipe(self.recipe.key, completionHandler: { (rec) in
+            self.recipe = rec
+        })
     }
     
     func preparePublishButton() {

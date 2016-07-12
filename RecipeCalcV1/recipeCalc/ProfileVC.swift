@@ -13,6 +13,7 @@ import FBSDKCoreKit
 import GoogleMobileAds
 import Material
 import ImagePicker
+import Refresher
 
 class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
@@ -31,12 +32,19 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     var recipes: [Recipe] = []
     let recMgr: RecipeManager = RecipeManager()
     
+    var user: String = ""
+    
     let imagePicker: ImagePickerController = ImagePickerController()
     
     var bio: L2!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    convenience init(user: String) {
+        self.init(nibName: nil, bundle: nil)
+        self.user = user
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -59,15 +67,15 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
         prepareView()
         prepareNavButtons()
         prepareProfile()
-        prepareDatabase()
         prepareTables()
-        prepareRefresher()
         prepareTabBar()
         prepareAds()
         prepareImagePicker()
+        prepareRefresher()
     }
     
     override func viewDidAppear(animated: Bool) {
+        prepareDatabase()
         prepareNavigationItem()
         prepareNavButtons()
     }
@@ -101,7 +109,18 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
             self.favTable.reloadData()
         }
         
-        // recMgr.getUserRecipes
+        if user == "" {
+            recipeMgr.getUserRecipes(AppState.sharedInstance.uid!, sort: "stars", completionHandler: { (recipes) in
+                self.recipes = recipes
+                self.recTable.reloadData()
+            })
+        } else {
+            recipeMgr.getPublishedRecipes("stars", completionHandler: { (recipes) in
+                self.recipes = recipes
+                self.recTable.reloadData()
+            })
+        }
+        
     }
     
     func prepareProfile() {
@@ -140,9 +159,6 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
         // max length for bio should be around 75-80 characters
         bio = L2()
         bio.text = AppState.sharedInstance.bio == "" ? "Add a Bio" : AppState.sharedInstance.bio
-//        let biotap = UITapGestureRecognizer(target: self, action: #selector(self.showBioAlert(_:)))
-//        bio.addGestureRecognizer(biotap)
-//        bio.userInteractionEnabled = true
         bio.numberOfLines = 2
         bio.font = RobotoFont.lightWithSize(14)
         profileView.layout(bio).top(114).left(0).width(250)
@@ -225,7 +241,8 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     }
     
     func prepareTables() {
-        
+        recTable = UITableView()
+        favTable = UITableView()
     }
     
     func prepareTabBar() {
@@ -306,39 +323,6 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
         UserMgr.signOut(self)
     }
     
-//    func showBioAlert(sender: AnyObject) {
-//        let alertController = UIAlertController(title: "Update Your Bio \n\n\n\n\n\n\n", message: "", preferredStyle: .Alert)
-//        
-//        let rect        = CGRectMake(15, 50, 240, 150.0)
-//        let textView    = UITextView(frame: rect)
-//        
-//        textView.font               = UIFont(name: "Helvetica", size: 15)
-//        textView.textColor          = UIColor.lightGrayColor()
-//        textView.backgroundColor    = UIColor.whiteColor()
-//        textView.layer.borderColor  = UIColor.lightGrayColor().CGColor
-//        textView.layer.borderWidth  = 1.0
-//        textView.text               = "Enter message here"
-//        textView.delegate           = self
-//        
-//        alertController.view.addSubview(textView)
-//        
-//        let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-//        let action = UIAlertAction(title: "Ok", style: .Default, handler: { action in
-//            
-//            let msg = (textView.textColor == UIColor.lightGrayColor()) ? "" : textView.text
-//            
-//            AppState.sharedInstance.bio = msg
-//            UserMgr.sendDataToFirebase(AppState.sharedInstance.uid!, key: "bio", value: msg)
-//            self.bio.text = AppState.sharedInstance.bio == "" ? "Add a Bio" : AppState.sharedInstance.bio
-//            
-//        })
-//        alertController.addAction(cancel)
-//        alertController.addAction(action)
-//        
-//        self.presentViewController(alertController, animated: true, completion: {})
-//        
-//    }
-    
     func textViewDidBeginEditing(textView: UITextView) {
         if textView.textColor == UIColor.lightGrayColor(){
             textView.text = ""
@@ -375,7 +359,7 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
         if tableView === self.favTable {
             return favs.count
         } else if tableView === self.recTable {
-            return myRecipeMgr.recipes.count
+            return self.recipes.count
         } else {
             return 0
         }
@@ -403,7 +387,7 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
             
             let cell: MyRecipeCell = MyRecipeCell(style: .Default, reuseIdentifier: "recipeCell")
             
-            let recipe = myRecipeMgr.recipes[indexPath.row]
+            let recipe = self.recipes[indexPath.row]
             
             cell.selectionStyle = .None
             cell.recipeName.text = recipe.name
@@ -431,31 +415,24 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     }
     
     func updateRecTable() {
-        (Queries.publicRecipes).queryOrderedByChild("stars").observeSingleEventOfType(.Value, withBlock: { (snapshot) -> Void in
-            publicRecipeMgr.reset()
-            self.recTable.reloadData()
-            for child in snapshot.children {
-                let snap = child as! FIRDataSnapshot
-                let rec = publicRecipeMgr.receiveFromFirebase(snap)
-                publicRecipeMgr.addRecipe(rec)
-                publicRecipeMgr.sortBy("stars")
+        if user == "" {
+            recipeMgr.getUserRecipes(AppState.sharedInstance.uid!, sort: "stars", completionHandler: { (recipes) in
+                self.recipes = recipes
                 self.recTable.reloadData()
-            }
-        })
+            })
+        } else {
+            recipeMgr.getPublishedRecipes("stars", completionHandler: { (recipes) in
+                self.recipes = recipes
+                self.recTable.reloadData()
+            })
+        }
     }
     
     func updateFavTable() {
-        (Queries.publicRecipes).queryOrderedByChild("stars").observeSingleEventOfType(.Value, withBlock: { (snapshot) -> Void in
-            publicRecipeMgr.reset()
-            self.recTable.reloadData()
-            for child in snapshot.children {
-                let snap = child as! FIRDataSnapshot
-                let rec = publicRecipeMgr.receiveFromFirebase(snap)
-                publicRecipeMgr.addRecipe(rec)
-                publicRecipeMgr.sortBy("stars")
-                self.recTable.reloadData()
-            }
-        })
+        favMgr.getUserFavs(AppState.sharedInstance.uid!) { (recipes) in
+            self.favs = recipes
+            self.favTable.reloadData()
+        }
     }
     
     

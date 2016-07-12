@@ -12,15 +12,13 @@ import Firebase
 
 class LocalRecipeListVC: TableVC {
     
-    private var _refHandle: FIRDatabaseHandle!
-    private var _refUpdateHandle: FIRDatabaseHandle!
-    
-    deinit {
-        Queries.myRecipes.child(AppState.sharedInstance.uid!).removeAllObservers()
-    }
-    
     override func prepareView() {
         super.prepareView()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        prepareNavigationItem()
+        configureDatabase()
     }
     
     /// Prepare tabBarItem.
@@ -38,25 +36,19 @@ class LocalRecipeListVC: TableVC {
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if(editingStyle == UITableViewCellEditingStyle.Delete){
-            let key = myRecipeMgr.recipes[indexPath.row].key
-            myRecipeMgr.removeRecipe(key)
-            analyticsMgr.sendRecipeDeleted()
-            recipeTable.reloadData()
+            let key = self.recipes[indexPath.row].key
+            recipeMgr.deleteRecipe(key, completionHandler: { (recs) in
+                self.recipes = recs
+                self.recipeTable.reloadData()
+            })
         }
     }
     
     override func configureDatabase() {
-        // Listen for new messages in the Firebase database
-        _refHandle = Queries.myRecipes.child(AppState.sharedInstance.uid!).observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
-            let rec = myRecipeMgr.receiveFromFirebase(snapshot)
-            myRecipeMgr.addRecipe(rec)
+        recipeMgr.getUserRecipes(AppState.sharedInstance.uid!, sort: "stars") { (recs) in
+            self.recipes = recs
             self.recipeTable.reloadData()
-        })
-        _refUpdateHandle = Queries.myRecipes.child(AppState.sharedInstance.uid!).observeEventType(.ChildChanged, withBlock: { (snapshot) -> Void in
-            let rec = myRecipeMgr.receiveFromFirebase(snapshot)
-            myRecipeMgr.updateRecipe(rec)
-            self.recipeTable.reloadData()
-        })
+        }
     }
     
     func showFavs() {
@@ -65,14 +57,14 @@ class LocalRecipeListVC: TableVC {
     
     // UITableViewDataSource protocol methods
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myRecipeMgr.recipes.count
+        return self.recipes.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Dequeue cell
         let cell: MyRecipeCell = MyRecipeCell(style: .Default, reuseIdentifier: "myRecipeCell")
         
-        let recipe = myRecipeMgr.recipes[indexPath.row]
+        let recipe = self.recipes[indexPath.row]
         
         cell.selectionStyle = .None
         cell.recipeName.text = recipe.name
@@ -88,7 +80,7 @@ class LocalRecipeListVC: TableVC {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        navigationController?.pushViewController(MyRecipeVC(recipe: myRecipeMgr.recipes[indexPath.row]), animated: true)
+        navigationController?.pushViewController(MyRecipeVC(recipe: self.recipes[indexPath.row]), animated: true)
     }
         
 }

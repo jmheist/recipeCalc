@@ -13,9 +13,6 @@ import Refresher
 
 class DiscoveryViewController: TableVC {
     
-    private var _refHandle: FIRDatabaseHandle!
-    private var _refDeleteHandle: FIRDatabaseHandle!
-    
     private var searchBar: SearchBar!
     
     deinit {
@@ -30,8 +27,10 @@ class DiscoveryViewController: TableVC {
         super.viewDidLoad()
         prepareRefresher()
     }
+    
     override func viewDidAppear(animated: Bool) {
         prepareNavigationItem()
+        configureDatabase()
     }
     
     /// Prepare tabBarItem.
@@ -53,18 +52,11 @@ class DiscoveryViewController: TableVC {
     }
     
     override func configureDatabase() {
-        
-        // Listen for new messages in the Firebase database
-        _refHandle = (Queries.publicRecipes).queryOrderedByChild("stars").observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
-            let rec = publicRecipeMgr.receiveFromFirebase(snapshot)
-            publicRecipeMgr.addRecipe(rec)
-            publicRecipeMgr.sortBy("stars")
+        recipeMgr.getPublishedRecipes("stars") { (recs) in
+            self.recipes = recs
             self.recipeTable.reloadData()
-        })
+        }
         
-        _refDeleteHandle = Queries.publicRecipes.observeEventType(.ChildRemoved, withBlock: { (snapshot) -> Void in
-            print("public recipe deleted")
-        })
     }
     
     func prepareRefresher() {
@@ -83,14 +75,14 @@ class DiscoveryViewController: TableVC {
     
     // UITableViewDataSource protocol methods
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return publicRecipeMgr.recipes.count
+        return self.recipes.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Dequeue cell
         let cell: PublicRecipeCell = PublicRecipeCell(style: .Default, reuseIdentifier: "publicRecipeCell")
         
-        let recipe = publicRecipeMgr.recipes[indexPath.row]
+        let recipe = self.recipes[indexPath.row]
         
         cell.starRatingView.value = recipe.stars
         cell.starRatingCount.text = "(\(recipe.starsCount))"
@@ -110,22 +102,14 @@ class DiscoveryViewController: TableVC {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         analyticsMgr.sendPublicRecipeViewed()
-        navigationController?.pushViewController(PublicRecipeVC(recipe: publicRecipeMgr.recipes[indexPath.row]), animated: true)
+        navigationController?.pushViewController(PublicRecipeVC(recipe: self.recipes[indexPath.row]), animated: true)
     }
     
     func updateTable() {
-        (Queries.publicRecipes).queryOrderedByChild("stars").observeSingleEventOfType(.Value, withBlock: { (snapshot) -> Void in
-            publicRecipeMgr.reset()
+        recipeMgr.getPublishedRecipes("stars") { (recs) in
+            self.recipes = recs
             self.recipeTable.reloadData()
-            for child in snapshot.children {
-                let snap = child as! FIRDataSnapshot
-                let rec = publicRecipeMgr.receiveFromFirebase(snap)
-                publicRecipeMgr.addRecipe(rec)
-                publicRecipeMgr.sortBy("stars")
-                self.recipeTable.reloadData()
-            }
-        })
-
+        }
     }
     
 }

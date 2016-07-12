@@ -160,8 +160,6 @@ class UserManager: NSObject {
             AppState.sharedInstance.recipe = nil
             analyticsMgr.sendLogoutEvent()
             print("signed out")
-            myRecipeMgr.reset()
-            publicRecipeMgr.reset()
             let vc = AppLandingVC()
             sender.presentViewController(vc, animated: false, completion: nil)
         } catch let signOutError as NSError {
@@ -186,7 +184,7 @@ class UserManager: NSObject {
         var stars = 0.0
         var favs = 0
         
-        recipeManager.getUserPublishedRecipes(uid) { (recipes) in
+        recipeMgr.getUserPublishedRecipes(uid, sort: "stars") { (recipes) in
             var starTotal = 0.0
             for rec in recipes {
                 favs += rec.favCount

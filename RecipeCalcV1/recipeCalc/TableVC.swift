@@ -15,6 +15,7 @@ class TableVC: UIViewController, GADBannerViewDelegate {
     
     // VARS
     var recipeTable: UITableView!
+    var recipes: [Recipe] = []
 
     //
     // bottom nav setup
@@ -35,7 +36,6 @@ class TableVC: UIViewController, GADBannerViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureDatabase()
         prepareView()
         prepareTableView()
         prepareAds()
@@ -44,8 +44,10 @@ class TableVC: UIViewController, GADBannerViewDelegate {
     override func viewDidAppear(animated: Bool) {
         //check if user is logged in
         if AppState.sharedInstance.signedIn {
+            
             // print("User is logged in")
             prepareNavigationItem()
+            
         } else {
             print("User is not logged in yet, should load loginVC")
             let vc = RegisterViewController()
@@ -58,6 +60,12 @@ class TableVC: UIViewController, GADBannerViewDelegate {
     }
     
     func configureDatabase() {
+        
+        recipeMgr.getUserRecipes(AppState.sharedInstance.uid!, sort: "stars", completionHandler: { (recs) in
+            self.recipes = recs
+            self.recipeTable.reloadData()
+        })
+        
     }
     
     /// General preparation statements.
@@ -110,14 +118,14 @@ class TableVC: UIViewController, GADBannerViewDelegate {
 extension TableVC: UITableViewDataSource {
     // UITableViewDataSource protocol methods
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myRecipeMgr.recipes.count
+        return self.recipes.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Dequeue cell
         let cell: MyRecipeCell = MyRecipeCell(style: .Default, reuseIdentifier: "myRecipeCell")
         
-        let recipe = myRecipeMgr.recipes[indexPath.row]
+        let recipe = self.recipes[indexPath.row]
         
         cell.selectionStyle = .None
         cell.recipeName.text = recipe.name

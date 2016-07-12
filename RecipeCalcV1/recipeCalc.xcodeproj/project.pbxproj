@@ -64,6 +64,7 @@
 		73F66DC21D0BD5D7008E73E1 /* AddFlavorsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F66DC11D0BD5D7008E73E1 /* AddFlavorsVC.swift */; };
 		73FEB26E1D00AB70008CD089 /* AppNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FEB26D1D00AB70008CD089 /* AppNav.swift */; };
 		73FEB2711D00BB5F008CD089 /* BottomNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FEB2701D00BB5F008CD089 /* BottomNav.swift */; };
+		EEBB8C231D3486C900C263CB /* SampleAlertWithTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBB8C221D3486C900C263CB /* SampleAlertWithTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +151,7 @@
 		73F66DC11D0BD5D7008E73E1 /* AddFlavorsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFlavorsVC.swift; sourceTree = "<group>"; };
 		73FEB26D1D00AB70008CD089 /* AppNav.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNav.swift; sourceTree = "<group>"; };
 		73FEB2701D00BB5F008CD089 /* BottomNav.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomNav.swift; sourceTree = "<group>"; };
+		EEBB8C221D3486C900C263CB /* SampleAlertWithTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleAlertWithTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +258,7 @@
 				73F66DB51D0B0EDD008E73E1 /* MixCell.swift */,
 				734FBA421D03645B007FA0CA /* TableVC.swift */,
 				734C95D11D06113700EB79AD /* RecipeVC.swift */,
+				EEBB8C221D3486C900C263CB /* SampleAlertWithTextView.swift */,
 			);
 			name = Templates;
 			sourceTree = "<group>";
@@ -618,6 +621,7 @@
 				73A9464C1D26DF3000745195 /* AnalyticsManager.swift in Sources */,
 				73991AFB1D1ADC97004F3F07 /* NotesVC.swift in Sources */,
 				73DCEADF1CF68FFF002BA81C /* Buttons.swift in Sources */,
+				EEBB8C231D3486C900C263CB /* SampleAlertWithTextView.swift in Sources */,
 				73425DE51D032F9100A69596 /* Firebase.swift in Sources */,
 				73DE44CF1D11C74F0019DFD2 /* RatingManager.swift in Sources */,
 				73FEB2711D00BB5F008CD089 /* BottomNav.swift in Sources */,
