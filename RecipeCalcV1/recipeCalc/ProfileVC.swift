@@ -34,6 +34,8 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     
     var user: String = ""
     
+    var tabBar: TabBar!
+    
     let imagePicker: ImagePickerController = ImagePickerController()
     
     var bio: L2!
@@ -105,6 +107,7 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     
     func prepareDatabase() {
         favMgr.getUserFavs(AppState.sharedInstance.uid!) { (recipes) in
+            
             self.favs = recipes
             self.favTable.reloadData()
         }
@@ -243,10 +246,46 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     func prepareTables() {
         recTable = UITableView()
         favTable = UITableView()
+        
+        registerFavClass()
+        registerRecClass()
+        
+        recTable.delegate = self
+        recTable.dataSource = self
+        favTable.delegate = self
+        favTable.dataSource = self
+        
+        favTable.rowHeight = UITableViewAutomaticDimension
+        favTable.estimatedRowHeight = 80
+        recTable.rowHeight = UITableViewAutomaticDimension
+        recTable.estimatedRowHeight = 80
+        
+        let tableView: MaterialView = MaterialView()
+        view.layout(tableView).top(220).left().right().bottom(50)
+        
+        favTable.hidden = true
+        
+        tableView.layout(favTable).edges()
+        tableView.layout(recTable).edges()
+        
+    }
+    
+    func showFavTable() {
+        recTable.hidden = true
+        favTable.hidden = false
+        print("favTable Visible")
+        favTable.reloadData()
+    }
+    
+    func showRecTable() {
+        favTable.hidden = true
+        recTable.hidden = false
+        print("recTable Visible")
+        recTable.reloadData()
     }
     
     func prepareTabBar() {
-        let tabBar: TabBar = TabBar()
+        tabBar = TabBar()
         view.layout(tabBar).top(175).left(0).right(0).height(40)
         tabBar.backgroundColor = colors.background
         tabBar.line.backgroundColor = colors.medium
@@ -255,11 +294,13 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
         btn1.pulseColor = colors.medium
         btn1.setTitle("Recipes", forState: .Normal)
         btn1.setTitleColor(colors.text, forState: .Normal)
+        btn1.addTarget(self, action: #selector(showRecTable), forControlEvents: .TouchUpInside)
         
         let btn2: FlatButton = FlatButton()
         btn2.pulseColor = colors.medium
         btn2.setTitle("Favorites", forState: .Normal)
         btn2.setTitleColor(colors.text, forState: .Normal)
+        btn2.addTarget(self, action: #selector(showFavTable), forControlEvents: .TouchUpInside)
         
         tabBar.buttons = [btn1, btn2]
     }
@@ -332,6 +373,7 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     
     func prepareRefresher() {
         let pacmanAnimator = PacmanAnimator(frame: CGRectMake(0, 0, 80, 80))
+        let pacmanAnimator2 = PacmanAnimator(frame: CGRectMake(0, 0, 80, 80))
         recTable.addPullToRefreshWithAction({
             NSOperationQueue().addOperationWithBlock {
                 print("refreshing")
@@ -351,16 +393,19 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
                     self.favTable.stopPullToRefresh()
                 }
             }
-        }, withAnimator: pacmanAnimator)
+        }, withAnimator: pacmanAnimator2)
     }
     
     // UITableViewDataSource protocol methods
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView === self.favTable {
-            return favs.count
+            print(self.favs.count)
+            return self.favs.count
         } else if tableView === self.recTable {
+            print(self.recipes.count)
             return self.recipes.count
         } else {
+            print("no table")
             return 0
         }
     }
@@ -397,9 +442,15 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
             
             return cell
         } else {
+            print("no table cell")
             let cell: MyRecipeCell = MyRecipeCell(style: .Default, reuseIdentifier: "recipeCell")
             return cell
         }
+    }
+    
+    /// Sets the tableView cell height.
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 80
     }
     
     func registerFavClass() {
@@ -411,7 +462,19 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        navigationController?.pushViewController(PublicRecipeVC(recipe: favs[indexPath.row]), animated: true)
+        
+        if tableView === self.favTable {
+            analyticsMgr.sendPublicRecipeViewed()
+            navigationController?.pushViewController(PublicRecipeVC(recipe: favs[indexPath.row]), animated: true)
+        } else if tableView === self.recTable {
+            if user == "" {
+                navigationController?.pushViewController(MyRecipeVC(recipe: self.recipes[indexPath.row]), animated: true)
+            } else {
+                analyticsMgr.sendPublicRecipeViewed()
+                navigationController?.pushViewController(PublicRecipeVC(recipe: self.recipes[indexPath.row]), animated: true)
+            }
+        }
+        
     }
     
     func updateRecTable() {

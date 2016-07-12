@@ -154,7 +154,6 @@ class UserManager: NSObject {
         let firebaseAuth = FIRAuth.auth()
         do {
             try firebaseAuth?.signOut()
-            Queries.myRecipes.child(AppState.sharedInstance.uid!).removeAllObservers()
             AppState.sharedInstance.signedIn = false
             AppState.sharedInstance.uid = nil
             AppState.sharedInstance.recipe = nil
@@ -168,13 +167,13 @@ class UserManager: NSObject {
     }
     
     func loadApp(sender: UIViewController) {
-        let localRecipeList: AppNav = AppNav(rootViewController: LocalRecipeListVC())
+        //let localRecipeList: AppNav = AppNav(rootViewController: LocalRecipeListVC())
         let createRecipeViewController: AppNav = AppNav(rootViewController: CreateRecipeViewController())
         let discoveryViewController: AppNav = AppNav(rootViewController: DiscoveryViewController())
         let profileVC: AppNav = AppNav(rootViewController: ProfileVC())
         
         let bottomNavigationController: BottomNav = BottomNav()
-        bottomNavigationController.viewControllers = [localRecipeList, createRecipeViewController, discoveryViewController, profileVC]
+        bottomNavigationController.viewControllers = [discoveryViewController, createRecipeViewController, profileVC]
         bottomNavigationController.selectedIndex = 0
         sender.presentViewController(bottomNavigationController, animated: true, completion: nil)
     }
