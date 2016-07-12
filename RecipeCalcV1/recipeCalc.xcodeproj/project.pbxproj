@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35FADA5AC54316F06CBA17E5 /* Pods_Social_Vape.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 781556A7E50FEBFDEA856BB1 /* Pods_Social_Vape.framework */; };
 		7314085B1CFE3FD800B5F8DF /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7314085A1CFE3FD800B5F8DF /* Colors.swift */; };
 		7315D5E71CF4E405002B2588 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7315D5E61CF4E405002B2588 /* AppDelegate.swift */; };
 		7315D5EF1CF4E405002B2588 /* recipeCalc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7315D5ED1CF4E405002B2588 /* recipeCalc.xcdatamodeld */; };
@@ -151,6 +152,7 @@
 		73F66DC11D0BD5D7008E73E1 /* AddFlavorsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFlavorsVC.swift; sourceTree = "<group>"; };
 		73FEB26D1D00AB70008CD089 /* AppNav.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNav.swift; sourceTree = "<group>"; };
 		73FEB2701D00BB5F008CD089 /* BottomNav.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomNav.swift; sourceTree = "<group>"; };
+		781556A7E50FEBFDEA856BB1 /* Pods_Social_Vape.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Social_Vape.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEBB8C221D3486C900C263CB /* SampleAlertWithTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleAlertWithTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,6 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35FADA5AC54316F06CBA17E5 /* Pods_Social_Vape.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +395,7 @@
 		DC9389527519C695F6055A73 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				781556A7E50FEBFDEA856BB1 /* Pods_Social_Vape.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -771,11 +775,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = recipeCalc/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vapeandprosper.socialVape;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -787,11 +792,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = recipeCalc/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vapeandprosper.socialVape;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

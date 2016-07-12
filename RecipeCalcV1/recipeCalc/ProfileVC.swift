@@ -399,13 +399,10 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     // UITableViewDataSource protocol methods
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView === self.favTable {
-            print(self.favs.count)
             return self.favs.count
         } else if tableView === self.recTable {
-            print(self.recipes.count)
             return self.recipes.count
         } else {
-            print("no table")
             return 0
         }
     }
