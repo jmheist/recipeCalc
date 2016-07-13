@@ -14,6 +14,7 @@ import GoogleMobileAds
 import Material
 import ImagePicker
 import Refresher
+import MRConfirmationAlertView
 
 class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
@@ -261,7 +262,7 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
         recTable.estimatedRowHeight = 80
         
         let tableView: MaterialView = MaterialView()
-        view.layout(tableView).top(220).left().right().bottom(50)
+        view.layout(tableView).top(220).left().right().bottom(99)
         
         favTable.hidden = true
         
@@ -452,21 +453,21 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if tableView == self.recTable {
+            print("Delete Style for recTable")
             if(editingStyle == UITableViewCellEditingStyle.Delete){
 
-                MRConfirmationAlertView.showWithTitle("Hello", message: "How are you today?", cancelButton: "Terrible", confirmButton: "Great!", completion: {(confirmed: Bool) -> Void in
+                MRConfirmationAlertView.showWithTitle("Delete", message: "Are you sure you want to \n delete this recipe?", cancelButton: "Cancel", confirmButton: "Delete", completion: {(confirmed: Bool) -> Void in
                     if confirmed {
-                        MRConfirmationAlertView.showWithTitle("Glad to hear it!", message: nil)
+                        //MRConfirmationAlertView.showWithTitle("Delete", message: nil)
+                        let key = self.recipes[indexPath.row].key
+                        recipeMgr.deleteRecipe(key, completionHandler: { (recs) in
+                            self.recipes = recs
+                            self.recTable.reloadData()
+                        })
                     }
                     else {
-                        MRConfirmationAlertView.showWithTitle("Oh no!", message: nil)
+                        //MRConfirmationAlertView.showWithTitle("Cancel", message: nil)
                     }
-                })
-
-                let key = self.recipes[indexPath.row].key
-                recipeMgr.deleteRecipe(key, completionHandler: { (recs) in
-                    self.recipes = recs
-                    self.recTable.reloadData()
                 })
             }
         }
