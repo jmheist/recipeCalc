@@ -49,7 +49,6 @@ class CommentsVC: UIViewController, GADBannerViewDelegate, UITextFieldDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         hidesBottomBarWhenPushed = true
-        configureDatabase()
         prepareView()
         prepareTableView()
         prepareTextField()
@@ -58,6 +57,7 @@ class CommentsVC: UIViewController, GADBannerViewDelegate, UITextFieldDelegate, 
     
     override func viewDidAppear(animated: Bool) {
         prepareNavigationItem()
+        configureDatabase()
     }
     
     override func viewWillAppear(animated: Bool) {
