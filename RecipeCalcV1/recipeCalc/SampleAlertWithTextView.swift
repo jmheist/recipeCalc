@@ -26,7 +26,7 @@
 //            let msg = (textView.textColor == UIColor.lightGrayColor()) ? "" : textView.text
 //
 //            AppState.sharedInstance.bio = msg
-//            UserMgr.sendDataToFirebase(AppState.sharedInstance.uid!, key: "bio", value: msg)
+//            UserMgr.sendDataToFirebase(AppState.sharedInstance.signedInUser.uid!, key: "bio", value: msg)
 //            self.bio.text = AppState.sharedInstance.bio == "" ? "Add a Bio" : AppState.sharedInstance.bio
 //
 //        })

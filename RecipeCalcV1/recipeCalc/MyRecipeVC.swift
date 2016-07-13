@@ -22,8 +22,7 @@ class MyRecipeVC: RecipeVC {
     }
     
     deinit {
-        // got a nil error on logout with the below code
-        // Queries.myRecipes.child(AppState.sharedInstance.uid!).child(recipe.key).removeObserverWithHandle(_refPublishedHandle)
+        
     }
     
     func prepareDatabase() {

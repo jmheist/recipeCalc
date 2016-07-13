@@ -21,12 +21,7 @@ class AppState: NSObject {
     static var sharedInstance = AppState()
 
     var signedIn = false
-    var displayName: String?=""
-    var email: String?=""
-    var uid: String?=" "
-    var profileImage: String?=""
-    var joined: String?=""
-    var bio: String?=""
+    var signedInUser: User = User()
     
     var recipe: Recipe!
 }

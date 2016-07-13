@@ -61,7 +61,7 @@ class TableVC: UIViewController, GADBannerViewDelegate {
     
     func configureDatabase() {
         
-        recipeMgr.getUserRecipes(AppState.sharedInstance.uid!, sort: "stars", completionHandler: { (recs) in
+        recipeMgr.getUserRecipes(AppState.sharedInstance.signedInUser.uid!, sort: "stars", completionHandler: { (recs) in
             self.recipes = recs
             self.recipeTable.reloadData()
         })

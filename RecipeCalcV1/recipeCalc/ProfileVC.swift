@@ -106,14 +106,14 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     }
     
     func prepareDatabase() {
-        favMgr.getUserFavs(AppState.sharedInstance.uid!) { (recipes) in
+        favMgr.getUserFavs(AppState.sharedInstance.signedInUser.uid!) { (recipes) in
             
             self.favs = recipes
             self.favTable.reloadData()
         }
         
         if user == "" {
-            recipeMgr.getUserRecipes(AppState.sharedInstance.uid!, sort: "stars", completionHandler: { (recipes) in
+            recipeMgr.getUserRecipes(AppState.sharedInstance.signedInUser.uid!, sort: "stars", completionHandler: { (recipes) in
                 self.recipes = recipes
                 self.recTable.reloadData()
             })
@@ -140,7 +140,7 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
         profilePicView.userInteractionEnabled = true
         profileView.layout(self.profilePicView).top(0).left(0).height(80).width(80)
         
-        storageMgr.getProfilePic(AppState.sharedInstance.uid!) { (image, imageFound) in
+        storageMgr.getProfilePic(AppState.sharedInstance.signedInUser.uid!) { (image, imageFound) in
             if imageFound {
                 self.profileImage = image
             } else {
@@ -151,17 +151,17 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
         }
         
         let username: L2 = L2()
-        username.text = AppState.sharedInstance.displayName
+        username.text = AppState.sharedInstance.signedInUser.username
         profileView.layout(username).left(0).top(88).width(300)
         
         let joined: L3 = L3()
-        joined.text = "Joined: "+AppState.sharedInstance.joined!
+        joined.text = "Joined: "+AppState.sharedInstance.signedInUser.joined!
         joined.textAlignment = .Right
         profileView.layout(joined).top(88).right(0).width(150)
         
         // max length for bio should be around 75-80 characters
         bio = L2()
-        bio.text = AppState.sharedInstance.bio == "" ? "Add a Bio" : AppState.sharedInstance.bio
+        bio.text = AppState.sharedInstance.signedInUser.bio == "" ? "Add a Bio" : AppState.sharedInstance.signedInUser.bio
         bio.numberOfLines = 2
         bio.font = RobotoFont.lightWithSize(14)
         profileView.layout(bio).top(114).left(0).width(250)
@@ -210,7 +210,7 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
         favs.text = "197"
         profileStatsView.addSubview(favs)
         
-        UserMgr.loadUserStats(AppState.sharedInstance.uid!) { (publishedRecipeCount, starAvg, favCount) in
+        UserMgr.loadUserStats(AppState.sharedInstance.signedInUser.uid!) { (publishedRecipeCount, starAvg, favCount) in
             recipes.text = String(publishedRecipeCount)
             stars.text = String(starAvg)
             favs.text = String(favCount)
@@ -339,7 +339,7 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
         let selectedImage = imagePicker.stack.assets[0]
         print(selectedImage)
         
-        storageMgr.saveProfileImage(selectedImage, uid: AppState.sharedInstance.uid!) { (image, imageFound) in
+        storageMgr.saveProfileImage(selectedImage, uid: AppState.sharedInstance.signedInUser.uid!) { (image, imageFound) in
             if imageFound {
                 self.profileImage = image
             } else {
@@ -450,6 +450,28 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
         return 80
     }
     
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if tableView == self.recTable {
+            if(editingStyle == UITableViewCellEditingStyle.Delete){
+
+                MRConfirmationAlertView.showWithTitle("Hello", message: "How are you today?", cancelButton: "Terrible", confirmButton: "Great!", completion: {(confirmed: Bool) -> Void in
+                    if confirmed {
+                        MRConfirmationAlertView.showWithTitle("Glad to hear it!", message: nil)
+                    }
+                    else {
+                        MRConfirmationAlertView.showWithTitle("Oh no!", message: nil)
+                    }
+                })
+
+                let key = self.recipes[indexPath.row].key
+                recipeMgr.deleteRecipe(key, completionHandler: { (recs) in
+                    self.recipes = recs
+                    self.recTable.reloadData()
+                })
+            }
+        }
+    }
+    
     func registerFavClass() {
         recTable.registerClass(MaterialTableViewCell.self, forCellReuseIdentifier: "favRecipeCell")
     }
@@ -475,8 +497,9 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     }
     
     func updateRecTable() {
+        print("updateRecTable()")
         if user == "" {
-            recipeMgr.getUserRecipes(AppState.sharedInstance.uid!, sort: "stars", completionHandler: { (recipes) in
+            recipeMgr.getUserRecipes(AppState.sharedInstance.signedInUser.uid!, sort: "stars", completionHandler: { (recipes) in
                 self.recipes = recipes
                 self.recTable.reloadData()
             })
@@ -489,9 +512,17 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     }
     
     func updateFavTable() {
-        favMgr.getUserFavs(AppState.sharedInstance.uid!) { (recipes) in
-            self.favs = recipes
-            self.favTable.reloadData()
+        if user == "" {
+            favMgr.getUserFavs(AppState.sharedInstance.signedInUser.uid!) { (recipes) in
+                self.favs = recipes
+                print(self.favs)
+                self.favTable.reloadData()
+            }
+        } else {
+            favMgr.getUserFavs(user) { (recipes) in
+                self.favs = recipes
+                self.favTable.reloadData()
+            }
         }
     }
     

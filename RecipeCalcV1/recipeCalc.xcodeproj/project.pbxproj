@@ -37,7 +37,6 @@
 		73991B0B1D1B34B5004F3F07 /* AdMobManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73991B0A1D1B34B5004F3F07 /* AdMobManager.swift */; };
 		73A3F77B1D0A0BC400B8C281 /* MixVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A3F77A1D0A0BC400B8C281 /* MixVC.swift */; };
 		73A3F77D1D0A142600B8C281 /* MixTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A3F77C1D0A142600B8C281 /* MixTabBar.swift */; };
-		73A946441D2595BE00745195 /* FavListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A946431D2595BE00745195 /* FavListVC.swift */; };
 		73A946461D25B28F00745195 /* CommentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A946451D25B28F00745195 /* CommentManager.swift */; };
 		73A946481D25B8D900745195 /* CommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A946471D25B8D900745195 /* CommentsVC.swift */; };
 		73A9464A1D25BF0900745195 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A946491D25BF0900745195 /* CommentCell.swift */; };
@@ -49,7 +48,6 @@
 		73DCEABF1CF6254B002BA81C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEABE1CF6254B002BA81C /* RegisterViewController.swift */; };
 		73DCEAC51CF62A11002BA81C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAC31CF62A11002BA81C /* AppState.swift */; };
 		73DCEAC61CF62A11002BA81C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAC41CF62A11002BA81C /* Constants.swift */; };
-		73DCEAC81CF62B5A002BA81C /* LocalRecipeListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAC71CF62B5A002BA81C /* LocalRecipeListVC.swift */; };
 		73DCEACA1CF62B75002BA81C /* UpdateProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAC91CF62B75002BA81C /* UpdateProfileVC.swift */; };
 		73DCEAD11CF63E2F002BA81C /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAD01CF63E2F002BA81C /* RecipeCell.swift */; };
 		73DCEAD31CF65323002BA81C /* CreateRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DCEAD21CF65323002BA81C /* CreateRecipeViewController.swift */; };
@@ -124,7 +122,6 @@
 		73991B0A1D1B34B5004F3F07 /* AdMobManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobManager.swift; sourceTree = "<group>"; };
 		73A3F77A1D0A0BC400B8C281 /* MixVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixVC.swift; sourceTree = "<group>"; };
 		73A3F77C1D0A142600B8C281 /* MixTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixTabBar.swift; sourceTree = "<group>"; };
-		73A946431D2595BE00745195 /* FavListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavListVC.swift; sourceTree = "<group>"; };
 		73A946451D25B28F00745195 /* CommentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentManager.swift; sourceTree = "<group>"; };
 		73A946471D25B8D900745195 /* CommentsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsVC.swift; sourceTree = "<group>"; };
 		73A946491D25BF0900745195 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
@@ -136,7 +133,6 @@
 		73DCEABE1CF6254B002BA81C /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		73DCEAC31CF62A11002BA81C /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		73DCEAC41CF62A11002BA81C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		73DCEAC71CF62B5A002BA81C /* LocalRecipeListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalRecipeListVC.swift; sourceTree = "<group>"; };
 		73DCEAC91CF62B75002BA81C /* UpdateProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileVC.swift; sourceTree = "<group>"; };
 		73DCEAD01CF63E2F002BA81C /* RecipeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
 		73DCEAD21CF65323002BA81C /* CreateRecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRecipeViewController.swift; sourceTree = "<group>"; };
@@ -279,9 +275,8 @@
 		7372EF321D1C6BD800754613 /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				73DCEAC71CF62B5A002BA81C /* LocalRecipeListVC.swift */,
-				73DCEAD21CF65323002BA81C /* CreateRecipeViewController.swift */,
 				73DCEB031CF7598F002BA81C /* DiscoveryViewController.swift */,
+				73DCEAD21CF65323002BA81C /* CreateRecipeViewController.swift */,
 				73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */,
 			);
 			name = Root;
@@ -318,20 +313,11 @@
 			name = User;
 			sourceTree = "<group>";
 		};
-		73A946421D2595A900745195 /* favs */ = {
-			isa = PBXGroup;
-			children = (
-				73A946431D2595BE00745195 /* FavListVC.swift */,
-			);
-			name = favs;
-			sourceTree = "<group>";
-		};
 		73B1DCFE1CF547FB002D9E23 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				7372EF311D1C6BB900754613 /* Auth */,
 				7372EF321D1C6BD800754613 /* Root */,
-				73A946421D2595A900745195 /* favs */,
 				7372EF341D1C6C1A00754613 /* Mix */,
 				7372EF331D1C6C1300754613 /* Recipe */,
 				7372EF351D1C6C1F00754613 /* User */,
@@ -588,7 +574,6 @@
 				73F66DB61D0B0EDD008E73E1 /* MixCell.swift in Sources */,
 				73DCEABF1CF6254B002BA81C /* RegisterViewController.swift in Sources */,
 				7372EF2E1D1C5C2200754613 /* CreateRecipeSettings.swift in Sources */,
-				73DCEAC81CF62B5A002BA81C /* LocalRecipeListVC.swift in Sources */,
 				731C96B91D12FD9100588FAD /* PacmanAnimator.swift in Sources */,
 				7315D5EF1CF4E405002B2588 /* recipeCalc.xcdatamodeld in Sources */,
 				73991B091D1B16EC004F3F07 /* SearchVC.swift in Sources */,
@@ -612,7 +597,6 @@
 				73DCEAE21CF69758002BA81C /* Labels.swift in Sources */,
 				734C95D61D0617D500EB79AD /* PublicRecipeVC.swift in Sources */,
 				7325BE581D0762FF00CF0177 /* RecipeManager.swift in Sources */,
-				73A946441D2595BE00745195 /* FavListVC.swift in Sources */,
 				73B1B5B01CFFA520009AFA20 /* ProfileVC.swift in Sources */,
 				734C95D21D06113700EB79AD /* RecipeVC.swift in Sources */,
 				734FBA431D03645B007FA0CA /* TableVC.swift in Sources */,

@@ -110,12 +110,12 @@ class RecipeManager: NSObject {
     func sendToFirebase (recipe: Recipe) -> String {
         
         if recipe.key == "" {
-            let key = Queries.myRecipes.child(AppState.sharedInstance.uid!).childByAutoId().key
-            Queries.myRecipes.child(AppState.sharedInstance.uid!).child(key).setValue(recipe.fb())
+            let key = Queries.myRecipes.child(AppState.sharedInstance.signedInUser.uid!).childByAutoId().key
+            Queries.myRecipes.child(AppState.sharedInstance.signedInUser.uid!).child(key).setValue(recipe.fb())
             return key
         } else {
             print("recipe has a key already, should update it with new data")
-            Queries.myRecipes.child(AppState.sharedInstance.uid!).child(recipe.key).setValue(recipe.fb())
+            Queries.myRecipes.child(AppState.sharedInstance.signedInUser.uid!).child(recipe.key).setValue(recipe.fb())
             
             if recipe.published == "true" {
                 Queries.publicRecipes.child(recipe.key).setValue(recipe.fb())
@@ -148,11 +148,11 @@ class RecipeManager: NSObject {
     func deleteRecipe(key: String, completionHandler:([Recipe])->()) {
         
         analyticsMgr.sendRecipeDeleted()
-        Queries.myRecipes.child(AppState.sharedInstance.uid!).child(key).removeValue()
+        Queries.myRecipes.child(AppState.sharedInstance.signedInUser.uid!).child(key).removeValue()
         Queries.publicRecipes.child(key).removeValue()
         Queries.flavors.child(key).removeValue()
         
-        getUserRecipes(AppState.sharedInstance.uid!, sort: "stars") { (recipes) in
+        getUserRecipes(AppState.sharedInstance.signedInUser.uid!, sort: "stars") { (recipes) in
             completionHandler(recipes)
         }
 
@@ -162,8 +162,8 @@ class RecipeManager: NSObject {
         print("Publishing now from RecipeManager")
         
         //update on FB
-        Queries.myRecipes.child(AppState.sharedInstance.uid!).child(key).child("published").setValue("true")
-        Queries.myRecipes.child(AppState.sharedInstance.uid!).child(key).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+        Queries.myRecipes.child(AppState.sharedInstance.signedInUser.uid!).child(key).child("published").setValue("true")
+        Queries.myRecipes.child(AppState.sharedInstance.signedInUser.uid!).child(key).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             analyticsMgr.sendRecipePublished()
             let rec = self.receiveFromFirebase(snapshot)
             Queries.publicRecipes.child(key).setValue(rec.fb())
@@ -176,12 +176,12 @@ class RecipeManager: NSObject {
         
         // update on fb
         // delete public recipe
-        Queries.myRecipes.child(AppState.sharedInstance.uid!).child(key).child("published").setValue("false")
+        Queries.myRecipes.child(AppState.sharedInstance.signedInUser.uid!).child(key).child("published").setValue("false")
         Queries.publicRecipes.child(key).setValue(nil)
         
         analyticsMgr.sendRecipeUnpublished()
         
-        Queries.myRecipes.child(AppState.sharedInstance.uid!).child(key).observeSingleEventOfType(.Value, withBlock:  { (snapshot) in
+        Queries.myRecipes.child(AppState.sharedInstance.signedInUser.uid!).child(key).observeSingleEventOfType(.Value, withBlock:  { (snapshot) in
             completionHandler(self.receiveFromFirebase(snapshot))
         })
         
@@ -195,7 +195,7 @@ class RecipeManager: NSObject {
                     publisheRecipes.append(rec)
                 }
             }
-            completionHandler(publisheRecipes)
+            completionHandler(self.sortBy(sort, recipes: publisheRecipes))
         }
         
     }
@@ -207,7 +207,7 @@ class RecipeManager: NSObject {
             for snap in snapshot.children {
                 fetchedRecipes.append(self.receiveFromFirebase(snap as! FIRDataSnapshot))
             }
-            completionHandler(fetchedRecipes)
+            completionHandler(self.sortBy(sort, recipes: fetchedRecipes))
         })
         
     }
@@ -218,7 +218,7 @@ class RecipeManager: NSObject {
             for snap in snapshot.children {
                 fetchedRecipes.append(self.receiveFromFirebase(snap as! FIRDataSnapshot))
             }
-            completionHandler(fetchedRecipes)
+            completionHandler(self.sortBy(sort, recipes: fetchedRecipes))
         })
     }
 

@@ -179,7 +179,7 @@ class ErrorManager: NSObject {
             }
             
             UserMgr.getUserByUsername(data, completionHandler: { (user:User) in
-                if data.lowercaseString == user.username.lowercaseString {
+                if data.lowercaseString == user.username!.lowercaseString {
                     error = true
                     errorMessage = "Username is already taken"
                     print(error, errorMessage)
@@ -203,7 +203,7 @@ class ErrorManager: NSObject {
             UserMgr.getUserByEmail(data, completionHandler: { (user:User) in
                 print(data == user.email)
                 print(data, user.email)
-                if data.lowercaseString == user.email.lowercaseString {
+                if data.lowercaseString == user.email!.lowercaseString {
                     error = true
                     errorMessage = "Email address is already taken"
                     print(error, errorMessage)

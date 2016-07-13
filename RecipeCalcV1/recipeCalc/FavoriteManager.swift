@@ -39,7 +39,7 @@ class FavoriteManager: NSObject {
         
         var favs: [Recipe] = []
         var favKeys: [String] = []
-        
+        var didFinish = false
         func getRecipeData() {
             for key in favKeys {
                 Queries.publicRecipes.child(key).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
@@ -49,10 +49,17 @@ class FavoriteManager: NSObject {
                     }
                 })
             }
+            
+            setTimeout(3) { 
+                finish()
+            }
         }
         
         func finish() {
-            completion(favs)
+            if !didFinish {
+                didFinish = true
+                completion(favs)
+            }
         }
         
         Queries.userFavs.child(uid).observeSingleEventOfType(.Value, withBlock: { (snapshot) in

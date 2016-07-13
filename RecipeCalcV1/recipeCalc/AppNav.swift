@@ -42,7 +42,6 @@ class AppNav: NavigationController {
         let image: UIImage? = UIImage.imageWithColor(colors.dark, size: CGSizeMake(1, 1))
         navigationBar.shadowImage = image
         
-        navigationItem.titleLabel.textAlignment = .Center
         navigationItem.titleLabel.textColor = colors.dark
         navigationItem.titleLabel.font = RobotoFont.thinWithSize(16)
     }

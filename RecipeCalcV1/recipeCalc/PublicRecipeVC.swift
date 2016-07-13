@@ -17,7 +17,7 @@ class PublicRecipeVC: RecipeVC, WDStarRatingDelegate {
     var starRatingView: WDStarRatingView!
     
     override func viewDidLoad() {
-        myRecipe = (AppState.sharedInstance.uid == recipe.authorId)
+        myRecipe = (AppState.sharedInstance.signedInUser.uid == recipe.authorId)
         super.viewDidLoad()
         if !myRecipe {
             prepareRating()
@@ -49,7 +49,7 @@ class PublicRecipeVC: RecipeVC, WDStarRatingDelegate {
         self.starRatingView.minimumValue = 0
         self.starRatingView.tintColor = colors.accent
         
-        Queries.ratings.child(recipe.key).child(AppState.sharedInstance.uid!).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+        Queries.ratings.child(recipe.key).child(AppState.sharedInstance.signedInUser.uid!).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             if snapshot.value!.isKindOfClass(NSNull) {
                 self.starRatingView.value = 0
             } else {
@@ -80,7 +80,7 @@ class PublicRecipeVC: RecipeVC, WDStarRatingDelegate {
         
         let imageView: UIImageView = UIImageView(frame: CGRectMake(0, 0, 20, 20))
         
-        favMgr.isRecipeFaved(recipe.key, uid: AppState.sharedInstance.uid!) { (isFaved) in
+        favMgr.isRecipeFaved(recipe.key, uid: AppState.sharedInstance.signedInUser.uid!) { (isFaved) in
             if isFaved {
                 imageView.image = MaterialIcon.favorite?.tintWithColor(colors.favorite)
                 heartCount.text = "un fav"
@@ -97,17 +97,17 @@ class PublicRecipeVC: RecipeVC, WDStarRatingDelegate {
     }
     
     func fav() {
-        favMgr.fav(recipe.key, uid: AppState.sharedInstance.uid!, authorUid: recipe.authorId)
+        favMgr.fav(recipe.key, uid: AppState.sharedInstance.signedInUser.uid!, authorUid: recipe.authorId)
         prepareFav()
     }
     
     func unFav() {
-        favMgr.unFav(recipe.key, uid: AppState.sharedInstance.uid!, authorUid: recipe.authorId)
+        favMgr.unFav(recipe.key, uid: AppState.sharedInstance.signedInUser.uid!, authorUid: recipe.authorId)
         prepareFav()
     }
     
     func didChangeValue(sender: WDStarRatingView) {
-        ratingMgr.rate(Rating(stars: self.starRatingView.value, user: AppState.sharedInstance.uid!, recKey: recipe.key, recAuthUid: recipe.authorId))
+        ratingMgr.rate(Rating(stars: self.starRatingView.value, user: AppState.sharedInstance.signedInUser.uid!, recKey: recipe.key, recAuthUid: recipe.authorId))
     }
     
     override func prepareRecipe() {

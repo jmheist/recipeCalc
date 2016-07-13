@@ -152,8 +152,8 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate  {
     
     func sendRecipe() {
         
-        let author = AppState.sharedInstance.displayName
-        let authorId = AppState.sharedInstance.uid
+        let author = AppState.sharedInstance.signedInUser.username
+        let authorId = AppState.sharedInstance.signedInUser.uid
         
         let fields = [recipeName]
         

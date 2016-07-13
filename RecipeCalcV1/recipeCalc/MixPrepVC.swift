@@ -100,7 +100,7 @@ class MixPrepVC: UIViewController {
                 vg: Float(vg.text!)!,
                 nic: Float(nic.text!)!
             )
-            mixMgr.saveMixSettingsToFB(AppState.sharedInstance.uid!, recipe: recipe.key, settings: self.settings)
+            mixMgr.saveMixSettingsToFB(AppState.sharedInstance.signedInUser.uid!, recipe: recipe.key, settings: self.settings)
             navigationController?.pushViewController(MixVC(recipe: self.recipe, settings: self.settings), animated: true)
         }
     }
@@ -186,7 +186,7 @@ class MixPrepVC: UIViewController {
         nic.text = "100"
         nic.placeholder = "Nic Concentrate Strength"
         
-        mixMgr.getUserRecipeSettings(AppState.sharedInstance.uid!, recipe: recipe.key) { (mixSettings) in
+        mixMgr.getUserRecipeSettings(AppState.sharedInstance.signedInUser.uid!, recipe: recipe.key) { (mixSettings) in
             self.amount.text = String(mixSettings.amount)
             self.strength.text = String(mixSettings.strength)
             self.pg.text = String(mixSettings.pg)

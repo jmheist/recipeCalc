@@ -140,7 +140,7 @@ class CommentsVC: UIViewController, GADBannerViewDelegate, UITextFieldDelegate, 
     
     func leaveComment() {
         if !checkForErrors(commentField) {
-            commentMgr.addComment(recipe.key, comment: Comment(authorUid: AppState.sharedInstance.uid!, comment: commentField.text), completion: { (comments) in
+            commentMgr.addComment(recipe.key, comment: Comment(authorUid: AppState.sharedInstance.signedInUser.uid!, comment: commentField.text), completion: { (comments) in
                 self.didSendComment = true
                 self.commentField.text = ""
                 self.view.endEditing(true)
