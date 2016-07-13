@@ -33,16 +33,18 @@ struct User {
 let UserMgr: UserManager = UserManager()
 
 class UserManager: NSObject {
-
-    func addAuthListener() {
-        FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
-            if let user = user {
-                self.signedIn(user, sender: nil)
-            } else {
-                self.signOut(nil)
-            }
-        }
-    }
+//
+//    func addAuthListener() {
+//        FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
+//            if let user = user {
+//                self.signedIn(user, sender: nil, completionHandler: { (vc) in
+//                    //
+//                })
+//            } else {
+//                self.signOut(nil)
+//            }
+//        }
+//    }
     
     func sendDataToFirebase(userUid: String, key: String, value: String) {
         Queries.users.child(userUid).child(key).setValue(value)
@@ -102,7 +104,8 @@ class UserManager: NSObject {
         })
     }
     
-    func signedIn(user: FIRUser?, provider: Bool=false, sender: UIViewController?=nil) {
+    func signedIn(user: FIRUser?, provider: Bool=false, sender: UIViewController?=nil, completionHandler:(UIViewController)->()) {
+        
         analyticsMgr.sendLoginEvent()
         AppState.sharedInstance.signedInUser.uid = user?.uid
         
@@ -118,7 +121,9 @@ class UserManager: NSObject {
             UserMgr.sendDataToFirebase((user?.uid)!, key: "email", value: AppState.sharedInstance.signedInUser.email!)
             NSNotificationCenter.defaultCenter().postNotificationName(Constants.NotificationKeys.SignedIn, object: nil, userInfo: nil)
             if (sender != nil) {
-                loadApp(sender!)
+                loadApp(sender!, completionHandler: { (vc) in
+                    completionHandler(vc)
+                })
             }
         }
         
@@ -192,7 +197,7 @@ class UserManager: NSObject {
         return navigationController.viewControllers.last
     }
     
-    func loadApp(sender: UIViewController) {
+    func loadApp(sender: UIViewController, completionHandler:(UIViewController)->()) {
         //let localRecipeList: AppNav = AppNav(rootViewController: LocalRecipeListVC())
         let createRecipeViewController: AppNav = AppNav(rootViewController: CreateRecipeViewController())
         let discoveryViewController: AppNav = AppNav(rootViewController: DiscoveryViewController())
@@ -201,7 +206,7 @@ class UserManager: NSObject {
         let bottomNavigationController: BottomNav = BottomNav()
         bottomNavigationController.viewControllers = [discoveryViewController, createRecipeViewController, profileVC]
         bottomNavigationController.selectedIndex = 0
-        sender.presentViewController(bottomNavigationController, animated: true, completion: nil)
+        completionHandler(bottomNavigationController)
     }
     
     func loadUserStats(uid: String, completionHandler:(publishedRecipeCount: Int, starAvg: Double, favCount: Int)->()) {

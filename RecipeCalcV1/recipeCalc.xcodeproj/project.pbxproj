@@ -42,6 +42,7 @@
 		73A9464A1D25BF0900745195 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A946491D25BF0900745195 /* CommentCell.swift */; };
 		73A9464C1D26DF3000745195 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A9464B1D26DF3000745195 /* AnalyticsManager.swift */; };
 		73A946501D26F7BD00745195 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73A9464F1D26F7BD00745195 /* GoogleService-Info.plist */; };
+		73AD3F2A1D36DC1B003C4CFE /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AD3F291D36DC1B003C4CFE /* AlertManager.swift */; };
 		73B1B5B01CFFA520009AFA20 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */; };
 		73CC8D051D08CDD1003D3709 /* MixPrepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CC8D041D08CDD1003D3709 /* MixPrepVC.swift */; };
 		73CC8D071D08CEE0003D3709 /* MixSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CC8D061D08CEE0003D3709 /* MixSettingsManager.swift */; };
@@ -127,6 +128,7 @@
 		73A946491D25BF0900745195 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		73A9464B1D26DF3000745195 /* AnalyticsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 		73A9464F1D26F7BD00745195 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		73AD3F291D36DC1B003C4CFE /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		73CC8D041D08CDD1003D3709 /* MixPrepVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixPrepVC.swift; sourceTree = "<group>"; };
 		73CC8D061D08CEE0003D3709 /* MixSettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixSettingsManager.swift; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 				736C52BD1D244ACA005755F9 /* FavoriteManager.swift */,
 				73A946451D25B28F00745195 /* CommentManager.swift */,
 				73A9464B1D26DF3000745195 /* AnalyticsManager.swift */,
+				73AD3F291D36DC1B003C4CFE /* AlertManager.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -613,6 +616,7 @@
 				73425DE51D032F9100A69596 /* Firebase.swift in Sources */,
 				73DE44CF1D11C74F0019DFD2 /* RatingManager.swift in Sources */,
 				73FEB2711D00BB5F008CD089 /* BottomNav.swift in Sources */,
+				73AD3F2A1D36DC1B003C4CFE /* AlertManager.swift in Sources */,
 				73A946481D25B8D900745195 /* CommentsVC.swift in Sources */,
 				73DCEB041CF7598F002BA81C /* DiscoveryViewController.swift in Sources */,
 				73F66DC21D0BD5D7008E73E1 /* AddFlavorsVC.swift in Sources */,

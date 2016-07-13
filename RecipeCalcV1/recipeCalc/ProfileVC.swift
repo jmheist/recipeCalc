@@ -453,7 +453,6 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if tableView == self.recTable {
-            print("Delete Style for recTable")
             if(editingStyle == UITableViewCellEditingStyle.Delete){
 
                 MRConfirmationAlertView.showWithTitle("Delete", message: "Are you sure you want to \n delete this recipe?", cancelButton: "Cancel", confirmButton: "Delete", completion: {(confirmed: Bool) -> Void in
@@ -469,6 +468,14 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
                     }
                 })
             }
+        }
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if tableView == self.favTable {
+            return false
+        } else {
+            return true
         }
     }
     

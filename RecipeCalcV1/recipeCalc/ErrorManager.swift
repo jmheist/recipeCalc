@@ -222,6 +222,15 @@ class ErrorManager: NSObject {
             }
             
             returnError()
+        case "loginField":
+            
+            if data.characters.count == 0 {
+                error = true
+                errorMessage = "Canont be blank"
+                returnError()
+            }
+            
+            returnError()
             
         default:
             break

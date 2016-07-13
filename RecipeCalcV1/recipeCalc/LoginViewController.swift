@@ -9,14 +9,18 @@
 import UIKit
 import Material
 import Firebase
-import FBSDKLoginKit
 
-class LoginViewController: UIViewController, TextFieldDelegate, FBSDKLoginButtonDelegate {
+class LoginViewController: UIViewController, TextFieldDelegate {
 
+    let errorMgr: ErrorManager = ErrorManager()
+    
     private var emailField: T1!,
                 passwordField: T1!,
                 fbErrorLabel: L3!;
     
+    var spinner: UIActivityIndicatorView = UIActivityIndicatorView()
+    var loginView: MaterialView!
+    var cancelView: MaterialView!
     
     override func viewWillAppear(animated: Bool) {
     }
@@ -28,8 +32,8 @@ class LoginViewController: UIViewController, TextFieldDelegate, FBSDKLoginButton
         super.viewDidLoad()
         prepareView()
         prepareEmailLogin()
-        prepareFacebookLogin()
         prepareCancelLink()
+        prepareSpinner()
     }
     
     /// General preparation statements.
@@ -44,7 +48,7 @@ class LoginViewController: UIViewController, TextFieldDelegate, FBSDKLoginButton
     
     func prepareEmailLogin() {
         
-        let loginView: MaterialView = MaterialView()
+        loginView = MaterialView()
         view.addSubview(loginView)
         view.layout(loginView).top(20).left(20).right(20).bottom(60)
         
@@ -56,6 +60,8 @@ class LoginViewController: UIViewController, TextFieldDelegate, FBSDKLoginButton
         
         emailField = T1()
         emailField.placeholder = "Email"
+        emailField.errorCheck = true
+        emailField.errorCheckFor = "loginField"
         emailField.enableClearIconButton = true
         emailField.delegate = self
         
@@ -63,6 +69,8 @@ class LoginViewController: UIViewController, TextFieldDelegate, FBSDKLoginButton
         
         passwordField = T1()
         passwordField.placeholder = "Password"
+        passwordField.errorCheck = true
+        passwordField.errorCheckFor = "loginField"
         passwordField.enableVisibilityIconButton = true
         
         // Setting the visibilityFlatButton color.
@@ -70,11 +78,11 @@ class LoginViewController: UIViewController, TextFieldDelegate, FBSDKLoginButton
         
         // BUTTONS //
         
-        let signInButton: B2 = B2()
+        let signInButton: B1 = B1()
         signInButton.addTarget(self, action: #selector(didTapSignIn), forControlEvents: .TouchUpInside)
         signInButton.setTitle("Sign In", forState: .Normal)
         
-        let forgotPasswordButton: B2 = B2()
+        let forgotPasswordButton: B1 = B1()
         forgotPasswordButton.addTarget(self, action: #selector(didRequestPasswordReset), forControlEvents: .TouchUpInside)
         forgotPasswordButton.setTitle("Forgot Password", forState: .Normal)
         
@@ -88,34 +96,6 @@ class LoginViewController: UIViewController, TextFieldDelegate, FBSDKLoginButton
             loginView.layout(child).top(CGFloat(dist)).horizontally(left: 10, right: 10)
             dist += spacing
         }
-        
-    }
-    
-    func prepareFacebookLogin() {
-        
-        let fbView: MaterialView = MaterialView()
-        view.layout(fbView).bottom(110).horizontally(left: 20, right: 20).height(100)
-        
-        let fbLabel: L3 = L3()
-        fbLabel.text = "Login with Facebook"
-        fbLabel.textAlignment = .Center
-        fbView.layout(fbLabel).top(0).horizontally()
-        
-        let fbButton: FBSDKLoginButton = FBSDKLoginButton()
-        fbView.layout(fbButton).top(30).center().width(200).height(50)
-        
-        fbErrorLabel = L3()
-        fbErrorLabel.hidden = true
-        fbErrorLabel.text = ""
-        fbErrorLabel.textAlignment = .Center
-        fbErrorLabel.lineBreakMode = .ByWordWrapping
-        fbErrorLabel.numberOfLines = 0;
-        fbErrorLabel.textColor = colors.error
-        fbView.layout(fbErrorLabel).top(85).horizontally()
-        
-        fbButton.delegate = self
-        fbButton.placeholderText = "Login with Facebook"
-        fbButton.readPermissions = ["public_profile","email","user_friends"]
         
     }
     
@@ -157,17 +137,33 @@ class LoginViewController: UIViewController, TextFieldDelegate, FBSDKLoginButton
     //
     
     func didTapSignIn() {
-        // Sign In with credentials.
-        FIRAuth.auth()?.signInWithEmail(emailField.text!, password: passwordField.text!) { (user, error) in
-            if let error = error {
-                print(error.localizedDescription)
-                return
+        let fields = [emailField, passwordField]
+        
+        for field in fields {
+            errorMgr.errorCheck(field)
+        }
+        
+        if !errorMgr.hasErrors() {
+            showSpinner()
+            // Sign In with credentials.
+            FIRAuth.auth()?.signInWithEmail(emailField.text!, password: passwordField.text!) { (user, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    alertMgr.alert("Sign in error", message: error.localizedDescription)
+                    self.hideSpinner()
+                    return
+                }
+                UserMgr.signedIn(user, sender: self, completionHandler: { (vc) in
+                    self.presentViewController(vc, animated: true, completion: nil)
+                })
             }
-            UserMgr.signedIn(user, sender: self)
+        } else {
+            hideSpinner()
         }
     }
     
     func didRequestPasswordReset() {
+        showSpinner()
         let prompt = UIAlertController.init(title: nil, message: "Email:", preferredStyle: UIAlertControllerStyle.Alert)
         let okAction = UIAlertAction.init(title: "OK", style: UIAlertActionStyle.Default) { (action) in
             let userInput = prompt.textFields![0].text
@@ -183,7 +179,9 @@ class LoginViewController: UIViewController, TextFieldDelegate, FBSDKLoginButton
         }
         prompt.addTextFieldWithConfigurationHandler(nil)
         prompt.addAction(okAction)
-        presentViewController(prompt, animated: true, completion: nil);
+        presentViewController(prompt, animated: true, completion: {
+            self.hideSpinner()
+        });
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
@@ -193,7 +191,7 @@ class LoginViewController: UIViewController, TextFieldDelegate, FBSDKLoginButton
     
     func prepareCancelLink() {
         
-        let cancelView: MaterialView = MaterialView()
+        cancelView = MaterialView()
         view.addSubview(cancelView)
         view.layout(cancelView).height(40).bottom(20).horizontally(left: 20, right: 20)
         
@@ -210,40 +208,27 @@ class LoginViewController: UIViewController, TextFieldDelegate, FBSDKLoginButton
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    // FB Stuff 
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        self.fbErrorLabel.text = ""
-        self.fbErrorLabel.hidden = true
-        if error != nil {
-            print(error!.localizedDescription)
-            return
-        }
-        
-        if result.isCancelled {
-            return
-        }
-        
-        let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
-        
-        FIRAuth.auth()?.signInWithCredential(credential, completion: { (user, error) in
-            if error != nil {
-                print(error?.localizedDescription)
-                FBSDKAccessToken.setCurrentAccessToken(nil)
-                self.fbErrorLabel.text = error?.localizedDescription
-                self.fbErrorLabel.hidden = false
-                return
-            }
-            print("user logged in via fb")
-            UserMgr.signedIn(user, provider: true, sender: self)
-        })
+    func prepareSpinner() {
+        view.layout(spinner).center()
+        spinner.activityIndicatorViewStyle = .WhiteLarge
+        spinner.color = colors.medium
+        spinner.hidesWhenStopped = true
     }
     
-    func loginButtonWillLogin(loginButton: FBSDKLoginButton!) -> Bool {
-        return true
+    func showSpinner() {
+        // hide everytihng else
+        cancelView.hidden = true
+        loginView.hidden = true
+        
+        spinner.startAnimating()
     }
     
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        try! FIRAuth.auth()?.signOut()
-        print("User logged out of facebook")
+    func hideSpinner() {
+        spinner.stopAnimating()
+        
+        // show everything again
+        cancelView.hidden = false
+        loginView.hidden = false
     }
+
 }

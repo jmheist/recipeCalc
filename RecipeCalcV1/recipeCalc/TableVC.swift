@@ -50,7 +50,7 @@ class TableVC: UIViewController, GADBannerViewDelegate {
             
         } else {
             print("User is not logged in yet, should load loginVC")
-            let vc = RegisterViewController()
+            let vc = AppLandingVC()
             self.presentViewController(vc, animated: false, completion: nil)
         }
     }
@@ -60,7 +60,6 @@ class TableVC: UIViewController, GADBannerViewDelegate {
     }
     
     func configureDatabase() {
-        
         recipeMgr.getUserRecipes(AppState.sharedInstance.signedInUser.uid!, sort: "stars", completionHandler: { (recs) in
             self.recipes = recs
             self.recipeTable.reloadData()
