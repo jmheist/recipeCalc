@@ -458,7 +458,6 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
 
                 MRConfirmationAlertView.showWithTitle("Delete", message: "Are you sure you want to \n delete this recipe?", cancelButton: "Cancel", confirmButton: "Delete", completion: {(confirmed: Bool) -> Void in
                     if confirmed {
-                        //MRConfirmationAlertView.showWithTitle("Delete", message: nil)
                         let key = self.recipes[indexPath.row].key
                         recipeMgr.deleteRecipe(key, completionHandler: { (recs) in
                             self.recipes = recs
@@ -466,7 +465,7 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
                         })
                     }
                     else {
-                        //MRConfirmationAlertView.showWithTitle("Cancel", message: nil)
+                        tableView.setEditing(false, animated: true)
                     }
                 })
             }
