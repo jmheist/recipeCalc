@@ -18,14 +18,16 @@ struct User {
     var profileImage: String?=""
     var joined: String?=""
     var bio: String?=""
+    var location: String?=""
     
-    init(uid: String?="", username: String?="", email: String?="", profileImage: String?="", joined: String?="", bio: String?="") {
+    init(uid: String?="", username: String?="", email: String?="", profileImage: String?="", joined: String?="", bio: String?="", location: String?="") {
         self.uid = uid
         self.username = username
         self.email = email
         self.profileImage = profileImage
         self.joined = joined
         self.bio = bio
+        self.location = location
     }
     
 }
@@ -33,21 +35,19 @@ struct User {
 let UserMgr: UserManager = UserManager()
 
 class UserManager: NSObject {
-//
-//    func addAuthListener() {
-//        FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
-//            if let user = user {
-//                self.signedIn(user, sender: nil, completionHandler: { (vc) in
-//                    //
-//                })
-//            } else {
-//                self.signOut(nil)
-//            }
-//        }
-//    }
     
     func sendDataToFirebase(userUid: String, key: String, value: String) {
         Queries.users.child(userUid).child(key).setValue(value)
+    }
+    
+    func sendNewUserInfo(uid: String, username: String, bio: String, location: String, completionHandler:()->()) {
+        sendDataToFirebase(uid, key: "username", value: username)
+        sendDataToFirebase(uid, key: "bio", value: bio)
+        sendDataToFirebase(uid, key: "location", value: location)
+        getUserByKey(uid) { (user) in
+            AppState.sharedInstance.signedInUser = user
+            completionHandler()
+        }
     }
     
     func getUserByKey(key: String, completionHandler:(User)->()) {
@@ -104,12 +104,12 @@ class UserManager: NSObject {
         })
     }
     
-    func signedIn(user: FIRUser?, provider: Bool=false, sender: UIViewController?=nil, completionHandler:(UIViewController)->()) {
+    func signedIn(user: FIRUser?, provider: Bool=false, completionHandler:(UIViewController)->()) {
         
         analyticsMgr.sendLoginEvent()
         AppState.sharedInstance.signedInUser.uid = user?.uid
         
-        func finish() {
+        func finish(newUser: Bool=false) {
             print(
                 "Username: \(AppState.sharedInstance.signedInUser.username), \n",
                 " Email: \(AppState.sharedInstance.signedInUser.email), \n",
@@ -120,11 +120,14 @@ class UserManager: NSObject {
             UserMgr.sendDataToFirebase((user?.uid)!, key: "username", value: AppState.sharedInstance.signedInUser.username!)
             UserMgr.sendDataToFirebase((user?.uid)!, key: "email", value: AppState.sharedInstance.signedInUser.email!)
             NSNotificationCenter.defaultCenter().postNotificationName(Constants.NotificationKeys.SignedIn, object: nil, userInfo: nil)
-            if (sender != nil) {
-                loadApp(sender!, completionHandler: { (vc) in
+            if newUser {
+                completionHandler(loadNewUser())
+            } else {
+                loadApp({ (vc) in
                     completionHandler(vc)
                 })
             }
+        
         }
         
         UserMgr.getUserByKey(AppState.sharedInstance.signedInUser.uid!) { (firebaseUser) in
@@ -137,7 +140,7 @@ class UserManager: NSObject {
                 AppState.sharedInstance.signedInUser.joined = firebaseUser.joined
                 AppState.sharedInstance.signedInUser.bio = firebaseUser.bio
                 AppState.sharedInstance.signedIn = true
-                finish()
+                finish(false)
             } else {
                 print("user not in db yet")
                 let now = NSDate()
@@ -158,14 +161,14 @@ class UserManager: NSObject {
                         storageMgr.storeFBImage(user!, completionHandler: { (profileImageUrl) in
                             AppState.sharedInstance.signedInUser.profileImage = profileImageUrl
                             UserMgr.sendDataToFirebase((user?.uid)!, key: "profileImage", value: AppState.sharedInstance.signedInUser.profileImage!)
-                            finish()
+                            finish(true)
                         })
                     }
                 } else {
                     AppState.sharedInstance.signedInUser.username = user?.displayName ?? user?.email
                     AppState.sharedInstance.signedInUser.email = user?.email
                     AppState.sharedInstance.signedIn = true
-                    finish()
+                    finish(true)
                 }
             }
         }
@@ -197,7 +200,7 @@ class UserManager: NSObject {
         return navigationController.viewControllers.last
     }
     
-    func loadApp(sender: UIViewController, completionHandler:(UIViewController)->()) {
+    func loadApp(completionHandler:(UIViewController)->()) {
         //let localRecipeList: AppNav = AppNav(rootViewController: LocalRecipeListVC())
         let createRecipeViewController: AppNav = AppNav(rootViewController: CreateRecipeViewController())
         let discoveryViewController: AppNav = AppNav(rootViewController: DiscoveryViewController())
@@ -207,6 +210,11 @@ class UserManager: NSObject {
         bottomNavigationController.viewControllers = [discoveryViewController, createRecipeViewController, profileVC]
         bottomNavigationController.selectedIndex = 0
         completionHandler(bottomNavigationController)
+    }
+    
+    func loadNewUser() -> UIViewController {
+        let vc: NewUserInfoVC = NewUserInfoVC()
+        return vc
     }
     
     func loadUserStats(uid: String, completionHandler:(publishedRecipeCount: Int, starAvg: Double, favCount: Int)->()) {
@@ -224,7 +232,5 @@ class UserManager: NSObject {
             stars = starTotal == 0.0 ? 0.0 : starTotal/Double(recipes.count)
             completionHandler(publishedRecipeCount: published, starAvg: floor(stars * 100) / 100, favCount: favs)
         }
-        
     }
-    
 }

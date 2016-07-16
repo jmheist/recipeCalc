@@ -31,35 +31,26 @@ class AppLandingVC: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        prepareView()
+        prepareView()
+        prepareWelcomeWagon()
+        prepareFacebookLogin()
+        prepareSpinner()
+        showSpinner()
         print("Checking if user is logged in")
         if let user = FIRAuth.auth()?.currentUser {
             print("User is signed in \(user.displayName)")
-            UserMgr.signedIn(user, sender: self, completionHandler: { (vc) in
+            UserMgr.signedIn(user, provider: false, completionHandler: { (vc) in
                 self.presentViewController(vc, animated: true, completion: nil)
             })
         } else {
+            self.hideSpinner()
             print("Not signed in yet")
-            prepareView()
-            prepareWelcomeWagon()
-            prepareFacebookLogin()
-            prepareSpinner()
         }
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        print("Checking if user is logged in")
-        if let user = FIRAuth.auth()?.currentUser {
-            print("User is signed in \(user.displayName)")
-            UserMgr.signedIn(user, sender: self, completionHandler: { (vc) in
-                self.presentViewController(vc, animated: true, completion: nil)
-            })
-        } else {
-            print("Not signed in yet")
-        }
     }
     
     /// Prepares view.
@@ -179,7 +170,7 @@ class AppLandingVC: UIViewController, FBSDKLoginButtonDelegate {
                 return
             }
             print("user logged in via fb")
-            UserMgr.signedIn(user, provider: true, sender: self, completionHandler: { (vc) in
+            UserMgr.signedIn(user, provider: true, completionHandler: { (vc) in
                 self.presentViewController(vc, animated: true, completion: nil)
             })
         })

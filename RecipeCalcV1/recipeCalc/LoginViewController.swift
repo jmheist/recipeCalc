@@ -153,7 +153,7 @@ class LoginViewController: UIViewController, TextFieldDelegate {
                     self.hideSpinner()
                     return
                 }
-                UserMgr.signedIn(user, sender: self, completionHandler: { (vc) in
+                UserMgr.signedIn(user, provider: false, completionHandler: { (vc) in
                     self.presentViewController(vc, animated: true, completion: nil)
                 })
             }

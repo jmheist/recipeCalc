@@ -11,7 +11,7 @@ import Material
 import Firebase
 import GoogleMobileAds
 
-class TableVC: UIViewController, GADBannerViewDelegate {
+class TableVC: UIViewController, GADBannerViewDelegate, UITableViewDelegate {
     
     // VARS
     var recipeTable: UITableView!
@@ -42,17 +42,7 @@ class TableVC: UIViewController, GADBannerViewDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        //check if user is logged in
-        if AppState.sharedInstance.signedIn {
-            
-            // print("User is logged in")
-            prepareNavigationItem()
-            
-        } else {
-            print("User is not logged in yet, should load loginVC")
-            let vc = AppLandingVC()
-            self.presentViewController(vc, animated: false, completion: nil)
-        }
+        prepareNavigationItem()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -90,6 +80,8 @@ class TableVC: UIViewController, GADBannerViewDelegate {
         registerMyClass()
         recipeTable.dataSource = self
         recipeTable.delegate = self
+        recipeTable.estimatedRowHeight = 50
+        recipeTable.rowHeight = UITableViewAutomaticDimension
         
         view.layout(recipeTable).top(0).left(0).right(0).bottom(100)
         
@@ -128,27 +120,8 @@ extension TableVC: UITableViewDataSource {
         
         cell.selectionStyle = .None
         cell.recipeName.text = recipe.name
-        cell.recipeName.font = RobotoFont.regular
-        
-        cell.recipeDesc.text = recipe.desc
-        cell.recipeDesc.font = RobotoFont.regular
-        cell.recipeDesc.textColor = MaterialColor.grey.darken1
-        
-        cell.creator.text = recipe.author
-        cell.creator.font = RobotoFont.regular
-        cell.creator.textColor = MaterialColor.grey.darken1
-        
         cell.recipeID = recipe.key
         
         return cell
     }
-}
-
-/// UITableViewDelegate methods.
-extension TableVC: UITableViewDelegate {
-    /// Sets the tableView cell height.
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 80
-    }
-    
 }

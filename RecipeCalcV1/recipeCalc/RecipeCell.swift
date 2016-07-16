@@ -10,36 +10,52 @@ import UIKit
 import Material
 import Firebase
 
-class RecipeCell: MaterialTableViewCell {
+class RecipeCell: MaterialTableViewCell, WDStarRatingDelegate {
 
     var recipeName: L1 = L1()
-    var recipeDesc: L1 = L1()
-    var creator: L1 = L1()
     var recipeID = ""
+    var ratingContainer: MaterialView!
+    var starRatingView: WDStarRatingView!
+    var starRatingCount: L3!
+    var hearts: MaterialView!
+    var heartCount: L3!
     
     override func prepareView() {
         super.prepareView()
         
-        let cellView: MaterialView = MaterialView()
-        contentView.addSubview(cellView)
-        contentView.layout(cellView).top(8).left(8).bottom(8).right(8)
-        
         recipeName.font = RobotoFont.regular
-        recipeDesc.font = RobotoFont.regular
-        recipeDesc.textColor = MaterialColor.grey.darken1
-        creator.font = RobotoFont.regular
-        creator.textColor = MaterialColor.grey.darken1
         
-        cellView.backgroundColor = MaterialColor.clear
+        contentView.backgroundColor = MaterialColor.clear
+        contentView.layout(recipeName).top(8).bottom(8).left(8).width(250)
         
-        let children = [recipeName, recipeDesc, creator]
-        var dist = 0
-        let spacing = 20
-        for child in children {
-            cellView.addSubview(child)
-            cellView.layout(child).left(0).top(CGFloat(dist))
-            dist += spacing
-        }
+        self.ratingContainer = MaterialView()
+        contentView.layout(ratingContainer).top(10).right(8).height(15).width(120)
+        
+        self.starRatingView = WDStarRatingView()
+        self.starRatingView.delegate = self
+        self.starRatingView.maximumValue = 5
+        self.starRatingView.minimumValue = 0
+        self.starRatingView.value = 0
+        self.starRatingView.tintColor = colors.accent
+        self.starRatingView.enabled = false
+        ratingContainer.layout(starRatingView).edges(left: 25, right: 20)
+        
+        self.starRatingCount = L3()
+        starRatingCount.textLayer.pointSize = 12
+        ratingContainer.layout(starRatingCount).right(0).top(0).bottom(0).width(20)
+        
+        self.hearts = MaterialView()
+        ratingContainer.layout(hearts).left(0).top(0).bottom(0).width(30)
+        
+        self.heartCount = L3()
+        self.heartCount.text = "0"
+        self.heartCount.textLayer.pointSize = 12
+        hearts.layout(heartCount).left(15).top(0).bottom(0).width(10)
+        
+        let imageView: UIImageView = UIImageView(frame: CGRectMake(0, 0, 15, 15))
+        imageView.image = MaterialIcon.favorite?.tintWithColor(colors.favorite)
+        
+        hearts.layout(imageView).left(0).top(1).bottom(0).width(15)
         
     }
 

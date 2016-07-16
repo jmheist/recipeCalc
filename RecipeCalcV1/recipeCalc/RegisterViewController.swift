@@ -202,7 +202,7 @@ class RegisterViewController: UIViewController, TextFieldDelegate {
                 return
             }
             let user = FIRAuth.auth()?.currentUser
-            UserMgr.signedIn(user, sender: self, completionHandler: { (vc) in
+            UserMgr.signedIn(user, provider: false, completionHandler: { (vc) in
                 self.presentViewController(vc, animated: true, completion: nil)
             })
         }

@@ -161,16 +161,7 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Te
         
         cell.selectionStyle = .None
         cell.recipeName.text = recipe.name
-        cell.recipeName.font = RobotoFont.regular
-        
-        cell.recipeDesc.text = recipe.desc
-        cell.recipeDesc.font = RobotoFont.regular
-        cell.recipeDesc.textColor = MaterialColor.grey.darken1
-        
         cell.creator.text = recipe.author
-        cell.creator.font = RobotoFont.regular
-        cell.creator.textColor = MaterialColor.grey.darken1
-        
         cell.recipeID = recipe.key
         
         return cell
@@ -178,7 +169,7 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Te
     
     /// Sets the tableView cell height.
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 80
+        return 50
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

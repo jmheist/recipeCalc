@@ -86,7 +86,7 @@ class CommentsVC: UIViewController, GADBannerViewDelegate, UITextFieldDelegate, 
         
         commentsTable = UITableView()
         commentsTable.rowHeight = UITableViewAutomaticDimension
-        commentsTable.estimatedRowHeight = 80
+        commentsTable.estimatedRowHeight = 60
         registerMyClass()
         commentsTable.dataSource = self
         

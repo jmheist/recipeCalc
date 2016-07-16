@@ -43,6 +43,7 @@
 		73A9464C1D26DF3000745195 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A9464B1D26DF3000745195 /* AnalyticsManager.swift */; };
 		73A946501D26F7BD00745195 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73A9464F1D26F7BD00745195 /* GoogleService-Info.plist */; };
 		73AD3F2A1D36DC1B003C4CFE /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AD3F291D36DC1B003C4CFE /* AlertManager.swift */; };
+		73AD3F2C1D397A3B003C4CFE /* NewUserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AD3F2B1D397A3B003C4CFE /* NewUserInfoVC.swift */; };
 		73B1B5B01CFFA520009AFA20 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */; };
 		73CC8D051D08CDD1003D3709 /* MixPrepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CC8D041D08CDD1003D3709 /* MixPrepVC.swift */; };
 		73CC8D071D08CEE0003D3709 /* MixSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CC8D061D08CEE0003D3709 /* MixSettingsManager.swift */; };
@@ -129,6 +130,7 @@
 		73A9464B1D26DF3000745195 /* AnalyticsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 		73A9464F1D26F7BD00745195 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		73AD3F291D36DC1B003C4CFE /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		73AD3F2B1D397A3B003C4CFE /* NewUserInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserInfoVC.swift; sourceTree = "<group>"; };
 		73B1B5AF1CFFA520009AFA20 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		73CC8D041D08CDD1003D3709 /* MixPrepVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixPrepVC.swift; sourceTree = "<group>"; };
 		73CC8D061D08CEE0003D3709 /* MixSettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixSettingsManager.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				7372EF2F1D1C6BA700754613 /* AppLandingVC.swift */,
 				73DCEABE1CF6254B002BA81C /* RegisterViewController.swift */,
 				731C96BA1D14859300588FAD /* LoginViewController.swift */,
+				73AD3F2B1D397A3B003C4CFE /* NewUserInfoVC.swift */,
 			);
 			name = Auth;
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				736C52BE1D244ACA005755F9 /* FavoriteManager.swift in Sources */,
 				73991AF81D18565A004F3F07 /* UserManager.swift in Sources */,
 				73CC8D051D08CDD1003D3709 /* MixPrepVC.swift in Sources */,
+				73AD3F2C1D397A3B003C4CFE /* NewUserInfoVC.swift in Sources */,
 				73473FAD1D2DA24300B3F010 /* StorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

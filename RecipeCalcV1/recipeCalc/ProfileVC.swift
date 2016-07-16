@@ -257,9 +257,9 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
         favTable.dataSource = self
         
         favTable.rowHeight = UITableViewAutomaticDimension
-        favTable.estimatedRowHeight = 80
+        favTable.estimatedRowHeight = 60
         recTable.rowHeight = UITableViewAutomaticDimension
-        recTable.estimatedRowHeight = 80
+        recTable.estimatedRowHeight = 40
         
         let tableView: MaterialView = MaterialView()
         view.layout(tableView).top(220).left().right().bottom(99)
@@ -420,7 +420,6 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
             cell.heartCount.text = "\(recipe.favCount)"
             cell.selectionStyle = .None
             cell.recipeName.text = recipe.name
-            cell.recipeDesc.text = recipe.desc
             cell.creator.text = recipe.author
             cell.recipeID = recipe.key
             
@@ -432,10 +431,12 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
             
             let recipe = self.recipes[indexPath.row]
             
+            cell.starRatingView.value = recipe.stars
+            cell.starRatingCount.text = "(\(recipe.starsCount))"
+            cell.heartCount.text = "\(recipe.favCount)"
+            
             cell.selectionStyle = .None
             cell.recipeName.text = recipe.name
-            cell.recipeDesc.text = recipe.desc
-            cell.creator.text = recipe.author
             cell.recipeID = recipe.key
             
             return cell
@@ -444,11 +445,6 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
             let cell: MyRecipeCell = MyRecipeCell(style: .Default, reuseIdentifier: "recipeCell")
             return cell
         }
-    }
-    
-    /// Sets the tableView cell height.
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 80
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
