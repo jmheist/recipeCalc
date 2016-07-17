@@ -272,7 +272,6 @@
 				7372EF2F1D1C6BA700754613 /* AppLandingVC.swift */,
 				73DCEABE1CF6254B002BA81C /* RegisterViewController.swift */,
 				731C96BA1D14859300588FAD /* LoginViewController.swift */,
-				73AD3F2B1D397A3B003C4CFE /* NewUserInfoVC.swift */,
 			);
 			name = Auth;
 			sourceTree = "<group>";
@@ -313,6 +312,7 @@
 		7372EF351D1C6C1F00754613 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				73AD3F2B1D397A3B003C4CFE /* NewUserInfoVC.swift */,
 				73DCEAC91CF62B75002BA81C /* UpdateProfileVC.swift */,
 			);
 			name = User;

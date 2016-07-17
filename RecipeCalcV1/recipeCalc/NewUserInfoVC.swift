@@ -57,25 +57,25 @@ class NewUserInfoVC: UIViewController {
         userNameField.errorCheckFor = "username"
         userNameField.textLength = 30
         
-        infoView.layout(userNameField).top(20).left(8).right(8)
+        infoView.layout(userNameField).top(50).left(8).right(8)
         
         let bioFieldLabel: L2 = L2()
         bioFieldLabel.text = "bio"
         
-        infoView.layout(bioFieldLabel).top(60).left(8).right(8)
+        infoView.layout(bioFieldLabel).top(90).left(8).right(8)
         
         bioField = TView()
         bioField.maxLength = 90
         bioField.errorCheck = true
         bioField.placeholderText = "A little about you."
         
-        infoView.layout(bioField).top(80).left(8).right(8).height(80)
+        infoView.layout(bioField).top(110).left(8).right(8).height(80)
         
         bioFieldErrorLabel = L3()
         bioFieldErrorLabel.textColor = colors.error
         bioFieldErrorLabel.text = ""
         
-        infoView.layout(bioFieldErrorLabel).top(170).left(8).right(8)
+        infoView.layout(bioFieldErrorLabel).top(200).left(8).right(8)
         
         locationField = T1()
         locationField.placeholder = "Location"
@@ -83,7 +83,7 @@ class NewUserInfoVC: UIViewController {
         locationField.errorCheckFor = "text"
         locationField.textLength = 40
         
-        infoView.layout(locationField).top(200).left(8).right(8)
+        infoView.layout(locationField).top(230).left(8).right(8)
         
         
     }
