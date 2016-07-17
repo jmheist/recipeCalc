@@ -44,6 +44,16 @@ class UserManager: NSObject {
         
         if (username != nil) {
             sendDataToFirebase(uid, key: "username", value: username!)
+            // update the user name in the auth db
+            if let user = FIRAuth.auth()?.currentUser {
+                let changeRequest = user.profileChangeRequest()
+                changeRequest.displayName = username
+                changeRequest.commitChangesWithCompletion(){ (error) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    }
+                }
+            }
         }
         
         if bio != nil {
@@ -60,16 +70,22 @@ class UserManager: NSObject {
         }
     }
     
+    func receiveUserFromFB(snapshot: FIRDataSnapshot) -> User {
+        let user = User(
+            uid: snapshot.key,
+            username: snapshot.value!["username"] as? String ?? "",
+            email: snapshot.value!["email"] as? String ?? "",
+            profileImage: snapshot.value!["profileImage"] as? String ?? "",
+            joined: snapshot.value!["joined"] as? String ?? "",
+            bio: snapshot.value!["bio"] as? String ?? "",
+            location: snapshot.value!["location"] as? String ?? ""
+        )
+        return user;
+    }
+    
     func getUserByKey(key: String, completionHandler:(User)->()) {
         Queries.users.child(key).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-            let user = User(
-                uid: snapshot.key,
-                username: snapshot.value!["username"] as? String ?? "",
-                email: snapshot.value!["email"] as? String ?? "",
-                profileImage: snapshot.value!["profileImage"] as? String ?? "",
-                joined: snapshot.value!["joined"] as? String ?? "",
-                bio: snapshot.value!["bio"] as? String ?? ""
-            )
+            let user = self.receiveUserFromFB(snapshot)
             completionHandler(user)
         })
     }
@@ -80,14 +96,7 @@ class UserManager: NSObject {
                 let snap = child as! FIRDataSnapshot
                 let name = snap.value!["username"] as! String
                 if name.lowercaseString == username.lowercaseString {
-                    let user = User(
-                        uid: snap.key,
-                        username: name,
-                        email: snap.value!["email"] as? String,
-                        profileImage: snapshot.value!["profileImage"] as? String ?? "",
-                        joined: snapshot.value!["joined"] as? String ?? "",
-                        bio: snapshot.value!["bio"] as? String ?? ""
-                    )
+                    let user = self.receiveUserFromFB(snap)
                     completionHandler(user)
                 }
             }
@@ -100,14 +109,7 @@ class UserManager: NSObject {
                 let snap = child as! FIRDataSnapshot
                 let emailval = snap.value!["email"] as! String
                 if emailval.lowercaseString == email.lowercaseString {
-                    let user = User(
-                        uid: snap.key,
-                        username: snap.value!["username"] as? String,
-                        email: emailval,
-                        profileImage: snapshot.value!["profileImage"] as? String ?? "",
-                        joined: snapshot.value!["joined"] as? String ?? "",
-                        bio: snapshot.value!["bio"] as? String ?? ""
-                    )
+                    let user = self.receiveUserFromFB(snap)
                     completionHandler(user)
                 }
             }
@@ -144,11 +146,7 @@ class UserManager: NSObject {
             
             if firebaseUser.username != "" {
                 print("user already in DB")
-                AppState.sharedInstance.signedInUser.username = firebaseUser.username
-                AppState.sharedInstance.signedInUser.email = firebaseUser.email
-                AppState.sharedInstance.signedInUser.profileImage = firebaseUser.profileImage
-                AppState.sharedInstance.signedInUser.joined = firebaseUser.joined
-                AppState.sharedInstance.signedInUser.bio = firebaseUser.bio
+                AppState.sharedInstance.signedInUser = firebaseUser
                 AppState.sharedInstance.signedIn = true
                 finish(false)
             } else {

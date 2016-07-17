@@ -19,14 +19,16 @@ class PublicRecipeCell: RecipeCell {
         super.prepareView()
         
         self.profilePicView = UIImageView()
-        self.profilePicView.layer.cornerRadius = 8
+        self.profilePicView.layer.cornerRadius = 19
         self.profilePicView.clipsToBounds = true
         self.profilePicView.backgroundColor = colors.background
-        contentView.layout(profilePicView).top(28).left(8).height(16).width(16)
+        contentView.layout(profilePicView).top(9).left(6).height(38).width(38)
+        
+        contentView.layout(recipeName).top(8).bottom(8).left(50).width(200)
         
         creator.font = RobotoFont.lightWithSize(13)
         creator.textColor = MaterialColor.grey.darken1
-        contentView.layout(creator).top(28).bottom(8).left(28).width(250)
+        contentView.layout(creator).top(28).bottom(8).left(50).width(250)
     }
     
 }

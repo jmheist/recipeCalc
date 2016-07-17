@@ -15,6 +15,8 @@ class MyRecipeCell: RecipeCell {
     override func prepareView() {
         super.prepareView()
         
+        contentView.layout(recipeName).top(8).bottom(8).left(8).width(250)
+        
     }
     
 }

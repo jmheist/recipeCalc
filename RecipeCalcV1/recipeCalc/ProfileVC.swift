@@ -18,6 +18,20 @@ import MRConfirmationAlertView
 
 class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
+    class statHeader: L3 {
+        override func prepareView() {
+            font = RobotoFont.boldWithSize(14)
+            textAlignment = .Center
+        }
+    }
+    
+    class stat: L3 {
+        override func prepareView() {
+            font = RobotoFont.regularWithSize(16)
+            textAlignment = .Center
+        }
+    }
+    
     /// NavigationBar title label.
     private var titleLabel: UILabel!
     
@@ -40,6 +54,11 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     let imagePicker: ImagePickerController = ImagePickerController()
     
     var bio: L2!
+    
+    var recipesCount: stat!
+    var starAvg: stat!
+    var favCount: stat!
+    var location: L3!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -79,6 +98,7 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     
     override func viewDidAppear(animated: Bool) {
         prepareDatabase()
+        loadUserStats()
         prepareNavigationItem()
         prepareNavButtons()
     }
@@ -102,7 +122,7 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     
     /// Prepare tabBarItem.
     private func prepareTabBarItem() {
-        tabBarItem.title = "Settings"
+        tabBarItem.title = "Profile"
         tabBarItem.image = MaterialIcon.settings
     }
     
@@ -125,6 +145,16 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
             })
         }
         
+    }
+    
+    func loadUserStats() {
+        UserMgr.loadUserStats(AppState.sharedInstance.signedInUser.uid!) { (publishedRecipeCount, starAvg, favCount) in
+            self.recipesCount.text = String(publishedRecipeCount)
+            self.starAvg.text = String(starAvg)
+            self.favCount.text = String(favCount)
+        }
+        bio.text = AppState.sharedInstance.signedInUser.bio == "" ? "" : AppState.sharedInstance.signedInUser.bio
+        location.text = AppState.sharedInstance.signedInUser.location!
     }
     
     func prepareProfile() {
@@ -156,9 +186,16 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
         profileView.layout(username).left(0).top(88).width(300)
         
         let joined: L3 = L3()
+        joined.textLayer.pointSize = 12
         joined.text = "Joined: "+AppState.sharedInstance.signedInUser.joined!
         joined.textAlignment = .Right
         profileView.layout(joined).top(88).right(0).width(150)
+        
+        location = L3()
+        location.textLayer.pointSize = 12
+        location.text = AppState.sharedInstance.signedInUser.location!
+        location.textAlignment = .Right
+        profileView.layout(location).top(68).right(0).width(150)
         
         // max length for bio should be around 75-80 characters
         bio = L2()
@@ -171,21 +208,8 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
         // start on recipe stats
         
         let profileStatsView: MaterialView = MaterialView()
-        profileView.layout(profileStatsView).top(0).right(0).height(70).width(250)
-        
-        class statHeader: L3 {
-            override func prepareView() {
-                font = RobotoFont.boldWithSize(14)
-                textAlignment = .Center
-            }
-        }
-        
-        class stat: L3 {
-            override func prepareView() {
-                font = RobotoFont.regularWithSize(16)
-                textAlignment = .Center
-            }
-        }
+        profileView.layout(profileStatsView).top(0).right(0).height(55).width(250)
+
         
         let recipesLabel: statHeader = statHeader()
         recipesLabel.text = "Published"
@@ -199,25 +223,19 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
         favsLabel.text = " Total Favs"
         profileStatsView.addSubview(favsLabel)
         
-        let recipes: stat = stat()
-        recipes.text = "20"
-        profileStatsView.addSubview(recipes)
+        recipesCount = stat()
+        recipesCount.text = "0"
+        profileStatsView.addSubview(recipesCount)
         
-        let stars: stat = stat()
-        stars.text = "4.2"
-        profileStatsView.addSubview(stars)
+        starAvg = stat()
+        starAvg.text = "0"
+        profileStatsView.addSubview(starAvg)
         
-        let favs: stat = stat()
-        favs.text = "197"
-        profileStatsView.addSubview(favs)
+        favCount = stat()
+        favCount.text = "0"
+        profileStatsView.addSubview(favCount)
         
-        UserMgr.loadUserStats(AppState.sharedInstance.signedInUser.uid!) { (publishedRecipeCount, starAvg, favCount) in
-            recipes.text = String(publishedRecipeCount)
-            stars.text = String(starAvg)
-            favs.text = String(favCount)
-        }
-        
-        let labels = [recipesLabel, starsLabel, favsLabel, recipes, stars, favs]
+        let labels = [recipesLabel, starsLabel, favsLabel, recipesCount, starAvg, favCount]
         var rowOffset = 0
         var columnOffset = 0
         
@@ -362,7 +380,11 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     }
     
     func signOut() {
-        UserMgr.signOut(self)
+        alertMgr.alertWithOptions("Signout", message: "Are you sure you want\nto log out?", cancelBtn: "Cancel", conFirmBtn: "Logout") { (confirmed) in
+            if confirmed {
+                UserMgr.signOut(self)
+            }
+        }
     }
     
     func textViewDidBeginEditing(textView: UITextView) {

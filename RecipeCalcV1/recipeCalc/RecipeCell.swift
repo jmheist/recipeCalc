@@ -26,7 +26,6 @@ class RecipeCell: MaterialTableViewCell, WDStarRatingDelegate {
         recipeName.font = RobotoFont.regular
         
         contentView.backgroundColor = MaterialColor.clear
-        contentView.layout(recipeName).top(8).bottom(8).left(8).width(250)
         
         self.ratingContainer = MaterialView()
         contentView.layout(ratingContainer).top(10).right(8).height(15).width(120)

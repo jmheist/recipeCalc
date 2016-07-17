@@ -12,13 +12,23 @@ import Material
 
 class UpdateProfileVC: UIViewController, TextDelegate {
     
-    private var userName: T1!
-    private var userEmail: T1!
-    private var userCity: T1!
-    private var userState: T1!
-    private var userCountry: T1!
+    var spinner: UIActivityIndicatorView = UIActivityIndicatorView()
+    
+    let errorMgr: ErrorManager = ErrorManager()
+    
+    var infoView: MaterialView!
+    var doneButton: B1!
+    
+    var userNameField: T1!
+    var bioField: TView!
+    var locationField: T1!
+    var bioFieldErrorLabel: L3!
+    
+    let text: Text = Text()
+    var didSendComment: Bool = false
+    
+    private var location: T1!
     private var userBio: TextView!
-    private var userBioText: Text = Text()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -56,104 +66,54 @@ class UpdateProfileVC: UIViewController, TextDelegate {
     
     func prepareTextFields() {
         
-        // recipe info view
-        
-        let userInfo: MaterialView = MaterialView()
-        view.addSubview(userInfo)
-        
-        Layout.height(view, child: userInfo, height: 340)
-        Layout.top(view, child: userInfo, top: 0)
-        Layout.horizontally(view, child: userInfo, left: 14, right: 14)
-        
-        // recipe info fields
-        
-        userName = T1()
-        userName.placeholder = "Username"
-        userName.font = RobotoFont.regularWithSize(24)
-        userInfo.addSubview(userName)
-        Layout.height(userInfo, child: userName, height: 28)
-        Layout.top(userInfo, child: userName, top: 25)
-        Layout.horizontally(userInfo, child: userName, left: 10, right: 10)
-
-        userEmail = T1()
-        userEmail.placeholder = "Email Addesss"
-        userEmail.font = RobotoFont.regularWithSize(24)
-        userInfo.addSubview(userEmail)
-        Layout.height(userInfo, child: userEmail, height: 28)
-        Layout.top(userInfo, child: userEmail, top: 85)
-        Layout.horizontally(userInfo, child: userEmail, left: 10, right: 10)
-        
-        userCity = T1()
-        userCity.placeholder = "City"
-        userCity.font = RobotoFont.regularWithSize(24)
-        userInfo.addSubview(userCity)
-        Layout.height(userInfo, child: userCity, height: 28)
-        Layout.top(userInfo, child: userCity, top: 145)
-        Layout.horizontally(userInfo, child: userCity, left: 10, right: 10)
-        
-        userState = T1()
-        userState.placeholder = "State"
-        userState.font = RobotoFont.regularWithSize(24)
-        userInfo.addSubview(userState)
-        Layout.height(userInfo, child: userState, height: 28)
-        Layout.top(userInfo, child: userState, top: 205)
-        Layout.horizontally(userInfo, child: userState, left: 10, right: 10)
-        
-        userCountry = T1()
-        userCountry.placeholder = "Country"
-        userCountry.font = RobotoFont.regularWithSize(24)
-        userInfo.addSubview(userCountry)
-        Layout.height(userInfo, child: userCountry, height: 28)
-        Layout.top(userInfo, child: userCountry, top: 265)
-        Layout.horizontally(userInfo, child: userCountry, left: 10, right: 10)
-        
-        ///// Start the crazy textview stuff
-        
-        userBio = TextView()
-        
         let layoutManager: NSLayoutManager = NSLayoutManager()
         let textContainer: NSTextContainer = NSTextContainer(size: view.bounds.size)
         layoutManager.addTextContainer(textContainer)
         
-        userBioText.delegate = self
-        userBioText.textStorage.addLayoutManager(layoutManager)
+        text.delegate = self
+        text.textStorage.addLayoutManager(layoutManager)
         
-        userBio = TextView(textContainer: textContainer)
-        userBio.font = RobotoFont.regular
+        infoView = MaterialView()
+        view.layout(infoView).top(20).bottom(20).left(20).right(20)
         
-        userBio.placeholderLabel = UILabel()
-        userBio.placeholderLabel!.textColor = colors.dark
-        userBio.placeholderLabel!.text = "Description"
+        let bioFieldLabel: L2 = L2()
+        bioFieldLabel.text = "bio"
         
-        userBio.titleLabel = UILabel()
-        userBio.titleLabel!.font = RobotoFont.mediumWithSize(16)
-        userBio.titleLabelColor = colors.dark
-        userBio.titleLabelActiveColor = colors.dark
+        infoView.layout(bioFieldLabel).top(40)
         
-        userInfo.addSubview(userBio)
-        Layout.height(userInfo, child: userBio, height: 90)
-        Layout.top(userInfo, child: userBio, top: 335)
-        Layout.horizontally(userInfo, child: userBio, left: 10, right: 10)
+        bioField = TView(textContainer: textContainer)
+        bioField.maxLength = 90
+        bioField.errorCheck = true
+        bioField.placeholderText = "A little about you."
         
-
-        /**
-         When changes in the textView text are made, this delegation method
-         is executed with the added text string and range.
-         */
-        func textWillProcessEdit(text: Text, textStorage: TextStorage, string: String, range: NSRange) {
-            textStorage.removeAttribute(NSFontAttributeName, range: range)
-            textStorage.addAttribute(NSFontAttributeName, value: RobotoFont.regular, range: range)
+        infoView.layout(bioField).top(60).height(80)
+        
+        bioFieldErrorLabel = L3()
+        bioFieldErrorLabel.textColor = colors.error
+        bioFieldErrorLabel.text = ""
+        
+        infoView.layout(bioFieldErrorLabel).top(150)
+        
+        locationField = T1()
+        locationField.placeholder = "Location"
+        locationField.errorCheck = true
+        locationField.errorCheckFor = "text"
+        locationField.textMaxLength = 40
+        
+        infoView.layout(locationField).top(180)
+        
+        doneButton = B1()
+        doneButton.setTitle("Submit", forState: .Normal)
+        doneButton.addTarget(self, action: #selector(didTapDone), forControlEvents: .TouchUpInside)
+        
+        infoView.layout(doneButton).centerHorizontally().top(240).width(100)
+        
+        let children = [bioFieldLabel, bioField, bioFieldErrorLabel, locationField]
+        
+        for child in children {
+            infoView.layout(child).left(14).right(14)
         }
         
-        /**
-         When a match is detected within the textView text, this delegation
-         method is executed with the added text string and range.
-         */
-        func textDidProcessEdit(text: Text, textStorage: TextStorage, string: String, result: NSTextCheckingResult?, flags: NSMatchingFlags, stop: UnsafeMutablePointer<ObjCBool>) {
-            textStorage.addAttribute(NSFontAttributeName, value: UIFont.boldSystemFontOfSize(16), range: result!.range)
-        }
-        
-        ///// END the crazy textview stuff
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
@@ -187,5 +147,79 @@ class UpdateProfileVC: UIViewController, TextDelegate {
         let statusBarWindow = UIApplication.sharedApplication().valueForKey("statusBarWindow") as! UIWindow
         statusBarWindow.frame = CGRectMake(0, 0, statusBarWindow.frame.size.width, statusBarWindow.frame.size.height)
     }
+    
+    
+    func didTapDone() {
+        
+        showSpinner()
+        
+        let fields = [userNameField, locationField]
+        
+        //        errorMgr.errorCheck(textview: bioField, errorLabel: bioFieldErrorLabel)
+        
+        for field in fields {
+            errorMgr.errorCheck(field)
+        }
+        setTimeout(1) {
+            if !self.errorMgr.hasErrors() {
+                UserMgr.sendNewUserInfo(AppState.sharedInstance.signedInUser.uid!, bio: self.bioField.text, location: self.locationField.text!, completionHandler: {
+                    
+                    UserMgr.loadApp({ (vc) in
+                        self.navigationController?.popViewControllerAnimated(true)
+                    })
+                    
+                })
+                
+            } else {
+                self.hideSpinner()
+            }
+        }
+    }
+    
+    func prepareSpinner() {
+        view.layout(spinner).center()
+        spinner.activityIndicatorViewStyle = .WhiteLarge
+        spinner.color = colors.medium
+        spinner.hidesWhenStopped = true
+    }
+    
+    func showSpinner() {
+        // hide everytihng else
+        infoView.hidden = true
+        doneButton.hidden = true
+        
+        spinner.startAnimating()
+    }
+    
+    func hideSpinner() {
+        spinner.stopAnimating()
+        
+        // show everything again
+        infoView.hidden = false
+        doneButton.hidden = false
+    }
+    
+    
+    /**
+     When changes in the textView text are made, this delegation method
+     is executed with the added text string and range.
+     */
+    func textWillProcessEdit(text: Text, textStorage: TextStorage, string: String, range: NSRange) {
+        if !didSendComment {
+            textStorage.removeAttribute(NSFontAttributeName, range: range)
+            textStorage.addAttribute(NSFontAttributeName, value: RobotoFont.regular, range: range)
+        } else {
+            didSendComment = false
+        }
+    }
+    
+    /**
+     When a match is detected within the textView text, this delegation
+     method is executed with the added text string and range.
+     */
+    func textDidProcessEdit(text: Text, textStorage: TextStorage, string: String, result: NSTextCheckingResult?, flags: NSMatchingFlags, stop: UnsafeMutablePointer<ObjCBool>) {
+        textStorage.addAttribute(NSFontAttributeName, value: UIFont.boldSystemFontOfSize(16), range: result!.range)
+    }
+
     
 }

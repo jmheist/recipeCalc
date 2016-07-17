@@ -117,7 +117,11 @@ class DiscoveryViewController: TableVC {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         analyticsMgr.sendPublicRecipeViewed()
-        navigationController?.pushViewController(PublicRecipeVC(recipe: self.recipes[indexPath.row]), animated: true)
+        if AppState.sharedInstance.signedInUser.uid == self.recipes[indexPath.row].authorId {
+            navigationController?.pushViewController(MyRecipeVC(recipe: self.recipes[indexPath.row]), animated: true)
+        } else {
+            navigationController?.pushViewController(PublicRecipeVC(recipe: self.recipes[indexPath.row]), animated: true)
+        }
     }
     
     func updateTable() {

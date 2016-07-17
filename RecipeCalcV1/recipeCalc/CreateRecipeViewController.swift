@@ -116,6 +116,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate  {
         recipeName.errorCheck = true
         recipeName.errorCheckFor = "text"
         recipeName.textMinLength = 3
+        recipeName.textMaxLength = 25
         
         let noteLabel: L3 = L3()
         noteLabel.text = "Description"
