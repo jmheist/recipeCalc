@@ -23,8 +23,9 @@ class myTextField: TextField { // creating a new root textview with errorchecl a
     // adding fields for errors
     var errorCheck: Bool = false
     var errorCheckFor: String = ""
-    var textLength: Int = 0
     var numberMax: Int = 0
+    var textMinLength: Int = 0
+    var textMaxLength: Int = 0
     
     // adding fields for auto calcs, like updating pg/vg %
     var autoUpdate = false

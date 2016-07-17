@@ -52,7 +52,7 @@ class ErrorManager: NSObject {
                     placeholder: field!.placeholder!,
                     checkFor: Check(
                         type: field!.errorCheckFor,
-                        length: field!.textLength,
+                        length: field!.textMinLength,
                         numberMax: field!.numberMax
                     ), completionHandler: { (res:ErrorResponse) in
                         if res.error {

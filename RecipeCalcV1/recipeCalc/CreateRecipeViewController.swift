@@ -115,7 +115,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate  {
         recipeName.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         recipeName.errorCheck = true
         recipeName.errorCheckFor = "text"
-        recipeName.textLength = 3
+        recipeName.textMinLength = 3
         
         let noteLabel: L3 = L3()
         noteLabel.text = "Description"

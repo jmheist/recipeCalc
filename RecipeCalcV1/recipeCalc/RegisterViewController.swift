@@ -27,7 +27,6 @@ class RegisterViewController: UIViewController, TextFieldDelegate {
     var cancelView: MaterialView!
     
     private var
-        nameField: T1!,
         emailField: T1!,
         passwordField: T1!;
     
@@ -65,14 +64,6 @@ class RegisterViewController: UIViewController, TextFieldDelegate {
         registerLabel.text = "Register"
         registerLabel.textAlignment = .Center
         
-        nameField = T1()
-        nameField.placeholder = "Username"
-        nameField.errorCheck = true
-        nameField.errorCheckFor = "username"
-        nameField.textLength = 3
-        nameField.enableClearIconButton = true
-        nameField.delegate = self
-        
         // EMAIL FIELD //
         
         emailField = T1()
@@ -88,7 +79,7 @@ class RegisterViewController: UIViewController, TextFieldDelegate {
         passwordField.placeholder = "Password"
         passwordField.errorCheck = true
         passwordField.errorCheckFor = "password"
-        passwordField.textLength = 6
+        passwordField.textMinLength = 6
         passwordField.enableVisibilityIconButton = true
         
         // Setting the visibilityFlatButton color.
@@ -100,12 +91,12 @@ class RegisterViewController: UIViewController, TextFieldDelegate {
         
         // LAYOUT //
         
-        let children = [registerLabel, nameField, emailField, passwordField, registerButton]
+        let children = [registerLabel, emailField, passwordField, registerButton]
         var dist = 10
         let spacing = 65
         for child in children {
             loginView.addSubview(child)
-            loginView.layout(child).top(CGFloat(dist)).horizontally(left: 10, right: 10)
+            loginView.layout(child).top(CGFloat(dist)).horizontally(left: 14, right: 14)
             dist += spacing
         }
     }
@@ -169,7 +160,7 @@ class RegisterViewController: UIViewController, TextFieldDelegate {
         
         showSpinner()
         
-        let fields = [nameField, emailField, passwordField]
+        let fields = [emailField, passwordField]
         
         for field in fields {
             errorMgr.errorCheck(field)
@@ -184,27 +175,13 @@ class RegisterViewController: UIViewController, TextFieldDelegate {
                     self.hideSpinner()
                     return
                 }
-                self.setDisplayName(user!)
+                UserMgr.signedIn(user, completionHandler: { (vc) in
+                    self.presentViewController(NewUserInfoVC(), animated: true, completion: nil)
+                })
             }
             
         } else {
             hideSpinner()
-        }
-    }
-    
-    func setDisplayName(user: FIRUser) {
-        let changeRequest = user.profileChangeRequest()
-        changeRequest.displayName = nameField.text!
-        changeRequest.commitChangesWithCompletion(){ (error) in
-            if let error = error {
-                print(error.localizedDescription)
-                alertMgr.alert("Sign in error", message: error.localizedDescription)
-                return
-            }
-            let user = FIRAuth.auth()?.currentUser
-            UserMgr.signedIn(user, provider: false, completionHandler: { (vc) in
-                self.presentViewController(vc, animated: true, completion: nil)
-            })
         }
     }
     

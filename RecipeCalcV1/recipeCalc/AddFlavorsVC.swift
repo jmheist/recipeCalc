@@ -110,7 +110,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         addFlavorName.placeholder = "Flavor Name"
         addFlavorName.errorCheck = true
         addFlavorName.errorCheckFor = "text"
-        addFlavorName.textLength = 3
+        addFlavorName.textMinLength = 3
         addFlavorName.clearButtonMode = .WhileEditing
         addFlavorName.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         addFlavorName.delegate = self

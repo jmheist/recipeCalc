@@ -40,10 +40,20 @@ class UserManager: NSObject {
         Queries.users.child(userUid).child(key).setValue(value)
     }
     
-    func sendNewUserInfo(uid: String, username: String, bio: String, location: String, completionHandler:()->()) {
-        sendDataToFirebase(uid, key: "username", value: username)
-        sendDataToFirebase(uid, key: "bio", value: bio)
-        sendDataToFirebase(uid, key: "location", value: location)
+    func sendNewUserInfo(uid: String, username: String?=nil, bio: String?=nil, location: String?=nil, completionHandler:()->()) {
+        
+        if (username != nil) {
+            sendDataToFirebase(uid, key: "username", value: username!)
+        }
+        
+        if bio != nil {
+            sendDataToFirebase(uid, key: "bio", value: bio!)
+        }
+        
+        if location != nil {
+            sendDataToFirebase(uid, key: "location", value: location!)
+        }
+        
         getUserByKey(uid) { (user) in
             AppState.sharedInstance.signedInUser = user
             completionHandler()
