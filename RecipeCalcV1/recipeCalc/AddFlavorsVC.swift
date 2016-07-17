@@ -19,7 +19,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
     private var addFlavorName: T1!
     private var addFlavorBase: UISegmentedControl!
     private var addFlavorPct: T2!
-    private var addFlavorButton: B2!
+    private var addFlavorButton: B1!
     
     // flavors
     let flavorMGR: FlavorManager = FlavorManager()
@@ -131,7 +131,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         addFlavorBase = UISegmentedControl(items: ["PG","VG"])
         addFlavorBase.selectedSegmentIndex = 0
         
-        addFlavorButton = B2()
+        addFlavorButton = B1()
         addFlavorButton.height = 30
         addFlavorButton.setTitle("Add Flavor", forState: .Normal)
         addFlavorButton.setTitleColor(colors.dark, forState: .Normal)
@@ -189,6 +189,11 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
     }
     
     func sendRecipe() {
+        
+        if addFlavorName.text != "" {
+            addFlavor()
+        }
+        
         let now = NSDate()
         let dateFormatter = NSDateFormatter()
         dateFormatter.locale = NSLocale(localeIdentifier: "en_US")

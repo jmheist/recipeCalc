@@ -28,7 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         FIRApp.configure()
         FIRApp.debugDescription()
         //FIRDatabase.setLoggingEnabled(true)
-        //FIRDatabase.database().persistenceEnabled = true
+        
+        FIRDatabase.database().persistenceEnabled = true
+        ref.keepSynced(true)
         
         MaterialDevice.statusBarHidden = false
         MaterialDevice.statusBarStyle = UIStatusBarStyle.Default

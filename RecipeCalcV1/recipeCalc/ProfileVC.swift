@@ -15,6 +15,7 @@ import Material
 import ImagePicker
 import Refresher
 import MRConfirmationAlertView
+import Photos
 
 class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
@@ -51,7 +52,7 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     
     var tabBar: TabBar!
     
-    let imagePicker: ImagePickerController = ImagePickerController()
+    var imagePicker: ImagePickerController = ImagePickerController()
     
     var bio: L2!
     
@@ -380,6 +381,7 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     }
     
     func signOut() {
+        print("did tap sign out")
         alertMgr.alertWithOptions("Signout", message: "Are you sure you want\nto log out?", cancelBtn: "Cancel", conFirmBtn: "Logout") { (confirmed) in
             if confirmed {
                 UserMgr.signOut(self)
@@ -472,8 +474,7 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if tableView == self.recTable {
             if(editingStyle == UITableViewCellEditingStyle.Delete){
-
-                MRConfirmationAlertView.showWithTitle("Delete", message: "Are you sure you want to \n delete this recipe?", cancelButton: "Cancel", confirmButton: "Delete", completion: {(confirmed: Bool) -> Void in
+                alertMgr.alertWithOptions("Delete Recipe", message: "Are you sure you want\nto delete this recipe?", cancelBtn: "Cancel", conFirmBtn: "Delete", completionHanlder: { (confirmed) in
                     if confirmed {
                         let key = self.recipes[indexPath.row].key
                         recipeMgr.deleteRecipe(key, completionHandler: { (recs) in

@@ -14,7 +14,7 @@ let alertMgr: AlertManager = AlertManager()
 class AlertManager: NSObject {
     
     func alertWithOptions(title: String, message: String, cancelBtn: String, conFirmBtn: String, completionHanlder:(confirmed: Bool)->()) {
-        MRConfirmationAlertView.showWithTitle("Delete", message: "Are you sure you want to \n delete this recipe?", cancelButton: "Cancel", confirmButton: "Delete", completion: {(confirmed: Bool) -> Void in
+        MRConfirmationAlertView.showWithTitle(title, message: message, cancelButton: cancelBtn, confirmButton: conFirmBtn, completion: {(confirmed: Bool) -> Void in
             if confirmed {
                 completionHanlder(confirmed: true)
             }
