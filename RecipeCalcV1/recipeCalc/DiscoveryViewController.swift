@@ -36,7 +36,7 @@ class DiscoveryViewController: TableVC {
     /// Prepare tabBarItem.
     override func prepareTabBarItem() {
         tabBarItem.title = "Discover"
-        tabBarItem.image = MaterialIcon.visibility
+        tabBarItem.image = UIImage(named: "opera_glasses")
     }
     
     /// Prepares the navigationItem.
@@ -93,16 +93,12 @@ class DiscoveryViewController: TableVC {
         cell.creator.text = recipe.author
         cell.recipeID = recipe.key
         
-        storageMgr.getProfilePic(recipe.authorId) { (image, imageFound) in
-            if imageFound {
-                profileImage = image
-            } else {
-                profileImage = MaterialIcon.image!
-            }
+        storageMgr.getProfilePic(recipe.authorId) { (image) in
+            profileImage = image
+            cell.profilePicView.backgroundColor = colors.dark
             
             cell.profilePicView.image = profileImage
         }
-
         
         if AppState.sharedInstance.signedInUser.uid == recipe.authorId {
             cell.recipeName.textLayer.font = RobotoFont.bold

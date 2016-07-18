@@ -165,7 +165,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         self.view.resignFirstResponder()
     }
     
-    func addFlavor() {
+    func addFlavor(reloadTable: Bool=true) {
         
         let fields = [addFlavorName, addFlavorPct]
         
@@ -175,10 +175,12 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         
         if !errorMgr.hasErrors() { // no errors, save the flavor
             flavorMGR.addFlavor(Flavor(name: addFlavorName.text!, base: addFlavorBase.selectedSegmentIndex == 0 ? "PG" : "VG", pct: addFlavorPct.text!), isNewRecipe: !edit)
-            flavorTable.reloadData()
-            addFlavorName.text = ""
-            addFlavorBase.selectedSegmentIndex = 0
-            addFlavorPct.text = ""
+            if reloadTable {
+                flavorTable.reloadData()
+                addFlavorName.text = ""
+                addFlavorBase.selectedSegmentIndex = 0
+                addFlavorPct.text = ""
+            }
         }
         
     }
@@ -191,7 +193,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
     func sendRecipe() {
         
         if addFlavorName.text != "" {
-            addFlavor()
+            addFlavor(false)
         }
         
         let now = NSDate()
@@ -221,7 +223,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         if edit {
             navigationController?.popToRootViewControllerAnimated(true)
         } else {
-            tabBarController?.selectedIndex = 0
+            tabBarController?.selectedIndex = 2 
         }
     }
     
@@ -277,7 +279,7 @@ extension AddFlavorsVC: UITableViewDataSource {
     
     /// Prepares the cells within the tableView.
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: RecipeCell = RecipeCell(style: .Subtitle, reuseIdentifier: cellIdentifier)
+        let cell: MaterialTableViewCell = MaterialTableViewCell(style: .Subtitle, reuseIdentifier: cellIdentifier)
         let flavor = flavorMGR.flavors[indexPath.row]
         cell.textLabel?.text = flavor.name
         cell.detailTextLabel?.text = "Base: \(flavor.base), Percent of Recipe: \(flavor.pct)"

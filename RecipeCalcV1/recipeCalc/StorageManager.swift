@@ -49,7 +49,7 @@ class StorageManager: NSObject {
         })
     }
     
-    func getProfilePic(userId: String, completionHandler:(image: UIImage, imageFound: Bool)->()) {
+    func getProfilePic(userId: String, completionHandler:(image: UIImage)->()) {
         
         // Create a reference to the file you want to download
         let profileImage = profileImagesRef.child(userId+".jpg")
@@ -58,11 +58,12 @@ class StorageManager: NSObject {
         profileImage.dataWithMaxSize(1 * 1024 * 1024) { (data, error) -> Void in
             if (error != nil) {
                 print("error downloading profile pic, doesn't exist?")
-                // return the default profile image
-                completionHandler(image: UIImage(), imageFound: false)
+                // return the default profile image, trekky...
+                let image = UIImage(named: "star_trek_gesture-accent")
+                completionHandler(image: image!)
             } else {
                 // ... let islandImage: UIImage! = UIImage(data: data!)
-                completionHandler(image: UIImage(data: data!)!, imageFound: true)
+                completionHandler(image: UIImage(data: data!)!)
             }
         }
         

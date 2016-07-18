@@ -32,7 +32,6 @@ class AppLandingVC: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareView()
-        prepareView()
         prepareWelcomeWagon()
         prepareFacebookLogin()
         prepareSpinner()
@@ -55,23 +54,31 @@ class AppLandingVC: UIViewController, FBSDKLoginButtonDelegate {
     
     /// Prepares view.
     private func prepareView() {
-        view.backgroundColor = MaterialColor.white
+        view.backgroundColor = colors.dark
     }
     
     func prepareWelcomeWagon() {
         
         welcomeView = MaterialView()
-        view.layout(welcomeView).center().height(200).left(20).right(20)
+        welcomeView.backgroundColor = colors.dark
+        view.layout(welcomeView).center().height(300).left(20).right(20)
         
-        let welcomeLabel: L1 = L1()
-        welcomeLabel.text = "Welcome"
-        welcomeView.layout(welcomeLabel).top(0).centerHorizontally()
+        let logo = UIImage(named: "logo_outlines")
+        let logoImageView = UIImageView(image: logo)
+        welcomeView.layout(logoImageView).top(0).centerHorizontally().height(200).width(200)
         
         let loginButton: B1 = B1()
+        loginButton.borderColor = colors.light
+        loginButton.setTitleColor(colors.light, forState: .Normal)
         loginButton.setTitle("Login", forState: .Normal)
+        loginButton.backgroundColor = colors.dark
         loginButton.addTarget(self, action: #selector(login), forControlEvents: .TouchUpInside)
         welcomeView.layout(loginButton).bottom(0).left(50).width(100)
+        
         let regButton: B1 = B1()
+        regButton.borderColor = colors.light
+        regButton.setTitleColor(colors.light, forState: .Normal)
+        regButton.backgroundColor = colors.dark
         regButton.setTitle("Register", forState: .Normal)
         regButton.addTarget(self, action: #selector(register), forControlEvents: .TouchUpInside)
         welcomeView.layout(regButton).bottom(0).right(50).width(100)
@@ -81,10 +88,12 @@ class AppLandingVC: UIViewController, FBSDKLoginButtonDelegate {
     func prepareFacebookLogin() {
         
         fbView = MaterialView()
+        fbView.backgroundColor = colors.dark
         view.layout(fbView).bottom(60).horizontally(left: 20, right: 20).height(100)
         
         let fbLabel: L3 = L3()
-        fbLabel.text = "Register with Facebook"
+        fbLabel.textColor = colors.light
+        fbLabel.text = "Connect with Facebook"
         fbLabel.textAlignment = .Center
         fbView.layout(fbLabel).top(0).horizontally()
         

@@ -76,8 +76,8 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate  {
     
     /// Prepare tabBarItem.
     private func prepareTabBarItem() {
-        tabBarItem.title = "Create"
-        tabBarItem.image = MaterialIcon.add
+        tabBarItem.title = "Create  "
+        tabBarItem.image = UIImage(named: "create_new")
     }
     
     
@@ -124,14 +124,13 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate  {
         
         recipeDesc = TView()
         
-        recipeInfo.layout(recipeDesc).height(150)
+        recipeInfo.layout(recipeDesc).height(80)
         
         let children = [stepDesc, recipeName, noteLabel, recipeDesc]
         
         var dist = 30
         var spacing = 75
         for child in children {
-            recipeInfo.addSubview(child)
             recipeInfo.layout(child).top(CGFloat(dist)).horizontally(left: 14, right: 14)
             if dist > 170 {
                 spacing = 25

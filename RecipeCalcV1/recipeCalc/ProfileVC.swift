@@ -56,10 +56,14 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     
     var bio: L2!
     
+    var username: L2!
+    var joined: L3!
     var recipesCount: stat!
     var starAvg: stat!
     var favCount: stat!
     var location: L3!
+    
+    var userToLoad: User!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -98,8 +102,10 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     }
     
     override func viewDidAppear(animated: Bool) {
-        prepareDatabase()
-        loadUserStats()
+        if self.user != "" {
+            hidesBottomBarWhenPushed = true
+        }
+        prepareData()
         prepareNavigationItem()
         prepareNavButtons()
     }
@@ -115,47 +121,85 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     }
     
     func prepareNavButtons() {
-        let updateButton = UIBarButtonItem(title: "Update", style: .Plain, target: self, action: #selector(didTapUpdateProfile))
-        navigationItem.leftBarButtonItems = [updateButton]
-        let logoutButton = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: #selector(signOut))
-        navigationItem.rightBarButtonItems = [logoutButton]
+        if self.user == "" {
+            let updateButton = UIBarButtonItem(title: "Update", style: .Plain, target: self, action: #selector(didTapUpdateProfile))
+            navigationItem.leftBarButtonItems = [updateButton]
+            let logoutButton = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: #selector(signOut))
+            navigationItem.rightBarButtonItems = [logoutButton]
+        }
     }
     
     /// Prepare tabBarItem.
     private func prepareTabBarItem() {
         tabBarItem.title = "Profile"
-        tabBarItem.image = MaterialIcon.settings
+        tabBarItem.image = UIImage(named: "contacts")
     }
     
-    func prepareDatabase() {
-        favMgr.getUserFavs(AppState.sharedInstance.signedInUser.uid!) { (recipes) in
+    func prepareData() {
+        
+        if self.user != "" {
+            UserMgr.getUserByKey(self.user, completionHandler: { (fbUser) in
+                self.userToLoad = fbUser
+                self.loadData()
+            })
+        } else {
+            userToLoad = AppState.sharedInstance.signedInUser
+            loadData()
+        }
+    }
+    
+    func loadData() {
+        
+        username.text = userToLoad.username
+        location.text = userToLoad.location
+        joined.text = ("Joined: " + userToLoad.joined!)
+        
+        favMgr.getUserFavs(userToLoad.uid!) { (recipes) in
             
             self.favs = recipes
             self.favTable.reloadData()
         }
         
         if user == "" {
-            recipeMgr.getUserRecipes(AppState.sharedInstance.signedInUser.uid!, sort: "stars", completionHandler: { (recipes) in
+            recipeMgr.getUserRecipes(userToLoad.uid!, sort: "stars", completionHandler: { (recipes) in
                 self.recipes = recipes
                 self.recTable.reloadData()
             })
         } else {
-            recipeMgr.getPublishedRecipes("stars", completionHandler: { (recipes) in
+            recipeMgr.getUserPublishedRecipes(userToLoad.uid!, sort: "stars", completionHandler: { (recipes) in
                 self.recipes = recipes
                 self.recTable.reloadData()
             })
         }
         
+        storageMgr.getProfilePic(userToLoad.uid!) { (image) in
+            self.profileImage = image
+            self.profilePicView.backgroundColor = colors.dark
+            self.profilePicView.image = self.profileImage
+        }
+        
+        loadUserStats()
     }
     
     func loadUserStats() {
-        UserMgr.loadUserStats(AppState.sharedInstance.signedInUser.uid!) { (publishedRecipeCount, starAvg, favCount) in
+        
+        let userToLoad = self.user != "" ? self.user : AppState.sharedInstance.signedInUser.uid!
+        
+        UserMgr.loadUserStats(userToLoad) { (publishedRecipeCount, starAvg, favCount) in
             self.recipesCount.text = String(publishedRecipeCount)
             self.starAvg.text = String(starAvg)
             self.favCount.text = String(favCount)
         }
-        bio.text = AppState.sharedInstance.signedInUser.bio == "" ? "" : AppState.sharedInstance.signedInUser.bio
-        location.text = AppState.sharedInstance.signedInUser.location!
+        
+        if self.user != "" {
+            UserMgr.getUserByKey(self.user, completionHandler: { (fbUser) in
+                self.bio.text = fbUser.bio
+                self.location.text = fbUser.location
+            })
+        } else {
+            bio.text = AppState.sharedInstance.signedInUser.bio == "" ? "" : AppState.sharedInstance.signedInUser.bio
+            location.text = AppState.sharedInstance.signedInUser.location!
+        }
     }
     
     func prepareProfile() {
@@ -167,40 +211,30 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
         self.profilePicView.layer.cornerRadius = 40
         self.profilePicView.clipsToBounds = true
         self.profilePicView.backgroundColor = colors.background
-        let pictap = UITapGestureRecognizer(target: self, action: #selector(self.showImagePicker))
-        profilePicView.addGestureRecognizer(pictap)
-        profilePicView.userInteractionEnabled = true
-        profileView.layout(self.profilePicView).top(0).left(0).height(80).width(80)
         
-        storageMgr.getProfilePic(AppState.sharedInstance.signedInUser.uid!) { (image, imageFound) in
-            if imageFound {
-                self.profileImage = image
-            } else {
-                self.profileImage = MaterialIcon.image
-            }
-            
-            self.profilePicView.image = self.profileImage
+        if self.user == "" {
+            let pictap = UITapGestureRecognizer(target: self, action: #selector(self.showImagePicker))
+            profilePicView.addGestureRecognizer(pictap)
+            profilePicView.userInteractionEnabled = true
         }
         
-        let username: L2 = L2()
-        username.text = AppState.sharedInstance.signedInUser.username
-        profileView.layout(username).left(0).top(88).width(300)
+        profileView.layout(self.profilePicView).top(0).left(0).height(80).width(80)
         
-        let joined: L3 = L3()
-        joined.textLayer.pointSize = 12
-        joined.text = "Joined: "+AppState.sharedInstance.signedInUser.joined!
-        joined.textAlignment = .Right
-        profileView.layout(joined).top(88).right(0).width(150)
+        username = L2()
+        profileView.layout(username).left(0).top(88).width(300)
         
         location = L3()
         location.textLayer.pointSize = 12
-        location.text = AppState.sharedInstance.signedInUser.location!
         location.textAlignment = .Right
-        profileView.layout(location).top(68).right(0).width(150)
+        profileView.layout(location).top(100).right(0).width(150)
+        
+        joined = L3()
+        joined.textLayer.pointSize = 12
+        joined.textAlignment = .Right
+        profileView.layout(joined).top(115).right(0).width(150)
         
         // max length for bio should be around 75-80 characters
         bio = L2()
-        bio.text = AppState.sharedInstance.signedInUser.bio == "" ? "Add a Bio" : AppState.sharedInstance.signedInUser.bio
         bio.numberOfLines = 2
         bio.font = RobotoFont.lightWithSize(14)
         profileView.layout(bio).top(114).left(0).width(250)
@@ -281,7 +315,7 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
         recTable.estimatedRowHeight = 40
         
         let tableView: MaterialView = MaterialView()
-        view.layout(tableView).top(220).left().right().bottom(99)
+        view.layout(tableView).top(220).left().right().bottom(self.user != "" ? 50 : 99)
         
         favTable.hidden = true
         
@@ -328,7 +362,7 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     func prepareAds() {
         let bannerAd: GADBannerView = GADBannerView()
         bannerAd.layer.zPosition = -1;
-        view.layout(bannerAd).height(50).width(320).bottom(50).centerHorizontally()
+        view.layout(bannerAd).height(50).width(320).bottom(self.user != "" ? 0 : 50).centerHorizontally()
         
         let request = GADRequest()
         request.testDevices = adConstants.testDevices
@@ -433,6 +467,7 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         if tableView === self.favTable {
             
             let cell: PublicRecipeCell = PublicRecipeCell(style: .Default, reuseIdentifier: "favRecipeCell")
@@ -446,6 +481,13 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
             cell.recipeName.text = recipe.name
             cell.creator.text = recipe.author
             cell.recipeID = recipe.key
+            
+            storageMgr.getProfilePic(recipe.authorId, completionHandler: { (image) in
+                self.profileImage = image
+                cell.profilePicView.backgroundColor = colors.dark
+                
+                cell.profilePicView.image = self.profileImage
+            })
             
             return cell
             

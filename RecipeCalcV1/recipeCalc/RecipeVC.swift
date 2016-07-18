@@ -13,10 +13,15 @@ import GoogleMobileAds
 
 class RecipeVC: UIViewController, GADBannerViewDelegate {
     
+    var myRecipe: Bool = false
     var recipe: Recipe!
     let flavorMgr: FlavorManager = FlavorManager()
     var _refHandle: FIRDatabaseHandle!
     var tabBar: MixTabBar!
+    
+    var recipeName: L1!
+    var recipeDesc: L2!
+    var recipeAuthor: L3!
     
     var flavorTable: UITableView!
     
@@ -78,18 +83,24 @@ class RecipeVC: UIViewController, GADBannerViewDelegate {
     func prepareRecipe() {
                 
         let recipeInfo: MaterialView = MaterialView()
-        view.addSubview(recipeInfo)
-        Layout.edges(view, child: recipeInfo, top: 0, left: 0, bottom: 90, right: 0)
+        view.layout(recipeInfo).top(8).left(14).right(14).height(100)
         
-        let recipeDesc: L2 = L2()
+        recipeName = L1()
+        recipeDesc = L2()
+        recipeAuthor = L3()
+        
+        recipeName.text = recipe.name
+        recipeName.textAlignment = .Center
+        recipeInfo.layout(recipeName).top(0).left(0).right(0)
+        
+        recipeAuthor.textAlignment = .Center
+        recipeInfo.layout(recipeAuthor).top(30).left(0).right(0)
         
         recipeDesc.text = recipe.desc
+        recipeDesc.font = RobotoFont.lightWithSize(16)
         recipeDesc.textAlignment = .Center
-        
-        recipeInfo.addSubview(recipeDesc)
-        
-        Layout.top(recipeInfo, child: recipeDesc, top: 25)
-        Layout.horizontally(recipeInfo, child: recipeDesc)
+        recipeDesc.numberOfLines = 2
+        recipeInfo.layout(recipeDesc).top(60).left(0).right(0)
         
     }
     
@@ -101,8 +112,7 @@ class RecipeVC: UIViewController, GADBannerViewDelegate {
         flavorTable.dataSource = self
         flavorTable.delegate = self
         
-        view.addSubview(flavorTable)
-        Layout.edges(view, child: flavorTable, top: 100, left: 20, bottom: 90, right: 20)
+        view.layout(flavorTable).top(180).left(14).right(14).bottom(100)
         
     }
     

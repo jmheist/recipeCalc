@@ -10,9 +10,8 @@ import UIKit
 import Firebase
 import Material
 
-class PublicRecipeVC: RecipeVC, WDStarRatingDelegate {
+class PublicRecipeVC: RecipeVC, WDStarRatingDelegate, UINavigationControllerDelegate {
     
-    var myRecipe: Bool = false
     let favMgr: FavoriteManager = FavoriteManager()
     var starRatingView: WDStarRatingView!
     
@@ -31,17 +30,26 @@ class PublicRecipeVC: RecipeVC, WDStarRatingDelegate {
     
     override func prepareNavigationItem() {
         navigationItem.title = "Recipe"
+        navigationController?.delegate = self
     }
+
+    // app seems to work fine without passing the user back to the profile view
+    
+//    func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
+//        if let controller = viewController as? ProfileVC {
+//            controller.user = self.recipe.authorId    // Here you pass the data back to your original view controller
+//        }
+//    }
     
     func prepareRating() {
         
         let starView: MaterialView = MaterialView()
-        view.layout(starView).top(5).right(5).height(50).width(100)
+        view.layout(starView).top(116).height(60).centerHorizontally(-100).width(130)
         
         let ratingLabel: L3 = L3()
         ratingLabel.textLayer.pointSize = 12
-        ratingLabel.text = "rate this recipe"
-        ratingLabel.textAlignment = .Right
+        ratingLabel.text = "Rate this recipe"
+        ratingLabel.textAlignment = .Center
         
         self.starRatingView = WDStarRatingView()
         self.starRatingView.delegate = self
@@ -58,42 +66,40 @@ class PublicRecipeVC: RecipeVC, WDStarRatingDelegate {
             self.starRatingView.addTarget(self, action: #selector(self.didChangeValue(_:)), forControlEvents: .ValueChanged)
         })
         
-        let children = [ratingLabel, starRatingView]
-        let spacing = 20
-        var dist = 0
-        for child in children {
-            starView.addSubview(child)
-            starView.layout(child).top(CGFloat(dist)).right(5).height(25).width(100)
-            dist += spacing
-        }
+        starView.layout(ratingLabel).top(0).left(0).right(0)
+        starView.layout(starRatingView).top(20).left(0).right(0).height(30)
+        
     }
     
     func prepareFav() {
+        
         let favView: MaterialView = MaterialView()
         favView.userInteractionEnabled = true
-        view.layout(favView).top(55).right(5).height(20).width(100)
+        view.layout(favView).top(116).height(60).centerHorizontally(100).width(130)
         
-        let heartCount: L3 = L3()
-        heartCount.textLayer.pointSize = 12
-        heartCount.text = ""
-        favView.layout(heartCount).left(20).top(0).bottom(0).width(80)
+        let heartText: L3 = L3()
+        heartText.textAlignment = .Center
+        heartText.textLayer.pointSize = 12
+        heartText.text = ""
         
         let imageView: UIImageView = UIImageView(frame: CGRectMake(0, 0, 20, 20))
         
         favMgr.isRecipeFaved(recipe.key, uid: AppState.sharedInstance.signedInUser.uid!) { (isFaved) in
             if isFaved {
                 imageView.image = MaterialIcon.favorite?.tintWithColor(colors.favorite)
-                heartCount.text = "un fav"
+                heartText.text = "Remove favorite"
                 favView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.unFav)))
             } else {
                 imageView.image = MaterialIcon.favoriteBorder?.tintWithColor(colors.favorite)
-                heartCount.text = "fav this recipe"
+                heartText.text = "Favorite this recipe"
                 
                 favView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.fav)))
             }
         }
         
-        favView.layout(imageView).left(0).top(0).bottom(0).width(20)
+        favView.layout(heartText).top(0).left(0).right(0)
+        favView.layout(imageView).top(20).centerHorizontally().width(30).height(30)
+
     }
     
     func fav() {
@@ -111,41 +117,20 @@ class PublicRecipeVC: RecipeVC, WDStarRatingDelegate {
     }
     
     override func prepareRecipe() {
+        super.prepareRecipe()
         
-        let recipeInfo: MaterialView = MaterialView()
-        view.addSubview(recipeInfo)
-        Layout.edges(view, child: recipeInfo, top: 0, left: 0, bottom: 99, right: 0)
-        
-        let recipeName: L1 = L1()
-        let recipeDesc: L2 = L2()
-        let recipeAuthor: L3 = L3()
-        
-        recipeName.text = recipe.name
-        recipeName.textAlignment = .Left
-        
-        recipeDesc.text = recipe.desc
-        recipeDesc.textAlignment = .Left
         UserMgr.getUserByKey(recipe.authorId) { (user) in
             let text = (self.myRecipe ? "Your Recipe" : "by "+user.username!)
-            recipeAuthor.text = text
+            self.recipeAuthor.text = text
+            let authorTap = UITapGestureRecognizer(target: self, action: #selector(self.showAuthorProfile))
+            self.recipeAuthor.addGestureRecognizer(authorTap)
+            self.recipeAuthor.userInteractionEnabled = true
         }
-        recipeAuthor.textAlignment = .Left
         
-        let children = [recipeName, recipeDesc, recipeAuthor]
-        
-        var spacing = 30
-        var dist = 5
-        for child in children {
-            recipeInfo.addSubview(child)
-            recipeInfo.layout(child).top(CGFloat(dist)).left(8).width(200).height(30)
-            spacing -= 5
-            dist += spacing
-        }
     }
     
     override func prepareTabBar() {
        
-        
         let tabBar = MixTabBar()
         
         view.addSubview(tabBar)
@@ -165,7 +150,6 @@ class PublicRecipeVC: RecipeVC, WDStarRatingDelegate {
         btn2.setTitleColor(colors.text, forState: .Normal)
         btn2.addTarget(nil, action: #selector(commentOnRecipe), forControlEvents: .TouchUpInside)
         
-        
         // get comment count
         commentMgr.getCommentCountForRecipe(recipe.key) { (count) in
             if count > 0 {
@@ -175,6 +159,10 @@ class PublicRecipeVC: RecipeVC, WDStarRatingDelegate {
         
         tabBar.buttons = [btn2, btn1]
         
+    }
+    
+    func showAuthorProfile() {
+        navigationController?.pushViewController(ProfileVC(user: self.recipe.authorId), animated: true)
     }
     
     func commentOnRecipe() {
