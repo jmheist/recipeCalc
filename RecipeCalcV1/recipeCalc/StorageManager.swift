@@ -20,6 +20,8 @@ let profileImagesRef = storageRef.child("profile_images")
 
 class StorageManager: NSObject {
     
+    let image = UIImage(named: "star_trek_gesture-accent")
+    
     func storeFBImage(user: FIRUser, completionHandler:(String)->()) {
         
         let profileImage = FBSDKGraphRequest(graphPath: "me/picture", parameters: ["height":100, "width": 100, "redirect":false], HTTPMethod: "GET")
@@ -57,10 +59,8 @@ class StorageManager: NSObject {
         // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
         profileImage.dataWithMaxSize(1 * 1024 * 1024) { (data, error) -> Void in
             if (error != nil) {
-                print("error downloading profile pic, doesn't exist?")
                 // return the default profile image, trekky...
-                let image = UIImage(named: "star_trek_gesture-accent")
-                completionHandler(image: image!)
+                completionHandler(image: self.image!)
             } else {
                 // ... let islandImage: UIImage! = UIImage(data: data!)
                 completionHandler(image: UIImage(data: data!)!)

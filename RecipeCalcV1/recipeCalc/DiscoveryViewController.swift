@@ -84,7 +84,6 @@ class DiscoveryViewController: TableVC {
         
         let recipe = self.recipes[indexPath.row]
         
-        var profileImage: UIImage = UIImage()
         cell.starRatingView.value = recipe.stars
         cell.starRatingCount.text = "(\(recipe.starsCount))"
         cell.heartCount.text = "\(recipe.favCount)"
@@ -94,10 +93,8 @@ class DiscoveryViewController: TableVC {
         cell.recipeID = recipe.key
         
         storageMgr.getProfilePic(recipe.authorId) { (image) in
-            profileImage = image
             cell.profilePicView.backgroundColor = colors.dark
-            
-            cell.profilePicView.image = profileImage
+            cell.profilePicView.image = image
         }
         
         if AppState.sharedInstance.signedInUser.uid == recipe.authorId {

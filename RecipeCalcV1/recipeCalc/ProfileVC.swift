@@ -327,14 +327,12 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     func showFavTable() {
         recTable.hidden = true
         favTable.hidden = false
-        print("favTable Visible")
         favTable.reloadData()
     }
     
     func showRecTable() {
         favTable.hidden = true
         recTable.hidden = false
-        print("recTable Visible")
         recTable.reloadData()
     }
     
@@ -379,6 +377,7 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     
     func showImagePicker() {
         print("show image picker")
+        imagePicker.galleryView.selectedStack.resetAssets(imagePicker.stack.assets)
         imagePicker.showGalleryView()
         presentViewController(imagePicker, animated: true, completion: nil)
     }
@@ -483,10 +482,8 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
             cell.recipeID = recipe.key
             
             storageMgr.getProfilePic(recipe.authorId, completionHandler: { (image) in
-                self.profileImage = image
                 cell.profilePicView.backgroundColor = colors.dark
-                
-                cell.profilePicView.image = self.profileImage
+                cell.profilePicView.image = image
             })
             
             return cell

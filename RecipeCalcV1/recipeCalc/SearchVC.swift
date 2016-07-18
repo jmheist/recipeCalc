@@ -164,6 +164,11 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Te
         cell.creator.text = recipe.author
         cell.recipeID = recipe.key
         
+        storageMgr.getProfilePic(recipe.authorId, completionHandler: { (image) in
+            cell.profilePicView.backgroundColor = colors.dark
+            cell.profilePicView.image = image
+        })
+        
         return cell
     }
     
