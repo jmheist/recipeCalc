@@ -14,11 +14,13 @@ struct Check {
     var type = String()
     var length: Int = 0
     var numberMax: Int = 0
+    var numberMin: Double = 0.0
     
-    init(type: String, length: Int?=0, numberMax: Int?=0) {
+    init(type: String, length: Int?=0, numberMax: Int?=0, numberMin: Double?=0.0) {
         self.type = type
         self.length = length!
         self.numberMax = numberMax!
+        self.numberMin = numberMin!
     }
 }
 
@@ -53,7 +55,8 @@ class ErrorManager: NSObject {
                     checkFor: Check(
                         type: field!.errorCheckFor,
                         length: field!.textMinLength,
-                        numberMax: field!.numberMax
+                        numberMax: field!.numberMax,
+                        numberMin: field!.numberMin
                     ), completionHandler: { (res:ErrorResponse) in
                         if res.error {
                             print(res)
@@ -162,9 +165,9 @@ class ErrorManager: NSObject {
                 errorMessage = "Must be between \(checkFor.numberMax) and 0"
                 returnError()
             }
-            if num < Float(0) {
+            if num < Float(checkFor.numberMin) {
                 error = true
-                errorMessage = "Must be between \(checkFor.numberMax) and 0"
+                errorMessage = "Must be between \(checkFor.numberMin) and \(checkFor.numberMax)"
                 returnError()
             }
             

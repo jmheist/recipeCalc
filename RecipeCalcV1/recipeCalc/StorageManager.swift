@@ -20,7 +20,7 @@ let profileImagesRef = storageRef.child("profile_images")
 
 class StorageManager: NSObject {
     
-    let image = UIImage(named: "star_trek_gesture-accent")
+    let image = UIImage(named: "user_male_circle-accent")
     
     func storeFBImage(user: FIRUser, completionHandler:(String)->()) {
         

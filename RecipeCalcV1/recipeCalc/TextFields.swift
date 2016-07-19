@@ -24,6 +24,7 @@ class myTextField: TextField { // creating a new root textview with errorchecl a
     var errorCheck: Bool = false
     var errorCheckFor: String = ""
     var numberMax: Int = 0
+    var numberMin: Double = 0.0
     var textMinLength: Int = 0
     var textMaxLength: Int = 0
     

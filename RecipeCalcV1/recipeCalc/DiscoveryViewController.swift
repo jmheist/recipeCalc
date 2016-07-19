@@ -26,11 +26,11 @@ class DiscoveryViewController: TableVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareRefresher()
+        configureDatabase()
     }
     
     override func viewDidAppear(animated: Bool) {
         prepareNavigationItem()
-        configureDatabase()
     }
     
     /// Prepare tabBarItem.
@@ -48,7 +48,7 @@ class DiscoveryViewController: TableVC {
     }
     
     func search() {
-        presentViewController(SearchVC(), animated: true, completion: nil)
+        navigationController?.pushViewController(SearchVC(), animated: true)
     }
     
     override func configureDatabase() {

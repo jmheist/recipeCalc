@@ -50,8 +50,8 @@ class IngredientManager: NSObject {
     func updateMix() {
         
         ingredients = []
-        var remainingVg = settings.amount * (settings.vg / 100)
-        var remainingPg = settings.amount * (settings.pg / 100)
+        var remainingVg = settings.vg == 0 ? 0 : (settings.amount * (settings.vg / 100))
+        var remainingPg = settings.pg == 0 ? 0 : (settings.amount * (settings.pg / 100))
         
         var flavorIngredients = [Ingredient]()
         var baseIngredients = [Ingredient]()
@@ -79,13 +79,26 @@ class IngredientManager: NSObject {
         // VG, PG, NIC
         
         // PG
+        if remainingPg < 0 {
+            remainingVg = remainingVg + remainingPg
+            remainingPg = 0
+            print("pg out of bounds")
+        }
+        
+        if remainingVg < 0 {
+            remainingPg = remainingPg + remainingVg
+            remainingVg = 0
+            print("vg out of bounds")
+        }
+        
         baseIngredients.append(
             Ingredient(
                 type: "base",
                 name: "PG",
                 ml: String(format: "%.2f", remainingPg),
                 grams: String(format: "%.2f", remainingPg * weightSettings.pgWeight),
-                pct: String(format: "%.2f", (remainingPg / settings.amount) * 100)
+                // dont let 0 screw up the calc
+                pct: String(format: "%.2f", remainingPg == 0 ? 0 : ((remainingPg / settings.amount) * 100))
             )
         )
         
@@ -96,7 +109,8 @@ class IngredientManager: NSObject {
                 name: "VG",
                 ml: String(format: "%.2f", remainingVg),
                 grams: String(format: "%.2f", remainingVg * weightSettings.vgWeight),
-                pct: String(format: "%.2f", (remainingVg / settings.amount) * 100)
+                // dont let 0 screw up the calc
+                pct: String(format: "%.2f", remainingVg == 0 ? 0 : ((remainingVg / settings.amount) * 100))
             )
         )
         

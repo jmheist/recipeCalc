@@ -66,4 +66,15 @@ class FlavorManager: NSObject {
         return flav
     }
     
+    func getFlavorsForRecipe(recipeId: String, completionManager:([Flavor])->()) {
+        Queries.flavors.child(recipeId).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            var flavs = [Flavor]()
+            for snap in snapshot.children {
+                let snap = snap as! FIRDataSnapshot
+                flavs.append(self.receiveFromFirebase(snap))
+            }
+            completionManager(flavs)
+        })
+    }
+    
 }

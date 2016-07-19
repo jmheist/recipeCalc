@@ -14,6 +14,8 @@ class MixPrepVC: UIViewController {
     var recipe: Recipe!
     var settings: MixSettings!
     
+    var pgMin = 0.0
+    
     let errorMgr: ErrorManager = ErrorManager()
     
     var pg: T1!
@@ -85,23 +87,38 @@ class MixPrepVC: UIViewController {
         navigationController?.popViewControllerAnimated(true)
     }
     func mixIt() {
-        
-        let children = [amount, strength, pg, vg, nic]
-        
-        for child in children {
-            errorMgr.errorCheck(child)
+        func finish() {
+            let children = [amount, strength, pg, vg, nic]
+            
+            for child in children {
+                errorMgr.errorCheck(child)
+            }
+                    
+            if !errorMgr.hasErrors() {
+                self.settings = MixSettings(
+                    amount: Float(amount.text!)!,
+                    strength: Float(strength.text!)!,
+                    pg: Float(pg.text!)!,
+                    vg: Float(vg.text!)!,
+                    nic: Float(nic.text!)!
+                )
+                mixMgr.saveMixSettingsToFB(AppState.sharedInstance.signedInUser.uid!, recipe: recipe.key, settings: self.settings)
+                navigationController?.pushViewController(MixVC(recipe: self.recipe, settings: self.settings), animated: true)
+            }
         }
-                
-        if !errorMgr.hasErrors() {
-            self.settings = MixSettings(
-                amount: Float(amount.text!)!,
-                strength: Float(strength.text!)!,
-                pg: Float(pg.text!)!,
-                vg: Float(vg.text!)!,
-                nic: Float(nic.text!)!
-            )
-            mixMgr.saveMixSettingsToFB(AppState.sharedInstance.signedInUser.uid!, recipe: recipe.key, settings: self.settings)
-            navigationController?.pushViewController(MixVC(recipe: self.recipe, settings: self.settings), animated: true)
+        
+        calcPGTotals { (totalPg) in
+            if totalPg > Double(self.pg.text!) {
+                alertMgr.alertWithOptions("PG% is too low", message: "We can fix that, just press Continue, or press Edit to fix yourself.\n\nThe PG% minimum for this recipe is \(totalPg)", cancelBtn: "Edit", conFirmBtn: "Continue", completionHanlder: { (confirmed) in
+                    if confirmed {
+                        self.pg.text = String(totalPg)
+                        self.vg.text = String(100 - totalPg)
+                        finish()
+                    }
+                })
+            } else {
+                finish()
+            }
         }
     }
     
@@ -130,6 +147,11 @@ class MixPrepVC: UIViewController {
         Layout.horizontally(recipeInfo, child: recipeName)
         Layout.horizontally(recipeInfo, child: recipeDesc)
         
+        calcPGTotals { (pgTotal) in
+            self.pgMin = pgTotal
+            self.pg.numberMin = pgTotal
+        }
+        
     }
     
     func prepareMixSettings() {
@@ -145,6 +167,7 @@ class MixPrepVC: UIViewController {
         pg.errorCheck = true
         pg.errorCheckFor = "number"
         pg.numberMax = 100
+        pg.numberMin = pgMin
         
         vg = T1()
         vg.keyboardType = UIKeyboardType.NumbersAndPunctuation
@@ -204,6 +227,20 @@ class MixPrepVC: UIViewController {
             Layout.top(settings, child: child, top: start)
             Layout.horizontally(settings, child: child, left: 30, right: 30)
             start += spacing
+        }
+    }
+    
+    func calcPGTotals(completionHandler:(Double)->()) {
+        let flavorMgr: FlavorManager = FlavorManager()
+        flavorMgr.getFlavorsForRecipe(self.recipe.key) { (flavors) in
+            var pgTotalPct = 0.0
+            for flavor in flavors {
+                if flavor.base == "PG" {
+                    pgTotalPct = pgTotalPct + Double(flavor.pct)!
+                }
+            }
+            print("PG TOTAL %: \(pgTotalPct)")
+            completionHandler(pgTotalPct)
         }
     }
     

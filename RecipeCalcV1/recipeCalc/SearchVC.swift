@@ -14,7 +14,6 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Te
     
     var searchBar: SearchBar!
     var recipeTable: UITableView!
-    var containerView: UIView!
     
     let searchMgr: SearchManager = SearchManager()
     var searchResults = [Recipe]()
@@ -45,7 +44,6 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Te
         super.viewDidLoad()
         prepareView()
         prepareTableView()
-        prepareContainerView()
         prepareSearchBar()
         prepareAds()
     }
@@ -59,16 +57,10 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Te
         view.backgroundColor = colors.background
     }
     
-    /// Prepares the containerView.
-    private func prepareContainerView() {
-        containerView = UIView()
-        view.layout(containerView).top(16).left(0).right(0).height(50)
-    }
-    
     /// Prepares the toolbar
     private func prepareSearchBar() {
         searchBar = SearchBar()
-        containerView.addSubview(searchBar)
+        self.navigationItem.titleView = searchBar
         searchBar.textField.addTarget(self, action: #selector(self.search(_:)), forControlEvents: UIControlEvents.EditingChanged)
         searchBar.clearButton.addTarget(self, action: #selector(self.clearSearch), forControlEvents: .TouchUpInside)
         
@@ -89,22 +81,24 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Te
         searchBar.leftControls = [moreButton]
     }
     
+    var debounceTimer: NSTimer?
     func search(textfield: UITextField) {
-        setTimeout(1) {
-            print("running")
-            self.searchMgr.search(textfield.text!, completionHandler: { (recipes:[Recipe]) in
-                self.searchResults = recipes
-                self.recipeTable.reloadData()
-            })
+        
+        if let timer = debounceTimer {
+            timer.invalidate()
         }
+        debounceTimer = NSTimer(timeInterval: 1.0, target: self, selector: #selector(returnSearch), userInfo: nil, repeats: false)
+        NSRunLoop.currentRunLoop().addTimer(debounceTimer!, forMode: "NSDefaultRunLoopMode")
     }
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        print("running")
-        self.searchMgr.search(textField.text!, completionHandler: { (recipes:[Recipe]) in
+    
+    func returnSearch() {
+        
+        print("searching: \(self.searchBar.textField.text!)")
+        self.searchMgr.search(self.searchBar.textField.text!, completionHandler: { (recipes:[Recipe]) in
             self.searchResults = recipes
             self.recipeTable.reloadData()
         })
-        return true
+    
     }
     
     func clearSearch() {
@@ -114,7 +108,7 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Te
     }
     
     func goBack() {
-        dismissViewControllerAnimated(true, completion: nil)
+        navigationController?.popViewControllerAnimated(true)
     }
     
     func prepareAds() {
@@ -178,7 +172,12 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Te
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        navigationController?.pushViewController(PublicRecipeVC(recipe: searchResults[indexPath.row]), animated: true)
+        print("did select row: \(indexPath.row)")
+        if searchResults[indexPath.row].authorId == AppState.sharedInstance.signedInUser.uid {
+            navigationController?.pushViewController(MyRecipeVC(recipe: self.searchResults[indexPath.row]), animated: true)
+        } else {
+            navigationController?.pushViewController(PublicRecipeVC(recipe: self.searchResults[indexPath.row]), animated: true)
+        }
     }
     
 }
