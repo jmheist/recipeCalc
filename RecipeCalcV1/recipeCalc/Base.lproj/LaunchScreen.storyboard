@@ -31,7 +31,6 @@
                             <constraint firstItem="aFr-WU-CCt" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="oDI-oL-eT3"/>
                         </constraints>
                     </view>
-                    <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                 </viewController>

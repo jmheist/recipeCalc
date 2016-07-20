@@ -62,7 +62,10 @@ class NotesVC: UIViewController {
         view.layout(noteLabel).top(10).center()
         
         noteView = TextView()
-        view.layout(noteView).top(70).bottom(250).left(14).right(14)
+        noteView.borderWidth = 0.7
+        noteView.borderColor = colors.dark
+        noteView.clipsToBounds = true
+        view.layout(noteView).top(70).bottom(150).left(14).right(14)
         
     }
     

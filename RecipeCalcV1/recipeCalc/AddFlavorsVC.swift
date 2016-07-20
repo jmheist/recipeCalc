@@ -103,8 +103,10 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         // Flavor Info
         
         let flavorInfo: MaterialView = MaterialView()
-        view.addSubview(flavorInfo)
         view.layout(flavorInfo).top(10).bottom(49).left(8).right(8)
+        
+        let stepDesc: StepDescLabel = StepDescLabel()
+        stepDesc.text = "Finally, add some flavors. Enter in the\nflavor name and percent, set the\nbase and click 'Add Flavor'"
         
         addFlavorName = T1()
         addFlavorName.placeholder = "Flavor Name"
@@ -117,7 +119,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         
         addFlavorPct = T2()
         addFlavorPct.keyboardType = UIKeyboardType.NumbersAndPunctuation
-        addFlavorPct.placeholder = "%"
+        addFlavorPct.placeholder = "Flavor Percent (%)"
         addFlavorPct.clearButtonMode = .WhileEditing
         addFlavorPct.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         addFlavorPct.errorCheck = true
@@ -126,7 +128,7 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         addFlavorPct.delegate = self
         
         let flavorBaseLabel: L3 = L3()
-        flavorBaseLabel.text = "Flavor base"
+        flavorBaseLabel.text = "Flavor Base"
             
         addFlavorBase = UISegmentedControl(items: ["PG","VG"])
         addFlavorBase.selectedSegmentIndex = 0
@@ -135,27 +137,35 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         addFlavorButton.height = 30
         addFlavorButton.setTitle("Add Flavor", forState: .Normal)
         addFlavorButton.setTitleColor(colors.dark, forState: .Normal)
-        addFlavorButton.addTarget(self, action: #selector(addFlavor), forControlEvents: .TouchUpInside)
+        addFlavorButton.addTarget(self, action: #selector(btnaddFlavor), forControlEvents: .TouchUpInside)
         
         flavorTable = UITableView()
         flavorTable.registerClass(MaterialTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         flavorTable.dataSource = self
         flavorTable.delegate = self
         
-        let children = [addFlavorName, addFlavorPct, flavorBaseLabel, addFlavorBase, addFlavorButton]
+        let children = [stepDesc, addFlavorName, addFlavorPct, flavorBaseLabel, addFlavorBase, addFlavorButton]
         var dist = 10
-        let spacing = 60
+        let spacing = 80
         for child in children {
             flavorInfo.layout(child).top(CGFloat(dist)).horizontally(left: 10, right: 10)
-            dist += dist < 80 || dist > 130 ? spacing : 20
+            if child == flavorBaseLabel {
+                dist += 25
+            } else if child == addFlavorPct {
+                dist += 50
+            } else if child == addFlavorBase {
+                dist += 50
+            } else {
+                dist += spacing
+            }
         }
         
-        flavorInfo.layout(flavorTable).top(270).bottom(-40).horizontally(left: 10, right: 10)
+        flavorInfo.layout(flavorTable).top(350).bottom(-40).horizontally(left: 10, right: 10)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()  //if desired
-        addFlavor()
+        addFlavor(true)
         return true
     }
     
@@ -165,7 +175,11 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         self.view.resignFirstResponder()
     }
     
-    func addFlavor(reloadTable: Bool=true) {
+    func btnaddFlavor() {
+        addFlavor(true)
+    }
+    
+    func addFlavor(reloadTable: Bool) {
         
         let fields = [addFlavorName, addFlavorPct]
         
@@ -175,12 +189,13 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         
         if !errorMgr.hasErrors() { // no errors, save the flavor
             flavorMGR.addFlavor(Flavor(name: addFlavorName.text!, base: addFlavorBase.selectedSegmentIndex == 0 ? "PG" : "VG", pct: addFlavorPct.text!), isNewRecipe: !edit)
+            addFlavorName.text = ""
+            addFlavorBase.selectedSegmentIndex = 0
+            addFlavorPct.text = ""
             if reloadTable {
                 flavorTable.reloadData()
-                addFlavorName.text = ""
-                addFlavorBase.selectedSegmentIndex = 0
-                addFlavorPct.text = ""
             }
+        
         }
         
     }

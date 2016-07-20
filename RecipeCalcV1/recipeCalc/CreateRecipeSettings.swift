@@ -104,6 +104,9 @@ class CreateRecipeSettingsVC: UIViewController, UITextFieldDelegate {
         let recipeInfo: MaterialView = MaterialView()
         view.layout(recipeInfo).top(0).left(14).right(14).bottom(0)
         
+        let stepDesc: StepDescLabel = StepDescLabel()
+        stepDesc.text = "Setup the base ingredient percents\nand some other stuff."
+        
         // recipe info fields
         
         recipePgPct = T2()
@@ -144,7 +147,7 @@ class CreateRecipeSettingsVC: UIViewController, UITextFieldDelegate {
         recipeSteepDays.errorCheckFor = "number"
         recipeSteepDays.numberMax = 60
         
-        let children = [recipePgPct, recipeVgPct, recipeNicStrength, recipeSteepDays]
+        let children = [stepDesc, recipePgPct, recipeVgPct, recipeNicStrength, recipeSteepDays]
         
         var dist = 30
         let spacing = 75

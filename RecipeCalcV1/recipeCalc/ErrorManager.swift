@@ -12,13 +12,15 @@ import Firebase
 
 struct Check {
     var type = String()
-    var length: Int = 0
+    var textMinLength: Int = 0
+    var textMaxLength: Int = 0
     var numberMax: Int = 0
     var numberMin: Double = 0.0
     
-    init(type: String, length: Int?=0, numberMax: Int?=0, numberMin: Double?=0.0) {
+    init(type: String, textMinLength: Int?=0, textMaxLength: Int?=1000, numberMax: Int?=0, numberMin: Double?=0.0) {
         self.type = type
-        self.length = length!
+        self.textMinLength = textMinLength!
+        self.textMaxLength = textMaxLength!
         self.numberMax = numberMax!
         self.numberMin = numberMin!
     }
@@ -41,10 +43,9 @@ class ErrorManager: NSObject {
     }
     
     private var errors = [String]()
-    private var origLabelText = ""
     
     // runs the error checker, and then modifies the fields to show the errors
-    func errorCheck(field: myTextField?=nil, textview: TView?=nil, errorLabel: MaterialLabel?=nil) {
+    func errorCheck(field: myTextField?=nil, textview: TView?=nil) {
         
         if (field != nil) {
         
@@ -54,7 +55,8 @@ class ErrorManager: NSObject {
                     placeholder: field!.placeholder!,
                     checkFor: Check(
                         type: field!.errorCheckFor,
-                        length: field!.textMinLength,
+                        textMinLength: field!.textMinLength,
+                        textMaxLength: field!.textMaxLength,
                         numberMax: field!.numberMax,
                         numberMin: field!.numberMin
                     ), completionHandler: { (res:ErrorResponse) in
@@ -81,37 +83,31 @@ class ErrorManager: NSObject {
                 
                 var error: Bool = false
                 var errorMessage = ""
-                
-                if errorLabel != nil && origLabelText.characters.count == 0 {
-                    origLabelText = (errorLabel?.text!)!
-                }
-                
+            
                 if textview?.maxLength > 0 && textview!.text.characters.count > textview?.maxLength {
                     error = true
-                    errorMessage = "Comment is too long (-\(textview!.text.characters.count - (textview?.maxLength)!))"
+                    errorMessage = "Characters (-\(textview!.text.characters.count - (textview?.maxLength)!))"
                 }
                 
                 if textview!.text.characters.count < textview?.minLength {
                     error = true
-                    errorMessage = "Comment is too short"
+                    errorMessage = "To short"
                 }
                 
                 if error {
                     if errors.indexOf("TextView") < 0 {
                         errors.append("TextView")
                     }
-                    if (errorLabel != nil) {
-                        errorLabel?.text = errorMessage
-                        errorLabel?.textColor = colors.error
-                    }
+                    
+                        textview?.titleLabel?.text = errorMessage
+                        textview?.titleLabel?.textColor = colors.error
+                    
                 } else {
                     if errors.indexOf("TextView") > -1 {
                         errors.removeAtIndex(errors.indexOf("TextView")!)
                     }
-                    if (errorLabel != nil) {
-                        errorLabel?.text = origLabelText
-                        errorLabel?.textColor = colors.text
-                    }
+                    textview?.titleLabel?.text = textview?.placeholderLabel?.text
+                    textview?.titleLabel?.textColor = colors.text
                 }
                 
             }
@@ -144,9 +140,15 @@ class ErrorManager: NSObject {
         switch checkFor.type { // start switch
         case "text":
             
-            if (checkFor.length != 0) && (data.characters.count <= checkFor.length) {
+            if (checkFor.textMinLength != 0) && (data.characters.count <= checkFor.textMinLength) {
                 error = true
-                errorMessage = "Please use more than \(checkFor.length) characters"
+                errorMessage = "Please use more than \(checkFor.textMinLength) characters"
+                returnError()
+            }
+            
+            if (checkFor.textMaxLength != 0) && (data.characters.count > checkFor.textMaxLength) {
+                error = true
+                errorMessage = "Please use less than \(checkFor.textMaxLength) characters (-\(data.characters.count - checkFor.textMaxLength))"
                 returnError()
             }
             
@@ -175,9 +177,15 @@ class ErrorManager: NSObject {
             
         case "username":
             
-            if (checkFor.length != 0) && (data.characters.count <= checkFor.length) {
+            if (checkFor.textMinLength != 0) && (data.characters.count <= checkFor.textMinLength) {
                 error = true
-                errorMessage = "Please use more than \(checkFor.length) characters"
+                errorMessage = "Please use more than \(checkFor.textMinLength) characters"
+                returnError()
+            }
+            
+            if (checkFor.textMaxLength != 0) && (data.characters.count > checkFor.textMaxLength) {
+                error = true
+                errorMessage = "Please use less than \(checkFor.textMaxLength) characters (-\(data.characters.count - checkFor.textMaxLength))"
                 returnError()
             }
             
@@ -203,6 +211,12 @@ class ErrorManager: NSObject {
                 returnError()
             }
             
+            if (checkFor.textMaxLength != 0) && (data.characters.count > checkFor.textMaxLength) {
+                error = true
+                errorMessage = "Please use less than \(checkFor.textMaxLength) characters (-\(data.characters.count - checkFor.textMaxLength))"
+                returnError()
+            }
+            
             UserMgr.getUserByEmail(data, completionHandler: { (user:User) in
                 print(data == user.email)
                 print(data, user.email)
@@ -218,9 +232,9 @@ class ErrorManager: NSObject {
             
         case "password":
             
-            if (checkFor.length != 0) && (data.characters.count <= checkFor.length) {
+            if (checkFor.textMinLength != 0) && (data.characters.count <= checkFor.textMinLength) {
                 error = true
-                errorMessage = "Please use more than \(checkFor.length) characters"
+                errorMessage = "Please use more than \(checkFor.textMinLength) characters"
                 returnError()
             }
             

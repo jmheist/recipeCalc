@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FBSDKCoreKit
+import Material
 
 struct User {
     
@@ -217,6 +218,8 @@ class UserManager: NSObject {
         let bottomNavigationController: BottomNav = BottomNav()
         bottomNavigationController.viewControllers = [discoveryViewController, createRecipeViewController, profileVC]
         bottomNavigationController.selectedIndex = 0
+        MaterialDevice.statusBarHidden = false
+        MaterialDevice.statusBarStyle = UIStatusBarStyle.Default
         completionHandler(bottomNavigationController)
     }
     

@@ -80,7 +80,7 @@ class TableVC: UIViewController, GADBannerViewDelegate, UITableViewDelegate {
         registerMyClass()
         recipeTable.dataSource = self
         recipeTable.delegate = self
-        recipeTable.estimatedRowHeight = 50
+        recipeTable.estimatedRowHeight = 45
         recipeTable.rowHeight = UITableViewAutomaticDimension
         
         view.layout(recipeTable).top(0).left(0).right(0).bottom(100)

@@ -22,7 +22,6 @@ class UpdateProfileVC: UIViewController, TextDelegate {
     var userNameField: T1!
     var bioField: TView!
     var locationField: T1!
-    var bioFieldErrorLabel: L3!
     
     let text: Text = Text()
     var didSendComment: Bool = false
@@ -76,31 +75,23 @@ class UpdateProfileVC: UIViewController, TextDelegate {
         infoView = MaterialView()
         view.layout(infoView).top(20).bottom(20).left(20).right(20)
         
-        let bioFieldLabel: L2 = L2()
-        bioFieldLabel.text = "bio"
-        
-        infoView.layout(bioFieldLabel).top(40)
-        
         bioField = TView(textContainer: textContainer)
-        bioField.maxLength = 90
+        bioField.text = AppState.sharedInstance.signedInUser.bio
+        bioField.maxLength = 80
         bioField.errorCheck = true
-        bioField.placeholderText = "A little about you."
+        bioField.placeholderLabel?.text = "Bio: A little bit about yourself."
         
-        infoView.layout(bioField).top(60).height(80)
-        
-        bioFieldErrorLabel = L3()
-        bioFieldErrorLabel.textColor = colors.error
-        bioFieldErrorLabel.text = ""
-        
-        infoView.layout(bioFieldErrorLabel).top(150)
+        infoView.layout(bioField).top(60).height(60)
         
         locationField = T1()
+        locationField.text = AppState.sharedInstance.signedInUser.location
         locationField.placeholder = "Location"
         locationField.errorCheck = true
         locationField.errorCheckFor = "text"
-        locationField.textMaxLength = 40
+        locationField.textMaxLength = 30
+        locationField.addTarget(self, action: #selector(self.liveCheck(_:)), forControlEvents: UIControlEvents.EditingChanged)
         
-        infoView.layout(locationField).top(180)
+        infoView.layout(locationField).top(160)
         
         doneButton = B1()
         doneButton.setTitle("Submit", forState: .Normal)
@@ -108,7 +99,7 @@ class UpdateProfileVC: UIViewController, TextDelegate {
         
         infoView.layout(doneButton).centerHorizontally().top(240).width(100)
         
-        let children = [bioFieldLabel, bioField, bioFieldErrorLabel, locationField]
+        let children = [bioField, locationField]
         
         for child in children {
             infoView.layout(child).left(14).right(14)
@@ -153,27 +144,26 @@ class UpdateProfileVC: UIViewController, TextDelegate {
         
         showSpinner()
         
-        let fields = [userNameField, locationField]
+        let fields = [locationField]
         
-        //        errorMgr.errorCheck(textview: bioField, errorLabel: bioFieldErrorLabel)
+        errorMgr.errorCheck(textview: bioField)
         
         for field in fields {
             errorMgr.errorCheck(field)
         }
-        setTimeout(1) {
-            if !self.errorMgr.hasErrors() {
-                UserMgr.sendNewUserInfo(AppState.sharedInstance.signedInUser.uid!, bio: self.bioField.text, location: self.locationField.text!, completionHandler: {
-                    
-                    UserMgr.loadApp({ (vc) in
-                        self.navigationController?.popViewControllerAnimated(true)
-                    })
-                    
+        
+        if !self.errorMgr.hasErrors() {
+            UserMgr.sendNewUserInfo(AppState.sharedInstance.signedInUser.uid!, bio: self.bioField.text, location: self.locationField.text!, completionHandler: {
+                UserMgr.loadApp({ (vc) in
+                    self.navigationController?.popViewControllerAnimated(true)
                 })
                 
-            } else {
-                self.hideSpinner()
-            }
+            })
+            
+        } else {
+            self.hideSpinner()
         }
+    
     }
     
     func prepareSpinner() {
@@ -199,6 +189,14 @@ class UpdateProfileVC: UIViewController, TextDelegate {
         doneButton.hidden = false
     }
     
+    func liveCheck(field: myTextField) {
+        errorMgr.errorCheck(field)
+    }
+    
+    func liveCheckTV(field: TView) {
+        errorMgr.errorCheck(textview: field)
+    }
+    
     
     /**
      When changes in the textView text are made, this delegation method
@@ -208,6 +206,7 @@ class UpdateProfileVC: UIViewController, TextDelegate {
         if !didSendComment {
             textStorage.removeAttribute(NSFontAttributeName, range: range)
             textStorage.addAttribute(NSFontAttributeName, value: RobotoFont.regular, range: range)
+            liveCheckTV(bioField)
         } else {
             didSendComment = false
         }

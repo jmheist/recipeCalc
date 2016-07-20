@@ -85,7 +85,7 @@ class DiscoveryViewController: TableVC {
         let recipe = self.recipes[indexPath.row]
         
         cell.starRatingView.value = recipe.stars
-        cell.starRatingCount.text = "(\(recipe.starsCount))"
+        cell.starRatingCount.text = "\(recipe.starsCount)"
         cell.heartCount.text = "\(recipe.favCount)"
         cell.selectionStyle = .None
         cell.recipeName.text = recipe.name

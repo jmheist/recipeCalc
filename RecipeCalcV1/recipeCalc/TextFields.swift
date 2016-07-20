@@ -35,7 +35,7 @@ class myTextField: TextField { // creating a new root textview with errorchecl a
     override func prepareView() {
         super.prepareView()
         
-        backgroundColor = colors.light
+        backgroundColor = MaterialColor.clear
         
         //error stuff
         revealError = false
@@ -68,6 +68,7 @@ class T1: myTextField {
     
     /// Prepares the placeholderLabel.
     private func preparePlaceholderLabel() {
+        placeholderVerticalOffset = 6
         placeholderColor = colors.dark
         placeholderActiveColor = colors.dark
         addSubview(placeholderLabel)
@@ -107,28 +108,31 @@ class T3: T1 {
 class TView: TextView {
     
     var errorCheck: Bool = false
-    var minLength: Int = 1
+    var minLength: Int = 0
     var maxLength: Int = 0
     
     internal override func prepareView() {
         super.prepareView()
         contentScaleFactor = MaterialDevice.scale
-        textContainerInset = MaterialEdgeInsetToValue(.None)
+        textContainerInset = MaterialEdgeInsetToValue(.Square1      )
         backgroundColor = colors.background
-        borderColor = colors.light
+        borderColor = colors.dark
         borderWidth = 0.7
         cornerRadiusPreset = .None
         titleLabelColor = colors.dark
         titleLabelActiveColor = colors.dark
-        masksToBounds = true
-        clipsToBounds = true
+        scrollEnabled = false
+        textContainer.maximumNumberOfLines = 2
+        textContainer.lineBreakMode = NSLineBreakMode.ByWordWrapping
+//        masksToBounds = true
+//        clipsToBounds = true
         font = RobotoFont.regular
         placeholderLabel = UILabel()
-        placeholderLabel!.textColor = MaterialColor.grey.base
+        placeholderLabel!.textColor = colors.medium
         placeholderLabel!.text = ""
         titleLabel = UILabel()
-        titleLabel!.font = RobotoFont.mediumWithSize(12)
-        titleLabelColor = MaterialColor.grey.base
-        titleLabelActiveColor = MaterialColor.blue.accent3
+        titleLabel!.font = RobotoFont.regularWithSize(14)
+        titleLabelColor = colors.text
+        titleLabelActiveColor = colors.text
     }
 }

@@ -10,10 +10,12 @@ import UIKit
 import Material
 import Firebase
 
-class CreateRecipeViewController: UIViewController, UITextFieldDelegate  {
+class CreateRecipeViewController: UIViewController, UITextFieldDelegate, TextDelegate  {
     
     let errorMgr: ErrorManager = ErrorManager()
     var edit: Bool = false
+    let text: Text = Text()
+    var didSendComment: Bool = false
     
     // text fields
     private var recipeName: T1!
@@ -100,6 +102,13 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate  {
     
     func prepareTextFields() {
         
+        let layoutManager: NSLayoutManager = NSLayoutManager()
+        let textContainer: NSTextContainer = NSTextContainer(size: view.bounds.size)
+        layoutManager.addTextContainer(textContainer)
+        
+        text.delegate = self
+        text.textStorage.addLayoutManager(layoutManager)
+
         
         let recipeInfo: MaterialView = MaterialView()
         view.layout(recipeInfo).top(0).left(14).right(14).bottom(0)
@@ -116,25 +125,21 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate  {
         recipeName.errorCheck = true
         recipeName.errorCheckFor = "text"
         recipeName.textMinLength = 3
-        recipeName.textMaxLength = 25
+        recipeName.textMaxLength = 30
         
-        let noteLabel: L3 = L3()
-        noteLabel.text = "Description"
-        noteLabel.textAlignment = .Left
+        recipeDesc = TView(textContainer: textContainer)
+        recipeDesc.maxLength = 90
+        recipeDesc.errorCheck = true
+        recipeDesc.placeholderLabel!.text = "Description"
         
-        recipeDesc = TView()
+        recipeInfo.layout(recipeDesc).height(60)
         
-        recipeInfo.layout(recipeDesc).height(80)
-        
-        let children = [stepDesc, recipeName, noteLabel, recipeDesc]
+        let children = [stepDesc, recipeName, recipeDesc]
         
         var dist = 30
-        var spacing = 75
+        let spacing = 85
         for child in children {
             recipeInfo.layout(child).top(CGFloat(dist)).horizontally(left: 14, right: 14)
-            if dist > 170 {
-                spacing = 25
-            }
             dist += spacing
         }
         
@@ -156,6 +161,8 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate  {
         let authorId = AppState.sharedInstance.signedInUser.uid
         
         let fields = [recipeName]
+        
+        errorMgr.errorCheck(textview: self.recipeDesc)
         
         for field in fields {
             errorMgr.errorCheck(field)
@@ -180,7 +187,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate  {
             navigationController!.pushViewController(CreateRecipeSettingsVC(edit: self.edit), animated: true)
         
         } else { // there was errors
-            
+            print(recipeDesc.titleLabel?.text)
             print("errors: \(errorMgr.hasErrors())")
             
         }
@@ -188,6 +195,10 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate  {
     
     func liveCheck(field: myTextField) {
         errorMgr.errorCheck(field)
+    }
+    
+    func liveCheckTV(field: TView) {
+        errorMgr.errorCheck(textview: field)
     }
     
     func clearForm() {
@@ -223,6 +234,28 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate  {
     func showStatusBar() {
         let statusBarWindow = UIApplication.sharedApplication().valueForKey("statusBarWindow") as! UIWindow
         statusBarWindow.frame = CGRectMake(0, 0, statusBarWindow.frame.size.width, statusBarWindow.frame.size.height)
+    }
+    
+    /**
+     When changes in the textView text are made, this delegation method
+     is executed with the added text string and range.
+     */
+    func textWillProcessEdit(text: Text, textStorage: TextStorage, string: String, range: NSRange) {
+        if !didSendComment {
+            textStorage.removeAttribute(NSFontAttributeName, range: range)
+            textStorage.addAttribute(NSFontAttributeName, value: RobotoFont.regular, range: range)
+            liveCheckTV(recipeDesc)
+        } else {
+            didSendComment = false
+        }
+    }
+    
+    /**
+     When a match is detected within the textView text, this delegation
+     method is executed with the added text string and range.
+     */
+    func textDidProcessEdit(text: Text, textStorage: TextStorage, string: String, result: NSTextCheckingResult?, flags: NSMatchingFlags, stop: UnsafeMutablePointer<ObjCBool>) {
+        textStorage.addAttribute(NSFontAttributeName, value: UIFont.boldSystemFontOfSize(16), range: result!.range)
     }
 }
 

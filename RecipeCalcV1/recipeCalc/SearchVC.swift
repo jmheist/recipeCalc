@@ -121,7 +121,6 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Te
         bannerAd.adUnitID = adConstants.search
         bannerAd.rootViewController = self
         bannerAd.loadRequest(request)
-        
     }
     
     /// Prepare table
@@ -132,7 +131,7 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Te
         recipeTable.dataSource = self
         recipeTable.delegate = self
         
-        view.layout(recipeTable).top(65).left(0).right(0).bottom(0)
+        view.layout(recipeTable).top(0).left(0).right(0).bottom(0)
         
     }
     

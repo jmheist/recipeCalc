@@ -266,6 +266,15 @@
 			name = Templates;
 			sourceTree = "<group>";
 		};
+		7369C6EF1D3EC69F006C5513 /* Recipe Creation */ = {
+			isa = PBXGroup;
+			children = (
+				7372EF2D1D1C5C2200754613 /* CreateRecipeSettings.swift */,
+				73F66DC11D0BD5D7008E73E1 /* AddFlavorsVC.swift */,
+			);
+			name = "Recipe Creation";
+			sourceTree = "<group>";
+		};
 		7372EF311D1C6BB900754613 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,8 +300,6 @@
 			children = (
 				734C95D31D06169600EB79AD /* MyRecipeVC.swift */,
 				734C95D51D0617D500EB79AD /* PublicRecipeVC.swift */,
-				7372EF2D1D1C5C2200754613 /* CreateRecipeSettings.swift */,
-				73F66DC11D0BD5D7008E73E1 /* AddFlavorsVC.swift */,
 				73991AFA1D1ADC97004F3F07 /* NotesVC.swift */,
 				73991B081D1B16EC004F3F07 /* SearchVC.swift */,
 				73A946471D25B8D900745195 /* CommentsVC.swift */,
@@ -323,8 +330,9 @@
 			children = (
 				7372EF311D1C6BB900754613 /* Auth */,
 				7372EF321D1C6BD800754613 /* Root */,
-				7372EF341D1C6C1A00754613 /* Mix */,
+				7369C6EF1D3EC69F006C5513 /* Recipe Creation */,
 				7372EF331D1C6C1300754613 /* Recipe */,
+				7372EF341D1C6C1A00754613 /* Mix */,
 				7372EF351D1C6C1F00754613 /* User */,
 			);
 			name = ViewControllers;

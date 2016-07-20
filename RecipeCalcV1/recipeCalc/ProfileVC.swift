@@ -21,14 +21,14 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
     
     class statHeader: L3 {
         override func prepareView() {
-            font = RobotoFont.boldWithSize(14)
+            font = RobotoFont.boldWithSize(12)
             textAlignment = .Center
         }
     }
     
     class stat: L3 {
         override func prepareView() {
-            font = RobotoFont.regularWithSize(16)
+            font = RobotoFont.regularWithSize(12)
             textAlignment = .Center
         }
     }
@@ -223,16 +223,6 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
         username = L2()
         profileView.layout(username).left(0).top(88).width(300)
         
-        location = L3()
-        location.textLayer.pointSize = 12
-        location.textAlignment = .Right
-        profileView.layout(location).top(100).right(0).width(150)
-        
-        joined = L3()
-        joined.textLayer.pointSize = 12
-        joined.textAlignment = .Right
-        profileView.layout(joined).top(115).right(0).width(150)
-        
         // max length for bio should be around 75-80 characters
         bio = L2()
         bio.numberOfLines = 2
@@ -243,7 +233,8 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
         // start on recipe stats
         
         let profileStatsView: MaterialView = MaterialView()
-        profileView.layout(profileStatsView).top(0).right(0).height(55).width(250)
+        profileView.backgroundColor = MaterialColor.clear
+        profileView.layout(profileStatsView).top(0).right(14).height(55).width(200)
 
         
         let recipesLabel: statHeader = statHeader()
@@ -294,6 +285,23 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
         profileStatsView.grid.axis.direction = .None
         profileStatsView.grid.contentInsetPreset = .Square2
         profileStatsView.grid.views = labels
+        
+        // END RECIPE STATS
+        
+        let infoView: MaterialView = MaterialView()
+        infoView.backgroundColor = MaterialColor.clear
+        profileView.layout(infoView).top(50).width(200).right(14).height(28)
+        
+        location = L3()
+        location.textLayer.pointSize = 12
+        location.textAlignment = .Center
+        infoView.layout(location).top(0).left(0).right(0).height(14)
+        
+        joined = L3()
+        joined.textLayer.pointSize = 12
+        joined.textAlignment = .Center
+        infoView.layout(joined).top(14).left(0).right(0).height(14)
+
         
     }
     
@@ -495,7 +503,7 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
             let recipe = self.recipes[indexPath.row]
             
             cell.starRatingView.value = recipe.stars
-            cell.starRatingCount.text = "(\(recipe.starsCount))"
+            cell.starRatingCount.text = "\(recipe.starsCount)"
             cell.heartCount.text = "\(recipe.favCount)"
             
             cell.selectionStyle = .None

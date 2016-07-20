@@ -157,7 +157,7 @@ class CommentsVC: UIViewController, GADBannerViewDelegate, UITextFieldDelegate, 
     }
     
     func checkForErrors(sender: TView) -> Bool {
-        errorMgr.errorCheck(textview: sender, errorLabel: commentLabel)
+        errorMgr.errorCheck(textview: sender)
         return errorMgr.hasErrors()
     }
     

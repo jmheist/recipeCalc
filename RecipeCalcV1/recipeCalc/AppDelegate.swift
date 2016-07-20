@@ -32,9 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         FIRDatabase.database().persistenceEnabled = true
         ref.keepSynced(true)
         
-        MaterialDevice.statusBarHidden = false
-        MaterialDevice.statusBarStyle = UIStatusBarStyle.Default
-        
         let loginVC: AppLandingVC = AppLandingVC()
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)

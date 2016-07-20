@@ -12,18 +12,21 @@ import Material
 class L1: MaterialLabel {
     override func prepareView() {
         font = RobotoFont.boldWithSize(22)
+        backgroundColor = MaterialColor.clear
     }
 }
 
 class L2: MaterialLabel {
     override func prepareView() {
         font = RobotoFont.regularWithSize(18)
+        backgroundColor = MaterialColor.clear
     }
 }
 
 class L3: MaterialLabel {
     override func prepareView() {
         font = RobotoFont.thinWithSize(16)
+        backgroundColor = MaterialColor.clear
     }
 }
 
