@@ -152,6 +152,8 @@ class RecipeManager: NSObject {
         Queries.publicRecipes.child(key).removeValue()
         Queries.flavors.child(key).removeValue()
         Queries.comments.child(key).removeValue()
+        Queries.ratings.child(key).removeValue()
+        Queries.notes.child(key).removeValue()
         
         getUserRecipes(AppState.sharedInstance.signedInUser.uid!, sort: "stars") { (recipes) in
             completionHandler(recipes)

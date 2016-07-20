@@ -30,7 +30,7 @@ class PublicRecipeCell: RecipeCell {
         creator.textColor = MaterialColor.grey.darken1
         contentView.layout(creator).top(28).left(50).width(250)
         
-        contentView.layout(ratingContainer).top(28).bottom(8).right(8).height(15).width(120)
+        contentView.layout(ratingContainer).top(28).right(8).height(15).width(120)
     }
     
 }
