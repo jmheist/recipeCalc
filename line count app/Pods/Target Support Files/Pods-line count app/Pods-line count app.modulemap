@@ -1,0 +1,6 @@
+framework module Pods_line_count_app {
+  umbrella header "Pods-line count app-umbrella.h"
+
+  export *
+  module * { export * }
+}
