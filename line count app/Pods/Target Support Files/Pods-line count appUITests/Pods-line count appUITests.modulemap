@@ -1,6 +1,0 @@
-framework module Pods_line_count_appUITests {
-  umbrella header "Pods-line count appUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}
