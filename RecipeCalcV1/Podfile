@@ -1,0 +1,30 @@
+platform :ios, '8.0'
+use_frameworks!
+target 'Social Vape' do
+
+pod "Firebase"
+pod "Firebase/Database"
+pod "Firebase/Crash"
+pod "Firebase/Auth"
+pod "Firebase/AdMob"
+pod "Firebase/Storage"
+
+pod "FBSDKLoginKit"
+
+pod "Material"
+
+pod "IQKeyboardManagerSwift"
+
+# https://github.com/hyperoslo/ImagePicker
+pod "ImagePicker"
+
+# https://github.com/justwudi/WDStarRatingView
+pod 'HMWDStarRatingView', '~> 0.4'
+
+# https://cocoapods.org/pods/Refresher
+pod 'Refresher', '~> 0.5'
+
+# https://cocoapods.org/pods/MRConfirmationAlertView
+pod "MRConfirmationAlertView"
+
+end
