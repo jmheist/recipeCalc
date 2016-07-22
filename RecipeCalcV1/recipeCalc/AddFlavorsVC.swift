@@ -238,7 +238,15 @@ class AddFlavorsVC: UIViewController, UITextFieldDelegate {
         if edit {
             navigationController?.popToRootViewControllerAnimated(true)
         } else {
-            tabBarController?.selectedIndex = 2 
+            alertMgr.alertWithOptions("Publish?", message: "Do you want to publish this recipe?\n\nIf not, you can always publish it later from the recipe page.", cancelBtn: "Later", conFirmBtn: "Publish", completionHanlder: { (confirmed) in
+                if confirmed {
+                    recipeMgr.publishRecipe(key, completionHandler: { (recipe) in
+                        self.tabBarController?.selectedIndex = 2
+                    })
+                } else {
+                    self.tabBarController?.selectedIndex = 2
+                }
+            })
         }
     }
     

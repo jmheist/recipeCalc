@@ -41,24 +41,26 @@ class MyRecipeVC: RecipeVC {
     func publishRecipe() {
         recipeMgr.publishRecipe(self.recipe.key) { (rec) in
             self.recipe = rec
+            self.preparePublishButton()
         }
     }
     
     func unPublishRecipe() {
         recipeMgr.unPublishRecipe(self.recipe.key, completionHandler: { (rec) in
             self.recipe = rec
+            self.preparePublishButton()
         })
     }
     
     func preparePublishButton() {
         
-        let publishButton = UIBarButtonItem(title: "share", style: .Plain, target: self, action: #selector(publishRecipe))
+        let publishButton = UIBarButtonItem(title: "Publish", style: .Plain, target: self, action: #selector(publishRecipe))
         
         if recipe.published == "true" {
-            publishButton.title = "Unshare"
+            publishButton.title = "Unpublish"
             publishButton.action = #selector(unPublishRecipe)
         } else {
-            publishButton.title = "Share"
+            publishButton.title = "Publish"
             publishButton.action = #selector(publishRecipe)
         }
         

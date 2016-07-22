@@ -502,9 +502,14 @@ class ProfileVC: UIViewController, GADBannerViewDelegate, ImagePickerDelegate, U
             
             let recipe = self.recipes[indexPath.row]
             
-            cell.starRatingView.value = recipe.stars
-            cell.starRatingCount.text = "\(recipe.starsCount)"
-            cell.heartCount.text = "\(recipe.favCount)"
+            if recipe.published == "true" {
+                cell.starRatingView.value = recipe.stars
+                cell.starRatingCount.text = "\(recipe.starsCount)"
+                cell.heartCount.text = "\(recipe.favCount)"
+            } else {
+                cell.ratingContainer.hidden = true
+                cell.publishedText.hidden = false
+            }
             
             cell.selectionStyle = .None
             cell.recipeName.text = recipe.name

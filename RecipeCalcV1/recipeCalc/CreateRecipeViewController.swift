@@ -128,7 +128,7 @@ class CreateRecipeViewController: UIViewController, UITextFieldDelegate, TextDel
         recipeName.textMaxLength = 30
         
         recipeDesc = TView(textContainer: textContainer)
-        recipeDesc.maxLength = 90
+        recipeDesc.maxLength = 70
         recipeDesc.errorCheck = true
         recipeDesc.placeholderLabel!.text = "Description"
         
