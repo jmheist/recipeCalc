@@ -167,11 +167,11 @@ class UserManager: NSObject {
                         AppState.sharedInstance.signedInUser.email = profile.email
                         AppState.sharedInstance.signedIn = true
                         
-                        storageMgr.storeFBImage(user!, completionHandler: { (profileImageUrl) in
-                            AppState.sharedInstance.signedInUser.profileImage = profileImageUrl
-                            UserMgr.sendDataToFirebase((user?.uid)!, key: "profileImage", value: AppState.sharedInstance.signedInUser.profileImage!)
-                            finish(true)
-                        })
+//                        storageMgr.storeFBImage(user!, completionHandler: { (profileImageUrl) in
+//                            AppState.sharedInstance.signedInUser.profileImage = profileImageUrl
+//                            UserMgr.sendDataToFirebase((user?.uid)!, key: "profileImage", value: AppState.sharedInstance.signedInUser.profileImage!)
+//                            finish(true)
+//                        })
                     }
                 } else {
                     AppState.sharedInstance.signedInUser.username = user?.displayName ?? user?.email

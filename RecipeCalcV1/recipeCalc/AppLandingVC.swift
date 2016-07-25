@@ -111,7 +111,7 @@ class AppLandingVC: UIViewController, FBSDKLoginButtonDelegate {
         fbView.layout(fbErrorLabel).top(85).horizontally()
         
         fbButton.delegate = self
-        fbButton.readPermissions = ["public_profile","email","user_friends"]
+        fbButton.readPermissions = ["email"]
         
     }
     
