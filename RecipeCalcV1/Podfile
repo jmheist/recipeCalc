@@ -19,10 +19,10 @@ pod "IQKeyboardManagerSwift"
 pod "ImagePicker"
 
 # https://github.com/justwudi/WDStarRatingView
-pod 'HMWDStarRatingView', '~> 0.4'
+pod 'HMWDStarRatingView'
 
 # https://cocoapods.org/pods/Refresher
-pod 'Refresher', '~> 0.5'
+pod 'Refresher'
 
 # https://cocoapods.org/pods/MRConfirmationAlertView
 pod "MRConfirmationAlertView"

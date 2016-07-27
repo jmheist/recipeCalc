@@ -78,12 +78,12 @@ DEPENDENCIES:
   - Firebase/Crash
   - Firebase/Database
   - Firebase/Storage
-  - HMWDStarRatingView (~> 0.4)
+  - HMWDStarRatingView
   - ImagePicker
   - IQKeyboardManagerSwift
   - Material
   - MRConfirmationAlertView
-  - Refresher (~> 0.5)
+  - Refresher
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -109,6 +109,6 @@ SPEC CHECKSUMS:
   MRConfirmationAlertView: 6ddd1a1e1bf5e15d1e3622c150342f4551dabb80
   Refresher: 485f5990e6315add7f3470db5a4ca106451b11d3
 
-PODFILE CHECKSUM: c1adf33df63e29146524a3c7a0df35d7938e8e97
+PODFILE CHECKSUM: 89b5695deb272803c03a321a573a48bd3f0f6624
 
 COCOAPODS: 1.0.1
